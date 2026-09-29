@@ -1,0 +1,65 @@
+﻿<HTML>
+	<HEAD>
+		
+		<STYLE type=text/css>
+			
+			DIV.templateContainer	{padding-bottom: 10px; font-weight: bold}
+			BODY					{background: white; font-size: 12pt; font-weight: bold; color: black; font-family: Times; padding: 5px; margin: 0px}
+			SPAN.fieldReference		{border: hidden; margin-top: 7px; color: green; font-family: Courier New; font-size: 10 pt; font-weight: normal}
+			SPAN.conditionalPart	{color: green; border-bottom: gray dotted 2px; font-family: Courier New; font-size: 10 pt; font-weight: normal}
+			SPAN.repeatablePart  	{background: yellow}
+			SPAN.selectPart  		{background: #99CCFF}
+		</STYLE>
+		
+		<SCRIPT language="JScript" type="text/javascript">
+			
+			var localDragging = false;
+			var copiedFragment = "";
+			
+			function dropping() {
+				
+				if (localDragging) {
+					return;
+				};
+				
+				textRange = document.selection.createRange();
+				textToDrop = window.event.dataTransfer.getData("Text");
+				
+				if (textToDrop != "ПолеНастройки") {
+					textRange.text = textToDrop;
+				};
+				
+				textRange.select();
+				window.event.returnValue = false;
+			}
+			
+			function pasting() {
+				
+				if (window.clipboardData.getData("Text") == copiedFragment) {
+					return true;
+				} else {
+					window.clipboardData.clearData("HTML");
+					return true;
+				}
+			}
+			
+		</SCRIPT>
+		
+	</HEAD>
+	
+	<BODY ondragstart="localDragging=true"
+		ondragend="localDragging=false"
+		onpaste="pasting()"
+		ondrop="dropping()"
+		oncopy='copiedFragment=window.clipboardData.getData("Text")'
+		oncut='copiedFragment=window.clipboardData.getData("Text")'
+		onresizestart="return false"
+		unselectable=on>
+		
+		<DIV id=templateContainer unselectable=off class=payOrderReasonTemplate contentEditable=true style="height: 50px">
+			<DIV id=deldef>
+			</DIV>
+		</DIV>
+		
+	</BODY>
+</HTML>
