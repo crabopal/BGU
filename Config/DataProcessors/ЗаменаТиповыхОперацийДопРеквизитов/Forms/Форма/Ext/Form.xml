@@ -1,0 +1,1106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыполнитьЗамену" id="100">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВыполнитьЗамену</CommandName>
+				<ExtendedTooltip name="ФормаВыполнитьЗаменуРасширеннаяПодсказка" id="101"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа2" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор документов для изменения</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="105"/>
+			<ChildItems>
+				<InputField name="ИдентификаторДокумента" id="3">
+					<DataPath>Объект.ИдентификаторДокумента</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид документа</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Родитель</xr:Name>
+							<xr:DataPath xsi:type="xs:string">ИдентификаторТипаДокументы</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ИдентификаторДокументаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ИдентификаторДокументаРасширеннаяПодсказка" id="5"/>
+					<Events>
+						<Event name="OnChange">ИдентификаторДокументаПриИзменении</Event>
+						<Event name="StartChoice">ИдентификаторДокументаНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТиповаяОперация" id="6">
+					<DataPath>Объект.ТиповаяОперация</DataPath>
+					<DropListButton>false</DropListButton>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.ИдентификаторДокумента</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Объект.ИдентификаторДокумента</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="ТиповаяОперацияКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ТиповаяОперацияРасширеннаяПодсказка" id="8"/>
+					<Events>
+						<Event name="OnChange">ТиповаяОперацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="Группа3" id="110">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбранные документы</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Collapsible</Behavior>
+					<CollapsedRepresentationTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбранные документы</v8:content>
+						</v8:item>
+					</CollapsedRepresentationTitle>
+					<Collapsed>true</Collapsed>
+					<ControlRepresentation>Picture</ControlRepresentation>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="111"/>
+					<ChildItems>
+						<Table name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор" id="9">
+							<Representation>Tree</Representation>
+							<Autofill>true</Autofill>
+							<Height>6</Height>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>КомпоновщикНастроекОбрабатываемыхДокументов.Settings.Filter</DataPath>
+							<ViewMode>All</ViewMode>
+							<SettingsNamedItemDetailedRepresentation>false</SettingsNamedItemDetailedRepresentation>
+							<ContextMenu name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборКонтекстноеМеню" id="10"/>
+							<AutoCommandBar name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборКоманднаяПанель" id="11">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборДобавитьЭлементОтбора" id="106">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Item.КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор.StandardCommand.AddFilterItem</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Добавить условие отбора</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборДобавитьЭлементОтбораРасширеннаяПодсказка" id="107"/>
+									</Button>
+									<ButtonGroup name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборГруппа1" id="108">
+										<CommandSource>Item.КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор</CommandSource>
+										<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборГруппа1РасширеннаяПодсказка" id="109"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборРасширеннаяПодсказка" id="12"/>
+							<SearchStringAddition name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСтрокаПоиска" id="13">
+								<AdditionSource>
+									<Item>КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСтрокаПоискаКонтекстноеМеню" id="16"/>
+								<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСтрокаПоискаРасширеннаяПодсказка" id="17"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСостояниеПросмотра" id="18">
+								<AdditionSource>
+									<Item>КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСостояниеПросмотраКонтекстноеМеню" id="21"/>
+								<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборУправлениеПоиском" id="23">
+								<AdditionSource>
+									<Item>КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтбор</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборУправлениеПоискомКонтекстноеМеню" id="26"/>
+								<ExtendedTooltip name="КомпоновщикНастроекОбрабатываемыхДокументовНастройкиОтборУправлениеПоискомРасширеннаяПодсказка" id="27"/>
+							</SearchControlAddition>
+						</Table>
+						<Table name="ДокументыДляОбработки" id="30">
+							<TitleLocation>Top</TitleLocation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ДокументыДляОбработки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Обрабатываемые документы</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДокументыДляОбработкиКонтекстноеМеню" id="31"/>
+							<AutoCommandBar name="ДокументыДляОбработкиКоманднаяПанель" id="32">
+								<ChildItems>
+									<Button name="ДокументыДляОбработкиЗаполнитьДокументы" id="102">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьДокументы</CommandName>
+										<ExtendedTooltip name="ДокументыДляОбработкиЗаполнитьДокументыРасширеннаяПодсказка" id="103"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ДокументыДляОбработкиРасширеннаяПодсказка" id="33"/>
+							<SearchStringAddition name="ДокументыДляОбработкиСтрокаПоиска" id="34">
+								<AdditionSource>
+									<Item>ДокументыДляОбработки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыДляОбработкиСтрокаПоискаКонтекстноеМеню" id="37"/>
+								<ExtendedTooltip name="ДокументыДляОбработкиСтрокаПоискаРасширеннаяПодсказка" id="38"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДокументыДляОбработкиСостояниеПросмотра" id="39">
+								<AdditionSource>
+									<Item>ДокументыДляОбработки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыДляОбработкиСостояниеПросмотраКонтекстноеМеню" id="42"/>
+								<ExtendedTooltip name="ДокументыДляОбработкиСостояниеПросмотраРасширеннаяПодсказка" id="43"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДокументыДляОбработкиУправлениеПоиском" id="44">
+								<AdditionSource>
+									<Item>ДокументыДляОбработки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДокументыДляОбработкиУправлениеПоискомКонтекстноеМеню" id="47"/>
+								<ExtendedTooltip name="ДокументыДляОбработкиУправлениеПоискомРасширеннаяПодсказка" id="48"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">ДокументыДляОбработкиПриИзменении</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ДокументыДляОбработкиНомерСтроки" id="49">
+									<DataPath>Объект.ДокументыДляОбработки.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДокументыДляОбработкиНомерСтрокиКонтекстноеМеню" id="50"/>
+									<ExtendedTooltip name="ДокументыДляОбработкиНомерСтрокиРасширеннаяПодсказка" id="51"/>
+								</LabelField>
+								<InputField name="ДокументыДляОбработкиДокумент" id="55">
+									<DataPath>Объект.ДокументыДляОбработки.Документ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДокументыДляОбработкиДокументКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="ДокументыДляОбработкиДокументРасширеннаяПодсказка" id="57"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа4" id="112">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменяемые реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="113"/>
+			<ChildItems>
+				<UsualGroup name="Группа5" id="132">
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа5РасширеннаяПодсказка" id="133"/>
+					<ChildItems>
+						<InputField name="НоваяТиповаяОперация" id="58">
+							<DataPath>Объект.НоваяТиповаяОперация</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Типовая операция</v8:content>
+								</v8:item>
+							</Title>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+							<ContextMenu name="НоваяТиповаяОперацияКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="НоваяТиповаяОперацияРасширеннаяПодсказка" id="60"/>
+							<Events>
+								<Event name="OnChange">НоваяТиповаяОперацияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<CommandBar name="Группа6" id="134">
+							<CommandSource>Item.НовыеЗначенияРеквизитов</CommandSource>
+							<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="135"/>
+							<ChildItems>
+								<Button name="СопоставитьРеквизиты" id="136">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.СопоставитьРеквизиты</CommandName>
+									<ExtendedTooltip name="СопоставитьРеквизитыРасширеннаяПодсказка" id="137"/>
+								</Button>
+								<Button name="НовыеЗначенияРеквизитовОчиститьРеквизиты" id="141">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ОчиститьРеквизиты</CommandName>
+									<ExtendedTooltip name="НовыеЗначенияРеквизитовОчиститьРеквизитыРасширеннаяПодсказка" id="142"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="НовыеЗначенияРеквизитов" id="63">
+					<Representation>Tree</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>НовыеЗначенияРеквизитов</DataPath>
+					<RowPictureDataPath>НовыеЗначенияРеквизитов.НомерКартинки</RowPictureDataPath>
+					<RowsPicture>
+						<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</RowsPicture>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизиты типовой операции</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НовыеЗначенияРеквизитовКонтекстноеМеню" id="64">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<ButtonGroup name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа2" id="116">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Изменить</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа2РасширеннаяПодсказка" id="117"/>
+								<ChildItems>
+									<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюИзменить" id="118">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.Change</CommandName>
+										<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="119"/>
+									</Button>
+									<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюЗакончитьРедактирование" id="120">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.EndEdit</CommandName>
+										<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюЗакончитьРедактированиеРасширеннаяПодсказка" id="121"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+							<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюВывестиСписок" id="122">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.OutputList</CommandName>
+								<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="123"/>
+							</Button>
+							<Popup name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа3" id="124">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Режим просмотра</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа3РасширеннаяПодсказка" id="125"/>
+								<ChildItems>
+									<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюСписок" id="126">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.List</CommandName>
+										<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюСписокРасширеннаяПодсказка" id="127"/>
+									</Button>
+									<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюИерархическийСписок" id="128">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.HierarchicalList</CommandName>
+										<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюИерархическийСписокРасширеннаяПодсказка" id="129"/>
+									</Button>
+									<Button name="НовыеЗначенияРеквизитовКонтекстноеМенюДерево" id="130">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НовыеЗначенияРеквизитов.StandardCommand.Tree</CommandName>
+										<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюДеревоРасширеннаяПодсказка" id="131"/>
+									</Button>
+								</ChildItems>
+							</Popup>
+							<ButtonGroup name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа1" id="114">
+								<CommandSource>Item.НовыеЗначенияРеквизитов</CommandSource>
+								<ExtendedTooltip name="НовыеЗначенияРеквизитовКонтекстноеМенюГруппа1РасширеннаяПодсказка" id="115"/>
+							</ButtonGroup>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="НовыеЗначенияРеквизитовКоманднаяПанель" id="65"/>
+					<ExtendedTooltip name="НовыеЗначенияРеквизитовРасширеннаяПодсказка" id="66"/>
+					<SearchStringAddition name="НовыеЗначенияРеквизитовСтрокаПоиска" id="67">
+						<AdditionSource>
+							<Item>НовыеЗначенияРеквизитов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="НовыеЗначенияРеквизитовСтрокаПоискаКонтекстноеМеню" id="70"/>
+						<ExtendedTooltip name="НовыеЗначенияРеквизитовСтрокаПоискаРасширеннаяПодсказка" id="71"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="НовыеЗначенияРеквизитовСостояниеПросмотра" id="72">
+						<AdditionSource>
+							<Item>НовыеЗначенияРеквизитов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="НовыеЗначенияРеквизитовСостояниеПросмотраКонтекстноеМеню" id="75"/>
+						<ExtendedTooltip name="НовыеЗначенияРеквизитовСостояниеПросмотраРасширеннаяПодсказка" id="76"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="НовыеЗначенияРеквизитовУправлениеПоиском" id="77">
+						<AdditionSource>
+							<Item>НовыеЗначенияРеквизитов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="НовыеЗначенияРеквизитовУправлениеПоискомКонтекстноеМеню" id="80"/>
+						<ExtendedTooltip name="НовыеЗначенияРеквизитовУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="НовыеЗначенияРеквизитовДополнительныйРеквизит" id="82">
+							<DataPath>НовыеЗначенияРеквизитов.ДополнительныйРеквизит</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>30</Width>
+							<ContextMenu name="НовыеЗначенияРеквизитовДополнительныйРеквизитКонтекстноеМеню" id="83"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовДополнительныйРеквизитРасширеннаяПодсказка" id="84"/>
+						</InputField>
+						<InputField name="НовыеЗначенияРеквизитовЗначениеПоУмолчанию" id="138">
+							<DataPath>НовыеЗначенияРеквизитов.ЗначениеПоУмолчанию</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<TextColor>style:ТекстЗапрещеннойЯчейкиЦвет</TextColor>
+							<ContextMenu name="НовыеЗначенияРеквизитовЗначениеПоУмолчаниюКонтекстноеМеню" id="139"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовЗначениеПоУмолчаниюРасширеннаяПодсказка" id="140"/>
+						</InputField>
+						<CheckBoxField name="НовыеЗначенияРеквизитовИзменять" id="88">
+							<DataPath>НовыеЗначенияРеквизитов.Изменять</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<HeaderPicture>
+								<xr:Ref>StdPicture.Change</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НовыеЗначенияРеквизитовИзменятьКонтекстноеМеню" id="89"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовИзменятьРасширеннаяПодсказка" id="90"/>
+						</CheckBoxField>
+						<InputField name="НовыеЗначенияРеквизитовСпособЗаполнения" id="91">
+							<DataPath>НовыеЗначенияРеквизитов.СпособЗаполнения</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Очистить</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Установить значение</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Из реквизита операции</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">По-умолчанию</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+							<ContextMenu name="НовыеЗначенияРеквизитовСпособЗаполненияКонтекстноеМеню" id="92"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовСпособЗаполненияРасширеннаяПодсказка" id="93"/>
+							<Events>
+								<Event name="OnChange">НовыеЗначенияРеквизитовСпособЗаполненияПриИзменении</Event>
+								<Event name="ChoiceProcessing">НовыеЗначенияРеквизитовСпособЗаполненияОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="НовыеЗначенияРеквизитовНовоеЗначение" id="94">
+							<DataPath>НовыеЗначенияРеквизитов.НовоеЗначение</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>30</Width>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<CreateButton>false</CreateButton>
+							<TypeLink>
+								<xr:DataPath>Items.НовыеЗначенияРеквизитов.CurrentData.ОписаниеТипаДопРеквизита</xr:DataPath>
+								<xr:LinkItem>0</xr:LinkItem>
+							</TypeLink>
+							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+							<ContextMenu name="НовыеЗначенияРеквизитовНовоеЗначениеКонтекстноеМеню" id="95"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовНовоеЗначениеРасширеннаяПодсказка" id="96"/>
+						</InputField>
+						<InputField name="НовыеЗначенияРеквизитовРеквизитОперацииИсточник" id="97">
+							<DataPath>НовыеЗначенияРеквизитов.РеквизитОперацииИсточник</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Реквизит операции</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительный реквизит исходной типовой операции</v8:content>
+								</v8:item>
+							</ToolTip>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>30</Width>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<CreateButton>false</CreateButton>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.Владелец</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Объект.ТиповаяОперация</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ChoiceParameters>
+								<app:item name="Отбор.ПометкаУдаления">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">false</Value>
+									</app:value>
+								</app:item>
+								<app:item name="Отбор.ЭтоГруппа">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">false</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+							<ContextMenu name="НовыеЗначенияРеквизитовРеквизитОперацииИсточникКонтекстноеМеню" id="98"/>
+							<ExtendedTooltip name="НовыеЗначенияРеквизитовРеквизитОперацииИсточникРасширеннаяПодсказка" id="99"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа1" id="61">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="62"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЛево" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исходные данные</v8:content>
+						</v8:item>
+					</Title>
+					<Width>50</Width>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаЛевоРасширеннаяПодсказка" id="2"/>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраво" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Новые данные</v8:content>
+						</v8:item>
+					</Title>
+					<Width>60</Width>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаПравоРасширеннаяПодсказка" id="29"/>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ЗаменаТиповыхОперацийДопРеквизитов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="КомпоновщикНастроекОбрабатываемыхДокументов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Компоновщик настроек обрабатываемых документов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НовыеЗначенияРеквизитов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новые значения реквизитов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ДополнительныйРеквизит" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительный реквизит</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РеквизитыТиповыхОпераций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЭтоГруппа" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Изменять" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменять</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СпособЗаполнения" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ заполнения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НовоеЗначение" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Новое значение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ДополнительныеРеквизитыОпераций</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="РеквизитОперацииИсточник" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит операции источник</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РеквизитыТиповыхОпераций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеТипаДопРеквизита" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание типа доп реквизита</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыОпераций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НомерКартинки" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЗначениеПоУмолчанию" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение по умолчанию</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ДополнительныеРеквизитыОпераций</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ИмяДляФормулы" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя для формулы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИдентификаторТипаДокументы" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор типа документы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресСхемыКомпоновкиДанных" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес схемы компоновки данных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтарыеИменаРеквизитов" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Старые имена реквизитов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ДополнительныйРеквизит" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительный реквизит</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РеквизитыТиповыхОпераций</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИмяДляФормулы" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя для формулы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОписаниеТипаДопРеквизита" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание типа доп реквизита</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:TypeDescription</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитов</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.ЭтоГруппа</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Запрещено редактирование строк "Групп"</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовНовоеЗначение</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовРеквизитОперацииИсточник</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.Изменять</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Запрещено редактирование без флага "Изменить"</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовСпособЗаполнения</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.Изменять</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.СпособЗаполнения</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Не выбран "Способ заполнения"</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовНовоеЗначение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.Изменять</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.СпособЗаполнения</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Установить значение</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.НовоеЗначение</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Не выбрано "Новое значение"</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовРеквизитОперацииИсточник</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.Изменять</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.СпособЗаполнения</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Из реквизита операции</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.РеквизитОперацииИсточник</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Не выбрано "Реквизит операции источник"</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовНовоеЗначение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.СпособЗаполнения</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Установить значение</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Отображать</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НовыеЗначенияРеквизитовРеквизитОперацииИсточник</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НовыеЗначенияРеквизитов.СпособЗаполнения</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">Из реквизита операции</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Отображать</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьЗамену" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьЗамену</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьДокументы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокументы</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СопоставитьРеквизиты" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить реквизиты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СопоставитьРеквизиты</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОчиститьРеквизиты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить реквизиты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьРеквизиты</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ИдентификаторДокумента">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ТиповаяОперация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТиповыеОперации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="НоваяТиповаяОперация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТиповыеОперации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СписокДокументов">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаменяемыеРеквизиты">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

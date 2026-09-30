@@ -1,0 +1,49 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/data">
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/data" name="envelope" type="d2p1:ReportEnvelope"/>
+	<objectType name="Group">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="key" type="d3p1:NamedValue" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="group" type="d3p1:Group" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="resource" type="d3p1:NamedValue" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="NamedValue">
+		<property name="about" type="xs:anyURI" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="code" type="d3p1:ReferencableName" lowerBound="0" form="Attribute"/>
+		<property name="subtotals" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/data" name="Report" base="d2p1:Group">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="refName" type="d3p1:ReferencableName"/>
+		<property name="dataFillings" type="d2p1:DataFillings" lowerBound="0"/>
+		<property name="repFiles" type="d2p1:RepFiles" lowerBound="0"/>
+	</objectType>
+	<objectType name="ReportEnvelope">
+		<property name="version" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="generator" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="reportCount" type="xs:nonNegativeInteger" lowerBound="0" form="Attribute"/>
+		<property name="created" type="xs:dateTime" lowerBound="0" form="Attribute"/>
+		<property name="version1" type="xs:string" lowerBound="0" localName="version"/>
+		<property name="created1" type="xs:dateTime" lowerBound="0" localName="created"/>
+		<property name="software" type="xs:string" lowerBound="0"/>
+		<property name="reportCount1" type="xs:nonNegativeInteger" lowerBound="0" localName="reportCount"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="group" type="d3p1:Group" upperBound="-1"/>
+	</objectType>
+	<objectType name="DataFillings">
+		<property name="difference" type="xs:boolean" form="Attribute"/>
+		<property name="dtime" type="xs:dateTime" form="Attribute"/>
+		<property name="data" type="xs:base64Binary"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="options" type="d3p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType name="NameAndValue">
+		<property name="name" type="xs:NMTOKEN" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType"/>
+	</objectType>
+	<objectType name="OptionsList">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="item" type="d3p1:NameAndValue" upperBound="-1"/>
+	</objectType>
+	<objectType name="RepFiles">
+		<property name="count" type="xs:integer" form="Attribute"/>
+		<property name="data" type="xs:base64Binary"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data" name="options" type="d3p1:OptionsList" lowerBound="0"/>
+	</objectType>
+</package>

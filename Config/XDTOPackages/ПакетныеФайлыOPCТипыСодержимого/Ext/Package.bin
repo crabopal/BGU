@@ -1,0 +1,23 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://schemas.openxmlformats.org/package/2006/content-types">
+	<property xmlns:d2p1="http://schemas.openxmlformats.org/package/2006/content-types" name="Default" type="d2p1:CT_Default"/>
+	<property xmlns:d2p1="http://schemas.openxmlformats.org/package/2006/content-types" name="Override" type="d2p1:CT_Override"/>
+	<property xmlns:d2p1="http://schemas.openxmlformats.org/package/2006/content-types" name="Types" type="d2p1:CT_Types"/>
+	<valueType name="ST_ContentType" base="xs:string" variety="Atomic">
+		<pattern>(((([\p{IsBasicLatin}-[\p{Cc}\(\)&lt;&gt;@,;:\\"/\[\]\?=\{\}\s]])+))/((([\p{IsBasicLatin}-[\p{Cc}\(\)&lt;&gt;@,;:\\"/\[\]\?=\{\}\s]])+))((\s+)*;(\s+)*(((([\p{IsBasicLatin}-[\p{Cc}\(\)&lt;&gt;@,;:\\"/\[\]\?=\{\}\s]])+))=((([\p{IsBasicLatin}-[\p{Cc}\(\)&lt;&gt;@,;:\\"/\[\]\?=\{\}\s]])+)|("(([\p{IsLatin-1Supplement}\p{IsBasicLatin}-[\p{Cc}"\n\r]]|(\s+))|(\\[\p{IsBasicLatin}]))*"))))*)</pattern>
+	</valueType>
+	<valueType name="ST_Extension" base="xs:string" variety="Atomic">
+		<pattern>([!$&amp;'\(\)\*\+,:=]|(%[0-9a-fA-F][0-9a-fA-F])|[:@]|[a-zA-Z0-9\-_~])+</pattern>
+	</valueType>
+	<objectType name="CT_Default">
+		<property xmlns:d3p1="http://schemas.openxmlformats.org/package/2006/content-types" name="Extension" type="d3p1:ST_Extension" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://schemas.openxmlformats.org/package/2006/content-types" name="ContentType" type="d3p1:ST_ContentType" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType name="CT_Override">
+		<property xmlns:d3p1="http://schemas.openxmlformats.org/package/2006/content-types" name="ContentType" type="d3p1:ST_ContentType" lowerBound="1" form="Attribute"/>
+		<property name="PartName" type="xs:anyURI" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType name="CT_Types" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://schemas.openxmlformats.org/package/2006/content-types" ref="d3p1:Default" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://schemas.openxmlformats.org/package/2006/content-types" ref="d3p1:Override" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

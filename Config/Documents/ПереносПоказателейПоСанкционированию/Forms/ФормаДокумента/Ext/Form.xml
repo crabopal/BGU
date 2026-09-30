@@ -1,0 +1,1920 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>UndoPosting</ExcludedCommand>
+	</CommandSet>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнить" id="112">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Заполнить</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаЗаполнитьExtendedTooltip" id="153"/>
+			</Button>
+			<Button name="ФормаКнопкаОтменитьПроведение" id="275">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.КомандаОтменитьПроведение</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаКнопкаОтменитьПроведениеРасширеннаяПодсказка" id="276"/>
+			</Button>
+			<Popup name="КомандыЭДО" id="282">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="283"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="273">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="274"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаДатаНомер" id="150">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата / номер</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДатаНомерExtendedTooltip" id="154"/>
+					<ChildItems>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>12</MaxWidth>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерExtendedTooltip" id="155"/>
+						</InputField>
+						<InputField name="Дата" id="3">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ДатаExtendedTooltip" id="156"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Организация" id="5">
+					<DataPath>Объект.Организация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="157"/>
+					<Events>
+						<Event name="ChoiceProcessing">ОрганизацияОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТекстФинансовыйГод" id="151">
+					<DataPath>ТекстФинансовыйГод</DataPath>
+					<SpinButton>true</SpinButton>
+					<ContextMenu name="ТекстФинансовыйГодКонтекстноеМеню" id="152"/>
+					<ExtendedTooltip name="ТекстФинансовыйГодExtendedTooltip" id="158"/>
+					<Events>
+						<Event name="OnChange">ТекстФинансовыйГодПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="БухгалтерскаяОперация" id="121">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бухгалтерская операция</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="БухгалтерскаяОперацияExtendedTooltip" id="226"/>
+		</UsualGroup>
+		<Pages name="Страницы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыExtendedTooltip" id="159"/>
+			<ChildItems>
+				<Page name="ГруппаОстаткиОчередногоГода" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки очередного года</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаОстаткиОчередногоГодаExtendedTooltip" id="160"/>
+					<ChildItems>
+						<Table name="ОстаткиОчередногоГода" id="11">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ОстаткиОчередногоГода</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ОстаткиОчередногоГодаКонтекстноеМеню" id="12"/>
+							<AutoCommandBar name="ОстаткиОчередногоГодаКоманднаяПанель" id="13"/>
+							<ExtendedTooltip name="ОстаткиОчередногоГодаExtendedTooltip" id="161"/>
+							<SearchStringAddition name="ОстаткиОчередногоГодаСтрокаПоиска" id="238">
+								<AdditionSource>
+									<Item>ОстаткиОчередногоГода</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиОчередногоГодаСтрокаПоискаКонтекстноеМеню" id="239"/>
+								<ExtendedTooltip name="ОстаткиОчередногоГодаСтрокаПоискаРасширеннаяПодсказка" id="240"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОстаткиОчередногоГодаСостояниеПросмотра" id="241">
+								<AdditionSource>
+									<Item>ОстаткиОчередногоГода</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиОчередногоГодаСостояниеПросмотраКонтекстноеМеню" id="242"/>
+								<ExtendedTooltip name="ОстаткиОчередногоГодаСостояниеПросмотраРасширеннаяПодсказка" id="243"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОстаткиОчередногоГодаУправлениеПоиском" id="244">
+								<AdditionSource>
+									<Item>ОстаткиОчередногоГода</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиОчередногоГодаУправлениеПоискомКонтекстноеМеню" id="245"/>
+								<ExtendedTooltip name="ОстаткиОчередногоГодаУправлениеПоискомРасширеннаяПодсказка" id="246"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОстаткиОчередногоГодаНомерСтроки" id="14">
+									<DataPath>Объект.ОстаткиОчередногоГода.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиОчередногоГодаНомерСтрокиКонтекстноеМеню" id="15"/>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаНомерСтрокиExtendedTooltip" id="162"/>
+								</LabelField>
+								<InputField name="ОстаткиОчередногоГодаИФО" id="16">
+									<DataPath>Объект.ОстаткиОчередногоГода.ИФО</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиОчередногоГодаИФОКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаИФОExtendedTooltip" id="163"/>
+								</InputField>
+								<ColumnGroup name="ОстаткиОчередногоГодаГруппаСчетПодразделение" id="125">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рабочий счет / подразделение</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаГруппаСчетПодразделениеExtendedTooltip" id="164"/>
+									<ChildItems>
+										<InputField name="ОстаткиОчередногоГодаПодразделение" id="117">
+											<DataPath>Объект.ОстаткиОчередногоГода.Подразделение</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиОчередногоГодаПодразделениеКонтекстноеМеню" id="118"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаПодразделениеExtendedTooltip" id="165"/>
+										</InputField>
+										<ColumnGroup name="ОстаткиОчередногоГодаГруппаРабочийСчет" id="124">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий счет</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаГруппаРабочийСчетExtendedTooltip" id="166"/>
+											<ChildItems>
+												<InputField name="ОстаткиОчередногоГодаКПС" id="18">
+													<DataPath>Объект.ОстаткиОчередногоГода.КПС</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиОчередногоГодаКПСКонтекстноеМеню" id="19"/>
+													<ExtendedTooltip name="ОстаткиОчередногоГодаКПСExtendedTooltip" id="167"/>
+												</InputField>
+												<InputField name="ОстаткиОчередногоГодаКФО" id="20">
+													<DataPath>Объект.ОстаткиОчередногоГода.КФО</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиОчередногоГодаКФОКонтекстноеМеню" id="21"/>
+													<ExtendedTooltip name="ОстаткиОчередногоГодаКФОExtendedTooltip" id="168"/>
+												</InputField>
+												<InputField name="ОстаткиОчередногоГодаСчет" id="22">
+													<DataPath>Объект.ОстаткиОчередногоГода.Счет</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиОчередногоГодаСчетКонтекстноеМеню" id="23"/>
+													<ExtendedTooltip name="ОстаткиОчередногоГодаСчетExtendedTooltip" id="169"/>
+												</InputField>
+												<InputField name="ОстаткиОчередногоГодаКЭК" id="24">
+													<DataPath>Объект.ОстаткиОчередногоГода.КЭК</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиОчередногоГодаКЭККонтекстноеМеню" id="25"/>
+													<ExtendedTooltip name="ОстаткиОчередногоГодаКЭКExtendedTooltip" id="170"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ОстаткиОчередногоГодаГруппаСубконто" id="123">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета источника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаГруппаСубконтоExtendedTooltip" id="171"/>
+									<ChildItems>
+										<InputField name="ОстаткиОчередногоГодаСубконто1" id="26">
+											<DataPath>Объект.ОстаткиОчередногоГода.Субконто1</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконто1КонтекстноеМеню" id="27"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконто1ExtendedTooltip" id="172"/>
+										</InputField>
+										<InputField name="ОстаткиОчередногоГодаСубконто2" id="28">
+											<DataPath>Объект.ОстаткиОчередногоГода.Субконто2</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконто2КонтекстноеМеню" id="29"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконто2ExtendedTooltip" id="173"/>
+										</InputField>
+										<InputField name="ОстаткиОчередногоГодаСубконто3" id="30">
+											<DataPath>Объект.ОстаткиОчередногоГода.Субконто3</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконто3КонтекстноеМеню" id="31"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконто3ExtendedTooltip" id="174"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ОстаткиОчередногоГодаОстатокДебет" id="32">
+									<DataPath>Объект.ОстаткиОчередногоГода.ОстатокДебет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиОчередногоГодаОстатокДебетКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаОстатокДебетExtendedTooltip" id="175"/>
+								</InputField>
+								<InputField name="ОстаткиОчередногоГодаОстатокКредит" id="34">
+									<DataPath>Объект.ОстаткиОчередногоГода.ОстатокКредит</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиОчередногоГодаОстатокКредитКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаОстатокКредитExtendedTooltip" id="176"/>
+								</InputField>
+								<InputField name="ОстаткиОчередногоГодаСчетПриемник" id="36">
+									<DataPath>Объект.ОстаткиОчередногоГода.СчетПриемник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиОчередногоГодаСчетПриемникКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаСчетПриемникExtendedTooltip" id="177"/>
+									<Events>
+										<Event name="StartChoice">ОстаткиОчередногоГодаСчетПриемникНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ОстаткиОчередногоГодаГруппаСубконтоПриемник" id="122">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета приемника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиОчередногоГодаГруппаСубконтоПриемникExtendedTooltip" id="178"/>
+									<ChildItems>
+										<InputField name="ОстаткиОчередногоГодаСубконтоПриемник1" id="38">
+											<DataPath>Объект.ОстаткиОчередногоГода.СубконтоПриемник1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконтоПриемник1КонтекстноеМеню" id="39"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконтоПриемник1ExtendedTooltip" id="179"/>
+											<Events>
+												<Event name="OnChange">ОстаткиОчередногоГодаСубконтоПриемник1ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиОчередногоГодаСубконтоПриемник1НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиОчередногоГодаСубконтоПриемник2" id="40">
+											<DataPath>Объект.ОстаткиОчередногоГода.СубконтоПриемник2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконтоПриемник2КонтекстноеМеню" id="41"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконтоПриемник2ExtendedTooltip" id="180"/>
+											<Events>
+												<Event name="OnChange">ОстаткиОчередногоГодаСубконтоПриемник2ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиОчередногоГодаСубконтоПриемник2НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиОчередногоГодаСубконтоПриемник3" id="42">
+											<DataPath>Объект.ОстаткиОчередногоГода.СубконтоПриемник3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиОчередногоГодаСубконтоПриемник3КонтекстноеМеню" id="43"/>
+											<ExtendedTooltip name="ОстаткиОчередногоГодаСубконтоПриемник3ExtendedTooltip" id="181"/>
+											<Events>
+												<Event name="OnChange">ОстаткиОчередногоГодаСубконтоПриемник3ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиОчередногоГодаСубконтоПриемник3НачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаОстаткиПервогоГодаЗаОчередным" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки первого года за очередным</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаОстаткиПервогоГодаЗаОчереднымExtendedTooltip" id="182"/>
+					<ChildItems>
+						<Table name="ОстаткиПервогоГодаЗаОчередным" id="45">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымКонтекстноеМеню" id="46"/>
+							<AutoCommandBar name="ОстаткиПервогоГодаЗаОчереднымКоманднаяПанель" id="47"/>
+							<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымExtendedTooltip" id="183"/>
+							<SearchStringAddition name="ОстаткиПервогоГодаЗаОчереднымСтрокаПоиска" id="247">
+								<AdditionSource>
+									<Item>ОстаткиПервогоГодаЗаОчередным</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСтрокаПоискаКонтекстноеМеню" id="248"/>
+								<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСтрокаПоискаРасширеннаяПодсказка" id="249"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОстаткиПервогоГодаЗаОчереднымСостояниеПросмотра" id="250">
+								<AdditionSource>
+									<Item>ОстаткиПервогоГодаЗаОчередным</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСостояниеПросмотраКонтекстноеМеню" id="251"/>
+								<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСостояниеПросмотраРасширеннаяПодсказка" id="252"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОстаткиПервогоГодаЗаОчереднымУправлениеПоиском" id="253">
+								<AdditionSource>
+									<Item>ОстаткиПервогоГодаЗаОчередным</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымУправлениеПоискомКонтекстноеМеню" id="254"/>
+								<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымУправлениеПоискомРасширеннаяПодсказка" id="255"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОстаткиПервогоГодаЗаОчереднымНомерСтроки" id="48">
+									<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымНомерСтрокиКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымНомерСтрокиExtendedTooltip" id="184"/>
+								</LabelField>
+								<InputField name="ОстаткиПервогоГодаЗаОчереднымИФО" id="50">
+									<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.ИФО</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымИФОКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымИФОExtendedTooltip" id="185"/>
+								</InputField>
+								<ColumnGroup name="ОстаткиПервогоГодаЗаОчереднымГруппаРабочийСчетПодразделение" id="132">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рабочий счет / подразделение</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымГруппаРабочийСчетПодразделениеExtendedTooltip" id="186"/>
+									<ChildItems>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымПодразделение" id="115">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.Подразделение</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымПодразделениеКонтекстноеМеню" id="116"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымПодразделениеExtendedTooltip" id="187"/>
+										</InputField>
+										<ColumnGroup name="ОстаткиПервогоГодаЗаОчереднымГруппаРабочийСчет" id="133">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий счет</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий счет (счет источник)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымГруппаРабочийСчетExtendedTooltip" id="188"/>
+											<ChildItems>
+												<InputField name="ОстаткиПервогоГодаЗаОчереднымКПС" id="52">
+													<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.КПС</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымКПСКонтекстноеМеню" id="53"/>
+													<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымКПСExtendedTooltip" id="189"/>
+												</InputField>
+												<InputField name="ОстаткиПервогоГодаЗаОчереднымКФО" id="54">
+													<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.КФО</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымКФОКонтекстноеМеню" id="55"/>
+													<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымКФОExtendedTooltip" id="190"/>
+												</InputField>
+												<InputField name="ОстаткиПервогоГодаЗаОчереднымСчет" id="56">
+													<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.Счет</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСчетКонтекстноеМеню" id="57"/>
+													<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСчетExtendedTooltip" id="191"/>
+												</InputField>
+												<InputField name="ОстаткиПервогоГодаЗаОчереднымКЭК" id="58">
+													<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.КЭК</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымКЭККонтекстноеМеню" id="59"/>
+													<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымКЭКExtendedTooltip" id="192"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ОстаткиПервогоГодаЗаОчереднымГруппаСубконтоИсточник" id="134">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета источника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымГруппаСубконтоИсточникExtendedTooltip" id="193"/>
+									<ChildItems>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконто1" id="60">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.Субконто1</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконто1КонтекстноеМеню" id="61"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконто1ExtendedTooltip" id="194"/>
+										</InputField>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконто2" id="62">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.Субконто2</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконто2КонтекстноеМеню" id="63"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконто2ExtendedTooltip" id="195"/>
+										</InputField>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконто3" id="64">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.Субконто3</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконто3КонтекстноеМеню" id="65"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконто3ExtendedTooltip" id="196"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ОстаткиПервогоГодаЗаОчереднымОстатокДебет" id="66">
+									<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.ОстатокДебет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымОстатокДебетКонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымОстатокДебетExtendedTooltip" id="197"/>
+								</InputField>
+								<InputField name="ОстаткиПервогоГодаЗаОчереднымОстатокКредит" id="68">
+									<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.ОстатокКредит</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымОстатокКредитКонтекстноеМеню" id="69"/>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымОстатокКредитExtendedTooltip" id="198"/>
+								</InputField>
+								<InputField name="ОстаткиПервогоГодаЗаОчереднымСчетПриемник" id="70">
+									<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.СчетПриемник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСчетПриемникКонтекстноеМеню" id="71"/>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСчетПриемникExtendedTooltip" id="199"/>
+									<Events>
+										<Event name="StartChoice">ОстаткиПервогоГодаЗаОчереднымСчетПриемникНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ОстаткиПервогоГодаЗаОчереднымГруппаСубконтоПриемник" id="135">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета приемника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымГруппаСубконтоПриемникExtendedTooltip" id="200"/>
+									<ChildItems>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1" id="72">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.СубконтоПриемник1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1КонтекстноеМеню" id="73"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1ExtendedTooltip" id="201"/>
+											<Events>
+												<Event name="OnChange">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2" id="74">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.СубконтоПриемник2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2КонтекстноеМеню" id="75"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2ExtendedTooltip" id="202"/>
+											<Events>
+												<Event name="OnChange">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3" id="76">
+											<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.СубконтоПриемник3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3КонтекстноеМеню" id="77"/>
+											<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3ExtendedTooltip" id="203"/>
+											<Events>
+												<Event name="OnChange">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3НачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаОстаткиВторогоГодаЗаОчередным" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки второго года за очередным</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаОстаткиВторогоГодаЗаОчереднымExtendedTooltip" id="204"/>
+					<ChildItems>
+						<Table name="ОстаткиВторогоГодаЗаОчередным" id="79">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымКонтекстноеМеню" id="80"/>
+							<AutoCommandBar name="ОстаткиВторогоГодаЗаОчереднымКоманднаяПанель" id="81"/>
+							<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымExtendedTooltip" id="205"/>
+							<SearchStringAddition name="ОстаткиВторогоГодаЗаОчереднымСтрокаПоиска" id="256">
+								<AdditionSource>
+									<Item>ОстаткиВторогоГодаЗаОчередным</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСтрокаПоискаКонтекстноеМеню" id="257"/>
+								<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСтрокаПоискаРасширеннаяПодсказка" id="258"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОстаткиВторогоГодаЗаОчереднымСостояниеПросмотра" id="259">
+								<AdditionSource>
+									<Item>ОстаткиВторогоГодаЗаОчередным</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСостояниеПросмотраКонтекстноеМеню" id="260"/>
+								<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСостояниеПросмотраРасширеннаяПодсказка" id="261"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОстаткиВторогоГодаЗаОчереднымУправлениеПоиском" id="262">
+								<AdditionSource>
+									<Item>ОстаткиВторогоГодаЗаОчередным</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымУправлениеПоискомКонтекстноеМеню" id="263"/>
+								<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымУправлениеПоискомРасширеннаяПодсказка" id="264"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОстаткиВторогоГодаЗаОчереднымНомерСтроки" id="82">
+									<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымНомерСтрокиКонтекстноеМеню" id="83"/>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымНомерСтрокиExtendedTooltip" id="206"/>
+								</LabelField>
+								<InputField name="ОстаткиВторогоГодаЗаОчереднымИФО" id="84">
+									<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.ИФО</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымИФОКонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымИФОExtendedTooltip" id="207"/>
+								</InputField>
+								<ColumnGroup name="ОстаткиВторогоГодаЗаОчереднымГруппаРабочийСчетПодразделение" id="141">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рабочий счет / подразделение</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымГруппаРабочийСчетПодразделениеExtendedTooltip" id="208"/>
+									<ChildItems>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымПодразделение" id="113">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.Подразделение</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымПодразделениеКонтекстноеМеню" id="114"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымПодразделениеExtendedTooltip" id="209"/>
+										</InputField>
+										<ColumnGroup name="ОстаткиВторогоГодаЗаОчереднымГруппаРабочийСчет" id="142">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий счет</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымГруппаРабочийСчетExtendedTooltip" id="210"/>
+											<ChildItems>
+												<InputField name="ОстаткиВторогоГодаЗаОчереднымКПС" id="86">
+													<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.КПС</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымКПСКонтекстноеМеню" id="87"/>
+													<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымКПСExtendedTooltip" id="211"/>
+												</InputField>
+												<InputField name="ОстаткиВторогоГодаЗаОчереднымКФО" id="88">
+													<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.КФО</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымКФОКонтекстноеМеню" id="89"/>
+													<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымКФОExtendedTooltip" id="212"/>
+												</InputField>
+												<InputField name="ОстаткиВторогоГодаЗаОчереднымСчет" id="90">
+													<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.Счет</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСчетКонтекстноеМеню" id="91"/>
+													<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСчетExtendedTooltip" id="213"/>
+												</InputField>
+												<InputField name="ОстаткиВторогоГодаЗаОчереднымКЭК" id="92">
+													<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.КЭК</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымКЭККонтекстноеМеню" id="93"/>
+													<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымКЭКExtendedTooltip" id="214"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ОстаткиВторогоГодаЗаОчереднымГруппаСубконто" id="143">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета источника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымГруппаСубконтоExtendedTooltip" id="215"/>
+									<ChildItems>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконто1" id="94">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.Субконто1</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконто1КонтекстноеМеню" id="95"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконто1ExtendedTooltip" id="216"/>
+										</InputField>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконто2" id="96">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.Субконто2</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконто2КонтекстноеМеню" id="97"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконто2ExtendedTooltip" id="217"/>
+										</InputField>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконто3" id="98">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.Субконто3</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконто3КонтекстноеМеню" id="99"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконто3ExtendedTooltip" id="218"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ОстаткиВторогоГодаЗаОчереднымОстатокДебет" id="100">
+									<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.ОстатокДебет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымОстатокДебетКонтекстноеМеню" id="101"/>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымОстатокДебетExtendedTooltip" id="219"/>
+								</InputField>
+								<InputField name="ОстаткиВторогоГодаЗаОчереднымОстатокКредит" id="102">
+									<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.ОстатокКредит</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымОстатокКредитКонтекстноеМеню" id="103"/>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымОстатокКредитExtendedTooltip" id="220"/>
+								</InputField>
+								<InputField name="ОстаткиВторогоГодаЗаОчереднымСчетПриемник" id="104">
+									<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.СчетПриемник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСчетПриемникКонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСчетПриемникExtendedTooltip" id="221"/>
+									<Events>
+										<Event name="StartChoice">ОстаткиВторогоГодаЗаОчереднымСчетПриемникНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ОстаткиВторогоГодаЗаОчереднымГруппаСубконтоПриемник" id="144">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто счета приемника</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымГруппаСубконтоПриемникExtendedTooltip" id="222"/>
+									<ChildItems>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1" id="106">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.СубконтоПриемник1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1КонтекстноеМеню" id="107"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1ExtendedTooltip" id="223"/>
+											<Events>
+												<Event name="OnChange">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2" id="108">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.СубконтоПриемник2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2КонтекстноеМеню" id="109"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2ExtendedTooltip" id="224"/>
+											<Events>
+												<Event name="OnChange">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3" id="110">
+											<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.СубконтоПриемник3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3КонтекстноеМеню" id="111"/>
+											<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3ExtendedTooltip" id="225"/>
+											<Events>
+												<Event name="OnChange">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3ПриИзменении</Event>
+												<Event name="StartChoice">ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3НачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаИтоги" id="126">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итоги</v8:content>
+				</v8:item>
+			</Title>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Group>Horizontal</Group>
+			<HorizontalSpacing>Half</HorizontalSpacing>
+			<VerticalSpacing>None</VerticalSpacing>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ИтогиФонГруппы</BackColor>
+			<ExtendedTooltip name="ГруппаИтогиExtendedTooltip" id="227"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИтогиОчередногоГода" id="127">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Очередной год</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего остатков очередного года</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<VerticalSpacing>Half</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ExtendedTooltip name="ГруппаИтогиОчередногоГодаExtendedTooltip" id="228"/>
+					<ChildItems>
+						<InputField name="ОстаткиОчередногоГодаИтогОстатокДебет" id="128">
+							<DataPath>Объект.ОстаткиОчередногоГода.TotalОстатокДебет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебет</v8:content>
+								</v8:item>
+							</Title>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиОчередногоГодаИтогОстатокДебетКонтекстноеМеню" id="129"/>
+							<ExtendedTooltip name="ОстаткиОчередногоГодаИтогОстатокДебетExtendedTooltip" id="229"/>
+						</InputField>
+						<InputField name="ОстаткиОчередногоГодаИтогОстатокКредит" id="130">
+							<DataPath>Объект.ОстаткиОчередногоГода.TotalОстатокКредит</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кредит</v8:content>
+								</v8:item>
+							</Title>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиОчередногоГодаИтогОстатокКредитКонтекстноеМеню" id="131"/>
+							<ExtendedTooltip name="ОстаткиОчередногоГодаИтогОстатокКредитExtendedTooltip" id="230"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИтогиПервогоГода" id="136">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Первый год за очередным</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего остатков первого года за очередным</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<VerticalSpacing>Half</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ExtendedTooltip name="ГруппаИтогиПервогоГодаExtendedTooltip" id="231"/>
+					<ChildItems>
+						<InputField name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокДебет" id="137">
+							<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.TotalОстатокДебет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебет</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокДебетКонтекстноеМеню" id="138"/>
+							<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокДебетExtendedTooltip" id="232"/>
+						</InputField>
+						<InputField name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокКредит" id="139">
+							<DataPath>Объект.ОстаткиПервогоГодаЗаОчередным.TotalОстатокКредит</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кредит</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокКредитКонтекстноеМеню" id="140"/>
+							<ExtendedTooltip name="ОстаткиПервогоГодаЗаОчереднымИтогОстатокКредитExtendedTooltip" id="233"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИтогиВторогоГода" id="145">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Второй год за очередным</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего остатков второго года за очередным</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<VerticalSpacing>Half</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ExtendedTooltip name="ГруппаИтогиВторогоГодаExtendedTooltip" id="234"/>
+					<ChildItems>
+						<InputField name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокДебет" id="146">
+							<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.TotalОстатокДебет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебет</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокДебетКонтекстноеМеню" id="147"/>
+							<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокДебетExtendedTooltip" id="235"/>
+						</InputField>
+						<InputField name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокКредит" id="148">
+							<DataPath>Объект.ОстаткиВторогоГодаЗаОчередным.TotalОстатокКредит</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кредит</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокКредитКонтекстноеМеню" id="149"/>
+							<ExtendedTooltip name="ОстаткиВторогоГодаЗаОчереднымИтогОстатокКредитExtendedTooltip" id="236"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСостояниеЭДО" id="277">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние ЭДО</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="278"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияСостояниеЭДО" id="279">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="280"/>
+					<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="281"/>
+					<Events>
+						<Event name="Click">ДекорацияЭДОНажатие</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОтветственныйКомментарий" id="265">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтветственныйКомментарийРасширеннаяПодсказка" id="266"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="267">
+					<DataPath>Объект.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="268"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="269"/>
+				</InputField>
+				<InputField name="Ответственный" id="270">
+					<DataPath>Объект.Ответственный</DataPath>
+					<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="271"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="272"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ПереносПоказателейПоСанкционированию</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ОстаткиПервогоГодаЗаОчередным">
+					<Column name="КоличествоСубконто" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="УчетПоПодразделениям" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет по подразделениям</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="КоличествоСубконтоПриемник" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.ОстаткиВторогоГодаЗаОчередным">
+					<Column name="КоличествоСубконто" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="УчетПоПодразделениям" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет по подразделениям</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="КоличествоСубконтоПриемник" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.ОстаткиОчередногоГода">
+					<Column name="КоличествоСубконто" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="УчетПоПодразделениям" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет по подразделениям</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="КоличествоСубконтоПриемник" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="СвойстваСчетов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Свойства счетов</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СчетаСанкционирования" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета санкционирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СчетаТекущийГод" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета текущий год</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="СчетаОчереднойГод" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета очередной год</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="СчетаОчереднойГод1" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета очередной год1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ТекстФинансовыйГод" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Финансовый год</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ФинансовыйГодПрежняя" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Финансовый год прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.УчетПоПодразделениям</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконто1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконто2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконто3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконтоПриемник1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконтоПриемник2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиОчередногоГодаСубконтоПриемник3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиОчередногоГода.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.УчетПоПодразделениям</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконто1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконто2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконто3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиПервогоГодаЗаОчереднымСубконтоПриемник3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиПервогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.УчетПоПодразделениям</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконто1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконто2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконто3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОстаткиВторогоГодаЗаОчереднымСубконтоПриемник3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ОстаткиВторогоГодаЗаОчередным.КоличествоСубконтоПриемник</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по данным учета</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОтменитьПроведение" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить проведение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить проведение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UndoPosting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОтменитьПроведение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>CommonCommand.БухгалтерскаяОперацияОбособленноОтДокумента</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.БухгалтерскаяОперацияПриПроведении</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

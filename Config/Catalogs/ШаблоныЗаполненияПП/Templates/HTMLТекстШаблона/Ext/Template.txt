@@ -1,0 +1,71 @@
+﻿<HTML>
+
+	<HEAD>
+	
+		<STYLE type="text/css">
+			
+			DIV.templateContainer	{font-weight: normal: padding: 5px}
+			BODY					{font-weight: bold; line-height: 2; font-size: 11pt}
+			SPAN.fieldReference		{border: hidden; margin: auto; color: green; padding: inherit}
+			SPAN.textPart			{border: hidden; margin: auto; color: black; padding: inherit}
+			SPAN.compositePart		{margin: auto; padding: 2px; border: red dashed 2px; padding: inherit}
+			SPAN.selectedPart		{border: hidden; margin: auto; background: #CCC085; padding: inherit}
+			SPAN.spacedPart			{padding-left: 4px; padding-right: 4px}
+			SPAN.specialSymbol		{color: #C0C0C0; font: 9pt}
+			
+		</STYLE>
+		
+		<SCRIPT language="JScript" type="text/javascript">
+			
+			var localDragging = false;
+			var copiedFragment = "";
+			
+			function dropping() {
+				
+				if (localDragging) {
+					return;
+				};
+				
+				textRange = document.selection.createRange();
+				textToDrop = window.event.dataTransfer.getData("Text");
+				
+				if (textToDrop != "ПолеНастройки") {
+					textRange.text = textToDrop;
+				};
+				
+				textRange.select();
+				window.event.returnValue = false;
+			}
+			
+			function pasting() {
+				
+				if (window.clipboardData.getData("Text") == copiedFragment) {
+					return true;
+				} else {
+					window.clipboardData.clearData("HTML");
+					return true;
+				}
+			}
+			
+		</SCRIPT>
+
+	
+	</HEAD>
+	
+	<BODY ondragstart="localDragging=true"
+		ondragend="localDragging=false"
+		onpaste="pasting()"
+		ondrop="dropping()"
+		oncopy='copiedFragment=window.clipboardData.getData("Text")'
+		oncut='copiedFragment=window.clipboardData.getData("Text")'
+		onresizestart="return false"
+		unselectable=on>
+		
+		<DIV id=templateContainer unselectable=off class=payOrderReasonTemplate contentEditable=false style="height: 50px">
+			<DIV id=deldef>
+			</DIV>
+		</DIV>
+		
+	</BODY>
+	
+</HTML>

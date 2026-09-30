@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<ShowTitle>false</ShowTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОК" id="111">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОК</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Перенести в подобранные</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="112"/>
+			</Button>
+			<Button name="ФормаОтмена" id="113">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отмена</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="114"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Документ" id="115">
+			<DataPath>Документ</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+			<TitleLocation>None</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ДокументКонтекстноеМеню" id="116"/>
+			<ExtendedTooltip name="ДокументРасширеннаяПодсказка" id="117"/>
+			<Events>
+				<Event name="Opening">ДокументОткрытие</Event>
+			</Events>
+		</InputField>
+		<Table name="ПодобранныеНачисления" id="61">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ПодобранныеНачисления</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПодобранныеНачисленияКонтекстноеМеню" id="62"/>
+			<AutoCommandBar name="ПодобранныеНачисленияКоманднаяПанель" id="63">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПодобранныеНачисленияРасширеннаяПодсказка" id="64"/>
+			<SearchStringAddition name="ПодобранныеНачисленияСтрокаПоиска" id="65">
+				<AdditionSource>
+					<Item>ПодобранныеНачисления</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеНачисленияСтрокаПоискаКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="ПодобранныеНачисленияСтрокаПоискаРасширеннаяПодсказка" id="67"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПодобранныеНачисленияСостояниеПросмотра" id="68">
+				<AdditionSource>
+					<Item>ПодобранныеНачисления</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеНачисленияСостояниеПросмотраКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="ПодобранныеНачисленияСостояниеПросмотраРасширеннаяПодсказка" id="70"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПодобранныеНачисленияУправлениеПоиском" id="71">
+				<AdditionSource>
+					<Item>ПодобранныеНачисления</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеНачисленияУправлениеПоискомКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="ПодобранныеНачисленияУправлениеПоискомРасширеннаяПодсказка" id="73"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ПодобранныеНачисленияПередНачаломДобавления</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="ПодобранныеНачисленияГруппаНалог" id="101">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налог</v8:content>
+						</v8:item>
+					</Title>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="ПодобранныеНачисленияГруппаНалогРасширеннаяПодсказка" id="102"/>
+					<ChildItems>
+						<InputField name="ПодобранныеНачисленияВидНалогаИлиПлатежа" id="77">
+							<DataPath>ПодобранныеНачисления.ВидНалогаИлиПлатежа</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ContextMenu name="ПодобранныеНачисленияВидНалогаИлиПлатежаКонтекстноеМеню" id="78"/>
+							<ExtendedTooltip name="ПодобранныеНачисленияВидНалогаИлиПлатежаРасширеннаяПодсказка" id="79"/>
+						</InputField>
+						<InputField name="ПодобранныеНачисленияНалогСборПлатеж" id="80">
+							<DataPath>ПодобранныеНачисления.НалогСборПлатеж</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ContextMenu name="ПодобранныеНачисленияНалогСборПлатежКонтекстноеМеню" id="81"/>
+							<ExtendedTooltip name="ПодобранныеНачисленияНалогСборПлатежРасширеннаяПодсказка" id="82"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ПодобранныеНачисленияГруппаКППОКТМО" id="103">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подобранные начисления группа КПП ОКТМО</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ПодобранныеНачисленияГруппаКППОКТМОРасширеннаяПодсказка" id="104"/>
+					<ChildItems>
+						<InputField name="ПодобранныеНачисленияКПП" id="83">
+							<DataPath>ПодобранныеНачисления.КПП</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПодобранныеНачисленияКППКонтекстноеМеню" id="84"/>
+							<ExtendedTooltip name="ПодобранныеНачисленияКППРасширеннаяПодсказка" id="85"/>
+						</InputField>
+						<InputField name="ПодобранныеНачисленияКодПоОКТМО" id="86">
+							<DataPath>ПодобранныеНачисления.КодПоОКТМО</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПодобранныеНачисленияКодПоОКТМОКонтекстноеМеню" id="87"/>
+							<ExtendedTooltip name="ПодобранныеНачисленияКодПоОКТМОРасширеннаяПодсказка" id="88"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ПодобранныеНачисленияКодБК" id="89">
+					<DataPath>ПодобранныеНачисления.КодБК</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеНачисленияКодБККонтекстноеМеню" id="90"/>
+					<ExtendedTooltip name="ПодобранныеНачисленияКодБКРасширеннаяПодсказка" id="91"/>
+				</InputField>
+				<InputField name="ПодобранныеНачисленияПредставлениеПериода" id="105">
+					<DataPath>ПодобранныеНачисления.ПредставлениеПериода</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеНачисленияПредставлениеПериодаКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ПодобранныеНачисленияПредставлениеПериодаРасширеннаяПодсказка" id="107"/>
+				</InputField>
+				<InputField name="ПодобранныеНачисленияСумма" id="92">
+					<DataPath>ПодобранныеНачисления.Сумма</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеНачисленияСуммаКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="ПодобранныеНачисленияСуммаРасширеннаяПодсказка" id="94"/>
+				</InputField>
+				<InputField name="ПодобранныеНачисленияОтступ" id="108">
+					<DataPath>ПодобранныеНачисления.Отступ</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеНачисленияОтступКонтекстноеМеню" id="109"/>
+					<ExtendedTooltip name="ПодобранныеНачисленияОтступРасширеннаяПодсказка" id="110"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Организация" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресВременногоХранилища" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодобранныеНачисления" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобранные начисления</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Документ" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.НачислениеИмущественныхНалогов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидНалогаИлиПлатежа" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид налога, платежа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыНалоговИПлатежей</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НалогСборПлатеж" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоги и платежи организации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.НалогиИПлатежиОрганизации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КПП" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПП</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>9</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КодПоОКТМО" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код по ОКТМО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>11</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КодБК" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КБК</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>20</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НачалоПериода" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начало периода</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="КонецПериода" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Конец периода</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеПериода" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчетный период</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Отступ" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отступ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Документ" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.НачислениеИмущественныхНалогов</v8:Type>
+				<v8:Type>cfg:DocumentRef.ОтражениеЗарплатыВУчете</v8:Type>
+				<v8:Type>cfg:DocumentRef.СведенияОбУдержанномНДФЛ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПолноеИмяДокумента" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+		</Command>
+		<Command name="Отмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отмена</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресВременногоХранилища">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Документ">
+			<Type>
+				<v8:Type>cfg:DocumentRef.НачислениеИмущественныхНалогов</v8:Type>
+				<v8:Type>cfg:DocumentRef.ОтражениеЗарплатыВУчете</v8:Type>
+				<v8:Type>cfg:DocumentRef.СведенияОбУдержанномНДФЛ</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

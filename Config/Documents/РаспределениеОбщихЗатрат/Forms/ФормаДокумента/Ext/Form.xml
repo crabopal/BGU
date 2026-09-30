@@ -1,0 +1,838 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнитьДокумент" id="59">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьДокумент</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьДокументРасширеннаяПодсказка" id="89"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="90"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЛеваяКолонка" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Левая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="91"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНомерДата" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер / дата</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="92"/>
+							<ChildItems>
+								<InputField name="ТекстПериод" id="57">
+									<DataPath>ТекстПериод</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<SpinButton>true</SpinButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ТекстПериодКонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="ТекстПериодРасширеннаяПодсказка" id="93"/>
+									<Events>
+										<Event name="Tuning">ТекстПериодРегулирование</Event>
+									</Events>
+								</InputField>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="94"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="ВидОбщихЗатрат" id="11">
+							<DataPath>Объект.ВидОбщихЗатрат</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<BackColor>style:ФонУправляющегоПоля</BackColor>
+							<ContextMenu name="ВидОбщихЗатратКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ВидОбщихЗатратРасширеннаяПодсказка" id="95"/>
+							<Events>
+								<Event name="ChoiceProcessing">ВидОбщихЗатратОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраваяКолонка" id="55">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПраваяКолонкаРасширеннаяПодсказка" id="96"/>
+					<ChildItems>
+						<InputField name="Организация" id="5">
+							<DataPath>Объект.Организация</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="97"/>
+						</InputField>
+						<UsualGroup name="ГруппаКФОИФО" id="56">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>КФО / ИФО</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКФОИФОРасширеннаяПодсказка" id="98"/>
+							<ChildItems>
+								<InputField name="ИФО" id="7">
+									<DataPath>Объект.ИФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ИФОКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="ИФОРасширеннаяПодсказка" id="99"/>
+								</InputField>
+								<InputField name="КФО" id="9">
+									<DataPath>Объект.КФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="КФОКонтекстноеМеню" id="10"/>
+									<ExtendedTooltip name="КФОРасширеннаяПодсказка" id="100"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="БухгалтерскаяОперация" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бухгалтерская операция</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="БухгалтерскаяОперацияРасширеннаяПодсказка" id="101"/>
+		</UsualGroup>
+		<Table name="ОбщиеРасходы" id="60">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ОбщиеРасходы</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОбщиеРасходыКонтекстноеМеню" id="61"/>
+			<AutoCommandBar name="ОбщиеРасходыКоманднаяПанель" id="62"/>
+			<ExtendedTooltip name="ОбщиеРасходыРасширеннаяПодсказка" id="102"/>
+			<SearchStringAddition name="ОбщиеРасходыСтрокаПоиска" id="103">
+				<AdditionSource>
+					<Item>ОбщиеРасходы</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбщиеРасходыСтрокаПоискаКонтекстноеМеню" id="104"/>
+				<ExtendedTooltip name="ОбщиеРасходыСтрокаПоискаРасширеннаяПодсказка" id="105"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОбщиеРасходыСостояниеПросмотра" id="106">
+				<AdditionSource>
+					<Item>ОбщиеРасходы</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбщиеРасходыСостояниеПросмотраКонтекстноеМеню" id="107"/>
+				<ExtendedTooltip name="ОбщиеРасходыСостояниеПросмотраРасширеннаяПодсказка" id="108"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОбщиеРасходыУправлениеПоиском" id="109">
+				<AdditionSource>
+					<Item>ОбщиеРасходы</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбщиеРасходыУправлениеПоискомКонтекстноеМеню" id="110"/>
+				<ExtendedTooltip name="ОбщиеРасходыУправлениеПоискомРасширеннаяПодсказка" id="111"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ОбщиеРасходыПередНачаломДобавления</Event>
+				<Event name="OnActivateRow">ОбщиеРасходыПриАктивизацииСтроки</Event>
+				<Event name="OnStartEdit">ОбщиеРасходыПриНачалеРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ОбщиеРасходыПодразделение" id="85">
+					<DataPath>ОбщиеРасходы.Подразделение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Объект.Организация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ОбщиеРасходыПодразделениеКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="ОбщиеРасходыПодразделениеРасширеннаяПодсказка" id="112"/>
+				</InputField>
+				<InputField name="ОбщиеРасходыКПС" id="63">
+					<DataPath>ОбщиеРасходы.КПС</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыКПСКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ОбщиеРасходыКПСРасширеннаяПодсказка" id="113"/>
+				</InputField>
+				<InputField name="ОбщиеРасходыСчет" id="65">
+					<DataPath>ОбщиеРасходы.Счет</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыСчетКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="ОбщиеРасходыСчетРасширеннаяПодсказка" id="114"/>
+					<Events>
+						<Event name="OnChange">ОбщиеРасходыСчетПриИзменении</Event>
+						<Event name="AutoComplete">ОбщиеРасходыСчетАвтоПодбор</Event>
+						<Event name="StartChoice">ОбщиеРасходыСчетНачалоВыбора</Event>
+						<Event name="TextEditEnd">ОбщиеРасходыСчетОкончаниеВводаТекста</Event>
+						<Event name="ChoiceProcessing">ОбщиеРасходыСчетОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОбщиеРасходыКЭК" id="67">
+					<DataPath>ОбщиеРасходы.КЭК</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыКЭККонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="ОбщиеРасходыКЭКРасширеннаяПодсказка" id="115"/>
+					<Events>
+						<Event name="StartChoice">ОбщиеРасходыКЭКНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОбщиеРасходыВидЗатрат" id="69">
+					<DataPath>ОбщиеРасходы.ВидЗатрат</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыВидЗатратКонтекстноеМеню" id="70"/>
+					<ExtendedTooltip name="ОбщиеРасходыВидЗатратРасширеннаяПодсказка" id="116"/>
+				</InputField>
+				<InputField name="ОбщиеРасходыНаправлениеДеятельности" id="71">
+					<DataPath>ОбщиеРасходы.НаправлениеДеятельности</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыНаправлениеДеятельностиКонтекстноеМеню" id="72"/>
+					<ExtendedTooltip name="ОбщиеРасходыНаправлениеДеятельностиРасширеннаяПодсказка" id="117"/>
+				</InputField>
+				<InputField name="ОбщиеРасходыСумма" id="73">
+					<DataPath>ОбщиеРасходы.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбщиеРасходыСуммаКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="ОбщиеРасходыСуммаРасширеннаяПодсказка" id="118"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<Table name="ПрямыеРасходы" id="37">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.ПрямыеРасходы</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПрямыеРасходыКонтекстноеМеню" id="38"/>
+			<AutoCommandBar name="ПрямыеРасходыКоманднаяПанель" id="39"/>
+			<ExtendedTooltip name="ПрямыеРасходыРасширеннаяПодсказка" id="119"/>
+			<SearchStringAddition name="ПрямыеРасходыСтрокаПоиска" id="120">
+				<AdditionSource>
+					<Item>ПрямыеРасходы</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПрямыеРасходыСтрокаПоискаКонтекстноеМеню" id="121"/>
+				<ExtendedTooltip name="ПрямыеРасходыСтрокаПоискаРасширеннаяПодсказка" id="122"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПрямыеРасходыСостояниеПросмотра" id="123">
+				<AdditionSource>
+					<Item>ПрямыеРасходы</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПрямыеРасходыСостояниеПросмотраКонтекстноеМеню" id="124"/>
+				<ExtendedTooltip name="ПрямыеРасходыСостояниеПросмотраРасширеннаяПодсказка" id="125"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПрямыеРасходыУправлениеПоиском" id="126">
+				<AdditionSource>
+					<Item>ПрямыеРасходы</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПрямыеРасходыУправлениеПоискомКонтекстноеМеню" id="127"/>
+				<ExtendedTooltip name="ПрямыеРасходыУправлениеПоискомРасширеннаяПодсказка" id="128"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ПрямыеРасходыПередНачаломДобавления</Event>
+				<Event name="OnStartEdit">ПрямыеРасходыПриНачалеРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ПрямыеРасходыНомерСтроки" id="40">
+					<DataPath>Объект.ПрямыеРасходы.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыНомерСтрокиКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ПрямыеРасходыНомерСтрокиРасширеннаяПодсказка" id="129"/>
+				</LabelField>
+				<InputField name="ПрямыеРасходыПодразделение" id="87">
+					<DataPath>Объект.ПрямыеРасходы.Подразделение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыПодразделениеКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="ПрямыеРасходыПодразделениеРасширеннаяПодсказка" id="130"/>
+				</InputField>
+				<InputField name="ПрямыеРасходыКПС" id="42">
+					<DataPath>Объект.ПрямыеРасходы.КПС</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыКПСКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ПрямыеРасходыКПСРасширеннаяПодсказка" id="131"/>
+				</InputField>
+				<InputField name="ПрямыеРасходыСчет" id="44">
+					<DataPath>Объект.ПрямыеРасходы.Счет</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыСчетКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ПрямыеРасходыСчетРасширеннаяПодсказка" id="132"/>
+					<Events>
+						<Event name="OnChange">ПрямыеРасходыСчетПриИзменении</Event>
+						<Event name="AutoComplete">ПрямыеРасходыСчетАвтоПодбор</Event>
+						<Event name="StartChoice">ПрямыеРасходыСчетНачалоВыбора</Event>
+						<Event name="TextEditEnd">ПрямыеРасходыСчетОкончаниеВводаТекста</Event>
+						<Event name="ChoiceProcessing">ПрямыеРасходыСчетОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПрямыеРасходыНаправлениеДеятельности" id="46">
+					<DataPath>Объект.ПрямыеРасходы.НаправлениеДеятельности</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыНаправлениеДеятельностиКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ПрямыеРасходыНаправлениеДеятельностиРасширеннаяПодсказка" id="133"/>
+				</InputField>
+				<InputField name="ПрямыеРасходыНоменклатура" id="48">
+					<DataPath>Объект.ПрямыеРасходы.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыНоменклатураКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ПрямыеРасходыНоменклатураРасширеннаяПодсказка" id="134"/>
+				</InputField>
+				<InputField name="ПрямыеРасходыСумма" id="50">
+					<DataPath>Объект.ПрямыеРасходы.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Items.ОбщиеРасходы.CurrentData.СуммаПЗ</FooterDataPath>
+					<ContextMenu name="ПрямыеРасходыСуммаКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ПрямыеРасходыСуммаРасширеннаяПодсказка" id="135"/>
+					<Events>
+						<Event name="OnChange">ПрямыеРасходыСуммаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПрямыеРасходыНаправлениеДеятельностиОЗ" id="83">
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПрямыеРасходыНаправлениеДеятельностиОЗКонтекстноеМеню" id="84"/>
+					<ExtendedTooltip name="ПрямыеРасходыНаправлениеДеятельностиОЗРасширеннаяПодсказка" id="136"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаОтветственныйКомментарий" id="138">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтветственныйКомментарийРасширеннаяПодсказка" id="139"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="140">
+					<DataPath>Объект.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="141"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="142"/>
+				</InputField>
+				<InputField name="Ответственный" id="143">
+					<DataPath>Объект.Ответственный</DataPath>
+					<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="144"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="145"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.РаспределениеОбщихЗатрат</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ПрямыеРасходы">
+					<Column name="ЕстьНаправлениеДеятельности" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Есть направление деятельности</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ИдСтроки" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ид строки</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:UUID</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЕстьПодразделение" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Есть подразделение</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекстПериод" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Счета10970" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета10970</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="Счета10980" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета10980</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ДанныеСчетов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные счетов</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Счета10960" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета10960</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ОбщиеРасходы" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общие расходы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КПС" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификационныеПризнакиСчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Счет" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:ChartOfAccountsRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="КЭК" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КЭК</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КОСГУ</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидЗатрат" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид затрат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыЗатрат</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НаправлениеДеятельности" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление деятельности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.НаправленияДеятельности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдСтроки" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ид строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕстьНаправлениеДеятельности" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть направление деятельности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаПЗ" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма ПЗ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Подразделение" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.ИспользоватьУчетПоПодразделениям</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="ЕстьПодразделение" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбщиеРасходыНаправлениеДеятельности</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>NotGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбщиеРасходы.ЕстьНаправлениеДеятельности</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПрямыеРасходыНаправлениеДеятельности</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>NotGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Объект.ПрямыеРасходы.ЕстьНаправлениеДеятельности</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбщиеРасходы</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ОбщиеРасходы.Сумма</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:Field">ОбщиеРасходы.СуммаПЗ</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийОшибкуТекст</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбщиеРасходыПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>NotGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбщиеРасходы.ЕстьПодразделение</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПрямыеРасходыПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>NotGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Объект.ПрямыеРасходы.ЕстьПодразделение</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокумент</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

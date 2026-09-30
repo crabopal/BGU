@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>График амортизации</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаКомандаОК" id="42">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаОК</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОКРасширеннаяПодсказка" id="43"/>
+			</Button>
+			<Button name="ФормаКнопкаСправка" id="70">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаКнопкаСправкаРасширеннаяПодсказка" id="71"/>
+			</Button>
+			<Button name="ФормаКнопкаОтмена" id="72">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаКнопкаОтменаРасширеннаяПодсказка" id="73"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаДоговорВидОперации" id="82">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договор, вид операции</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаДоговорВидОперацииРасширеннаяПодсказка" id="83"/>
+			<ChildItems>
+				<InputField name="ВидОперации" id="62">
+					<DataPath>ВидОперации</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ВидОперацииКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ВидОперацииРасширеннаяПодсказка" id="64"/>
+				</InputField>
+				<InputField name="Договор" id="79">
+					<DataPath>Договор</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ДоговорКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="ДоговорРасширеннаяПодсказка" id="81"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтавкаАренднойПлаты" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Арендная плата (справедливая стоимость)</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаСтавкаАренднойПлатыРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<InputField name="АренднаяПлатаСумма" id="51">
+					<DataPath>АренднаяПлатаСумма</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стоимость аренды</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ContextMenu name="АренднаяПлатаСуммаКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="АренднаяПлатаСуммаРасширеннаяПодсказка" id="53"/>
+					<Events>
+						<Event name="OnChange">АренднаяПлатаСуммаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Валюта" id="87">
+					<DataPath>Валюта</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<Width>4</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ВалютаКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="ВалютаРасширеннаяПодсказка" id="89"/>
+				</InputField>
+				<InputField name="АренднаяПлатаЗаПериод" id="54">
+					<DataPath>АренднаяПлатаЗаПериод</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>за период</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается справедливая стоимость аренды за выбранный период времени (месяц, квартал, полугодие, год)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Width>14</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:string">месяц</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:string">квартал</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:string">полугодие</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:string">год</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="АренднаяПлатаЗаПериодКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="АренднаяПлатаЗаПериодРасширеннаяПодсказка" id="56"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="КоличествоПериодов" id="65">
+			<DataPath>КоличествоПериодов</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество периодов (месяцев, лет)</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="КоличествоПериодовКонтекстноеМеню" id="66"/>
+			<ExtendedTooltip name="КоличествоПериодовРасширеннаяПодсказка" id="67"/>
+			<Events>
+				<Event name="OnChange">КоличествоПериодовПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаАмортизацияАренднаяПлата" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Амортизация, арендная плата</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаАмортизацияАренднаяПлатаРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<InputField name="СуммаПоДоговору" id="4">
+					<DataPath>СуммаПоДоговору</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Арендная плата (сумма по договору)</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СуммаПоДоговоруКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="СуммаПоДоговоруРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">СуммаПоДоговоруПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="АмортизацияСумма" id="1">
+					<DataPath>АмортизацияСумма</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Амортизация (справедливая стоимость)</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="АмортизацияСуммаКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="АмортизацияСуммаРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">АмортизацияСуммаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПорядокНачисленияАмортизации" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок начисления амортизации (погашения стоимости)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа порядок начисления амортизации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаПорядокНачисленияАмортизацииРасширеннаяПодсказка" id="35"/>
+			<ChildItems>
+				<InputField name="СпособПризнанияРасходов" id="44">
+					<DataPath>СпособПризнанияРасходов</DataPath>
+					<Width>52</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По месяцам (ежемесячно)</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПризнанияРасходов.EnumValue.ПоМесяцам</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По календарным дням (ежемесячно)</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПризнанияРасходов.EnumValue.ПоКалендарнымДням</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По графику</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПризнанияРасходов.EnumValue.ПоГрафику</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>В особом порядке</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПризнанияРасходов.EnumValue.ВОсобомПорядке</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="СпособПризнанияРасходовКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="СпособПризнанияРасходовРасширеннаяПодсказка" id="46"/>
+					<Events>
+						<Event name="OnChange">СпособПризнанияРасходовПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаСрокПользования" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Срок пользования</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСрокПользованияРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<InputField name="ДатаНачалаАмортизации" id="36">
+							<DataPath>ДатаНачалаАмортизации</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Срок пользования (аренды) с</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаНачалаАмортизацииКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="ДатаНачалаАмортизацииРасширеннаяПодсказка" id="38"/>
+							<Events>
+								<Event name="OnChange">ДатаНачалаАмортизацииПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДатаОкончанияАмортизации" id="39">
+							<DataPath>ДатаОкончанияАмортизации</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>по</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаОкончанияАмортизацииКонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="ДатаОкончанияАмортизацииРасширеннаяПодсказка" id="41"/>
+							<Events>
+								<Event name="OnChange">ДатаОкончанияАмортизацииПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="УстановитьПериодАмортизации" id="68">
+							<Type>UsualButton</Type>
+							<Representation>Picture</Representation>
+							<CommandName>Form.Command.УстановитьПериодАмортизации</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.InputFieldSelect</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="УстановитьПериодАмортизацииРасширеннаяПодсказка" id="69"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСформироватьГрафик" id="74">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сформировать график (горизонтальная)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСформироватьГрафикРасширеннаяПодсказка" id="75"/>
+					<ChildItems>
+						<InputField name="АренднаяПлатаДеньНачисления" id="57">
+							<DataPath>АренднаяПлатаДеньНачисления</DataPath>
+							<ContextMenu name="АренднаяПлатаДеньНачисленияКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="АренднаяПлатаДеньНачисленияРасширеннаяПодсказка" id="59"/>
+							<Events>
+								<Event name="OnChange">АренднаяПлатаДеньНачисленияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="АренднаяПлатаДеньОплаты" id="84">
+							<DataPath>АренднаяПлатаДеньОплаты</DataPath>
+							<ContextMenu name="АренднаяПлатаДеньОплатыКонтекстноеМеню" id="85"/>
+							<ExtendedTooltip name="АренднаяПлатаДеньОплатыРасширеннаяПодсказка" id="86"/>
+							<Events>
+								<Event name="OnChange">АренднаяПлатаДеньОплатыПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="ГрафикАмортизацииСформироватьГрафик" id="60">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.СформироватьГрафик</CommandName>
+							<ExtendedTooltip name="ГрафикАмортизацииСформироватьГрафикРасширеннаяПодсказка" id="61"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ГрафикАмортизации" id="9">
+			<Representation>List</Representation>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ГрафикАмортизации</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ГрафикАмортизацииКонтекстноеМеню" id="10"/>
+			<AutoCommandBar name="ГрафикАмортизацииКоманднаяПанель" id="11"/>
+			<ExtendedTooltip name="ГрафикАмортизацииРасширеннаяПодсказка" id="12"/>
+			<SearchStringAddition name="ГрафикАмортизацииСтрокаПоиска" id="13">
+				<AdditionSource>
+					<Item>ГрафикАмортизации</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ГрафикАмортизацииСтрокаПоискаКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="ГрафикАмортизацииСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ГрафикАмортизацииСостояниеПросмотра" id="16">
+				<AdditionSource>
+					<Item>ГрафикАмортизации</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ГрафикАмортизацииСостояниеПросмотраКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="ГрафикАмортизацииСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ГрафикАмортизацииУправлениеПоиском" id="19">
+				<AdditionSource>
+					<Item>ГрафикАмортизации</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ГрафикАмортизацииУправлениеПоискомКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="ГрафикАмортизацииУправлениеПоискомРасширеннаяПодсказка" id="21"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnEditEnd">ГрафикАмортизацииПриОкончанииРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ГрафикАмортизацииДатаНачисленияАмортизации" id="22">
+					<DataPath>ГрафикАмортизации.ДатаНачисленияАмортизации</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начисления</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ГрафикАмортизацииДатаНачисленияАмортизацииКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ГрафикАмортизацииДатаНачисленияАмортизацииРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<InputField name="ГрафикАмортизацииАмортизация" id="25">
+					<DataPath>ГрафикАмортизации.Амортизация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>ИтогАмортизация</FooterDataPath>
+					<ContextMenu name="ГрафикАмортизацииАмортизацияКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="ГрафикАмортизацииАмортизацияРасширеннаяПодсказка" id="27"/>
+				</InputField>
+				<InputField name="ГрафикАмортизацииАренднаяПлата" id="28">
+					<DataPath>ГрафикАмортизации.АренднаяПлата</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>ИтогАренднаяПлата</FooterDataPath>
+					<ContextMenu name="ГрафикАмортизацииАренднаяПлатаКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ГрафикАмортизацииАренднаяПлатаРасширеннаяПодсказка" id="30"/>
+				</InputField>
+				<InputField name="ГрафикАмортизацииОплатитьДо" id="76">
+					<DataPath>ГрафикАмортизации.ОплатитьДо</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ГрафикАмортизацииОплатитьДоКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="ГрафикАмортизацииОплатитьДоРасширеннаяПодсказка" id="78"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ГрафикАмортизации" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>График амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ДатаНачисленияАмортизации" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начисления амортизации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Амортизация" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Амортизация (справедливая стоимость)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="АренднаяПлата" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Арендная плата (сумма по договору)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОплатитьДо" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оплатить до</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДатаНачалаАмортизации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДатаОкончанияАмортизации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата окончания амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СуммаПоДоговору" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма по договору</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АмортизацияСумма" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Амортизация сумма</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СпособПризнанияРасходов" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ признания расходов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СпособыПризнанияРасходов</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПеренестиВДокумент" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АренднаяПлатаСумма" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Арендная плата сумма</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="АренднаяПлатаЗаПериод" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Арендная плата за период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="АренднаяПлатаДеньНачисления" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День начисления амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВидОперации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыОперацийПринятияКУчетуПравПользованияОС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоПериодов" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество периодов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Договор" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договор</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Договоры</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АренднаяПлатаДеньОплаты" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День оплаты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВестиГрафикПлатежей" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вести график платежей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГрафикНеАктуален" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>График не актуален</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогАмортизация" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог амортизация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогАренднаяПлата" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог арендная плата</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Валюта" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьВалютныйУчет</Item>
+			</FunctionalOptions>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОК</Action>
+		</Command>
+		<Command name="СформироватьГрафик" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать график</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать график начисления амортизации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СформироватьГрафик</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="УстановитьПериодАмортизации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период амортизации</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период амортизации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьПериодАмортизации</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

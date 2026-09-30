@@ -1,0 +1,915 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.1c.ru/SSL/Exchange/Message"/>
+	<valueType name="БИК" base="xs:string" variety="Atomic" maxLength="9"/>
+	<valueType name="ВидДокумента" base="xs:string" variety="Atomic" maxLength="150"/>
+	<valueType name="ВидСубконто" base="xs:string" variety="Atomic" maxLength="50"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВнешняяСсылка" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType name="Дата" base="xs:dateTime" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.БухгалтерскаяСправка" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.БюджетныеДанные" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.КассовоеВыбытие" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.КассовоеПоступление" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.РасходноеРасписание" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДокументСсылка.РегистрацияОбязательствИСведенийПоДоговорам" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType name="ИНН" base="xs:string" variety="Atomic" maxLength="12"/>
+	<valueType name="ИдентификаторКонтракта" base="xs:string" variety="Atomic" maxLength="25"/>
+	<valueType name="КОСГУ" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="КПП" base="xs:string" variety="Atomic" maxLength="9"/>
+	<valueType name="КФО" base="xs:string" variety="Atomic" maxLength="1"/>
+	<valueType name="Ключ" base="xs:int" variety="Atomic" minInclusive="0" totalDigits="9"/>
+	<valueType name="КодБК" base="xs:string" variety="Atomic" maxLength="20"/>
+	<valueType name="КодБухгалтерскогоСчета" base="xs:string" variety="Atomic" maxLength="6"/>
+	<valueType name="КодБюджета" base="xs:string" variety="Atomic" maxLength="11"/>
+	<valueType name="КодВалюты" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="КодВидаДохода" base="xs:string" variety="Atomic" length="1"/>
+	<valueType name="КодВидаДоходовКДБ" base="xs:string" variety="Atomic" maxLength="10"/>
+	<valueType name="КодВидаКИФ" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодВидаРасходовКРБ" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="КодГлавы" base="xs:string" variety="Atomic" length="3"/>
+	<valueType name="КодГруппыПодвидовКДБ" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодГруппыПодгруппыКИФ" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодКПС" base="xs:string" variety="Atomic" maxLength="17"/>
+	<valueType name="КодКлассификатораЕдиницИзмерения" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодЛицевогоСчета" base="xs:string" variety="Atomic" maxLength="20"/>
+	<valueType name="КодМероприятия" base="xs:string" variety="Atomic" maxLength="20"/>
+	<valueType name="КодОКП" base="xs:string" variety="Atomic" maxLength="12"/>
+	<valueType name="КодОКПО" base="xs:string" variety="Atomic" maxLength="10"/>
+	<valueType name="КодПрограммыЦелевойСтатьиКРБ" base="xs:string" variety="Atomic" maxLength="5"/>
+	<valueType name="КодРазделаПодразделаКРБ" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодСпецУказаний" base="xs:string" variety="Atomic" maxLength="5"/>
+	<valueType name="КодСтатьиКИФ" base="xs:string" variety="Atomic" maxLength="6"/>
+	<valueType name="КодТОФК" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="КодУчреждения" base="xs:string" variety="Atomic" maxLength="8"/>
+	<valueType name="КодЦелевойСтатьиКРБ" base="xs:string" variety="Atomic" maxLength="5"/>
+	<valueType name="КодЦели" base="xs:string" variety="Atomic" maxLength="25"/>
+	<valueType name="КодЭлементаБюджета" base="xs:string" variety="Atomic" length="2"/>
+	<valueType name="Количество" base="xs:decimal" variety="Atomic" totalDigits="16" fractionDigits="3"/>
+	<valueType name="КоличествоМесяцев" base="xs:decimal" variety="Atomic" totalDigits="2"/>
+	<valueType name="МеждународноеСокращениеКлассификатораЕдиницИзмерения" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="НавигационнаяСсылка" base="xs:string" variety="Atomic"/>
+	<valueType name="НазначениеПлатежа" base="xs:string" variety="Atomic" maxLength="210"/>
+	<valueType name="Наименование" base="xs:string" variety="Atomic" maxLength="150"/>
+	<valueType name="НаименованиеВПлатеже" base="xs:string" variety="Atomic" maxLength="160"/>
+	<valueType name="НаименованиеВалюты" base="xs:string" variety="Atomic" maxLength="10"/>
+	<valueType name="НаименованиеПолное" base="xs:string" variety="Atomic"/>
+	<valueType name="Направление" base="xs:int" variety="Atomic" minInclusive="1" maxInclusive="2" totalDigits="1"/>
+	<valueType name="Номер" base="xs:string" variety="Atomic" maxLength="50"/>
+	<valueType name="НомерАккредитива" base="xs:string" variety="Atomic" maxLength="50"/>
+	<valueType name="НомерБухгалтерскойСправки" base="xs:string" variety="Atomic" maxLength="50"/>
+	<valueType name="НомерДоговора" base="xs:string" variety="Atomic" maxLength="100"/>
+	<valueType name="НомерЖурнала" base="xs:string" variety="Atomic" maxLength="6"/>
+	<valueType name="ОГРН" base="xs:string" variety="Atomic" maxLength="13"/>
+	<valueType name="ОКАТО" base="xs:string" variety="Atomic" maxLength="11"/>
+	<valueType name="ПоказательНомера" base="xs:string" variety="Atomic" maxLength="18"/>
+	<valueType name="ПоказательОснования" base="xs:string" variety="Atomic" maxLength="2"/>
+	<valueType name="ПоказательПериода" base="xs:string" variety="Atomic" maxLength="10"/>
+	<valueType name="ПоказательТипа" base="xs:string" variety="Atomic" maxLength="2"/>
+	<valueType name="ПредставлениеДокумента" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="ПризнакСекретности" base="xs:string" variety="Atomic" maxLength="1"/>
+	<valueType name="РС" base="xs:string" variety="Atomic" maxLength="34"/>
+	<valueType name="СНИЛС" base="xs:string" variety="Atomic" maxLength="14"/>
+	<valueType name="Содержание" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Бюджеты" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Валюты" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ВидыДоходовКДБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ВидыКИФ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ВидыРасходовКРБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ВидыЦелевыхСредств" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ГлавыПоБюджетнойКлассификации" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ГруппыПодвидовКДБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ГруппыПодгруппыКИФ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Договоры" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ИсточникиФинансовогоОбеспечения" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.КОСГУ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Казначейства" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.КлассификаторЕдиницИзмерения" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Контрагенты" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ЛицевыеСчета" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Мероприятия" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Номенклатура" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ПрограммыЦелевыхСтатейКРБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.РазделыПодразделыКРБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.СтатьиКИФ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.Учреждения" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ЦелевыеСтатьиКРБ" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СправочникСсылка.ЭлементыБюджета" base="d2p1:Ссылка" variety="Atomic"/>
+	<valueType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="Ссылка" base="d2p1:Ref" variety="Atomic"/>
+	<valueType name="СтатусСоставителя" base="xs:string" variety="Atomic" maxLength="2"/>
+	<valueType name="Сумма" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<valueType name="ТипБК" base="xs:string" variety="Atomic" maxLength="2"/>
+	<valueType name="ТипКонтрагента" base="xs:string" variety="Atomic" maxLength="1"/>
+	<valueType name="УИН" base="xs:string" variety="Atomic" maxLength="25"/>
+	<valueType name="УровеньБюджета" base="xs:string" variety="Atomic" maxLength="1"/>
+	<valueType name="УсловноеОбозначениеКлассификатораЕдиницИзмерения" base="xs:string" variety="Atomic" maxLength="25"/>
+	<valueType name="УточнениеПериода" base="xs:int" variety="Atomic" minInclusive="1" maxInclusive="9" totalDigits="1"/>
+	<valueType name="ФИО" base="xs:string" variety="Atomic" maxLength="50"/>
+	<valueType name="Флаг" base="xs:boolean" variety="Atomic"/>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВнешнийОбъект" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВнешнегоОбъекта" lowerBound="0"/>
+		<property name="Представление" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.БухгалтерскаяСправка" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваБухгалтерскойСправки" lowerBound="0"/>
+		<property name="ПредставлениеДокумента" type="d2p1:ПредставлениеДокумента" lowerBound="0"/>
+		<property name="НомерДокумента" type="d2p1:НомерБухгалтерскойСправки" lowerBound="0" nillable="true"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="УточнениеПериода" type="d2p1:УточнениеПериода" lowerBound="0" nillable="true"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="Проводки" type="d2p1:Документ.БухгалтерскаяСправка.Проводки" lowerBound="0" nillable="true"/>
+		<property name="СубконтоДт" type="d2p1:Документ.БухгалтерскаяСправка.Субконто" lowerBound="0" nillable="true"/>
+		<property name="СубконтоКт" type="d2p1:Документ.БухгалтерскаяСправка.Субконто" lowerBound="0" nillable="true"/>
+		<property name="РеквизитыПлатежныхДокументов" type="d2p1:Документ.БухгалтерскаяСправка.РеквизитыПлатежныхДокументов" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.Проводки">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БухгалтерскаяСправка.Проводки.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.Проводки.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Период" type="d3p1:Дата" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="УточнениеПериода" type="d3p1:УточнениеПериода" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КФО" type="d3p1:КФО" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НомерЖурнала" type="d3p1:НомерЖурнала" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СчетДт" type="d3p1:КлючевыеСвойстваЕПСБУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПСДт" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КЭКДт" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЛицевойСчетДт" type="d3p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НоменклатураДт" type="d3p1:КлючевыеСвойстваНоменклатуры" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДоговорДт" type="d3p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КонтрагентДт" type="d3p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидЦелевыхДт" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="МероприятиеДт" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВалютаДт" type="d3p1:КлючевыеСвойстваВалюты" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаВВалютеДт" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СчетКт" type="d3p1:КлючевыеСвойстваЕПСБУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПСКт" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КЭККт" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЛицевойСчетКт" type="d3p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НоменклатураКт" type="d3p1:КлючевыеСвойстваНоменклатуры" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДоговорКт" type="d3p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КонтрагентКт" type="d3p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидЦелевыхКт" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="МероприятиеКт" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВалютаКт" type="d3p1:КлючевыеСвойстваВалюты" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаВВалютеКт" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Содержание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидДокумента" type="d3p1:ВидДокумента" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НомерДокумента" type="d3p1:Номер" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДатаДокумента" type="d3p1:Дата" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ключ" type="d3p1:Ключ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КлючСтроки" type="d3p1:Ключ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.РеквизитыПлатежныхДокументов">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БухгалтерскаяСправка.РеквизитыПлатежныхДокументов.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.РеквизитыПлатежныхДокументов.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ключ" type="d3p1:Ключ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Плательщик" type="d3p1:НаименованиеВПлатеже" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикИНН" type="d3p1:ИНН" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикКПП" type="d3p1:КПП" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикРС" type="d3p1:РС" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикБИК" type="d3p1:БИК" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикБанк" type="d3p1:НаименованиеВПлатеже" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПлательщикКоррсчет" type="d3p1:РС" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Получатель" type="d3p1:НаименованиеВПлатеже" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательИНН" type="d3p1:ИНН" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательКПП" type="d3p1:КПП" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательРС" type="d3p1:РС" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательБИК" type="d3p1:БИК" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательБанк" type="d3p1:НаименованиеВПлатеже" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПолучательКоррсчет" type="d3p1:РС" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НазначениеПлатежа" type="d3p1:НазначениеПлатежа" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодВидаДохода" type="d3p1:КодВидаДохода" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ИдентификаторКонтракта" type="d3p1:ИдентификаторКонтракта" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НомерАккредитива" type="d3p1:НомерАккредитива" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="УИН" type="d3p1:УИН" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНСтатусСоставителя" type="d3p1:СтатусСоставителя" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНКодБК" type="d3p1:КодБК" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНКодОКАТО" type="d3p1:ОКАТО" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНПоказательОснования" type="d3p1:ПоказательОснования" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНПоказательПериода" type="d3p1:ПоказательПериода" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНПоказательТипа" type="d3p1:ПоказательТипа" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНПоказательНомера" type="d3p1:ПоказательНомера" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПНПоказательДаты" type="d3p1:ПоказательПериода" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Направление" type="d3p1:Направление" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.Субконто">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БухгалтерскаяСправка.Субконто.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БухгалтерскаяСправка.Субконто.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ключ" type="d3p1:Ключ" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КлючевыеСвойства" type="d3p1:КлючевыеСвойстваВнешнегоОбъекта"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Вид" type="d3p1:ВидСубконто"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.БюджетныеДанные" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваБюджетныхДанных" lowerBound="0"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0"/>
+		<property name="ВидДанных" type="d2p1:ТипБК" lowerBound="0"/>
+		<property name="НомерПервичногоДокумента" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="ДатаПервичногоДокумента" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ВидПервичногоДокумента" type="d2p1:ВидДокумента" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеАссигнований" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеЛБО" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеПОФ" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ОтКогоРуководительДолжность" type="d2p1:Наименование" lowerBound="0" nillable="true"/>
+		<property name="ОтКогоРуководительФИО" type="d2p1:ФИО" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаПервыйПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаВторойПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаПервыйПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаВторойПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ПОФНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ОчереднойПериод" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="КодСпецУказаний" type="d2p1:КодСпецУказаний" lowerBound="0" nillable="true"/>
+		<property name="Ассигнования" type="d2p1:Документ.БюджетныеДанные.Ассигнования" lowerBound="0" nillable="true"/>
+		<property name="ЛБО" type="d2p1:Документ.БюджетныеДанные.ЛБО" lowerBound="0" nillable="true"/>
+		<property name="ПОФ" type="d2p1:Документ.БюджетныеДанные.ПОФ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.Ассигнования">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БюджетныеДанные.Ассигнования.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.Ассигнования.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаТекущийГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаПервыйПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаВторойПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.ЛБО">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БюджетныеДанные.ЛБО.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.ЛБО.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаТекущийГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаПервыйПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаВторойПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.ПОФ">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.БюджетныеДанные.ПОФ.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.БюджетныеДанные.ПОФ.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.КассовоеВыбытие" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКассовогоВыбытия" lowerBound="0"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="Договор" type="d2p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property name="Контрагент" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="ЛицевойСчетКонтрагента" type="d2p1:КодЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="СуммаДокумента" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="НазначениеПлатежа" type="d2p1:НазначениеПлатежа" lowerBound="0" nillable="true"/>
+		<property name="НомерПервичногоДокумента" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="ДатаПервичногоДокумента" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ВидПервичногоДокумента" type="d2p1:ВидДокумента" lowerBound="0" nillable="true"/>
+		<property name="ПолучательПлатежа" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="РасшифровкаПлатежа" type="d2p1:Документ.КассовоеВыбытие.РасшифровкаПлатежа" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.КассовоеВыбытие.РасшифровкаПлатежа">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.КассовоеВыбытие.РасшифровкаПлатежа.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.КассовоеВыбытие.РасшифровкаПлатежа.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КБКНазначениеПлатежа" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУНазначениеПлатежа" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КФО" type="d3p1:КФО" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.КассовоеПоступление" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКассовогоПоступления" lowerBound="0"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="Договор" type="d2p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property name="Контрагент" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="ЛицевойСчетКонтрагента" type="d2p1:КодЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="СуммаДокумента" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="НазначениеПлатежа" type="d2p1:НазначениеПлатежа" lowerBound="0" nillable="true"/>
+		<property name="ИдентификаторПлатежа" type="d2p1:УИН" lowerBound="0" nillable="true"/>
+		<property name="НомерПервичногоДокумента" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="ДатаПервичногоДокумента" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ВидПервичногоДокумента" type="d2p1:ВидДокумента" lowerBound="0" nillable="true"/>
+		<property name="Плательщик" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="РасшифровкаПлатежа" type="d2p1:Документ.КассовоеПоступление.РасшифровкаПлатежа" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.КассовоеПоступление.РасшифровкаПлатежа">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.КассовоеПоступление.РасшифровкаПлатежа.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.КассовоеПоступление.РасшифровкаПлатежа.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КБКНазначениеПлатежа" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУНазначениеПлатежа" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КФО" type="d3p1:КФО" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Договор" type="d3p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Контрагент" type="d3p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.РасходноеРасписание" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваРасходногоРасписания" lowerBound="0"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="НомерДокумента" type="d2p1:Номер" lowerBound="0"/>
+		<property name="НомерДокументаФО" type="d2p1:Номер" lowerBound="0"/>
+		<property name="ВидДанных" type="d2p1:ТипБК" lowerBound="0"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="Распорядитель" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0"/>
+		<property name="ЛицевойСчетПБС" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="ДоведениеДанныхСебеКакПБС" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="Получатель" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="ЛицевойСчетПолучателя" type="d2p1:КодЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействие" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеАссигнований" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеЛБО" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ДатаВведенияВДействиеПОФ" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ОрганКазначейства" type="d2p1:КлючевыеСвойстваКазначейства" lowerBound="0" nillable="true"/>
+		<property name="ОрганКазначействаКуда" type="d2p1:КлючевыеСвойстваКазначейства" lowerBound="0" nillable="true"/>
+		<property name="ПризнакСекретности" type="d2p1:ПризнакСекретности" lowerBound="0" nillable="true"/>
+		<property name="ОснованиеСекретности" type="d2p1:Наименование" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаПервыйПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="АссигнованияНаВторойПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаПервыйПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ЛБОНаВторойПлановыйГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ПОФНаТекущийГод" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="ОчереднойПериод" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="КодСпецУказаний" type="d2p1:КодСпецУказаний" lowerBound="0" nillable="true"/>
+		<property name="Ассигнования" type="d2p1:Документ.РасходноеРасписание.Ассигнования" lowerBound="0" nillable="true"/>
+		<property name="ЛБО" type="d2p1:Документ.РасходноеРасписание.ЛБО" lowerBound="0" nillable="true"/>
+		<property name="ПОФ" type="d2p1:Документ.РасходноеРасписание.ПОФ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.Ассигнования">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.РасходноеРасписание.Ассигнования.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.Ассигнования.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаТекущийГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаПервыйПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаВторойПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.ЛБО">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.РасходноеРасписание.ЛБО.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.ЛБО.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаТекущийГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаПервыйПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНаВторойПлановыйГод" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.ПОФ">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.РасходноеРасписание.ПОФ.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РасходноеРасписание.ПОФ.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Примечание" type="d3p1:Содержание" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Документ.РегистрацияОбязательствИСведенийПоДоговорам" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваРегистрацииОбязательствИСведенийПоДоговорам" lowerBound="0"/>
+		<property name="ДатаДокумента" type="d2p1:Дата" lowerBound="0"/>
+		<property name="НомерДокумента" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="НомерОбязательства" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="Организация" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="ИФО" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="Договор" type="d2p1:КлючевыеСвойстваДоговора" lowerBound="0" nillable="true"/>
+		<property name="УчетПредмета" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ПринятоеОбязательство" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="Контрагент" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="ЛицевойСчетКонтрагента" type="d2p1:КодЛицевогоСчета" lowerBound="0" nillable="true"/>
+		<property name="ОрганКазначейства" type="d2p1:КлючевыеСвойстваКазначейства" lowerBound="0" nillable="true"/>
+		<property name="СрокИсполнения" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="Сумма" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="СуммаАванса" type="d2p1:Сумма" lowerBound="0" nillable="true"/>
+		<property name="КазначейскоеСопровождение" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="РасшифровкаОбязательстваБюджет" type="d2p1:Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваБюджет" lowerBound="0" nillable="true"/>
+		<property name="РасшифровкаОбязательстваВнебюджет" type="d2p1:Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваВнебюджет" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваБюджет">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваБюджет.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваБюджет.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КЭК" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КФО" type="d3p1:КФО" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПериодПлана" type="d3p1:КлючевыеСвойстваПериода" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаБезусловная" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаИсполнено" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаИсполненоБезусловно" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНеИсполнено" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаНеИсполненоБезусловно" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОКП" type="d3p1:КодОКП" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Номенклатура" type="d3p1:КлючевыеСвойстваНоменклатуры" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЕдиницаИзмерения" type="d3p1:КлючевыеСвойстваКлассификатораЕдиницИзмерения" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Количество" type="d3p1:Количество" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваВнебюджет">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваВнебюджет.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Документ.РегистрацияОбязательствИСведенийПоДоговорам.РасшифровкаОбязательстваВнебюджет.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПС" type="d3p1:КлючевыеСвойстваКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КЭК" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодЦели" type="d3p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодМероприятия" type="d3p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КФО" type="d3p1:КФО" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПериодПлана" type="d3p1:КлючевыеСвойстваПериода" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Сумма" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СуммаБезусловная" type="d3p1:Сумма" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОКП" type="d3p1:КодОКП" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Номенклатура" type="d3p1:КлючевыеСвойстваНоменклатуры" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЕдиницаИзмерения" type="d3p1:КлючевыеСвойстваКлассификатораЕдиницИзмерения" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Количество" type="d3p1:Количество" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваБухгалтерскойСправки" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.БухгалтерскаяСправка"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваБюджета" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Бюджеты" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодБюджета" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваБюджетныхДанных" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.БюджетныеДанные"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВалюты" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Валюты" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодВалюты" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:НаименованиеВалюты" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВидаДоходовКДБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ВидыДоходовКДБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодВидаДоходовКДБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВидаКИФ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ВидыКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Владелец" type="d3p1:КлючевыеСвойстваСтатьиКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодВидаКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВидаРасходовКРБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ВидыРасходовКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодВидаРасходовКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВидаЦелевыхСредств" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ВидыЦелевыхСредств" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодЦели" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваВнешнегоОбъекта" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ВнешняяСсылка"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваГлавыПоБюджетнойКлассификации" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ГлавыПоБюджетнойКлассификации" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодГлавы" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваГруппыПодвидовКДБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ГруппыПодвидовКДБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидДохода" type="d3p1:КлючевыеСвойстваВидаДоходовКДБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодГруппыПодвидовКДБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваГруппыПодгруппыКИФ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ГруппыПодгруппыКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодГруппыПодгруппыКИФ"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваДоговора" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Договоры" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Организация" type="d3p1:КлючевыеСвойстваУчреждения" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидДоговора" type="d3p1:Наименование" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДатаДоговора" type="d3p1:Дата" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НомерДоговора" type="d3p1:НомерДоговора" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НомерОбязательства" type="d3p1:Номер" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваЕПСБУ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодБухгалтерскогоСчета"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваЖурнала" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:НомерЖурнала"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваИсточникаФинансовогоОбеспечения" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ИсточникиФинансовогоОбеспечения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодГлавыБК" type="d3p1:КлючевыеСвойстваГлавыПоБюджетнойКлассификации" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКОСГУ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.КОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КОСГУ" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКПС" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Тип" type="d3p1:ТипБК" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодКПС" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="РазделПодразделКРБ" type="d3p1:КлючевыеСвойстваРазделаПодразделаКРБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЦелеваяСтатьяКРБ" type="d3p1:КлючевыеСвойстваЦелевойСтатьиКРБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПрограммаЦелевойСтатьиКРБ" type="d3p1:КлючевыеСвойстваПрограммыЦелевойСтатьиКРБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидРасходаКРБ" type="d3p1:КлючевыеСвойстваВидаРасходовКРБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидДоходаКДБ" type="d3p1:КлючевыеСвойстваВидаДоходовКДБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ГруппаПодвидаКДБ" type="d3p1:КлючевыеСвойстваГруппыПодвидовКДБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="АналитическаяГруппаКДБ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ГруппаПодгруппаКИФ" type="d3p1:КлючевыеСвойстваГруппыПодгруппыКИФ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СтатьяКИФ" type="d3p1:КлючевыеСвойстваСтатьиКИФ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидКИФ" type="d3p1:КлючевыеСвойстваВидаКИФ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="АналитическаяГруппаКИФ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКазначейства" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Казначейства" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодТОФК" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ИНН" type="d3p1:ИНН" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПП" type="d3p1:КПП" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКассовогоВыбытия" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.КассовоеВыбытие"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКассовогоПоступления" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.КассовоеПоступление"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКлассификатораЕдиницИзмерения" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.КлассификаторЕдиницИзмерения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодКлассификатораЕдиницИзмерения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="УсловноеОбозначение" type="d3p1:УсловноеОбозначениеКлассификатораЕдиницИзмерения" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваКонтрагента" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Контрагенты" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ИНН" type="d3p1:ИНН" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПП" type="d3p1:КПП" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КодУчреждения" type="d3p1:КодУчреждения" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваЛицевогоСчета" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ЛицевыеСчета" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Владелец" type="d3p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодЛицевогоСчета" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваМероприятия" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Мероприятия" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодМероприятия" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваНоменклатуры" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Номенклатура" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:Наименование" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваПериода" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДатаНачала" type="d3p1:Дата"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДатаОкончания" type="d3p1:Дата"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваПрограммыЦелевойСтатьиКРБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ПрограммыЦелевыхСтатейКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодПрограммыЦелевойСтатьиКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЦелеваяСтатья" type="d3p1:КлючевыеСвойстваЦелевойСтатьиКРБ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваРазделаПодразделаКРБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.РазделыПодразделыКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодРазделаПодразделаКРБ"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваРасходногоРасписания" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.РасходноеРасписание"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваРегистрацииОбязательствИСведенийПоДоговорам" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:ДокументСсылка.РегистрацияОбязательствИСведенийПоДоговорам"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваСтатьиКИФ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.СтатьиКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Владелец" type="d3p1:КлючевыеСвойстваГруппыПодгруппыКИФ" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодСтатьиКИФ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваУчреждения" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.Учреждения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодУчреждения" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ИНН" type="d3p1:ИНН" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КПП" type="d3p1:КПП" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваЦелевойСтатьиКРБ" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ЦелевыеСтатьиКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодЦелевойСтатьиКРБ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НачалоДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОкончаниеДействия" type="d3p1:Дата" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Бюджет" type="d3p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваЭлементаБюджета" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Ссылка" type="d3p1:СправочникСсылка.ЭлементыБюджета" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Код" type="d3p1:КодЭлементаБюджета" lowerBound="0"/>
+	</objectType>
+	<objectType name="ЛюбаяСсылка">
+		<property name="СсылкаНаОбъект">
+			<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="БухгалтерскаяСправкаСсылка" type="d5p1:ДокументСсылка.БухгалтерскаяСправка" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="БюджетныеДанныеСсылка" type="d5p1:ДокументСсылка.БюджетныеДанные" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="БюджетыСсылка" type="d5p1:СправочникСсылка.Бюджеты" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВалютыСсылка" type="d5p1:СправочникСсылка.Валюты" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидыДоходовКДБСсылка" type="d5p1:СправочникСсылка.ВидыДоходовКДБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидыКИФСсылка" type="d5p1:СправочникСсылка.ВидыКИФ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидыРасходовКРБСсылка" type="d5p1:СправочникСсылка.ВидыРасходовКРБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВидыЦелевыхСредствСсылка" type="d5p1:СправочникСсылка.ВидыЦелевыхСредств" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ВнешняяСсылка" type="d5p1:ВнешняяСсылка" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ГлавыПоБюджетнойКлассификацииСсылка" type="d5p1:СправочникСсылка.ГлавыПоБюджетнойКлассификации" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ГруппыПодвидовКДБСсылка" type="d5p1:СправочникСсылка.ГруппыПодвидовКДБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ГруппыПодгруппыКИФСсылка" type="d5p1:СправочникСсылка.ГруппыПодгруппыКИФ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ДоговорыСсылка" type="d5p1:СправочникСсылка.Договоры" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ИсточникиФинансовогоОбеспеченияСсылка" type="d5p1:СправочникСсылка.ИсточникиФинансовогоОбеспечения" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КассовоеВыбытиеСсылка" type="d5p1:ДокументСсылка.КассовоеВыбытие" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КассовоеПоступлениеСсылка" type="d5p1:ДокументСсылка.КассовоеПоступление" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КазначействаСсылка" type="d5p1:СправочникСсылка.Казначейства" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КлассификаторЕдиницИзмеренияСсылка" type="d5p1:СправочникСсылка.КлассификаторЕдиницИзмерения" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КонтрагентыСсылка" type="d5p1:СправочникСсылка.Контрагенты" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУСсылка" type="d5p1:СправочникСсылка.КОСГУ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЛицевыеСчетаСсылка" type="d5p1:СправочникСсылка.ЛицевыеСчета" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="МероприятияСсылка" type="d5p1:СправочникСсылка.Мероприятия" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НоменклатураСсылка" type="d5p1:СправочникСсылка.Номенклатура" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПрограммыЦелевыхСтатейКРБСсылка" type="d5p1:СправочникСсылка.ПрограммыЦелевыхСтатейКРБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="РазделыПодразделыКРБСсылка" type="d5p1:СправочникСсылка.РазделыПодразделыКРБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="РасходноеРасписаниеСсылка" type="d5p1:ДокументСсылка.РасходноеРасписание" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="РегистрацияОбязательствИСведенийПоДоговорамСсылка" type="d5p1:ДокументСсылка.РегистрацияОбязательствИСведенийПоДоговорам" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СтатьиКИФСсылка" type="d5p1:СправочникСсылка.СтатьиКИФ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="УчрежденияСсылка" type="d5p1:СправочникСсылка.Учреждения" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЦелевыеСтатьиКРБСсылка" type="d5p1:СправочникСсылка.ЦелевыеСтатьиКРБ" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ЭлементыБюджетаСсылка" type="d5p1:СправочникСсылка.ЭлементыБюджета" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="Объект" base="d2p1:Object" open="true" sequenced="true"/>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПланОбмена.ФИБОбменБГУ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="Версия" type="d2p1:Номер" lowerBound="0" nillable="true"/>
+		<property name="ДатаНачалаВыгрузкиБС" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+		<property name="ЗабалансовыеСчета" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="Организации" type="d2p1:ПланОбмена.ФИБОбменБГУ.Организации" lowerBound="0" nillable="true"/>
+		<property name="Счета" type="d2p1:ПланОбмена.ФИБОбменБГУ.Счета" lowerBound="0" nillable="true"/>
+		<property name="МинимальныйПериодРегистрацииВМесяцахБС" type="d2p1:КоличествоМесяцев" lowerBound="0" nillable="true"/>
+		<property name="МаксимальныйПериодРегистрацииВМесяцахБС" type="d2p1:КоличествоМесяцев" lowerBound="0" nillable="true"/>
+		<property name="ВнешниеОбъекты" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОбЭлементах" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхБД" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхРР" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхБВО" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхКВ" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхКП" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ИнформацияОСостоянияхБС" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ПланОбмена.ФИБОбменБГУ.Организации">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:ПланОбмена.ФИБОбменБГУ.Организации.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="ПланОбмена.ФИБОбменБГУ.Организации.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Организация" type="d3p1:КлючевыеСвойстваУчреждения"/>
+	</objectType>
+	<objectType name="ПланОбмена.ФИБОбменБГУ.Счета">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:ПланОбмена.ФИБОбменБГУ.Счета.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="ПланОбмена.ФИБОбменБГУ.Счета.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Счет" type="d3p1:КлючевыеСвойстваЕПСБУ"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ПланСчетов.ЕПСБУ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваЕПСБУ" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Забалансовый" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Валютный" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="КЭК" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="ЛицевойСчет" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Договор" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Контрагент" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="ВидЦелевых" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Мероприятие" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Номенклатура" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="ВидыСубконто" type="d2p1:ПланСчетов.ЕПСБУ.ВидыСубконто" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ПланСчетов.ЕПСБУ.ВидыСубконто">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:ПланСчетов.ЕПСБУ.ВидыСубконто.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="ПланСчетов.ЕПСБУ.ВидыСубконто.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Вид" type="d3p1:ВидСубконто"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:Наименование"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ТолькоОбороты" type="d3p1:Флаг" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="РегистрСведений.БГУАдресаХостов" open="true" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="АдресХоста" type="d3p1:НавигационнаяСсылка"/>
+	</objectType>
+	<objectType name="РегистрСведений.БГУИнформацияОбОбъектах" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="ОбъектКонфигурации" type="d3p1:Ссылка" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="НавигационнаяСсылкаОбъекта" type="d3p1:НавигационнаяСсылка" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Изменен" type="d3p1:Флаг" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Бюджеты" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваБюджета" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="ЭлементБюджета" type="d2p1:КлючевыеСвойстваЭлементаБюджета" lowerBound="0"/>
+		<property name="НаименованиеПубличноПравовогоОбразования" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="НаименованиеФинансовогоОргана" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="КодОрФК" type="d2p1:КодТОФК" lowerBound="0" nillable="true"/>
+		<property name="КодОКПОФинансовогоОргана" type="d2p1:КодОКПО" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Валюты" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВалюты" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="ПараметрыПрописи" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ВидыДоходовКДБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВидаДоходовКДБ" lowerBound="0"/>
+		<property name="ЭлементБюджета" type="d2p1:КлючевыеСвойстваЭлементаБюджета" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="ЭлементГруппа" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваВидаДоходовКДБ" lowerBound="0" nillable="true"/>
+		<property name="АналитическиеГруппы" type="d2p1:Справочник.ВидыДоходовКДБ.АналитическиеГруппы" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.ВидыДоходовКДБ.АналитическиеГруппы">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Справочник.ВидыДоходовКДБ.АналитическиеГруппы.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.ВидыДоходовКДБ.АналитическиеГруппы.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="АналитическаяГруппа" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:НаименованиеПолное" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ВидыКИФ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВидаКИФ"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ВидыРасходовКРБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВидаРасходовКРБ" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваВидаРасходовКРБ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ВидыЦелевыхСредств" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваВидаЦелевыхСредств" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ГлавыПоБюджетнойКлассификации" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваГлавыПоБюджетнойКлассификации"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ГруппыПодвидовКДБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваГруппыПодвидовКДБ"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ГруппыПодгруппыКИФ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваГруппыПодгруппыКИФ" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваГруппыПодгруппыКИФ" lowerBound="0" nillable="true"/>
+		<property name="ДопустимыеКОСГУ" type="d2p1:Справочник.ГруппыПодгруппыКИФ.ДопустимыеКОСГУ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.ГруппыПодгруппыКИФ.ДопустимыеКОСГУ">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Справочник.ГруппыПодгруппыКИФ.ДопустимыеКОСГУ.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.ГруппыПодгруппыКИФ.ДопустимыеКОСГУ.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:НаименованиеПолное" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Договоры" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваДоговора" lowerBound="0"/>
+		<property name="Контрагент" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="КраткоеСодержание" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="НормативноПравовойАкт" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="УчетПредметаДоговора" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ЗаключаетсяПоРезультатамКонкурсныхПроцедур" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ВАрхиве" type="d2p1:Флаг" lowerBound="0" nillable="true"/>
+		<property name="ДатаПомещенияВАрхив" type="d2p1:Дата" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Журналы" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваЖурнала"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ИсточникиФинансовогоОбеспечения" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваИсточникаФинансовогоОбеспечения"/>
+		<property name="Наименование" type="d2p1:Наименование"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.КОСГУ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКОСГУ"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваКОСГУ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Казначейства" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКазначейства" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеВПлатеже" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="КодОКПО" type="d2p1:КодОКПО" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.КлассификаторЕдиницИзмерения" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКлассификатораЕдиницИзмерения" lowerBound="0"/>
+		<property name="МеждународноеСокращение" type="d2p1:МеждународноеСокращениеКлассификатораЕдиницИзмерения" lowerBound="0" nillable="true"/>
+		<property name="НаименованиеМеждународное" type="d2p1:УсловноеОбозначениеКлассификатораЕдиницИзмерения" lowerBound="0" nillable="true"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="НациональноеСокращение" type="d2p1:УсловноеОбозначениеКлассификатораЕдиницИзмерения" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Контрагенты" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0"/>
+		<property name="ЮрЛицо" type="d2p1:ТипКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="ТипКонтрагента" type="d2p1:ТипКонтрагента" lowerBound="0" nillable="true"/>
+		<property name="Наименование" type="d2p1:НаименованиеВПлатеже" lowerBound="0" nillable="true"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="ОГРН" type="d2p1:ОГРН" lowerBound="0"/>
+		<property name="КодОКПО" type="d2p1:КодОКПО" lowerBound="0"/>
+		<property name="Бюджет" type="d2p1:КлючевыеСвойстваБюджета" lowerBound="0" nillable="true"/>
+		<property name="Фамилия" type="d2p1:ФИО" lowerBound="0" nillable="true"/>
+		<property name="Имя" type="d2p1:ФИО" lowerBound="0" nillable="true"/>
+		<property name="Отчество" type="d2p1:ФИО" lowerBound="0" nillable="true"/>
+		<property name="СНИЛС" type="d2p1:СНИЛС" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ЛицевыеСчета" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваЛицевогоСчета" lowerBound="0"/>
+		<property name="ВидЛицевогоСчета" type="d2p1:Наименование" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Мероприятия" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваМероприятия" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваМероприятия" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Номенклатура" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваНоменклатуры"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ПрограммыЦелевыхСтатейКРБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваПрограммыЦелевойСтатьиКРБ"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.РазделыПодразделыКРБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваРазделаПодразделаКРБ"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваРазделаПодразделаКРБ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.СтатьиКИФ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваСтатьиКИФ" lowerBound="0"/>
+		<property name="ЭлементБюджета" type="d2p1:КлючевыеСвойстваЭлементаБюджета" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="ЭлементГруппа" type="d2p1:Флаг" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваСтатьиКИФ" lowerBound="0" nillable="true"/>
+		<property name="ДопустимыеКОСГУ" type="d2p1:Справочник.СтатьиКИФ.ДопустимыеКОСГУ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.СтатьиКИФ.ДопустимыеКОСГУ">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Строка" type="d3p1:Справочник.СтатьиКИФ.ДопустимыеКОСГУ.Строка" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="Справочник.СтатьиКИФ.ДопустимыеКОСГУ.Строка" open="true" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="КОСГУ" type="d3p1:КлючевыеСвойстваКОСГУ" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Наименование" type="d3p1:НаименованиеПолное" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.Учреждения" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваУчреждения" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="d2p1:НаименованиеПолное" lowerBound="0" nillable="true"/>
+		<property name="КодОКАТО" type="d2p1:ОКАТО" lowerBound="0" nillable="true"/>
+		<property name="КодОКТМО" type="d2p1:ОКАТО" lowerBound="0" nillable="true"/>
+		<property name="КодОКПО" type="d2p1:КодОКПО" lowerBound="0" nillable="true"/>
+		<property name="КодПоППП" type="d2p1:КлючевыеСвойстваГлавыПоБюджетнойКлассификации" lowerBound="0" nillable="true"/>
+		<property name="Распорядитель" type="d2p1:КлючевыеСвойстваКонтрагента" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ЦелевыеСтатьиКРБ" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваЦелевойСтатьиКРБ" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:НаименованиеПолное" lowerBound="0"/>
+		<property name="Родитель" type="d2p1:КлючевыеСвойстваЦелевойСтатьиКРБ" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="Справочник.ЭлементыБюджета" base="d2p1:Объект" open="true" ordered="false" sequenced="true">
+		<property name="КлючевыеСвойства" type="d2p1:КлючевыеСвойстваЭлементаБюджета" lowerBound="0"/>
+		<property name="Наименование" type="d2p1:Наименование" lowerBound="0"/>
+		<property name="Уровень" type="d2p1:УровеньБюджета" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="УдалениеОбъекта">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/StateAccounting/2.0" name="СсылкаНаОбъект" type="d3p1:ЛюбаяСсылка"/>
+	</objectType>
+</package>

@@ -1,0 +1,220 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/accounting/autofill">
+	<import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<property name="FillRuleList">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/accounting/autofill" name="FillRule" type="d4p1:FillRule"/>
+		</typeDef>
+	</property>
+	<valueType name="ExtDimensionType" base="xs:NCName" variety="Atomic"/>
+	<valueType name="Reference" base="xs:anyURI" variety="Atomic"/>
+	<objectType name="AbstractFilter" abstract="true"/>
+	<objectType name="BaseObject" abstract="true">
+		<property ref="xml:base" lowerBound="0"/>
+		<property ref="xml:lang" lowerBound="0"/>
+		<property ref="xml:space" lowerBound="0"/>
+		<property ref="xml:id" lowerBound="0"/>
+	</objectType>
+	<objectType name="CommonParameter">
+		<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="obtainMethod" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:NCName" variety="Atomic">
+				<enumeration>value</enumeration>
+				<enumeration>context</enumeration>
+			</typeDef>
+		</property>
+		<property name="visible" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType" nillable="true"/>
+		<property name="presentation" type="xs:string" lowerBound="0"/>
+		<property name="description" type="xs:string" lowerBound="0"/>
+		<property name="listAvailable" type="xs:boolean" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="DCSFilter" base="d2p1:AbstractFilter">
+		<property name="item" type="d2p1:DCSFilterItem" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="DCSFilterElement" base="d2p1:DCSFilterItem">
+		<property name="left" type="xs:anyType" lowerBound="0" nillable="true"/>
+		<property name="comparisonType" type="xs:anyType"/>
+		<property name="right" type="xs:anyType" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="DCSFilterGroup" base="d2p1:DCSFilterItem">
+		<property name="groupType" type="xs:anyType"/>
+		<property name="item" type="d2p1:DCSFilterItem" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="DCSFilterItem" abstract="true">
+		<property name="use" type="xs:boolean" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="DataSet">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="join" type="d3p1:JoinRule" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="table" type="d3p1:TableDef" upperBound="-1"/>
+	</objectType>
+	<objectType name="FillRegionDef">
+		<property name="name" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="reportRow" type="d3p1:ObjectReference" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="dataset" type="d3p1:DataSet"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="schema" type="d3p1:FillSchema"/>
+		<property name="disable" type="xs:boolean" lowerBound="0"/>
+		<property name="option" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="parameter" type="d3p1:RegionParameter" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="FillRule" base="d2p1:IdentifiableObject">
+		<property name="reportForm" type="d2p1:Reference" lowerBound="0" form="Attribute"/>
+		<property name="title" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="parameter" type="d2p1:CommonParameter" lowerBound="0" upperBound="-1"/>
+		<property name="map" type="d2p1:MapDefinition" lowerBound="0" upperBound="-1"/>
+		<property name="fillRegion" type="d2p1:FillRegionDef" lowerBound="0" upperBound="-1"/>
+		<property name="processing" type="d2p1:ProcessingDef" lowerBound="0" upperBound="-1"/>
+		<property name="withSettings" type="xs:boolean" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="FillRuleReference" base="d2p1:IdentifiableObject">
+		<property name="reportForm" type="d2p1:Reference" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="FillSchema">
+		<property name="resourceOrientation" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:NCName" variety="Atomic">
+				<enumeration>vertical</enumeration>
+				<enumeration>horizontal</enumeration>
+			</typeDef>
+		</property>
+		<property name="column" type="xs:string" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="row" type="d3p1:SchemaRow" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="GroupingRow" base="d2p1:TGroupingRow"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="IdentifiableObject" base="d2p1:BaseObject" abstract="true">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="refName" type="d3p1:ReferencableName" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="JoinRule">
+		<property name="parent" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="parentField" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="child" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="childField" type="xs:string" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="MapColumnDef">
+		<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="valueType" type="xs:QName" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="MapDefinition">
+		<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="column" type="d3p1:MapColumnDef" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="row" type="d3p1:MapRow" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="MapRow">
+		<property name="value" type="xs:anyType" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="NamedParameter">
+		<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType" nillable="true"/>
+	</objectType>
+	<objectType name="ObjectReference">
+		<property name="class" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="__content" type="d3p1:Reference" form="Text"/>
+	</objectType>
+	<objectType name="ProcessingDef">
+		<property name="method" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="autorun" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="user_visible" type="xs:boolean" lowerBound="0" form="Attribute" localName="user-visible"/>
+		<property name="presentation" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="parameter" type="d3p1:NamedParameter" lowerBound="0" upperBound="-1"/>
+		<property name="interface_name" type="xs:string" lowerBound="0" form="Element"/>
+		<property name="change_in_setting" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="without_confirm" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="tooltip" type="xs:string" lowerBound="0" form="Element"/>
+	</objectType>
+	<objectType name="RegionParameter">
+		<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType" nillable="true"/>
+		<property name="type" type="xs:string" lowerBound="0"/>
+		<property name="hierarchy" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowRequisitesForm" base="d2p1:TRowRequisitesForm">
+		<property name="Value" type="xs:anyType"/>
+		<property name="ValueType" type="xs:anyType" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowResource" base="d2p1:TRowResource"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowSetting" base="d2p1:TRowSetting">
+		<property name="Resources" type="d2p1:TResources" nillable="true"/>
+		<property name="RequisitesForm" type="d2p1:TRequisitesForm" nillable="true"/>
+		<property name="Filter" type="d2p1:DCSFilter" nillable="true"/>
+		<property name="Grouping" type="d2p1:TGrouping" nillable="true"/>
+	</objectType>
+	<objectType name="SchemaCell">
+		<property name="grouping" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="aggregation" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="__content" type="xs:string" form="Text"/>
+	</objectType>
+	<objectType name="SchemaRow">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="cell" type="d3p1:SchemaCell" upperBound="-1"/>
+		<property name="disable" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType name="TGrouping">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="GroupingRow" type="d3p1:TGroupingRow" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="TGroupingRow" abstract="true">
+		<property name="Name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="Representation" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="GroupingType" type="xs:anyType"/>
+	</objectType>
+	<objectType name="TReportSettings">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowSetting" type="d3p1:TRowSetting" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="TRequisitesForm">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowRequisitesForm" type="d3p1:TRowRequisitesForm" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="TResources">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="RowResource" type="d3p1:TRowResource" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="TRowRequisitesForm" abstract="true">
+		<property name="Name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="Representation" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="UseField" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="Use" type="xs:boolean" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="TRowResource" abstract="true">
+		<property name="Name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="Representation" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="Use" type="xs:boolean" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="TRowSetting" abstract="true">
+		<property name="Use" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="Identifier" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property name="Representation" type="xs:string" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="TableDef">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="name" type="d3p1:ReferencableName" lowerBound="0" form="Attribute"/>
+		<property name="table" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:NCName" variety="Atomic">
+				<enumeration>Balance</enumeration>
+				<enumeration>Turnovers</enumeration>
+				<enumeration>BalanceWithTurnovers</enumeration>
+				<enumeration>Records</enumeration>
+				<enumeration>DrCrTurnovers</enumeration>
+				<enumeration>RecordsWithExtDimensions</enumeration>
+				<enumeration>FEPRecords</enumeration>
+				<enumeration xsi:type="xs:string">ReportRecords</enumeration>
+				<enumeration xsi:type="xs:string">Advances</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x30</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x69</enumeration>
+				<enumeration xsi:type="xs:string">Longterm</enumeration>
+				<enumeration xsi:type="xs:string">LatePayment</enumeration>
+				<enumeration xsi:type="xs:string">Obligations</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x30Code</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x69Code</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x69Segment</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x73Code</enumeration>
+				<enumeration xsi:type="xs:string">LongtermCode</enumeration>
+				<enumeration xsi:type="xs:string">LatePaymentCode</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x73CodeOnDate</enumeration>
+				<enumeration xsi:type="xs:string">ExpandedBalance_x73CodeReason</enumeration>
+				<enumeration xsi:type="xs:string">Turnovers109</enumeration>
+				<enumeration xsi:type="xs:string">ForDataCard</enumeration>
+				<enumeration xsi:type="xs:string">LongtermPeriod</enumeration>
+				<enumeration xsi:type="xs:string">DataFor190_790</enumeration>
+				<enumeration xsi:type="xs:string">LongRightsAssets</enumeration>
+				<enumeration xsi:type="xs:string">OccurrenceDebt</enumeration>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="parameter" type="d3p1:NamedParameter" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/accounting/autofill" name="filter" type="d3p1:AbstractFilter" lowerBound="0"/>
+		<property name="сomment" type="xs:string" lowerBound="0"/>
+	</objectType>
+</package>

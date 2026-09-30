@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаДобавитьВДокумент" id="38">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ДобавитьВДокумент</CommandName>
+				<ExtendedTooltip name="ФормаДобавитьВДокументРасширеннаяПодсказка" id="39"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОбъектыНФА" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объекты НФА</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбъектыНФАРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОдинОбъектНФА" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Один объект НФА</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОдинОбъектНФАРасширеннаяПодсказка" id="55"/>
+					<ChildItems>
+						<InputField name="ОбъектНФА" id="1">
+							<DataPath>Объект.ОбъектНФА</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ОбъектНФАКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ОбъектНФАРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="ИнвНомер" id="4">
+							<DataPath>Объект.ИнвНомер</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ИнвНомерКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ИнвНомерРасширеннаяПодсказка" id="6"/>
+						</InputField>
+						<InputField name="Количество" id="40">
+							<DataPath>Объект.Количество</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="КоличествоКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="КоличествоРасширеннаяПодсказка" id="42"/>
+							<Events>
+								<Event name="OnChange">КоличествоПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ДекорацияДобавитьДляОбъекта" id="92">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавить для указанного количества объектов НФА следующий список драг. материалов:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияДобавитьДляОбъектаКонтекстноеМеню" id="93"/>
+							<ExtendedTooltip name="ДекорацияДобавитьДляОбъектаРасширеннаяПодсказка" id="94"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСписокОбъектовНФА" id="56">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список объектов НФА</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список объектов НФА, для каждой единицы которых будет добавлен указанный список драгоценных материалов</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаСписокОбъектовНФАРасширеннаяПодсказка" id="57"/>
+					<ChildItems>
+						<Table name="СписокОбъектовНФА" id="58">
+							<ReadOnly>true</ReadOnly>
+							<HeightInTableRows>3</HeightInTableRows>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.СписокОбъектовНФА</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокОбъектовНФАКонтекстноеМеню" id="59"/>
+							<AutoCommandBar name="СписокОбъектовНФАКоманднаяПанель" id="60">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокОбъектовНФАРасширеннаяПодсказка" id="61"/>
+							<SearchStringAddition name="СписокОбъектовНФАСтрокаПоиска" id="62">
+								<AdditionSource>
+									<Item>СписокОбъектовНФА</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбъектовНФАСтрокаПоискаКонтекстноеМеню" id="65"/>
+								<ExtendedTooltip name="СписокОбъектовНФАСтрокаПоискаРасширеннаяПодсказка" id="66"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокОбъектовНФАСостояниеПросмотра" id="67">
+								<AdditionSource>
+									<Item>СписокОбъектовНФА</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбъектовНФАСостояниеПросмотраКонтекстноеМеню" id="70"/>
+								<ExtendedTooltip name="СписокОбъектовНФАСостояниеПросмотраРасширеннаяПодсказка" id="71"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокОбъектовНФАУправлениеПоиском" id="72">
+								<AdditionSource>
+									<Item>СписокОбъектовНФА</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбъектовНФАУправлениеПоискомКонтекстноеМеню" id="75"/>
+								<ExtendedTooltip name="СписокОбъектовНФАУправлениеПоискомРасширеннаяПодсказка" id="76"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокОбъектовНФАНомерСтроки" id="77">
+									<DataPath>Объект.СписокОбъектовНФА.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокОбъектовНФАНомерСтрокиКонтекстноеМеню" id="78"/>
+									<ExtendedTooltip name="СписокОбъектовНФАНомерСтрокиРасширеннаяПодсказка" id="79"/>
+								</LabelField>
+								<InputField name="СписокОбъектовНФАОбъектНФА" id="80">
+									<DataPath>Объект.СписокОбъектовНФА.ОбъектНФА</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокОбъектовНФАОбъектНФАКонтекстноеМеню" id="81"/>
+									<ExtendedTooltip name="СписокОбъектовНФАОбъектНФАРасширеннаяПодсказка" id="82"/>
+								</InputField>
+								<InputField name="СписокОбъектовНФАИнвНомер" id="83">
+									<DataPath>Объект.СписокОбъектовНФА.ИнвНомер</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокОбъектовНФАИнвНомерКонтекстноеМеню" id="84"/>
+									<ExtendedTooltip name="СписокОбъектовНФАИнвНомерРасширеннаяПодсказка" id="85"/>
+								</InputField>
+								<InputField name="СписокОбъектовНФАКоличество" id="86">
+									<DataPath>Объект.СписокОбъектовНФА.Количество</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокОбъектовНФАКоличествоКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="СписокОбъектовНФАКоличествоРасширеннаяПодсказка" id="88"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<LabelDecoration name="ДекорацияДобавитьДляОбъектов" id="89">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавить для каждой единицы объекта НФА следующий список драг. материалов:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияДобавитьДляОбъектовКонтекстноеМеню" id="90"/>
+							<ExtendedTooltip name="ДекорацияДобавитьДляОбъектовРасширеннаяПодсказка" id="91"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="СписокДМ" id="7">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.СписокДМ</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокДМКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="СписокДМКоманднаяПанель" id="9"/>
+			<ExtendedTooltip name="СписокДМРасширеннаяПодсказка" id="10"/>
+			<SearchStringAddition name="СписокДМСтрокаПоиска" id="11">
+				<AdditionSource>
+					<Item>СписокДМ</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокДМСтрокаПоискаКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="СписокДМСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокДМСостояниеПросмотра" id="16">
+				<AdditionSource>
+					<Item>СписокДМ</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокДМСостояниеПросмотраКонтекстноеМеню" id="19"/>
+				<ExtendedTooltip name="СписокДМСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокДМУправлениеПоиском" id="21">
+				<AdditionSource>
+					<Item>СписокДМ</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокДМУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="СписокДМУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnStartEdit">СписокДМПриНачалеРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="СписокДМНомерСтроки" id="26">
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМНомерСтрокиКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="СписокДМНомерСтрокиРасширеннаяПодсказка" id="28"/>
+				</LabelField>
+				<InputField name="СписокДМВидДрагМатериала" id="29">
+					<DataPath>Объект.СписокДМ.ВидДрагМатериала</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМВидДрагМатериалаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="СписокДМВидДрагМатериалаРасширеннаяПодсказка" id="31"/>
+					<Events>
+						<Event name="OnChange">СписокДМВидДрагМатериалаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="СписокДММассаЕдиницы" id="43">
+					<DataPath>Объект.СписокДМ.МассаЕдиницы</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокДММассаЕдиницыКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="СписокДММассаЕдиницыРасширеннаяПодсказка" id="45"/>
+					<Events>
+						<Event name="OnChange">СписокДММассаЕдиницыПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="СписокДММасса" id="32">
+					<DataPath>Объект.СписокДМ.МассаДМ</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДММассаКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="СписокДММассаРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="СписокДМЛигатурнаяМасса" id="46">
+					<DataPath>Объект.СписокДМ.ЛигатурнаяМасса</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМЛигатурнаяМассаКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="СписокДМЛигатурнаяМассаРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<InputField name="СписокДМЧистаяМасса" id="49">
+					<DataPath>Объект.СписокДМ.ЧистаяМасса</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМЧистаяМассаКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="СписокДМЧистаяМассаРасширеннаяПодсказка" id="51"/>
+				</InputField>
+				<InputField name="СписокДМЕдИзм" id="35">
+					<DataPath>Объект.СписокДМ.ЕдИзм</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>4</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокДМЕдИзмКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="СписокДМЕдИзмРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="СписокДМКоличествоЕдиницы" id="95">
+					<DataPath>Объект.СписокДМ.КоличествоЕдиницы</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМКоличествоЕдиницыКонтекстноеМеню" id="96"/>
+					<ExtendedTooltip name="СписокДМКоличествоЕдиницыРасширеннаяПодсказка" id="97"/>
+					<Events>
+						<Event name="OnChange">СписокДМКоличествоЕдиницыПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="СписокДМКоличествоДМ" id="98">
+					<DataPath>Объект.СписокДМ.КоличествоДМ</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокДМКоличествоДМКонтекстноеМеню" id="99"/>
+					<ExtendedTooltip name="СписокДМКоличествоДМРасширеннаяПодсказка" id="100"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаДрагМатериаловКапвложений" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа драг материалов капвложений</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа драг материалов капвложений</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДрагМатериаловКапвложенийРасширеннаяПодсказка" id="102"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаМатериальныхЦенностей" id="103">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материальные ценности в капитальном вложении</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материальные ценности входящие в состав одного объекта вложений</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаМатериальныхЦенностейРасширеннаяПодсказка" id="104"/>
+					<ChildItems>
+						<Table name="МатериальныеЦенностиКапвложения" id="135">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>МатериальныеЦенностиКапвложения</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="МатериальныеЦенностиКапвложенияКонтекстноеМеню" id="136"/>
+							<AutoCommandBar name="МатериальныеЦенностиКапвложенияКоманднаяПанель" id="137"/>
+							<ExtendedTooltip name="МатериальныеЦенностиКапвложенияРасширеннаяПодсказка" id="138"/>
+							<SearchStringAddition name="МатериальныеЦенностиКапвложенияСтрокаПоиска" id="139">
+								<AdditionSource>
+									<Item>МатериальныеЦенностиКапвложения</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="МатериальныеЦенностиКапвложенияСтрокаПоискаКонтекстноеМеню" id="140"/>
+								<ExtendedTooltip name="МатериальныеЦенностиКапвложенияСтрокаПоискаРасширеннаяПодсказка" id="141"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="МатериальныеЦенностиКапвложенияСостояниеПросмотра" id="142">
+								<AdditionSource>
+									<Item>МатериальныеЦенностиКапвложения</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="МатериальныеЦенностиКапвложенияСостояниеПросмотраКонтекстноеМеню" id="143"/>
+								<ExtendedTooltip name="МатериальныеЦенностиКапвложенияСостояниеПросмотраРасширеннаяПодсказка" id="144"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="МатериальныеЦенностиКапвложенияУправлениеПоиском" id="145">
+								<AdditionSource>
+									<Item>МатериальныеЦенностиКапвложения</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="МатериальныеЦенностиКапвложенияУправлениеПоискомКонтекстноеМеню" id="146"/>
+								<ExtendedTooltip name="МатериальныеЦенностиКапвложенияУправлениеПоискомРасширеннаяПодсказка" id="147"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">МатериальныеЦенностиКапвложенияПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="МатериальныеЦенностиКапвложенияОбъектМЦ" id="148">
+									<DataPath>МатериальныеЦенностиКапвложения.ОбъектМЦ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="МатериальныеЦенностиКапвложенияОбъектМЦКонтекстноеМеню" id="149"/>
+									<ExtendedTooltip name="МатериальныеЦенностиКапвложенияОбъектМЦРасширеннаяПодсказка" id="150"/>
+									<Events>
+										<Event name="OnChange">МатериальныеЦенностиКапвложенияМатериальнаяЦенностьПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="МатериальныеЦенностиКапвложенияКоличествоМЦ" id="151">
+									<DataPath>МатериальныеЦенностиКапвложения.КоличествоМЦ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="МатериальныеЦенностиКапвложенияКоличествоМЦКонтекстноеМеню" id="152"/>
+									<ExtendedTooltip name="МатериальныеЦенностиКапвложенияКоличествоМЦРасширеннаяПодсказка" id="153"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаДрагоценныеМатериалыМЦ" id="105">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Содержание драг. материалов в материальной ценности</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Драгоценные материалы в одном объекте материальных ценностей</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаДрагоценныеМатериалыМЦРасширеннаяПодсказка" id="106"/>
+					<ChildItems>
+						<Table name="ДрагМатериалыМЦ" id="107">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ДрагМатериалыМЦ</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДрагМатериалыМЦКонтекстноеМеню" id="108"/>
+							<AutoCommandBar name="ДрагМатериалыМЦКоманднаяПанель" id="109"/>
+							<ExtendedTooltip name="ДрагМатериалыМЦРасширеннаяПодсказка" id="110"/>
+							<SearchStringAddition name="ДрагМатериалыМЦСтрокаПоиска" id="111">
+								<AdditionSource>
+									<Item>ДрагМатериалыМЦ</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДрагМатериалыМЦСтрокаПоискаКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="ДрагМатериалыМЦСтрокаПоискаРасширеннаяПодсказка" id="113"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДрагМатериалыМЦСостояниеПросмотра" id="114">
+								<AdditionSource>
+									<Item>ДрагМатериалыМЦ</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДрагМатериалыМЦСостояниеПросмотраКонтекстноеМеню" id="115"/>
+								<ExtendedTooltip name="ДрагМатериалыМЦСостояниеПросмотраРасширеннаяПодсказка" id="116"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДрагМатериалыМЦУправлениеПоиском" id="117">
+								<AdditionSource>
+									<Item>ДрагМатериалыМЦ</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДрагМатериалыМЦУправлениеПоискомКонтекстноеМеню" id="118"/>
+								<ExtendedTooltip name="ДрагМатериалыМЦУправлениеПоискомРасширеннаяПодсказка" id="119"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ДрагМатериалыМЦОбъектМЦ" id="120">
+									<DataPath>ДрагМатериалыМЦ.ОбъектМЦ</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ДрагМатериалыМЦОбъектМЦКонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="ДрагМатериалыМЦОбъектМЦРасширеннаяПодсказка" id="122"/>
+								</InputField>
+								<InputField name="ДрагМатериалыМЦВидДрагМатериала" id="123">
+									<DataPath>ДрагМатериалыМЦ.ВидДрагМатериала</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Драг. материал</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ДрагМатериалыМЦВидДрагМатериалаКонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="ДрагМатериалыМЦВидДрагМатериалаРасширеннаяПодсказка" id="125"/>
+									<Events>
+										<Event name="OnChange">ДрагМатериалыМЦВидДрагМатериалаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ДрагМатериалыМЦМассаДМ" id="126">
+									<DataPath>ДрагМатериалыМЦ.МассаДМ</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Масса</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>14</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ДрагМатериалыМЦМассаДМКонтекстноеМеню" id="127"/>
+									<ExtendedTooltip name="ДрагМатериалыМЦМассаДМРасширеннаяПодсказка" id="128"/>
+								</InputField>
+								<InputField name="ДрагМатериалыМЦЕдИзм" id="129">
+									<DataPath>ДрагМатериалыМЦ.ЕдИзм</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>5</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ДрагМатериалыМЦЕдИзмКонтекстноеМеню" id="130"/>
+									<ExtendedTooltip name="ДрагМатериалыМЦЕдИзмРасширеннаяПодсказка" id="131"/>
+								</InputField>
+								<InputField name="ДрагМатериалыМЦКоличествоДМ" id="132">
+									<DataPath>ДрагМатериалыМЦ.КоличествоДМ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>13</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ДрагМатериалыМЦКоличествоДМКонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="ДрагМатериалыМЦКоличествоДМРасширеннаяПодсказка" id="134"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ДобавлениеСпискаДМ</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ВариантВводаДанных" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант ввода данных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДрагМатериалыМЦ" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Драг материалы МЦ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ОбъектМЦ" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материальная ценность</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидДрагМатериала" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид драг материала</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДрагМеталлы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="МассаДМ" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Масса ДМ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>18</v8:Digits>
+							<v8:FractionDigits>8</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЕдИзм" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ед. изм.</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторЕдиницИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КоличествоДМ" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество (шт.)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="МатериальныеЦенностиКапвложения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Материальные ценности капвложения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ОбъектМЦ" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материальная ценность</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:CatalogRef.ОсновныеСредства</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КоличествоМЦ" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДобавитьВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьВДокумент</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ЭтоКапвложение">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

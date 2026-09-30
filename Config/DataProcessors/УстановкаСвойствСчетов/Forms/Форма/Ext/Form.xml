@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="СохранитьЗначения" id="64">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.SaveValues</CommandName>
+				<ExtendedTooltip name="СохранитьЗначенияРасширеннаяПодсказка" id="209"/>
+			</Button>
+			<Button name="ВосстановитьЗначения" id="65">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.RestoreValues</CommandName>
+				<ExtendedTooltip name="ВосстановитьЗначенияРасширеннаяПодсказка" id="210"/>
+			</Button>
+			<Button name="Выполнить" id="66">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВосстановитьСчета</CommandName>
+				<ExtendedTooltip name="ВыполнитьРасширеннаяПодсказка" id="211"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">ПриСохраненииДанныхВНастройкахНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<CheckBoxField name="ВсеСчета" id="59">
+			<DataPath>Объект.ВсеСчета</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВсеСчетаКонтекстноеМеню" id="60"/>
+			<ExtendedTooltip name="ВсеСчетаРасширеннаяПодсказка" id="215"/>
+			<Events>
+				<Event name="OnChange">ВсеСчетаПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<CheckBoxField name="СчетаСИерархией" id="61">
+			<DataPath>Объект.СчетаСИерархией</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранные счета обрабатывать с вложенными</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="СчетаСИерархиейКонтекстноеМеню" id="62"/>
+			<ExtendedTooltip name="СчетаСИерархиейРасширеннаяПодсказка" id="216"/>
+		</CheckBoxField>
+		<UsualGroup name="СчетаПараметры" id="208">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета параметры</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>None</ToolTipRepresentation>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="СчетаПараметрыРасширеннаяПодсказка" id="220"/>
+			<ChildItems>
+				<Table name="СписокСчетов" id="67">
+					<Header>false</Header>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Объект.СписокСчетов</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СписокСчетовКонтекстноеМеню" id="68"/>
+					<AutoCommandBar name="СписокСчетовКоманднаяПанель" id="69">
+						<ChildItems>
+							<Button name="Подбор" id="74">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодборСчета</CommandName>
+								<ExtendedTooltip name="ПодборРасширеннаяПодсказка" id="221"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокСчетовРасширеннаяПодсказка" id="222"/>
+					<SearchStringAddition name="СписокСчетовСтрокаПоиска" id="223">
+						<AdditionSource>
+							<Item>СписокСчетов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокСчетовСтрокаПоискаКонтекстноеМеню" id="224"/>
+						<ExtendedTooltip name="СписокСчетовСтрокаПоискаРасширеннаяПодсказка" id="225"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокСчетовСостояниеПросмотра" id="226">
+						<AdditionSource>
+							<Item>СписокСчетов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокСчетовСостояниеПросмотраКонтекстноеМеню" id="227"/>
+						<ExtendedTooltip name="СписокСчетовСостояниеПросмотраРасширеннаяПодсказка" id="228"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокСчетовУправлениеПоиском" id="229">
+						<AdditionSource>
+							<Item>СписокСчетов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокСчетовУправлениеПоискомКонтекстноеМеню" id="230"/>
+						<ExtendedTooltip name="СписокСчетовУправлениеПоискомРасширеннаяПодсказка" id="231"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="ChoiceProcessing">СписокСчетовОбработкаВыбора</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="СписокСчетовСчет" id="72">
+							<DataPath>Объект.СписокСчетов.Счет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Счет</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+							<ContextMenu name="СписокСчетовСчетКонтекстноеМеню" id="73"/>
+							<ExtendedTooltip name="СписокСчетовСчетРасширеннаяПодсказка" id="232"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<Table name="Параметры" id="182">
+					<ChangeRowSet>false</ChangeRowSet>
+					<SelectionMode>SingleRow</SelectionMode>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<Output>Enable</Output>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Объект.Параметры</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ПараметрыКонтекстноеМеню" id="183"/>
+					<AutoCommandBar name="ПараметрыКоманднаяПанель" id="184">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Popup name="ВосстановитьЗначение" id="199">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Установить по умолчанию</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ВосстановитьЗначениеРасширеннаяПодсказка" id="233"/>
+								<ChildItems>
+									<Button name="ВосстановитьОтметитьВсе" id="197">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВосстановитьОтметитьВсе</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отметить все</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ВосстановитьОтметитьВсеРасширеннаяПодсказка" id="234"/>
+									</Button>
+									<Button name="ВосстановитьСнятьВсе" id="200">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВосстановитьСнятьВсе</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Снять все отметки</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ВосстановитьСнятьВсеРасширеннаяПодсказка" id="235"/>
+									</Button>
+								</ChildItems>
+							</Popup>
+							<Popup name="УстановитьЗначение" id="201">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Установить значение</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="УстановитьЗначениеРасширеннаяПодсказка" id="236"/>
+								<ChildItems>
+									<Button name="УстановитьОтметитьВсе" id="202">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УстановитьОтметитьВсе</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отметить все</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="УстановитьОтметитьВсеРасширеннаяПодсказка" id="237"/>
+									</Button>
+									<Button name="УстановитьСнятьВсе" id="203">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УстановитьСнятьВсе</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Снять все отметки</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="УстановитьСнятьВсеРасширеннаяПодсказка" id="238"/>
+									</Button>
+								</ChildItems>
+							</Popup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ПараметрыРасширеннаяПодсказка" id="239"/>
+					<SearchStringAddition name="ПараметрыСтрокаПоиска" id="240">
+						<AdditionSource>
+							<Item>Параметры</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПараметрыСтрокаПоискаКонтекстноеМеню" id="241"/>
+						<ExtendedTooltip name="ПараметрыСтрокаПоискаРасширеннаяПодсказка" id="242"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ПараметрыСостояниеПросмотра" id="243">
+						<AdditionSource>
+							<Item>Параметры</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПараметрыСостояниеПросмотраКонтекстноеМеню" id="244"/>
+						<ExtendedTooltip name="ПараметрыСостояниеПросмотраРасширеннаяПодсказка" id="245"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ПараметрыУправлениеПоиском" id="246">
+						<AdditionSource>
+							<Item>Параметры</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ПараметрыУправлениеПоискомКонтекстноеМеню" id="247"/>
+						<ExtendedTooltip name="ПараметрыУправлениеПоискомРасширеннаяПодсказка" id="248"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="ПараметрыНаименование" id="189">
+							<DataPath>Объект.Параметры.Наименование</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПараметрыНаименованиеКонтекстноеМеню" id="190"/>
+							<ExtendedTooltip name="ПараметрыНаименованиеРасширеннаяПодсказка" id="249"/>
+						</InputField>
+						<CheckBoxField name="ПараметрыВосстановить" id="191">
+							<DataPath>Объект.Параметры.Восстановить</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПараметрыВосстановитьКонтекстноеМеню" id="192"/>
+							<ExtendedTooltip name="ПараметрыВосстановитьРасширеннаяПодсказка" id="250"/>
+							<Events>
+								<Event name="OnChange">ПараметрыВосстановитьПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<ColumnGroup name="ГруппаУстановитьЗначение" id="253">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Установить значение</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ShowInHeader>true</ShowInHeader>
+							<ExtendedTooltip name="ГруппаУстановитьЗначениеРасширеннаяПодсказка" id="254"/>
+							<ChildItems>
+								<CheckBoxField name="ПараметрыУстановить" id="193">
+									<DataPath>Объект.Параметры.Установить</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ПараметрыУстановитьКонтекстноеМеню" id="194"/>
+									<ExtendedTooltip name="ПараметрыУстановитьРасширеннаяПодсказка" id="251"/>
+									<Events>
+										<Event name="OnChange">ПараметрыУстановитПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="ПараметрыЗначение" id="195">
+									<DataPath>Объект.Параметры.Значение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="ПараметрыЗначениеКонтекстноеМеню" id="196"/>
+									<ExtendedTooltip name="ПараметрыЗначениеРасширеннаяПодсказка" id="252"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.УстановкаСвойствСчетов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>1/0:092d7b7e-23bd-4cc7-a74e-f8fb31f3e869</Field>
+				<Field>1/0:0be544f3-a7e8-4356-abc5-6977eac5228a</Field>
+				<Field>1/0:0d7e56b6-0009-42d9-a338-30c18beb0102</Field>
+				<Field>1/0:0fdf3865-fed4-47dd-bb30-424a69f84d46</Field>
+				<Field>1/0:10f96e3e-a8b2-4ef9-9608-ab12cbd8b268</Field>
+				<Field>1/0:1f591547-4ba8-4d97-8c3a-69e32b1b0a6c</Field>
+				<Field>1/0:22aebce1-1f9e-43e9-b433-14d75006dd57</Field>
+				<Field>1/0:232511ad-d69a-4bbf-9ce7-afde030c9904</Field>
+				<Field>1/0:2b08f9a8-e457-45ef-b21c-ec97c4053171</Field>
+				<Field>1/0:2c33bd48-bbcb-4705-84a0-659f6eb124ca</Field>
+				<Field>1/0:3f729a40-6fe9-49b0-84c4-85287abfbcd0</Field>
+				<Field>1/0:4465bdd7-0458-4657-a8ed-6316594ff07a</Field>
+				<Field>1/0:4a9810f5-b89e-4230-b9b4-984f0001c788</Field>
+				<Field>1/0:4d437c8c-0e93-45dd-9e70-acb2ac58cfbc</Field>
+				<Field>1/0:4d7522b9-7e01-4363-87f8-82904cda29f7</Field>
+				<Field>1/0:52c38ce0-00dc-4b5c-a3f0-6f8e894dcc92</Field>
+				<Field>1/0:5cbe2496-d06f-49ee-acd5-c57e329152f0</Field>
+				<Field>1/0:63a16956-0af7-4189-aced-72fb5b5448cc</Field>
+				<Field>1/0:640c6c6a-f4df-4fe4-aa5c-e1de016f9f31</Field>
+				<Field>1/0:6bd72457-8d39-4424-9523-6a742ea379ee</Field>
+				<Field>1/0:71c650ab-c5f4-4304-965d-723a8ec39a14</Field>
+				<Field>1/0:73efeeb5-40e5-4907-82c7-a9fb95ffe65b</Field>
+				<Field>1/0:7cbdab97-c7aa-40ae-8729-e59981031852</Field>
+				<Field>1/0:8c22614a-1a91-494b-bc1d-9af9ccd7c04c</Field>
+				<Field>1/0:8d483294-d05b-4dcb-bced-bd0ebfc759ca</Field>
+				<Field>1/0:92c214eb-4081-4df0-9e2a-8ac26b64260d</Field>
+				<Field>1/0:9c8cf146-563d-479a-a1be-6c6a4bc8903f</Field>
+				<Field>1/0:aa7bb95f-5c8e-4363-8297-fb4cb7db96dd</Field>
+				<Field>1/0:b422cf2f-80c7-4d28-8c0a-46261862582d</Field>
+				<Field>1/0:b52714aa-9d66-464b-91c9-9e58bcf4658c</Field>
+				<Field>1/0:ba83e2ab-420b-4474-a14a-32c6d04c5c6e</Field>
+				<Field>1/0:cd695e36-f089-493b-8634-edd248018f09</Field>
+				<Field>1/0:d033c50f-ca1a-4c2c-b460-531ff3d82252</Field>
+				<Field>1/0:d14a8db8-cab2-46f1-816e-6ae2836d1b72</Field>
+				<Field>1/0:d1fd39e9-1219-4ab2-8dd2-032a1bd657b5</Field>
+				<Field>1/0:d3725cc8-9804-4790-89c4-a91acef3058a</Field>
+				<Field>1/0:dec7483c-fadd-41fd-9dd9-9ce12d4437f4</Field>
+				<Field>1/0:e33de32d-2de9-4b7e-98d6-ca68a8411081</Field>
+				<Field>1/0:e366fd1b-0485-4a5f-baa6-dffb6bf08c83</Field>
+				<Field>1/0:e7b12d0f-b27c-42be-b26a-1702d9d9f654</Field>
+				<Field>1/0:ea93e830-e087-4441-88f9-83a839790527</Field>
+				<Field>Объект.ВсеСчета</Field>
+				<Field>Объект.СчетаСИерархией</Field>
+			</Save>
+			<Columns>
+				<AdditionalColumns table="Объект.Параметры"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИдентификаторЗадания" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВосстановитьСчета" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить свойства счетов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить свойства счетов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВосстановитьСчета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборСчета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор счета</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборСчета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВосстановитьОтметитьВсе" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить отметить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить отметить все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВосстановитьОтметитьВсе</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВосстановитьСнятьВсе" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить снять все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить снять все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВосстановитьСнятьВсе</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьОтметитьВсе" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отметить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отметить все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьОтметитьВсе</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьСнятьВсе" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить снять все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить снять все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьСнятьВсе</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

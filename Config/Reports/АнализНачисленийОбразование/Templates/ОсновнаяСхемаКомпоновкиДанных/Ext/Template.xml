@@ -1,0 +1,778 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоговорКонтрагента</dataPath>
+			<field>ДоговорКонтрагента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Льгота</dataPath>
+			<field>Льгота</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодНачисления</dataPath>
+			<field>ПериодНачисления</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='MMMM yyyy'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодНачисленияКонец</dataPath>
+			<field>ПериодНачисленияКонец</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодНачисленияНачало</dataPath>
+			<field>ПериодНачисленияНачало</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПорядокВыпискиСФ</dataPath>
+			<field>ПорядокВыпискиСФ</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтавкаНДС</dataPath>
+			<field>СтавкаНДС</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтавкаОплаты</dataPath>
+			<field>СтавкаОплаты</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Студент</dataPath>
+			<field>Студент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНДС</dataPath>
+			<field>СуммаНДС</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипНачисления</dataPath>
+			<field>ТипНачисления</field>
+			<presentationExpression>ВЫБОР 
+	КОГДА ТипНачисления = 0 ТОГДА 
+   	"Плановые начисления" 
+   КОГДА ТипНачисления = 1 ТОГДА 
+   	"Фактически начислено" 
+	ИНАЧЕ 
+   	"Неизвестный тип начисления"
+КОНЕЦ</presentationExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТребуетсяПерерасчет</dataPath>
+			<field>ТребуетсяПерерасчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Факультет</dataPath>
+			<field>Факультет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ начисления</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НачисленияНеКорректны</dataPath>
+			<field>НачисленияНеКорректны</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поле</dataPath>
+			<field>Поле</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Договор</dataPath>
+			<field>Договор</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НачисленияОбразование.Факультет КАК Факультет,
+	НачисленияОбразование.Студент КАК Студент,
+	НАЧАЛОПЕРИОДА(МИНИМУМ(НачисленияОбразование.Период), МЕСЯЦ) КАК ПериодДвижений
+ПОМЕСТИТЬ НачальныеДвижения
+ИЗ
+	Последовательность.НачисленияОбразование КАК НачисленияОбразование
+
+СГРУППИРОВАТЬ ПО
+	НачисленияОбразование.Факультет,
+	НачисленияОбразование.Студент
+
+ИНДЕКСИРОВАТЬ ПО
+	Факультет,
+	Студент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	КонечныеДвижения.Студент КАК Студент,
+	КонечныеДвижения.Факультет КАК Факультет,
+	КонечныеДвижения.Договор КАК Договор,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(КонечныеДвижения.Значение КАК Справочник.СостоянияСтудентов).ДействуетНачисление
+			ТОГДА НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, МЕСЯЦ)
+		ИНАЧЕ НАЧАЛОПЕРИОДА(КонечныеДвижения.Период, МЕСЯЦ)
+	КОНЕЦ КАК ПериодДвижений
+ПОМЕСТИТЬ КонечныеДвижения
+ИЗ
+	РегистрСведений.СведенияОСтудентах.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;ТекущаяДата, МЕСЯЦ))}, Поле = ЗНАЧЕНИЕ(ПланВидовХарактеристик.ПоляПриказовОбразование.СостояниеСтудента)) КАК КонечныеДвижения
+
+ИНДЕКСИРОВАТЬ ПО
+	Студент,
+	Факультет
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НачисленияПлановыеОбразование.ПериодНачисления КАК ПериодДвижений,
+	НачисленияПлановыеОбразование.Факультет КАК Факультет,
+	НачисленияПлановыеОбразование.Студент КАК Студент,
+	НачисленияПлановыеОбразование.ДоговорКонтрагента КАК Договор
+ПОМЕСТИТЬ ТаблицаУдаления
+ИЗ
+	РегистрСведений.НачисленияПлановыеОбразование КАК НачисленияПлановыеОбразование
+		ЛЕВОЕ СОЕДИНЕНИЕ НачальныеДвижения КАК НачальныеДвижения
+		ПО НачисленияПлановыеОбразование.Факультет = НачальныеДвижения.Факультет
+			И НачисленияПлановыеОбразование.Студент = НачальныеДвижения.Студент
+			И НачисленияПлановыеОбразование.ПериодНачисления &lt; НачальныеДвижения.ПериодДвижений
+ГДЕ
+	НЕ НачальныеДвижения.ПериодДвижений ЕСТЬ NULL
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	НачисленияПлановыеОбразование.ПериодНачисления,
+	НачисленияПлановыеОбразование.Факультет,
+	НачисленияПлановыеОбразование.Студент,
+	НачисленияПлановыеОбразование.ДоговорКонтрагента
+ИЗ
+	РегистрСведений.НачисленияПлановыеОбразование КАК НачисленияПлановыеОбразование
+ГДЕ
+	НачисленияПлановыеОбразование.ПериодНачисления &gt; КОНЕЦПЕРИОДА(&amp;ТекущаяДата, МЕСЯЦ)
+
+ИНДЕКСИРОВАТЬ ПО
+	ПериодДвижений,
+	Факультет,
+	Студент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НАЧАЛОПЕРИОДА(НачисленияПлановыеОбразование.ПериодНачисления, МЕСЯЦ) КАК ПериодНачисления,
+	НачисленияПлановыеОбразование.Факультет КАК Факультет,
+	НачисленияПлановыеОбразование.Студент КАК Студент,
+	НачисленияПлановыеОбразование.ПериодНачисленияНачало КАК ПериодНачисленияНачало,
+	НачисленияПлановыеОбразование.ПериодНачисленияКонец КАК ПериодНачисленияКонец,
+	НачисленияПлановыеОбразование.Контрагент КАК Контрагент,
+	НачисленияПлановыеОбразование.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	НачисленияПлановыеОбразование.СтавкаОплаты КАК СтавкаОплаты,
+	НачисленияПлановыеОбразование.Льгота КАК Льгота,
+	НачисленияПлановыеОбразование.Сумма КАК Сумма,
+	НачисленияПлановыеОбразование.СтавкаНДС КАК СтавкаНДС,
+	НачисленияПлановыеОбразование.СуммаНДС КАК СуммаНДС,
+	НачисленияПлановыеОбразование.ПорядокВыпискиСФ КАК ПорядокВыпискиСФ
+ПОМЕСТИТЬ Плановые
+ИЗ
+	РегистрСведений.НачисленияПлановыеОбразование КАК НачисленияПлановыеОбразование
+{ГДЕ
+	(НачисленияПлановыеОбразование.ПериодНачисления &gt;= НАЧАЛОПЕРИОДА(&amp;НачалоПериода, МЕСЯЦ)),
+	(НачисленияПлановыеОбразование.ПериодНачисления &lt;= КОНЕЦПЕРИОДА(&amp;КонецПериода, МЕСЯЦ)),
+	НачисленияПлановыеОбразование.Факультет.*,
+	НачисленияПлановыеОбразование.Студент.*,
+	НачисленияПлановыеОбразование.Контрагент.*,
+	НачисленияПлановыеОбразование.ДоговорКонтрагента.*,
+	НачисленияПлановыеОбразование.СтавкаОплаты.*}
+
+ИНДЕКСИРОВАТЬ ПО
+	ПериодНачисления,
+	Факультет,
+	Студент,
+	ПериодНачисленияНачало,
+	ПериодНачисленияКонец
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НачисленияФактическиеОбразование.Регистратор КАК Регистратор,
+	НАЧАЛОПЕРИОДА(НачисленияФактическиеОбразование.Период, МЕСЯЦ) КАК ПериодНачисления,
+	НачисленияФактическиеОбразование.Факультет КАК Факультет,
+	НачисленияФактическиеОбразование.Студент КАК Студент,
+	НачисленияФактическиеОбразование.ПериодНачисленияНачало КАК ПериодНачисленияНачало,
+	НачисленияФактическиеОбразование.ПериодНачисленияКонец КАК ПериодНачисленияКонец,
+	НачисленияФактическиеОбразование.Контрагент КАК Контрагент,
+	НачисленияФактическиеОбразование.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	НачисленияФактическиеОбразование.СтавкаОплаты КАК СтавкаОплаты,
+	НачисленияФактическиеОбразование.Льгота КАК Льгота,
+	НачисленияФактическиеОбразование.Сумма КАК Сумма,
+	НачисленияФактическиеОбразование.СтавкаНДС КАК СтавкаНДС,
+	НачисленияФактическиеОбразование.СуммаНДС КАК СуммаНДС,
+	НачисленияФактическиеОбразование.ПорядокВыпискиСФ КАК ПорядокВыпискиСФ
+ПОМЕСТИТЬ Фактические
+ИЗ
+	РегистрНакопления.НачисленияФактическиеОбразование КАК НачисленияФактическиеОбразование
+{ГДЕ
+	(НачисленияФактическиеОбразование.Период &gt;= НАЧАЛОПЕРИОДА(&amp;НачалоПериода, МЕСЯЦ)),
+	(НачисленияФактическиеОбразование.Период &lt;= КОНЕЦПЕРИОДА(&amp;КонецПериода, МЕСЯЦ)),
+	НачисленияФактическиеОбразование.Факультет.*,
+	НачисленияФактическиеОбразование.Студент.*,
+	НачисленияФактическиеОбразование.Контрагент.*,
+	НачисленияФактическиеОбразование.ДоговорКонтрагента.*,
+	НачисленияФактическиеОбразование.СтавкаОплаты.*}
+
+ИНДЕКСИРОВАТЬ ПО
+	ПериодНачисления,
+	Факультет,
+	Студент,
+	ПериодНачисленияНачало,
+	ПериодНачисленияКонец
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ДанныеНачислений.ПериодНачисления КАК ПериодНачисления,
+	ДанныеНачислений.Факультет КАК Факультет,
+	ДанныеНачислений.Студент КАК Студент,
+	ДанныеНачислений.ПериодНачисленияНачало КАК ПериодНачисленияНачало,
+	ДанныеНачислений.ПериодНачисленияКонец КАК ПериодНачисленияКонец,
+	ДанныеНачислений.Контрагент КАК Контрагент,
+	ДанныеНачислений.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	ДанныеНачислений.СтавкаОплаты КАК СтавкаОплаты,
+	ДанныеНачислений.Льгота КАК Льгота,
+	ДанныеНачислений.Сумма КАК Сумма,
+	ДанныеНачислений.СтавкаНДС КАК СтавкаНДС,
+	ДанныеНачислений.СуммаНДС КАК СуммаНДС,
+	ДанныеНачислений.ПорядокВыпискиСФ КАК ПорядокВыпискиСФ,
+	СУММА(ДанныеНачислений.Записей) КАК Записей
+ПОМЕСТИТЬ КорректностьНачислений
+ИЗ
+	(ВЫБРАТЬ
+		Плановые.ПериодНачисления КАК ПериодНачисления,
+		Плановые.Факультет КАК Факультет,
+		Плановые.Студент КАК Студент,
+		Плановые.ПериодНачисленияНачало КАК ПериодНачисленияНачало,
+		Плановые.ПериодНачисленияКонец КАК ПериодНачисленияКонец,
+		Плановые.Контрагент КАК Контрагент,
+		Плановые.ДоговорКонтрагента КАК ДоговорКонтрагента,
+		Плановые.СтавкаОплаты КАК СтавкаОплаты,
+		Плановые.Льгота КАК Льгота,
+		Плановые.Сумма КАК Сумма,
+		Плановые.СтавкаНДС КАК СтавкаНДС,
+		Плановые.СуммаНДС КАК СуммаНДС,
+		Плановые.ПорядокВыпискиСФ КАК ПорядокВыпискиСФ,
+		1 КАК Записей
+	ИЗ
+		Плановые КАК Плановые
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Фактические.ПериодНачисления,
+		Фактические.Факультет,
+		Фактические.Студент,
+		Фактические.ПериодНачисленияНачало,
+		Фактические.ПериодНачисленияКонец,
+		Фактические.Контрагент,
+		Фактические.ДоговорКонтрагента,
+		Фактические.СтавкаОплаты,
+		Фактические.Льгота,
+		Фактические.Сумма,
+		Фактические.СтавкаНДС,
+		Фактические.СуммаНДС,
+		Фактические.ПорядокВыпискиСФ,
+		1
+	ИЗ
+		Фактические КАК Фактические) КАК ДанныеНачислений
+
+СГРУППИРОВАТЬ ПО
+	ДанныеНачислений.ПериодНачисленияНачало,
+	ДанныеНачислений.ПериодНачисленияКонец,
+	ДанныеНачислений.Контрагент,
+	ДанныеНачислений.ДоговорКонтрагента,
+	ДанныеНачислений.СтавкаОплаты,
+	ДанныеНачислений.СтавкаНДС,
+	ДанныеНачислений.Льгота,
+	ДанныеНачислений.Факультет,
+	ДанныеНачислений.ПериодНачисления,
+	ДанныеНачислений.Студент,
+	ДанныеНачислений.ПорядокВыпискиСФ,
+	ДанныеНачислений.Сумма,
+	ДанныеНачислений.СуммаНДС
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Плановые.ПериодНачисления КАК ПериодНачисления,
+	Плановые.Факультет КАК Факультет,
+	Плановые.Студент КАК Студент,
+	Плановые.ПериодНачисленияНачало КАК ПериодНачисленияНачало,
+	Плановые.ПериодНачисленияКонец КАК ПериодНачисленияКонец,
+	Плановые.Контрагент КАК Контрагент,
+	Плановые.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	Плановые.СтавкаОплаты КАК СтавкаОплаты,
+	Плановые.Льгота КАК Льгота,
+	Плановые.Сумма КАК Сумма,
+	Плановые.СтавкаНДС КАК СтавкаНДС,
+	Плановые.СуммаНДС КАК СуммаНДС,
+	Плановые.ПорядокВыпискиСФ КАК ПорядокВыпискиСФ,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КорректностьНачислений.Записей, 0) &lt;&gt; 2
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК НачисленияНеКорректны,
+	0 КАК ТипНачисления,
+	ВЫБОР
+		КОГДА НачисленияОбразованиеГраницы.Период ЕСТЬ NULL
+			ТОГДА ИСТИНА
+		КОГДА Плановые.ПериодНачисления &gt;= НАЧАЛОПЕРИОДА(НачисленияОбразованиеГраницы.Период, МЕСЯЦ)
+			ТОГДА ИСТИНА
+		КОГДА НЕ ТаблицаУдаления.ПериодДвижений ЕСТЬ NULL
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ТребуетсяПерерасчет,
+	НЕОПРЕДЕЛЕНО КАК Регистратор
+ИЗ
+	Плановые КАК Плановые
+		ЛЕВОЕ СОЕДИНЕНИЕ КорректностьНачислений КАК КорректностьНачислений
+		ПО Плановые.ПериодНачисления = КорректностьНачислений.ПериодНачисления
+			И Плановые.Факультет = КорректностьНачислений.Факультет
+			И Плановые.Студент = КорректностьНачислений.Студент
+			И Плановые.ПериодНачисленияНачало = КорректностьНачислений.ПериодНачисленияНачало
+			И Плановые.ПериодНачисленияКонец = КорректностьНачислений.ПериодНачисленияКонец
+			И Плановые.Контрагент = КорректностьНачислений.Контрагент
+			И Плановые.ДоговорКонтрагента = КорректностьНачислений.ДоговорКонтрагента
+			И Плановые.СтавкаОплаты = КорректностьНачислений.СтавкаОплаты
+			И Плановые.Льгота = КорректностьНачислений.Льгота
+			И Плановые.СтавкаНДС = КорректностьНачислений.СтавкаНДС
+			И Плановые.СуммаНДС = КорректностьНачислений.СуммаНДС
+			И Плановые.ПорядокВыпискиСФ = КорректностьНачислений.ПорядокВыпискиСФ
+		ЛЕВОЕ СОЕДИНЕНИЕ ТаблицаУдаления КАК ТаблицаУдаления
+		ПО Плановые.ПериодНачисления = ТаблицаУдаления.ПериодДвижений
+			И Плановые.Факультет = ТаблицаУдаления.Факультет
+			И Плановые.Студент = ТаблицаУдаления.Студент
+		ЛЕВОЕ СОЕДИНЕНИЕ Последовательность.НачисленияОбразование.Границы КАК НачисленияОбразованиеГраницы
+		ПО Плановые.Факультет = НачисленияОбразованиеГраницы.Факультет
+			И Плановые.Студент = НачисленияОбразованиеГраницы.Студент
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Фактические.ПериодНачисления,
+	Фактические.Факультет,
+	Фактические.Студент,
+	Фактические.ПериодНачисленияНачало,
+	Фактические.ПериодНачисленияКонец,
+	Фактические.Контрагент,
+	Фактические.ДоговорКонтрагента,
+	Фактические.СтавкаОплаты,
+	Фактические.Льгота,
+	Фактические.Сумма,
+	Фактические.СтавкаНДС,
+	Фактические.СуммаНДС,
+	Фактические.ПорядокВыпискиСФ,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КорректностьНачислений.Записей, 0) &lt;&gt; 2
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	1,
+	ЛОЖЬ,
+	Фактические.Регистратор
+ИЗ
+	Фактические КАК Фактические
+		ЛЕВОЕ СОЕДИНЕНИЕ КорректностьНачислений КАК КорректностьНачислений
+		ПО Фактические.ПериодНачисления = КорректностьНачислений.ПериодНачисления
+			И Фактические.Факультет = КорректностьНачислений.Факультет
+			И Фактические.Студент = КорректностьНачислений.Студент
+			И Фактические.ПериодНачисленияНачало = КорректностьНачислений.ПериодНачисленияНачало
+			И Фактические.ПериодНачисленияКонец = КорректностьНачислений.ПериодНачисленияКонец
+			И Фактические.Контрагент = КорректностьНачислений.Контрагент
+			И Фактические.ДоговорКонтрагента = КорректностьНачислений.ДоговорКонтрагента
+			И Фактические.СтавкаОплаты = КорректностьНачислений.СтавкаОплаты
+			И Фактические.Льгота = КорректностьНачислений.Льгота
+			И Фактические.СтавкаНДС = КорректностьНачислений.СтавкаНДС
+			И Фактические.СуммаНДС = КорректностьНачислений.СуммаНДС
+			И Фактические.ПорядокВыпискиСФ = КорректностьНачислений.ПорядокВыпискиСФ</query>
+	</dataSet>
+	<totalField>
+		<dataPath>ТребуетсяПерерасчет</dataPath>
+		<expression>Максимум(ТребуетсяПерерасчет)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>НачисленияНеКорректны</dataPath>
+		<expression>Максимум(НачисленияНеКорректны)</expression>
+	</totalField>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Анализ начислений по услугам образования</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПериодНачисления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ТипНачисления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Студент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Контрагент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДоговорКонтрагента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Даты начисления</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПериодНачисленияНачало</dcsset:field>
+						<dcsset:title>с</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПериодНачисленияКонец</dcsset:field>
+						<dcsset:title>по</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтавкаОплаты</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Льгота</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтавкаНДС</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНДС</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПорядокВыпискиСФ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Регистратор</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>06ddcb63-c846-49d1-b551-4e556109e135</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Факультет</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>19de0620-7e36-4062-9f97-73d7b73234ca</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Студент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>dc331ae8-b77e-464b-af85-3578e12d7c45</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>d9a3483f-651f-41eb-bb10-9a7fb5643c70</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ТипНачисления</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только фактические начисления</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>0542a3c3-753d-4af7-9c1b-3ebce92c4b71</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только фактические начисления</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemGroup">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:groupType>OrGroup</dcsset:groupType>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НачисленияНеКорректны</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ТребуетсяПерерасчет</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только различия в начислениях</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>a4feccb1-5067-4d11-940a-a119f48b1c36</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только различия в начислениях</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>09aeec9e-ed9b-4267-a294-f5dc2d8fc2b3</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>2012-06-01T23:59:59</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>f4c9ed67-a853-4909-b33a-3e075db5951e</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПериодНачисления</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Студент</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>AndGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">НачисленияНеКорректны</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ТребуетсяПерерасчет</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:DarkGray</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>445f603e-2fb2-4f42-9a00-fb18cb2d39a6</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выделять серым корректные начисления</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ТребуетсяПерерасчет</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Blue</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПериодНачисления</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Студент</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ТипНачисления</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>ebb34ca3-dc68-4eca-852a-836949e08b40</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

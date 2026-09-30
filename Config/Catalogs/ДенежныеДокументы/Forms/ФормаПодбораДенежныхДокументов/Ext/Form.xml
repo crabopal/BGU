@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Width>150</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПеренестиВДокумент" id="72">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+				<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="110"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПоискОтбор" id="107">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа поиск отбор</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПоискОтборРасширеннаяПодсказка" id="111"/>
+			<ChildItems>
+				<InputField name="СтрокаПоиска" id="64">
+					<DataPath>СтрокаПоиска</DataPath>
+					<ClearButton>true</ClearButton>
+					<ChoiceListButton>true</ChoiceListButton>
+					<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="112"/>
+					<Events>
+						<Event name="OnChange">СтрокаПоискаПриИзменении</Event>
+						<Event name="AutoComplete">СтрокаПоискаАвтоПодбор</Event>
+						<Event name="StartListChoice">СтрокаПоискаНачалоВыбораИзСписка</Event>
+						<Event name="Clearing">СтрокаПоискаОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОтборВидДенежногоДокумента" id="105">
+					<DataPath>ОтборВидДенежногоДокумента</DataPath>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОтборВидДенежногоДокументаКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ОтборВидДенежногоДокументаРасширеннаяПодсказка" id="113"/>
+					<Events>
+						<Event name="OnChange">ОтборВидДенежногоДокументаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаШапка" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="114"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаДенежныхДокументов" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа денежных документов</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДенежныхДокументовРасширеннаяПодсказка" id="115"/>
+					<ChildItems>
+						<Table name="ДенежныеДокументы" id="36">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<SelectionMode>SingleRow</SelectionMode>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ДенежныеДокументы</DataPath>
+							<RowPictureDataPath>ДенежныеДокументы.DefaultPicture</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.ИерархияЭлементов</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+								<xr:TransparentPixel x="80" y="2"/>
+							</RowsPicture>
+							<CommandSet>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>ListSettings</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>false</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="ДенежныеДокументыКонтекстноеМеню" id="37"/>
+							<AutoCommandBar name="ДенежныеДокументыКоманднаяПанель" id="38"/>
+							<ExtendedTooltip name="ДенежныеДокументыРасширеннаяПодсказка" id="116"/>
+							<SearchStringAddition name="ДенежныеДокументыСтрокаПоиска" id="117">
+								<AdditionSource>
+									<Item>ДенежныеДокументы</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДенежныеДокументыСтрокаПоискаКонтекстноеМеню" id="118"/>
+								<ExtendedTooltip name="ДенежныеДокументыСтрокаПоискаРасширеннаяПодсказка" id="119"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДенежныеДокументыСостояниеПросмотра" id="120">
+								<AdditionSource>
+									<Item>ДенежныеДокументы</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДенежныеДокументыСостояниеПросмотраКонтекстноеМеню" id="121"/>
+								<ExtendedTooltip name="ДенежныеДокументыСостояниеПросмотраРасширеннаяПодсказка" id="122"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДенежныеДокументыУправлениеПоиском" id="123">
+								<AdditionSource>
+									<Item>ДенежныеДокументы</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДенежныеДокументыУправлениеПоискомКонтекстноеМеню" id="124"/>
+								<ExtendedTooltip name="ДенежныеДокументыУправлениеПоискомРасширеннаяПодсказка" id="125"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ValueChoice">ПодчСпрВыборЗначения</Event>
+								<Event name="Selection">ПодчСпрВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ДенежныеДокументыНаименование" id="91">
+									<DataPath>ДенежныеДокументы.Description</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид денежного документа / Наименование</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДенежныеДокументыНаименованиеКонтекстноеМеню" id="92"/>
+									<ExtendedTooltip name="ДенежныеДокументыНаименованиеРасширеннаяПодсказка" id="126"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыКод" id="93">
+									<DataPath>ДенежныеДокументы.Code</DataPath>
+									<ContextMenu name="ДенежныеДокументыКодКонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="ДенежныеДокументыКодРасширеннаяПодсказка" id="127"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыЕдиницаИзмерения" id="85">
+									<DataPath>ДенежныеДокументы.ЕдиницаИзмерения</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ед.изм.</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДенежныеДокументыЕдиницаИзмеренияКонтекстноеМеню" id="86"/>
+									<ExtendedTooltip name="ДенежныеДокументыЕдиницаИзмеренияРасширеннаяПодсказка" id="128"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыСерия" id="89">
+									<DataPath>ДенежныеДокументы.Серия</DataPath>
+									<ContextMenu name="ДенежныеДокументыСерияКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="ДенежныеДокументыСерияРасширеннаяПодсказка" id="129"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыНомер" id="87">
+									<DataPath>ДенежныеДокументы.Номер</DataPath>
+									<ContextMenu name="ДенежныеДокументыНомерКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ДенежныеДокументыНомерРасширеннаяПодсказка" id="130"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыНомСтоимость" id="95">
+									<DataPath>ДенежныеДокументы.НомСтоимость</DataPath>
+									<ContextMenu name="ДенежныеДокументыНомСтоимостьКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="ДенежныеДокументыНомСтоимостьРасширеннаяПодсказка" id="131"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыКоличество" id="101">
+									<DataPath>ДенежныеДокументы.Количество</DataPath>
+									<ContextMenu name="ДенежныеДокументыКоличествоКонтекстноеМеню" id="102"/>
+									<ExtendedTooltip name="ДенежныеДокументыКоличествоРасширеннаяПодсказка" id="132"/>
+								</LabelField>
+								<LabelField name="ДенежныеДокументыСумма" id="103">
+									<DataPath>ДенежныеДокументы.Сумма</DataPath>
+									<ContextMenu name="ДенежныеДокументыСуммаКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="ДенежныеДокументыСуммаРасширеннаяПодсказка" id="133"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОбщ" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа общ</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбщРасширеннаяПодсказка" id="134"/>
+			<ChildItems>
+				<CommandBar name="ПодобранныеДанныеГруппаКомПанель" id="73">
+					<HorizontalStretch>false</HorizontalStretch>
+					<CommandSource>Item.ПодобранныеДанные</CommandSource>
+					<ExtendedTooltip name="ПодобранныеДанныеГруппаКомПанельРасширеннаяПодсказка" id="135"/>
+				</CommandBar>
+				<LabelField name="ИнформационнаяНадпись" id="77">
+					<DataPath>ИнформационнаяНадпись</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ИнформационнаяНадписьКонтекстноеМеню" id="78"/>
+					<ExtendedTooltip name="ИнформационнаяНадписьРасширеннаяПодсказка" id="136"/>
+				</LabelField>
+				<CheckBoxField name="ЗапрашиватьКоличество" id="108">
+					<DataPath>ЗапрашиватьКоличество</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗапрашиватьКоличествоКонтекстноеМеню" id="109"/>
+					<ExtendedTooltip name="ЗапрашиватьКоличествоРасширеннаяПодсказка" id="137"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ПодобранныеДанные" id="24">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ПодобранныеДанные</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПодобранныеДанныеКонтекстноеМеню" id="25"/>
+			<AutoCommandBar name="ПодобранныеДанныеКоманднаяПанель" id="26">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПодобранныеДанныеРасширеннаяПодсказка" id="138"/>
+			<SearchStringAddition name="ПодобранныеДанныеСтрокаПоиска" id="139">
+				<AdditionSource>
+					<Item>ПодобранныеДанные</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеДанныеСтрокаПоискаКонтекстноеМеню" id="140"/>
+				<ExtendedTooltip name="ПодобранныеДанныеСтрокаПоискаРасширеннаяПодсказка" id="141"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПодобранныеДанныеСостояниеПросмотра" id="142">
+				<AdditionSource>
+					<Item>ПодобранныеДанные</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеДанныеСостояниеПросмотраКонтекстноеМеню" id="143"/>
+				<ExtendedTooltip name="ПодобранныеДанныеСостояниеПросмотраРасширеннаяПодсказка" id="144"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПодобранныеДанныеУправлениеПоиском" id="145">
+				<AdditionSource>
+					<Item>ПодобранныеДанные</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПодобранныеДанныеУправлениеПоискомКонтекстноеМеню" id="146"/>
+				<ExtendedTooltip name="ПодобранныеДанныеУправлениеПоискомРасширеннаяПодсказка" id="147"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ПодобранныеДанныеПередНачаломДобавления</Event>
+				<Event name="OnChange">ПодобранныеДанныеПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ПодобранныеДанныеВидДенежногоДокумента" id="27">
+					<DataPath>ПодобранныеДанные.ВидДенежногоДокумента</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеДанныеВидДенежногоДокументаКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="ПодобранныеДанныеВидДенежногоДокументаРасширеннаяПодсказка" id="148"/>
+				</InputField>
+				<InputField name="ПодобранныеДанныеДенежныйДокумент" id="29">
+					<DataPath>ПодобранныеДанные.ДенежныйДокумент</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеДанныеДенежныйДокументКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ПодобранныеДанныеДенежныйДокументРасширеннаяПодсказка" id="149"/>
+				</InputField>
+				<InputField name="ПодобранныеДанныеКоличество" id="97">
+					<DataPath>ПодобранныеДанные.Количество</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеДанныеКоличествоКонтекстноеМеню" id="98"/>
+					<ExtendedTooltip name="ПодобранныеДанныеКоличествоРасширеннаяПодсказка" id="150"/>
+					<Events>
+						<Event name="OnChange">ПодобранныеДанныеКоличествоПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПодобранныеДанныеСумма" id="99">
+					<DataPath>ПодобранныеДанные.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПодобранныеДанныеСуммаКонтекстноеМеню" id="100"/>
+					<ExtendedTooltip name="ПодобранныеДанныеСуммаРасширеннаяПодсказка" id="151"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПодобранныеДанные" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобранные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ВидДенежногоДокумента" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид денежного документа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыДенежныхДокументов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДенежныйДокумент" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Денежный документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДенежныеДокументы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Количество" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДенежныеДокументы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Денежные документы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~ДенежныеДокументы.Договор</Field>
+				<Field>~ДенежныеДокументы.Контрагент</Field>
+				<Field>ДенежныеДокументы.Owner</Field>
+				<Field>ДенежныеДокументы.Ref</Field>
+				<Field>ДенежныеДокументы.Количество</Field>
+				<Field>ДенежныеДокументы.Сумма</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДенежныеДокументыПереопределяемый.ЕдиницаИзмерения,
+	ДенежныеДокументыПереопределяемый.НомСтоимость,
+	ДенежныеДокументыПереопределяемый.Серия,
+	ДенежныеДокументыПереопределяемый.Номер,
+	ДенежныеДокументыПереопределяемый.Ссылка,
+	ДенежныеДокументыПереопределяемый.Владелец,
+	ДенежныеДокументыПереопределяемый.Наименование,
+	ДенежныеДокументыПереопределяемый.Код,
+	0 КАК Количество,
+	0 КАК Сумма
+ИЗ
+	Справочник.ДенежныеДокументы КАК ДенежныеДокументыПереопределяемый</QueryText>
+				<MainTable>Catalog.ДенежныеДокументы</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Владелец</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+					</dcsset:item>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СтрокаПоиска" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресДанныхВХранилище" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес данных в хранилище</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсторияПоиска" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>ИсторияПоиска</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИнформационнаяНадпись" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационная надпись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборВидДенежногоДокумента" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид денежного документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыДенежныхДокументов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьСумма" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть сумма</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапрашиватьКоличество" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрашивать количество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ЗапрашиватьКоличество</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПеренестиВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеренестиВДокумент</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресДанныхВХранилище">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Заголовок">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ПоказыватьОстатки">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЕстьКоличество">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЕстьСумма">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="КФО">
+			<Type>
+				<v8:Type>cfg:EnumRef.КВД</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЦМО">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЦМО</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СчетУчета">
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИФО">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИсточникиФинансовогоОбеспечения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Подразделение">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Дата">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ОстаткиПоРегиструНакопления">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

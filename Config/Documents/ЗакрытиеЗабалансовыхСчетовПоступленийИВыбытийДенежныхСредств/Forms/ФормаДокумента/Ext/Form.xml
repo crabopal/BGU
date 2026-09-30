@@ -1,0 +1,865 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="КомандыЭДО" id="125">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="126"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНомерДата" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер / дата документа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="65"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="66"/>
+				</InputField>
+				<InputField name="Дата" id="3">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="67"/>
+				</InputField>
+				<CheckBoxField name="ИзменениеТипаУчреждения" id="127">
+					<DataPath>Объект.ИзменениеТипаУчреждения</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИзменениеТипаУчрежденияКонтекстноеМеню" id="128"/>
+					<ExtendedTooltip name="ИзменениеТипаУчрежденияРасширеннаяПодсказка" id="129"/>
+					<Events>
+						<Event name="OnChange">ИзменениеТипаУчрежденияПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Организация" id="5">
+			<DataPath>Объект.Организация</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="68"/>
+			<Events>
+				<Event name="OnChange">ОрганизацияПриИзменении</Event>
+				<Event name="ChoiceProcessing">ОрганизацияОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="ТекстФинансовыйГод" id="45">
+			<DataPath>ТекстФинансовыйГод</DataPath>
+			<SpinButton>true</SpinButton>
+			<ContextMenu name="ТекстФинансовыйГодКонтекстноеМеню" id="46"/>
+			<ExtendedTooltip name="ТекстФинансовыйГодРасширеннаяПодсказка" id="69"/>
+			<Events>
+				<Event name="OnChange">ТекстФинансовыйГодПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ФинансовыйГод" id="130">
+			<DataPath>Объект.ФинансовыйГод</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остатки на</v8:content>
+				</v8:item>
+			</Title>
+			<EditFormat>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ДФ=dd.MM.yyyy</v8:content>
+				</v8:item>
+			</EditFormat>
+			<ContextMenu name="ФинансовыйГодКонтекстноеМеню" id="131"/>
+			<ExtendedTooltip name="ФинансовыйГодРасширеннаяПодсказка" id="132"/>
+			<Events>
+				<Event name="OnChange">ФинансовыйГодПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="БухгалтерскаяОперация" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бухгалтерская операция</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="БухгалтерскаяОперацияРасширеннаяПодсказка" id="70"/>
+		</UsualGroup>
+		<Table name="СчетаУчетаДенежныхСредств" id="11">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.СчетаУчетаДенежныхСредств</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СчетаУчетаДенежныхСредствКонтекстноеМеню" id="12"/>
+			<AutoCommandBar name="СчетаУчетаДенежныхСредствКоманднаяПанель" id="13">
+				<ChildItems>
+					<Button name="СчетаУчетаДенежныхСредствЗаполнить" id="44">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<ExtendedTooltip name="СчетаУчетаДенежныхСредствЗаполнитьРасширеннаяПодсказка" id="71"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СчетаУчетаДенежныхСредствРасширеннаяПодсказка" id="72"/>
+			<SearchStringAddition name="СчетаУчетаДенежныхСредствСтрокаПоиска" id="73">
+				<AdditionSource>
+					<Item>СчетаУчетаДенежныхСредств</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаУчетаДенежныхСредствСтрокаПоискаКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="СчетаУчетаДенежныхСредствСтрокаПоискаРасширеннаяПодсказка" id="75"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СчетаУчетаДенежныхСредствСостояниеПросмотра" id="76">
+				<AdditionSource>
+					<Item>СчетаУчетаДенежныхСредств</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаУчетаДенежныхСредствСостояниеПросмотраКонтекстноеМеню" id="77"/>
+				<ExtendedTooltip name="СчетаУчетаДенежныхСредствСостояниеПросмотраРасширеннаяПодсказка" id="78"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СчетаУчетаДенежныхСредствУправлениеПоиском" id="79">
+				<AdditionSource>
+					<Item>СчетаУчетаДенежныхСредств</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаУчетаДенежныхСредствУправлениеПоискомКонтекстноеМеню" id="80"/>
+				<ExtendedTooltip name="СчетаУчетаДенежныхСредствУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="СчетаУчетаДенежныхСредствНомерСтроки" id="14">
+					<DataPath>Объект.СчетаУчетаДенежныхСредств.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СчетаУчетаДенежныхСредствНомерСтрокиКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствНомерСтрокиРасширеннаяПодсказка" id="82"/>
+				</LabelField>
+				<InputField name="СчетаУчетаДенежныхСредствИФО" id="16">
+					<DataPath>Объект.СчетаУчетаДенежныхСредств.ИФО</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СчетаУчетаДенежныхСредствИФОКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствИФОРасширеннаяПодсказка" id="83"/>
+				</InputField>
+				<ColumnGroup name="СчетаУчетаДенежныхСредствГруппаПодразделениеСчет" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение / счет</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствГруппаПодразделениеСчетРасширеннаяПодсказка" id="84"/>
+					<ChildItems>
+						<InputField name="СчетаУчетаДенежныхСредствПодразделение" id="26">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.Подразделение</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СчетаУчетаДенежныхСредствПодразделениеКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствПодразделениеРасширеннаяПодсказка" id="85"/>
+						</InputField>
+						<ColumnGroup name="СчетаУчетаДенежныхСредствГруппаРабочийСчет" id="49">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Рабочий счет</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствГруппаРабочийСчетРасширеннаяПодсказка" id="86"/>
+							<ChildItems>
+								<InputField name="СчетаУчетаДенежныхСредствКПС" id="18">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.КПС</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаУчетаДенежныхСредствКПСКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствКПСРасширеннаяПодсказка" id="87"/>
+								</InputField>
+								<InputField name="СчетаУчетаДенежныхСредствКФО" id="20">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.КФО</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаУчетаДенежныхСредствКФОКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствКФОРасширеннаяПодсказка" id="88"/>
+								</InputField>
+								<InputField name="СчетаУчетаДенежныхСредствСчет" id="22">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.Счет</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаУчетаДенежныхСредствСчетКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствСчетРасширеннаяПодсказка" id="89"/>
+								</InputField>
+								<InputField name="СчетаУчетаДенежныхСредствКЭК" id="24">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.КЭК</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаУчетаДенежныхСредствКЭККонтекстноеМеню" id="25"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствКЭКРасширеннаяПодсказка" id="90"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="СчетаУчетаДенежныхСредствГруппаСубконто" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субконто</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствГруппаСубконтоРасширеннаяПодсказка" id="91"/>
+					<ChildItems>
+						<InputField name="СчетаУчетаДенежныхСредствСубконто1" id="28">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.Субконто1</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Субконто</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СчетаУчетаДенежныхСредствСубконто1КонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствСубконто1РасширеннаяПодсказка" id="92"/>
+						</InputField>
+						<InputField name="СчетаУчетаДенежныхСредствСубконто2" id="30">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.Субконто2</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ContextMenu name="СчетаУчетаДенежныхСредствСубконто2КонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствСубконто2РасширеннаяПодсказка" id="93"/>
+						</InputField>
+						<InputField name="СчетаУчетаДенежныхСредствСубконто3" id="32">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.Субконто3</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ContextMenu name="СчетаУчетаДенежныхСредствСубконто3КонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствСубконто3РасширеннаяПодсказка" id="94"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="СчетаУчетаДенежныхСредствВалюта" id="34">
+					<DataPath>Объект.СчетаУчетаДенежныхСредств.Валюта</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СчетаУчетаДенежныхСредствВалютаКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствВалютаРасширеннаяПодсказка" id="95"/>
+				</InputField>
+				<ColumnGroup name="СчетаУчетаДенежныхСредствГруппаОстатокВРублях" id="52">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остаток в рублях</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствГруппаОстатокВРубляхРасширеннаяПодсказка" id="96"/>
+					<ChildItems>
+						<InputField name="СчетаУчетаДенежныхСредствОстатокДебет" id="36">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.ОстатокДебет</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<FooterText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток по дебету в валюте регламентированного учета</v8:content>
+								</v8:item>
+							</FooterText>
+							<ContextMenu name="СчетаУчетаДенежныхСредствОстатокДебетКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствОстатокДебетРасширеннаяПодсказка" id="97"/>
+						</InputField>
+						<InputField name="СчетаУчетаДенежныхСредствОстатокКредит" id="38">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.ОстатокКредит</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<FooterText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток по кредиту в валюте регламентированного учета</v8:content>
+								</v8:item>
+							</FooterText>
+							<ContextMenu name="СчетаУчетаДенежныхСредствОстатокКредитКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствОстатокКредитРасширеннаяПодсказка" id="98"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="СчетаУчетаДенежныхСредствГруппаОстатокВВалюте" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остаток в валюте</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="СчетаУчетаДенежныхСредствГруппаОстатокВВалютеРасширеннаяПодсказка" id="99"/>
+					<ChildItems>
+						<InputField name="СчетаУчетаДенежныхСредствОстатокВВалютеДт" id="40">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.ОстатокВВалютеДт</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток дебет</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<FooterText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток по дебету в иностранной валюте</v8:content>
+								</v8:item>
+							</FooterText>
+							<ContextMenu name="СчетаУчетаДенежныхСредствОстатокВВалютеДтКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствОстатокВВалютеДтРасширеннаяПодсказка" id="100"/>
+						</InputField>
+						<InputField name="СчетаУчетаДенежныхСредствОстатокВВалютеКт" id="42">
+							<DataPath>Объект.СчетаУчетаДенежныхСредств.ОстатокВВалютеКт</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток кредит</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<FooterText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток по кредиту в иностранной валюте</v8:content>
+								</v8:item>
+							</FooterText>
+							<ContextMenu name="СчетаУчетаДенежныхСредствОстатокВВалютеКтКонтекстноеМеню" id="43"/>
+							<ExtendedTooltip name="СчетаУчетаДенежныхСредствОстатокВВалютеКтРасширеннаяПодсказка" id="101"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаИтоги" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итоги</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<HorizontalAlign>Right</HorizontalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="102"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИтогиВсего" id="118">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа итоги всего</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="ГруппаИтогиВсегоРасширеннаяПодсказка" id="119"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаИтогиДебет" id="55">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток дебет (в рублях)</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток в валюте регламентированного учета</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаИтогиДебетРасширеннаяПодсказка" id="103"/>
+							<ChildItems>
+								<InputField name="СчетаУчетаДенежныхСредствИтогОстатокДебет" id="56">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.TotalОстатокДебет</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>По дебету,  руб.</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="СчетаУчетаДенежныхСредствИтогОстатокДебетКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствИтогОстатокДебетРасширеннаяПодсказка" id="104"/>
+								</InputField>
+								<InputField name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеДт" id="61">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.TotalОстатокВВалютеДт</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>в валюте</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеДтКонтекстноеМеню" id="62"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеДтРасширеннаяПодсказка" id="107"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаИтогиКредит" id="60">
+							<EnableContentChange>true</EnableContentChange>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остаток в иностранных валютах</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаИтогиКредитРасширеннаяПодсказка" id="106"/>
+							<ChildItems>
+								<InputField name="СчетаУчетаДенежныхСредствИтогОстатокКредит" id="58">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.TotalОстатокКредит</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>По  кредиту, руб.</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="СчетаУчетаДенежныхСредствИтогОстатокКредитКонтекстноеМеню" id="59"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствИтогОстатокКредитРасширеннаяПодсказка" id="105"/>
+								</InputField>
+								<InputField name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеКт" id="63">
+									<DataPath>Объект.СчетаУчетаДенежныхСредств.TotalОстатокВВалютеКт</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>в валюте</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеКтКонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="СчетаУчетаДенежныхСредствИтогОстатокВВалютеКтРасширеннаяПодсказка" id="108"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСостояниеЭДО" id="120">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние ЭДО</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="121"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияСостояниеЭДО" id="122">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="123"/>
+					<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="124"/>
+					<Events>
+						<Event name="Click">ДекорацияЭДОНажатие</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОтветственныйКомментарий" id="110">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтветственныйКомментарийРасширеннаяПодсказка" id="111"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="112">
+					<DataPath>Объект.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="113"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="114"/>
+				</InputField>
+				<InputField name="Ответственный" id="115">
+					<DataPath>Объект.Ответственный</DataPath>
+					<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="116"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="117"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ЗакрытиеЗабалансовыхСчетовПоступленийИВыбытийДенежныхСредств</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.СчетаУчетаДенежныхСредств">
+					<Column name="КоличествоСубконто" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество субконто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="УчетПоПодразделениям" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет по подразделениям</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="Валютный" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Валютный</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекстФинансовыйГод" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Финансовый год</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ФинансовыйГодПрежняя" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Финансовый год прежняя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗабалансовыеСчетаПоступленийИВыбытийДенежныхСредств" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Забалансовые счета поступлений и выбытий денежных средств</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствПодразделение</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.УчетПоПодразделениям</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствСубконто1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствСубконто2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствСубконто3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.КоличествоСубконто</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствВалюта</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствОстатокВВалютеДт</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствОстатокВВалютеКт</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.Валютный</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствОстатокВВалютеДт</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СчетаУчетаДенежныхСредствОстатокВВалютеКт</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СчетаУчетаДенежныхСредств.Валютный</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;не используется&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по данным учета</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>CommonCommand.БухгалтерскаяОперацияОбособленноОтДокумента</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.БухгалтерскаяОперацияПриПроведении</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

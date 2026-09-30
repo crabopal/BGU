@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:tns="urn:schemas-1c-ru:budget:classification/2011/properties" finalDefault="" elementFormDefault="qualified" targetNamespace="urn:schemas-1c-ru:budget:classification/2011/properties" version="1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ClassifierProperties">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="itemCount" type="xs:nonNegativeInteger" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="normativeBase" type="tns:NormativeDoc" />
+      <xs:element minOccurs="0" name="origin" type="tns:Authority" />
+      <xs:element minOccurs="0" name="preparedBy" type="tns:Preparer" />
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:normalizedString" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Authority">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" />
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Preparer">
+    <xs:sequence>
+      <xs:element name="situation" type="xs:string" />
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="contact" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NormativeDoc">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="issueDate" type="xs:date" />
+      <xs:element name="starts" type="xs:date" />
+      <xs:element minOccurs="0" name="ends" type="xs:date" />
+      <xs:element name="description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="classifierProperties">
+    <xs:complexType>
+      <xs:complexContent mixed="false">
+        <xs:extension base="tns:ClassifierProperties" />
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

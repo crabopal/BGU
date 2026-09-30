@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КЭК2</dataPath>
+			<field>КЭК2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КЭК2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Объект</dataPath>
+			<field>Объект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТекстПроблемы</dataPath>
+			<field>ТекстПроблемы</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст проблемы</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	КОСГУ.Ссылка КАК Объект,
+	КОСГУ1.Ссылка КАК КЭК2,
+	"В справочнике ""КЭК"" имеются дубли по коду """ + КОСГУ.Код + """" КАК ТекстПроблемы
+ИЗ
+	Справочник.КОСГУ КАК КОСГУ
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КОСГУ КАК КОСГУ1
+		ПО КОСГУ.Ссылка &lt;&gt; КОСГУ1.Ссылка
+			И КОСГУ.Код = КОСГУ1.Код
+ГДЕ
+	НЕ КОСГУ1.Ссылка ЕСТЬ NULL
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КОСГУ.Ссылка,
+	КОСГУ.Родитель,
+	"В справочнике ""КЭК"" нарушена иерархия. Элемент """ + КОСГУ.Код + """ не может входить в группу """ + КОСГУ.Родитель.Код + """"
+ИЗ
+	Справочник.КОСГУ КАК КОСГУ
+ГДЕ
+	КОСГУ.Код &lt;&gt; "000"
+	И ВЫБОР
+			КОГДА ПОДСТРОКА(КОСГУ.Родитель.Код, 1, 3) = "000"
+				ТОГДА ПОДСТРОКА(КОСГУ.Код, 2, 2) &lt;&gt; "00"
+						И ПОДСТРОКА(КОСГУ.Код, 1, 2) &lt;&gt; "00"
+			КОГДА ПОДСТРОКА(КОСГУ.Родитель.Код, 2, 2) = "00"
+				ТОГДА ПОДСТРОКА(КОСГУ.Код, 3, 1) &lt;&gt; "0"
+						ИЛИ ПОДСТРОКА(КОСГУ.Родитель.Код, 1, 1) &lt;&gt; ПОДСТРОКА(КОСГУ.Код, 1, 1)
+			КОГДА ПОДСТРОКА(КОСГУ.Родитель.Код, 3, 1) = "0"
+				ТОГДА ПОДСТРОКА(КОСГУ.Родитель.Код, 1, 2) &lt;&gt; ПОДСТРОКА(КОСГУ.Код, 1, 2)
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Объект</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ТекстПроблемы</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

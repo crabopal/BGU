@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>НаборДанных3</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Примечание</dataPath>
+			<field>Примечание</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результаты проверки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Ссылка</dataPath>
+				<field>Ссылка</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Примечание</dataPath>
+				<field>Примечание</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Примечание</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЧекККМ.Ссылка КАК Ссылка,
+	"Чек не напечатан на ККМ" КАК Примечание
+ИЗ
+	Документ.ЧекККМ КАК ЧекККМ
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЧекККМ.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЧекККМ.Проведен = ИСТИНА
+{ГДЕ
+	ЧекККМ.Организация.*,
+	(ЧекККМ.Дата &gt;= &amp;ДатаНачала),
+	(ЧекККМ.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМ.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗаявкаНаВозврат.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЗаявкаНаВозврат КАК ЗаявкаНаВозврат
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЗаявкаНаВозврат.Ссылка = ФискальныеОперации.ДокументОснование
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗаявкаНаВозврат.ДокументыОснования КАК ЗаявкаНаВозвратДокументыОснования
+		ПО (ЗаявкаНаВозвратДокументыОснования.Ссылка = ЗаявкаНаВозврат.Ссылка)
+ГДЕ
+	ЗаявкаНаВозврат.Проведен = ИСТИНА
+	И ЗаявкаНаВозврат.Контрагент.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+{ГДЕ
+	ЗаявкаНаВозврат.Организация.*,
+	(ЗаявкаНаВозврат.Дата &gt;= &amp;ДатаНачала),
+	(ЗаявкаНаВозврат.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЗаявкаНаВозврат.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0 И
+	КОЛИЧЕСТВО(ЗаявкаНаВозвратДокументыОснования.ДокументОснование) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗаявкаНаКассовыйРасход.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЗаявкаНаКассовыйРасход КАК ЗаявкаНаКассовыйРасход
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЗаявкаНаКассовыйРасход.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЗаявкаНаКассовыйРасход.Проведен = ИСТИНА
+	И ЗаявкаНаКассовыйРасход.Контрагент.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+{ГДЕ
+	ЗаявкаНаКассовыйРасход.Организация.*,
+	(ЗаявкаНаКассовыйРасход.Дата &gt;= &amp;ДатаНачала),
+	(ЗаявкаНаКассовыйРасход.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЗаявкаНаКассовыйРасход.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КассовоеВыбытие.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.КассовоеВыбытие КАК КассовоеВыбытие
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО КассовоеВыбытие.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	КассовоеВыбытие.Проведен = ИСТИНА
+	И КассовоеВыбытие.Контрагент.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+{ГДЕ
+	КассовоеВыбытие.Организация.*,
+	(КассовоеВыбытие.Дата &gt;= &amp;ДатаНачала),
+	(КассовоеВыбытие.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	КассовоеВыбытие.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КассовоеПоступление.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.КассовоеПоступление КАК КассовоеПоступление
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО КассовоеПоступление.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	КассовоеПоступление.Проведен = ИСТИНА
+	И КассовоеПоступление.Контрагент.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+{ГДЕ
+	КассовоеПоступление.Организация.*,
+	(КассовоеПоступление.Дата &gt;= &amp;ДатаНачала),
+	(КассовоеПоступление.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	КассовоеПоступление.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПлатежноеПоручение.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ПлатежноеПоручение КАК ПлатежноеПоручение
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ПлатежноеПоручение.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ПлатежноеПоручение.Проведен = ИСТИНА
+	И ПлатежноеПоручение.Контрагент.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+{ГДЕ
+	ПлатежноеПоручение.Организация.*,
+	(ПлатежноеПоручение.Дата &gt;= &amp;ДатаНачала),
+	(ПлатежноеПоручение.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ПлатежноеПоручение.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПриходныйКассовыйОрдер.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ПриходныйКассовыйОрдер КАК ПриходныйКассовыйОрдер
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ПриходныйКассовыйОрдер.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ПриходныйКассовыйОрдер.Проведен = ИСТИНА
+	И ПриходныйКассовыйОрдер.ПоступлениеВыручкиТорговойТочки = ЛОЖЬ
+{ГДЕ
+	ПриходныйКассовыйОрдер.Организация.*,
+	(ПриходныйКассовыйОрдер.Дата &gt;= &amp;ДатаНачала),
+	(ПриходныйКассовыйОрдер.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ПриходныйКассовыйОрдер.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйКассовыйОрдер.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО РасходныйКассовыйОрдер.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	РасходныйКассовыйОрдер.Проведен = ИСТИНА
+{ГДЕ
+	РасходныйКассовыйОрдер.Организация.*,
+	(РасходныйКассовыйОрдер.Дата &gt;= &amp;ДатаНачала),
+	(РасходныйКассовыйОрдер.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	РасходныйКассовыйОрдер.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЧекККМИсправительный.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЧекККМИсправительный КАК ЧекККМИсправительный
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЧекККМИсправительный.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЧекККМИсправительный.Проведен = ИСТИНА
+{ГДЕ
+	ЧекККМИсправительный.Организация.*,
+	(ЧекККМИсправительный.Дата &gt;= &amp;ДатаНачала),
+	(ЧекККМИсправительный.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМИсправительный.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЧекККМНаВозврат.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЧекККМНаВозврат КАК ЧекККМНаВозврат
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЧекККМНаВозврат.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЧекККМНаВозврат.Проведен = ИСТИНА
+{ГДЕ
+	ЧекККМНаВозврат.Организация.*,
+	(ЧекККМНаВозврат.Дата &gt;= &amp;ДатаНачала),
+	(ЧекККМНаВозврат.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМНаВозврат.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЧекККМНаПередачу.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЧекККМНаПередачу КАК ЧекККМНаПередачу
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЧекККМНаПередачу.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЧекККМНаПередачу.Проведен = ИСТИНА
+{ГДЕ
+	ЧекККМНаПередачу.Организация.*,
+	(ЧекККМНаПередачу.Дата &gt;= &amp;ДатаНачала),
+	(ЧекККМНаПередачу.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМНаПередачу.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЭквайринговаяОперация.Ссылка,
+	"Чек не напечатан на ККМ"
+ИЗ
+	Документ.ЭквайринговаяОперация КАК ЭквайринговаяОперация
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЭквайринговаяОперация.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЭквайринговаяОперация.Проведен = ИСТИНА
+	И ЭквайринговаяОперация.БезИспользованияОборудования = ЛОЖЬ
+	И НЕ ЭквайринговаяОперация.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацииЭквайринга.ПоступлениеВыручкиОтРозничныхПродаж)
+	И НЕ ЭквайринговаяОперация.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацииЭквайринга.ВозвратВыручкиОтРозничныхПродаж)
+{ГДЕ
+	ЭквайринговаяОперация.Организация.*,
+	(ЭквайринговаяОперация.Дата &gt;= &amp;ДатаНачала),
+	(ЭквайринговаяОперация.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЭквайринговаяОперация.Ссылка
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) = 0</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>НаборДанных2</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Ссылка</dataPath>
+				<field>Ссылка</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Примечание</dataPath>
+				<field>Примечание</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Примечание</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЧекККМИсправительный.ДокументОснование КАК Ссылка,
+	ЧекККМИсправительный.ФискальныйПризнакИсправляемогоЧекаККМ КАК ФискальныйПризнакИсправляемогоЧекаККМ
+ПОМЕСТИТЬ ВТИсправленныеЧеки
+ИЗ
+	Документ.ЧекККМИсправительный КАК ЧекККМИсправительный
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ЧекККМИсправительный.Ссылка = ФискальныеОперации.ДокументОснование
+ГДЕ
+	ЧекККМИсправительный.ВидОперации = &amp;ВидОперации
+{ГДЕ
+	ЧекККМИсправительный.Организация.*,
+	(ЧекККМИсправительный.Дата &gt;= &amp;ДатаНачала),
+	(ЧекККМИсправительный.Дата &lt;= &amp;ДатаОкончания)}
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМИсправительный.ДокументОснование,
+	ЧекККМИсправительный.ФискальныйПризнакИсправляемогоЧекаККМ
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(ФискальныеОперации.ИдентификаторЗаписи) &gt; 0
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВТИсправленныеЧеки.Ссылка КАК Ссылка,
+	ФискальныеОперации.ДополнительныйРеквизит КАК ДополнительныйРеквизит
+ПОМЕСТИТЬ ВТИсправительныеЗаписи
+ИЗ
+	ВТИсправленныеЧеки КАК ВТИсправленныеЧеки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ФискальныеОперации КАК ФискальныеОперации
+		ПО ВТИсправленныеЧеки.Ссылка = ФискальныеОперации.ДокументОснование
+			И ВТИсправленныеЧеки.ФискальныйПризнакИсправляемогоЧекаККМ = ФискальныеОперации.ДополнительныйРеквизит
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТИсправленныеЧеки.Ссылка КАК Ссылка,
+	"Есть документ ""Исправительный чек ККМ"", но на ККМ чек не напечатан" КАК Примечание
+ИЗ
+	ВТИсправленныеЧеки КАК ВТИсправленныеЧеки
+ГДЕ
+	НЕ ВТИсправленныеЧеки.Ссылка В
+				(ВЫБРАТЬ
+					ВТИсправительныеЗаписи.Ссылка КАК Ссылка
+				ИЗ
+					ВТИсправительныеЗаписи КАК ВТИсправительныеЗаписи)</query>
+		</item>
+	</dataSet>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВидОперации</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид операции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыИсправительныхЧековККМБГУ</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыИсправительныхЧековККМБГУ.ИсправлениеКассовогоЧекаККМ</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Контроль применения ККТ</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Примечание</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>f48fedd9-c721-46c5-89c5-9786f548d22d</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>ae2f85b4-0fbf-45aa-869b-6bb5add99ccf</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВидОперации</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Ссылка.Дата</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контроль применения ККТ</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:row>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Ссылка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Примечание</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

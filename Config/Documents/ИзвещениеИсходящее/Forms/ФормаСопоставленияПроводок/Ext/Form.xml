@@ -1,0 +1,898 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаДобавитьВДокумент" id="73">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ДобавитьВДокумент</CommandName>
+				<ExtendedTooltip name="ФормаДобавитьВДокументРасширеннаяПодсказка" id="74"/>
+			</Button>
+			<Button name="ФормаВосстановитьСопоставлениеПоДаннымПолучателя" id="85">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ВосстановитьСопоставлениеПоДаннымПолучателя</CommandName>
+				<ExtendedTooltip name="ФормаВосстановитьСопоставлениеПоДаннымПолучателяРасширеннаяПодсказка" id="86"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПредупреждение" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа предупреждение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа предупреждение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПредупреждениеРасширеннаяПодсказка" id="101"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияВнимание" id="102">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация внимание</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Внимание16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияВниманиеКонтекстноеМеню" id="103"/>
+					<ExtendedTooltip name="ДекорацияВниманиеРасширеннаяПодсказка" id="104"/>
+				</PictureDecoration>
+				<LabelField name="Предупреждение" id="97">
+					<DataPath>Предупреждение</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ToolTipTextColor</TextColor>
+					<ContextMenu name="ПредупреждениеКонтекстноеМеню" id="98"/>
+					<ExtendedTooltip name="ПредупреждениеРасширеннаяПодсказка" id="99"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДанныеПроводок" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные проводок</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДанныеПроводокРасширеннаяПодсказка" id="37"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОтправитель" id="77">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проводки Отправителя извещения</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаОтправительРасширеннаяПодсказка" id="78"/>
+					<ChildItems>
+						<Table name="ПроводкиОтправителя" id="1">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ПроводкиОтправителя</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПроводкиОтправителяКонтекстноеМеню" id="2"/>
+							<AutoCommandBar name="ПроводкиОтправителяКоманднаяПанель" id="3">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ПроводкиОтправителяУказатьНомерПроводкиУПолучателя" id="75">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УказатьНомерПроводкиУПолучателя</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Указать номер проводки</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ПроводкиОтправителяУказатьНомерПроводкиУПолучателяРасширеннаяПодсказка" id="76"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПроводкиОтправителяРасширеннаяПодсказка" id="4"/>
+							<SearchStringAddition name="ПроводкиОтправителяСтрокаПоиска" id="5">
+								<AdditionSource>
+									<Item>ПроводкиОтправителя</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиОтправителяСтрокаПоискаКонтекстноеМеню" id="6"/>
+								<ExtendedTooltip name="ПроводкиОтправителяСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПроводкиОтправителяСостояниеПросмотра" id="8">
+								<AdditionSource>
+									<Item>ПроводкиОтправителя</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиОтправителяСостояниеПросмотраКонтекстноеМеню" id="9"/>
+								<ExtendedTooltip name="ПроводкиОтправителяСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПроводкиОтправителяУправлениеПоиском" id="11">
+								<AdditionSource>
+									<Item>ПроводкиОтправителя</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиОтправителяУправлениеПоискомКонтекстноеМеню" id="12"/>
+								<ExtendedTooltip name="ПроводкиОтправителяУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="ПроводкиОтправителяГруппаНомера" id="32">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проводки отправителя группа номера</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПроводкиОтправителяГруппаНомераРасширеннаяПодсказка" id="33"/>
+									<ChildItems>
+										<InputField name="ПроводкиОтправителяНомерПроводки" id="14">
+											<DataPath>ПроводкиОтправителя.НомерПроводки</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>№ п/п</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиОтправителяНомерПроводкиКонтекстноеМеню" id="15"/>
+											<ExtendedTooltip name="ПроводкиОтправителяНомерПроводкиРасширеннаяПодсказка" id="16"/>
+										</InputField>
+										<InputField name="ПроводкиОтправителяНомерПроводкиУчастникаОбмена" id="20">
+											<DataPath>ПроводкиОтправителя.НомерПроводкиУчастникаОбмена</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>№ п/п у получателя</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиОтправителяНомерПроводкиУчастникаОбменаКонтекстноеМеню" id="21"/>
+											<ExtendedTooltip name="ПроводкиОтправителяНомерПроводкиУчастникаОбменаРасширеннаяПодсказка" id="22"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ПроводкиОтправителяГруппаПроводка" id="34">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проводки отправителя группа проводка</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПроводкиОтправителяГруппаПроводкаРасширеннаяПодсказка" id="35"/>
+									<ChildItems>
+										<InputField name="ПроводкиОтправителяСодержание" id="26">
+											<DataPath>ПроводкиОтправителя.Содержание</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиОтправителяСодержаниеКонтекстноеМеню" id="27"/>
+											<ExtendedTooltip name="ПроводкиОтправителяСодержаниеРасширеннаяПодсказка" id="28"/>
+										</InputField>
+										<InputField name="ПроводкиОтправителяПроводка" id="17">
+											<DataPath>ПроводкиОтправителя.Проводка</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиОтправителяПроводкаКонтекстноеМеню" id="18"/>
+											<ExtendedTooltip name="ПроводкиОтправителяПроводкаРасширеннаяПодсказка" id="19"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ПроводкиОтправителяСумма" id="23">
+									<DataPath>ПроводкиОтправителя.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<ContextMenu name="ПроводкиОтправителяСуммаКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="ПроводкиОтправителяСуммаРасширеннаяПодсказка" id="25"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПолучатель" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проводки Получателя извещения</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаПолучательРасширеннаяПодсказка" id="80"/>
+					<ChildItems>
+						<Table name="ПроводкиПолучателя" id="38">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ПроводкиПолучателя</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПроводкиПолучателяКонтекстноеМеню" id="39"/>
+							<AutoCommandBar name="ПроводкиПолучателяКоманднаяПанель" id="40">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ПроводкиПолучателяУказатьНомерПроводкиУОтправителя" id="81">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УказатьНомерПроводкиУОтправителя</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Указать номер проводки</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ПроводкиПолучателяУказатьНомерПроводкиУОтправителяРасширеннаяПодсказка" id="82"/>
+									</Button>
+									<Button name="ПроводкиПолучателяУказатьНомерВыбраннойПроводкиУОтправителя" id="87">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УказатьНомерВыбраннойПроводкиУОтправителя</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Указать номер по проводке отправителя</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ПроводкиПолучателяУказатьНомерВыбраннойПроводкиУОтправителяРасширеннаяПодсказка" id="88"/>
+									</Button>
+									<Button name="ПроводкиПолучателяПоменятьНомераПроводокУОтправителяМестами" id="83">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоменятьНомераПроводокУОтправителяМестами</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поменять номера местами</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ПроводкиПолучателяПоменятьНомераПроводокУОтправителяМестамиРасширеннаяПодсказка" id="84"/>
+									</Button>
+									<Popup name="ПроводкиПолучателяГруппаОтбор" id="89">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отбор</v8:content>
+											</v8:item>
+										</Title>
+										<Picture>
+											<xr:Ref>StdPicture.FilterCriterion</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ПроводкиПолучателяГруппаОтборРасширеннаяПодсказка" id="90"/>
+										<ChildItems>
+											<Button name="ПроводкиПолучателяОтобратьПоНомеруУОтправителя" id="91">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОтобратьПоНомеруУОтправителя</CommandName>
+												<ExtendedTooltip name="ПроводкиПолучателяОтобратьПоНомеруУОтправителяРасширеннаяПодсказка" id="92"/>
+											</Button>
+											<Button name="ПроводкиПолучателяОтобратьВсеБезНомераУОтправителя" id="93">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОтобратьВсеБезНомераУОтправителя</CommandName>
+												<ExtendedTooltip name="ПроводкиПолучателяОтобратьВсеБезНомераУОтправителяРасширеннаяПодсказка" id="94"/>
+											</Button>
+											<Button name="ПроводкиПолучателяОтменитьОтбор" id="95">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОтменитьОтбор</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отменить отбор</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПроводкиПолучателяОтменитьОтборРасширеннаяПодсказка" id="96"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПроводкиПолучателяРасширеннаяПодсказка" id="41"/>
+							<SearchStringAddition name="ПроводкиПолучателяСтрокаПоиска" id="42">
+								<AdditionSource>
+									<Item>ПроводкиПолучателя</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиПолучателяСтрокаПоискаКонтекстноеМеню" id="43"/>
+								<ExtendedTooltip name="ПроводкиПолучателяСтрокаПоискаРасширеннаяПодсказка" id="44"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПроводкиПолучателяСостояниеПросмотра" id="45">
+								<AdditionSource>
+									<Item>ПроводкиПолучателя</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиПолучателяСостояниеПросмотраКонтекстноеМеню" id="46"/>
+								<ExtendedTooltip name="ПроводкиПолучателяСостояниеПросмотраРасширеннаяПодсказка" id="47"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПроводкиПолучателяУправлениеПоиском" id="48">
+								<AdditionSource>
+									<Item>ПроводкиПолучателя</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПроводкиПолучателяУправлениеПоискомКонтекстноеМеню" id="49"/>
+								<ExtendedTooltip name="ПроводкиПолучателяУправлениеПоискомРасширеннаяПодсказка" id="50"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="ПроводкиПолучателяГруппаНомера" id="69">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проводки получателя группа номера</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПроводкиПолучателяГруппаНомераРасширеннаяПодсказка" id="70"/>
+									<ChildItems>
+										<InputField name="ПроводкиПолучателяНомерПроводки" id="51">
+											<DataPath>ПроводкиПолучателя.НомерПроводки</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>№ п/п</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиПолучателяНомерПроводкиКонтекстноеМеню" id="52"/>
+											<ExtendedTooltip name="ПроводкиПолучателяНомерПроводкиРасширеннаяПодсказка" id="53"/>
+										</InputField>
+										<InputField name="ПроводкиПолучателяНомерПроводкиУчастникаОбмена" id="57">
+											<DataPath>ПроводкиПолучателя.НомерПроводкиУчастникаОбмена</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>№ п/п у отправителя</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиПолучателяНомерПроводкиУчастникаОбменаКонтекстноеМеню" id="58"/>
+											<ExtendedTooltip name="ПроводкиПолучателяНомерПроводкиУчастникаОбменаРасширеннаяПодсказка" id="59"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ПроводкиПолучателяГруппаПроводка" id="71">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проводки получателя группа проводка</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПроводкиПолучателяГруппаПроводкаРасширеннаяПодсказка" id="72"/>
+									<ChildItems>
+										<InputField name="ПроводкиПолучателяСодержание" id="63">
+											<DataPath>ПроводкиПолучателя.Содержание</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиПолучателяСодержаниеКонтекстноеМеню" id="64"/>
+											<ExtendedTooltip name="ПроводкиПолучателяСодержаниеРасширеннаяПодсказка" id="65"/>
+										</InputField>
+										<InputField name="ПроводкиПолучателяПроводка" id="54">
+											<DataPath>ПроводкиПолучателя.Проводка</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ПроводкиПолучателяПроводкаКонтекстноеМеню" id="55"/>
+											<ExtendedTooltip name="ПроводкиПолучателяПроводкаРасширеннаяПодсказка" id="56"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ПроводкиПолучателяСумма" id="60">
+									<DataPath>ПроводкиПолучателя.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<ContextMenu name="ПроводкиПолучателяСуммаКонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="ПроводкиПолучателяСуммаРасширеннаяПодсказка" id="62"/>
+								</InputField>
+								<InputField name="ПроводкиПолучателяКомментарий" id="66">
+									<DataPath>ПроводкиПолучателя.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПроводкиПолучателяКомментарийКонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="ПроводкиПолучателяКомментарийРасширеннаяПодсказка" id="68"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПроводкиОтправителя" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проводки отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НомерПроводки" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер проводки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Проводка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проводка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерПроводкиУчастникаОбмена" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер проводки у получателя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Содержание" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Содержание</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПроводкиПолучателя" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проводки получателя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НомерПроводки" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер проводки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Проводка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проводка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерПроводкиУчастникаОбмена" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер проводки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Содержание" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Содержание</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаСведений" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата сведений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СопоставлениеИзДокумента" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставление из документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НомераПроводокОтправителя" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номера проводок отправителя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомераПроводокПолучателя" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номера проводок получателя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КомментарийСопоставления" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий сопоставления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИсходящееИзвещение" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исходящее извещение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ИзвещениеИсходящее</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтветноеИзвещение" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответное извещение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ИзвещениеВходящее</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборПроводокПолучателя" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать отбор проводок получателя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборНесопоставленныхПроводокПолучателя" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать отбор проводок получателя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Предупреждение" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предупреждение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДобавитьВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить в документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьВДокумент</Action>
+		</Command>
+		<Command name="УказатьНомерПроводкиУПолучателя" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер проводки у получателя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер проводки у получателя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УказатьНомерПроводкиУПолучателя</Action>
+		</Command>
+		<Command name="УказатьНомерПроводкиУОтправителя" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер проводки у отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер проводки у отправителя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УказатьНомерПроводкиУОтправителя</Action>
+		</Command>
+		<Command name="ПоменятьНомераПроводокУОтправителяМестами" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поменять номера проводок у отправителя местами</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поменять номера проводок у отправителя местами</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоменятьНомераПроводокУОтправителяМестами</Action>
+		</Command>
+		<Command name="ВосстановитьСопоставлениеПоДаннымПолучателя" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить сопоставление по данным получателя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить сопоставление по данным получателя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВосстановитьСопоставлениеПоДаннымПолучателя</Action>
+		</Command>
+		<Command name="УказатьНомерВыбраннойПроводкиУОтправителя" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер выбранной проводки у отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указать номер выбранной проводки у отправителя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УказатьНомерВыбраннойПроводкиУОтправителя</Action>
+		</Command>
+		<Command name="ОтобратьПоНомеруУОтправителя" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по номеру у отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по номеру у отправителя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтобратьПоНомеруУОтправителя</Action>
+		</Command>
+		<Command name="ОтобратьВсеБезНомераУОтправителя" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать все без номера у отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать все без номера у отправителя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтобратьВсеБезНомераУОтправителя</Action>
+		</Command>
+		<Command name="ОтменитьОтбор" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить отбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить отбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтменитьОтбор</Action>
+		</Command>
+	</Commands>
+</Form>

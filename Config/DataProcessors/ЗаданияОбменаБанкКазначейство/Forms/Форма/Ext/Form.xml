@@ -1,0 +1,1354 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Обмен данными с казначейскими системами и учреждениями банка </v8:content>
+		</v8:item>
+	</Title>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="321">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="322"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОтборыШапки" id="244">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа отборы шапки</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтборыШапкиРасширеннаяПодсказка" id="248"/>
+					<ChildItems>
+						<InputField name="ОтборОрганизация" id="238">
+							<DataPath>ОтборОрганизация</DataPath>
+							<ContextMenu name="ОтборОрганизацияКонтекстноеМеню" id="239"/>
+							<ExtendedTooltip name="ОтборОрганизацияРасширеннаяПодсказка" id="249"/>
+							<Events>
+								<Event name="OnChange">ОтборОрганизацияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ОтборВидОбмена" id="245">
+							<DataPath>ОтборВидОбмена</DataPath>
+							<ClearButton>true</ClearButton>
+							<ContextMenu name="ОтборВидОбменаКонтекстноеМеню" id="246"/>
+							<ExtendedTooltip name="ОтборВидОбменаРасширеннаяПодсказка" id="250"/>
+							<Events>
+								<Event name="OnChange">ОтборВидОбменаПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="КоманднаяПанельФормы" id="323">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель формы</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="КоманднаяПанельФормыРасширеннаяПодсказка" id="324"/>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаЭкспортИмпортДокументов" id="170">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экспорт, импорт документов</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаЭкспортИмпортДокументовРасширеннаяПодсказка" id="251"/>
+			<Events>
+				<Event name="OnCurrentPageChange">ГруппаЭкспортИмпортДокументовПриСменеСтраницы</Event>
+			</Events>
+			<ChildItems>
+				<Page name="ГруппаДокументыЭкспорта" id="2">
+					<UserVisible>
+						<xr:Common>true</xr:Common>
+						<xr:Value name="Role.Администрирование">false</xr:Value>
+						<xr:Value name="Role.БазовыеПраваБСП">false</xr:Value>
+						<xr:Value name="Role.БазовыеПраваБГУ">false</xr:Value>
+						<xr:Value name="Role.ВыводНаПринтерФайлБуферОбмена">false</xr:Value>
+						<xr:Value name="Role.ВыполнениеСинхронизацииДанных">false</xr:Value>
+						<xr:Value name="ed394820-a216-4c4b-81ae-5dea33ced43b">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеБухгалтерскихЗаписей">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеБюджетнойКлассификации">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеВариантовОтчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеВнешнихПользователей">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДанныхРегламентированнойБухОтчетности">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеРазделяемыхДанныхРегламентированнойОтчетности">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДоговоров">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДоговоровСМОЛ">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПоБанковскимОперациям">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПоБюджетнымДанным">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПокупателям">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПоставщиков">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуМЗ">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуОС">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеДополнительныхОтчетовИОбработок">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеКассовыхДокументов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеКлассификационныхПризнаковСчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеКонтрагентов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеНастроекПланаСчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеНастроекТиповыхОпераций">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеНоменклатуры">false</xr:Value>
+						<xr:Value name="497ce8f3-f6f0-4da8-aeb0-0fa01bb26dc6">false</xr:Value>
+						<xr:Value name="8d8b91c0-c0ab-4b9d-b854-b867063ddb5b">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеОбщейБухгалтерскойНСИ">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеОсновныхСредств">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПараметровБухгалтерии">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПерсональныхДанныхФизическихЛиц">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеПользователей">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеРабочегоПланаСчетов">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеРегламентныхОпераций">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеФизическихЛиц">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеЦенНоменклатуры">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеОрганизаций">false</xr:Value>
+						<xr:Value name="Role.ЗапускAutomation">false</xr:Value>
+						<xr:Value name="Role.ЗапускВебКлиента">false</xr:Value>
+						<xr:Value name="Role.ЗапускВнешнегоСоединения">false</xr:Value>
+						<xr:Value name="Role.ЗапускТолстогоКлиента">false</xr:Value>
+						<xr:Value name="Role.ЗапускТонкогоКлиента">false</xr:Value>
+						<xr:Value name="Role.ИзменениеДополнительныхСведений">false</xr:Value>
+						<xr:Value name="Role.ИзменениеМакетовПечатныхФорм">false</xr:Value>
+						<xr:Value name="c4d67026-2c97-4126-b8be-49aa6f567e2d">false</xr:Value>
+						<xr:Value name="fda2906d-f499-4016-b13a-99f7f713b898">false</xr:Value>
+						<xr:Value name="Role.ИзменениеУчастниковГруппДоступа">false</xr:Value>
+						<xr:Value name="Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДополнительныхОтчетовИОбработок">false</xr:Value>
+						<xr:Value name="Role.ПросмотрСвязанныеДокументы">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+						<xr:Value name="db82191f-77bd-44da-8b33-86f01018e25a">false</xr:Value>
+						<xr:Value name="Role.ОбновлениеКонфигурацииБазыДанных">false</xr:Value>
+						<xr:Value name="Role.ОператорОтправкиОтчетностиЧерезПредставителя">false</xr:Value>
+						<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+						<xr:Value name="ea72bcca-2aad-450d-ab3a-293403cd8d2e">true</xr:Value>
+						<xr:Value name="Role.ПравоНаЗащищенныйДокументооборотСКонтролирующимиОрганами">false</xr:Value>
+						<xr:Value name="Role.ПроведениеКассовыхДокументов">false</xr:Value>
+						<xr:Value name="40a52f83-f0e2-470d-9c17-7fdc8cc646b7">false</xr:Value>
+						<xr:Value name="Role.ПросмотрЖурналаОпераций">false</xr:Value>
+						<xr:Value name="Role.ПросмотрЖурналаРегистрации">false</xr:Value>
+						<xr:Value name="Role.РедактированиеБухгалтерскихЗаписей">false</xr:Value>
+						<xr:Value name="Role.РедактированиеРеквизитовОбъектов">false</xr:Value>
+						<xr:Value name="Role.РежимТехническогоСпециалиста">false</xr:Value>
+						<xr:Value name="Role.СохранениеДанныхПользователя">false</xr:Value>
+						<xr:Value name="Role.УдаленныйДоступОбменСообщениями">false</xr:Value>
+						<xr:Value name="Role.ФормированиеОтчетовПоИсполнениюПлановыхПоказателей">false</xr:Value>
+						<xr:Value name="Role.ФормированиеРегистровБухгалтерскогоУчета">false</xr:Value>
+						<xr:Value name="Role.ФормированиеСтандартныхБухгалтерскихОтчетов">false</xr:Value>
+						<xr:Value name="1ae364d3-0bec-4089-af23-c60d2a274c85">false</xr:Value>
+						<xr:Value name="Role.ЧтениеБухгалтерскихЗаписей">false</xr:Value>
+						<xr:Value name="Role.БазовыеПраваББК">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеЛичныхВариантовОтчетов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеВерсийОбъектов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеВнешнихПользователей">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДанныхРегламентированнойБухОтчетности">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДанныхРегламентированнойОтчетности">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДоговоровСМОЛ">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПоБанковскимОперациям">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПоБюджетнымДанным">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПокупателям">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПоставщиков">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПоУчетуМЗ">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДокументовПоУчетуОС">false</xr:Value>
+						<xr:Value name="Role.ЧтениеДополнительныхСведений">false</xr:Value>
+						<xr:Value name="Role.ЧтениеКассовыхДокументов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеКлассификационныхПризнаковСчетов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеНастроекПланаСчетов">false</xr:Value>
+						<xr:Value name="Role.ЧтениеНСИ">false</xr:Value>
+						<xr:Value name="Role.ЧтениеПерсональныхДанныхФизическихЛиц">false</xr:Value>
+						<xr:Value name="Role.ЧтениеРегламентныхОпераций">false</xr:Value>
+						<xr:Value name="Role.ЧтениеФизическихЛиц">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеНастроекОбменаБанкиКС">false</xr:Value>
+						<xr:Value name="Role.ДобавлениеИзменениеЗаданийОбменаБанкиКС">true</xr:Value>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Экспорт</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ВыгрузитьФайлСертификата</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:TransparentPixel x="11" y="3"/>
+					</Picture>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаДокументыЭкспортаРасширеннаяПодсказка" id="252"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаШапкаТаблица" id="39">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заголовки экспорта и данные экспорта</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаШапкаТаблицаРасширеннаяПодсказка" id="253"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаШапки" id="27">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заголовки экспорта</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаШапкиРасширеннаяПодсказка" id="254"/>
+									<ChildItems>
+										<Table name="ДокументыЭкспорта" id="52">
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<FileDragMode>AsFile</FileDragMode>
+											<DataPath>ДокументыЭкспорта</DataPath>
+											<RowPictureDataPath>ДокументыЭкспорта.DefaultPicture</RowPictureDataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<AutoRefresh>false</AutoRefresh>
+											<AutoRefreshPeriod>60</AutoRefreshPeriod>
+											<Period>
+												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+											</Period>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<RestoreCurrentRow>false</RestoreCurrentRow>
+											<TopLevelParent xsi:nil="true"/>
+											<ShowRoot>true</ShowRoot>
+											<AllowRootChoice>false</AllowRootChoice>
+											<UpdateOnDataChange>Auto</UpdateOnDataChange>
+											<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+											<ContextMenu name="ДокументыЭкспортаКонтекстноеМеню" id="53"/>
+											<AutoCommandBar name="ДокументыЭкспортаКоманднаяПанель" id="54">
+												<ChildItems>
+													<Button name="РеестрДокументов" id="325">
+														<Type>CommandBarButton</Type>
+														<UserVisible>
+															<xr:Common>true</xr:Common>
+															<xr:Value name="Role.АдминистраторСистемы">true</xr:Value>
+															<xr:Value name="Role.Администрирование">true</xr:Value>
+															<xr:Value name="Role.БазовыеПраваБГУ">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваБИД">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваБРО">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваБСП">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваБТС">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваВЕТИС">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваВнешнихПользователейБСП">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваИПП">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваЭД">false</xr:Value>
+															<xr:Value name="Role.ВыводНаПринтерФайлБуферОбмена">false</xr:Value>
+															<xr:Value name="Role.ИнтеграцияСКоннект">false</xr:Value>
+															<xr:Value name="Role.ВыполнениеОбменаДокументамиБизнесСеть">false</xr:Value>
+															<xr:Value name="Role.ВыполнениеОбменаСКонтрагентами">false</xr:Value>
+															<xr:Value name="Role.ВыполнениеСинхронизацииДанных">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеВнешнихФорматовВыгрузкиБухгалтерскойОтчетности">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеАвансовыхОтчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеАдресныхСведений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеБанков">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеБухгалтерскихЗаписей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеБюджетнойКлассификации">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВариантовОтчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВетеринарноСопроводительныхДокументовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВзаимодействий">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВзаимодействийГИСГМП">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВидовКонтактнойИнформации">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВидовПриказовОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВнешнихПользователей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВозвратовРозничныхПродаж">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеВходящихТранспортныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеГрафиковРаботы">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеГруппУчащихся">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДанныхРаботаСНоменклатурой">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДанныхРегламентированнойБухОтчетности">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДанныхРеестраИмущества">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДатЗапретаИзменения">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДетей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДоговоров">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДоговоровСМОЛ">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовАдминистратораЗапросов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоБанковскимОперациям">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоБюджетнымДанным">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПодведомственныхАН">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоКредитамИЗаймам">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПокупателям">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоставщиков">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуБСО">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуЗП">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуИК">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуМЗ">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуОС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоУчетуПП">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовПоЦС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДокументовРозничныхПродаж">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДолжностей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДопБК">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДополнительныхОтчетовИОбработок">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДополнительныхРеквизитовИСведений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеДопУслугОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЕдиногоКаталогаТоваровИУслуг">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЗаболеванийУсловийРегионализацииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЗаданий">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЗаданийОбменаБанкиКС">true</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЗаметок">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЗапросовСкладскогоЖурналаВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеИнвентаризацийПродукцииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеИсходящихТранспортныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКалендарныхГрафиков">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКассовыхДокументов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКатегорий1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКлассификационныхПризнаковСчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКонтрагентов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКорректировокЧекаККМ">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКурсовВалют">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеКурсовОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЛичныхВариантовОтчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЛичныхШаблоновСообщений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЛьготОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеМаршрутовПодписания">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНазначенийГрузовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНапоминаний">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекБизнесСеть">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекЗаполненияТОПриВводеНаОсновании">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекОбменаБанкиКС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекОбменаСКонтрагентами">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекПланаСчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекРеестраИмущества">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекРозничныхПродаж">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекСоответствия1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекТиповыхОпераций">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекТиповыхОперацийПоУмолчанию">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекУчетаГСМ">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНастроекЭлектронногоВзаимодействия">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНачисленийДБП">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНачисленийКомпенсацииРодительскойПлаты">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНачисленийОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНачисленийРодительскойПлаты">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНеоплаченныхПутевок">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНеразделяемыхДанныхРегламентированнойОтчетности">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНоменклатуры">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНоменклатуры1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеНоменклатурыКонтрагентовБЭД">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОбщейБухгалтерскойНСИ">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОбъединенийЗаписейСкладскогоЖурналаВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОбъектовФинансовыхВложений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОсновныхСредств">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОстатковТоваровРозницы">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеОтчетовОРозничныхПродажах">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПапокИФайлов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПапокИФайловВнешнимиПользователями">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПараметровБухгалтерии">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПерсональныхДанныхФизическихЛиц">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПлановыеПоступленияОплатыОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПодключаемогоОборудования">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПодразделений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПолейПриказовОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПолноправныхДокументов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПользователей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПриказовОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПродукцииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПроизводственныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеПутевыхЛистов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРабочегоПланаСчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРазделяемыхДанныхРегламентированнойОтчетности">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРаспределенияОплатыОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРассылокОтчетов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРегламентныхОпераций">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеРолейИсполнителей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеСостоянийУчащихсяОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеСотрудников">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеСпециальностейОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеСтавокОплатыОбразование">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеТаксировокПутевыхЛистов">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеУчащихся">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеФизическихЛиц">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеХозяйствующихСубъектовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЦенНоменклатуры">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЧековККМДляРеестраПлатежей">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЧековККМИсправительных">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЧековККМНаПередачу">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеШаблоновСообщений">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеШтрихкодовУпаковокТоваров">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЭквайринговыхОпераций">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЭлектронныхДокументов">false</xr:Value>
+															<xr:Value name="db82191f-77bd-44da-8b33-86f01018e25a">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеИзменениеЮридическихЛиц">false</xr:Value>
+															<xr:Value name="Role.ДобавлениеОрганизаций">false</xr:Value>
+															<xr:Value name="Role.ЗапросНовойСправкиСПАРКРиски">false</xr:Value>
+															<xr:Value name="Role.ЗапускAutomation">false</xr:Value>
+															<xr:Value name="Role.ЗапускВебКлиента">false</xr:Value>
+															<xr:Value name="Role.ЗапускВнешнегоСоединения">false</xr:Value>
+															<xr:Value name="Role.ЗапускМобильногоКлиента">false</xr:Value>
+															<xr:Value name="Role.ЗапускТолстогоКлиента">false</xr:Value>
+															<xr:Value name="Role.ЗапускТонкогоКлиента">false</xr:Value>
+															<xr:Value name="Role.ИзменениеВыполнениеЗадач">false</xr:Value>
+															<xr:Value name="Role.ИзменениеДанныхОрганизации">false</xr:Value>
+															<xr:Value name="Role.ИзменениеДополнительныхСведений">false</xr:Value>
+															<xr:Value name="Role.ИзменениеМакетовПечатныхФорм">false</xr:Value>
+															<xr:Value name="Role.ИзменениеПроверокСостоянияСистемы">false</xr:Value>
+															<xr:Value name="Role.ИзменениеУчастниковГруппДоступа">false</xr:Value>
+															<xr:Value name="Role.ИнтерактивноеОткрытиеВнешнихОтчетовИОбработок">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеИнтеграцииС1СДокументооборотом">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеИнформационногоЦентра">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеМонитораПортала1СИТС">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеОблачныхКлассификаторов">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеОбработкиПанельОбменВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеСервиса1СТакском">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеУведомленийЭДО">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеУниверсальногоОтчета">false</xr:Value>
+															<xr:Value name="Role.ИспользованиеЭлектроннойПодписиВМоделиСервиса">false</xr:Value>
+															<xr:Value name="Role.НастройкаИОценкаПроизводительности">false</xr:Value>
+															<xr:Value name="Role.НастройкаПараметровУчета">false</xr:Value>
+															<xr:Value name="Role.НастройкаРегламентированнойБухОтчетности">false</xr:Value>
+															<xr:Value name="Role.НастройкаСинхронизацииФайлов">false</xr:Value>
+															<xr:Value name="Role.НастройкаЭквайринговыхОпераций">false</xr:Value>
+															<xr:Value name="Role.ОбновлениеКонфигурацииБазыДанных">false</xr:Value>
+															<xr:Value name="Role.ОператорОтправкиОтчетностиЧерезПредставителя">false</xr:Value>
+															<xr:Value name="Role.ОтправкаSMS">false</xr:Value>
+															<xr:Value name="Role.ПередачаДанныхАнонимныйДоступ">false</xr:Value>
+															<xr:Value name="Role.ПодготовкаСогласияНаОбработкуПерсональныхДанных">false</xr:Value>
+															<xr:Value name="Role.ПодключениеИнтернетПоддержки">false</xr:Value>
+															<xr:Value name="Role.ПодключениеСервисовСопровождения">false</xr:Value>
+															<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+															<xr:Value name="Role.ПолучениеОбновленийКлассификаторов">false</xr:Value>
+															<xr:Value name="Role.ПостановкаКонтрагентовНаМониторингСПАРКРиски">false</xr:Value>
+															<xr:Value name="Role.ПравоНаЗащищенныйДокументооборотСКонтролирующимиОрганами">false</xr:Value>
+															<xr:Value name="Role.ПроведениеКассовыхДокументов">false</xr:Value>
+															<xr:Value name="Role.ПросмотрЖурналаОпераций">false</xr:Value>
+															<xr:Value name="Role.ПросмотрЖурналаРегистрации">false</xr:Value>
+															<xr:Value name="Role.ПросмотрИнформацииОДоступныхОбновленияхПрограммы">false</xr:Value>
+															<xr:Value name="Role.ПросмотрОписанияИзмененийПрограммы">false</xr:Value>
+															<xr:Value name="Role.ПросмотрОтчетаДвиженияДокумента">false</xr:Value>
+															<xr:Value name="Role.ПросмотрОтчетаДосьеКонтрагента">false</xr:Value>
+															<xr:Value name="Role.ПросмотрОтчетаКонсольРуководителя">false</xr:Value>
+															<xr:Value name="Role.ПросмотрПротоколовОтправкиВКонтролирующиеОрганы">false</xr:Value>
+															<xr:Value name="Role.ПросмотрСвязанныеДокументы">false</xr:Value>
+															<xr:Value name="Role.РедактированиеБухгалтерскихЗаписей">false</xr:Value>
+															<xr:Value name="Role.РедактированиеНовостей">false</xr:Value>
+															<xr:Value name="Role.РедактированиеПечатныхФорм">false</xr:Value>
+															<xr:Value name="Role.РедактированиеРеквизитовОбъектов">false</xr:Value>
+															<xr:Value name="Role.РежимТехническогоСпециалиста">false</xr:Value>
+															<xr:Value name="Role.СохранениеДанныхПользователя">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступOData">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступАдминистрированиеИБВМоделиСервиса">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступБазоваяФункциональность">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступОбменДаннымиВМоделиСервиса">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступОбменСообщениями">false</xr:Value>
+															<xr:Value name="Role.УдаленныйДоступПередачаДанных">false</xr:Value>
+															<xr:Value name="Role.УдаленныйКонтроль">false</xr:Value>
+															<xr:Value name="Role.УправлениеПоддержкойТиповыхОпераций">false</xr:Value>
+															<xr:Value name="Role.ФормированиеОтчетовПоИсполнениюПлановыхПоказателей">false</xr:Value>
+															<xr:Value name="Role.ФормированиеРегистровБухгалтерскогоУчета">false</xr:Value>
+															<xr:Value name="Role.ФормированиеРегистровНалоговогоУчета">false</xr:Value>
+															<xr:Value name="Role.ФормированиеСтандартныхБухгалтерскихОтчетов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеАвансовыхОтчетов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеБухгалтерскихЗаписей">false</xr:Value>
+															<xr:Value name="Role.БазовыеПраваББК">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВариантовОтчетов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВерсийОбъектов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВетеринарноСопроводительныхДокументовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВзаимодействийГИСГМП">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВнешнихПользователей">false</xr:Value>
+															<xr:Value name="Role.ЧтениеВходящихТранспортныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеГлобальныхДополнительныхОтчетовИОбработок">false</xr:Value>
+															<xr:Value name="Role.ЧтениеГрафиковРаботы">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДанныхРаботаСНоменклатурой">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДанныхРегламентированнойБухОтчетности">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДанныхРегламентированнойОтчетности">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДанныхРеестраИмущества">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДанныхСПАРКРиски">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДоговоров">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДоговоровСМОЛ">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоБанковскимОперациям">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоБюджетнымДанным">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПодведомственныхАН">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоКредитамИЗаймам">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПокупателям">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоставщиков">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуБСО">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуЗП">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуИК">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуМЗ">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуОС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоУчетуПП">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовПоЦС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДокументовРозничныхПродаж">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДополнительныхОтчетовИОбработок">false</xr:Value>
+															<xr:Value name="Role.ЧтениеДополнительныхСведений">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЕдиногоКаталогаТоваровИУслуг">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЗаболеванийУсловийРегионализацииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЗаданий">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЗаданийОбменаБанкиКС">true</xr:Value>
+															<xr:Value name="Role.ЧтениеЗадач">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЗаписейСкладскогоЖурналаВРезервеВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЗапросовСкладскогоЖурналаВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеИнвентаризацийПродукцииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеИнформацииОВерсияхОбъектов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеИсходящихТранспортныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеКассовыхДокументов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеКатегорий1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ЧтениеКлассификационныхПризнаковСчетов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеКорректировокЧекаККМ">false</xr:Value>
+															<xr:Value name="Role.ЧтениеКурсовВалют">false</xr:Value>
+															<xr:Value name="Role.ЧтениеМаршрутовПодписания">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНазначенийГрузовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекБизнесСеть">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекОбменаСКонтрагентами">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекПланаСчетов">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекРеестраИмущества">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекСоответствия1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНастроекЭлектронногоВзаимодействия">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНачисленийДБП">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНеоплаченныхПутевок">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНовостей">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНоменклатуры1СНоменклатура">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНоменклатурыКонтрагентовБЭД">false</xr:Value>
+															<xr:Value name="Role.ЧтениеНСИ">false</xr:Value>
+															<xr:Value name="Role.ЧтениеОбъединенийЗаписейСкладскогоЖурналаВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеОбъектовФинансовыхВложений">false</xr:Value>
+															<xr:Value name="Role.ЧтениеОстатковПродукцииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеОстатковТоваровРозницы">false</xr:Value>
+															<xr:Value name="Role.ЧтениеОтчетовОРозничныхПродажах">false</xr:Value>
+															<xr:Value name="Role.ЧтениеПерсональныхДанныхФизическихЛиц">false</xr:Value>
+															<xr:Value name="fff20e1c-382f-4c20-9ffa-7f6e72afe431">false</xr:Value>
+															<xr:Value name="Role.ЧтениеПроверокСостоянияСистемы">false</xr:Value>
+															<xr:Value name="Role.ЧтениеПродукцииВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеПроизводственныхОперацийВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеРассылокОтчетов">false</xr:Value>
+															<xr:Value name="befc363b-0e11-450e-97fe-1ec72444f314">false</xr:Value>
+															<xr:Value name="Role.ЧтениеРегламентныхОпераций">false</xr:Value>
+															<xr:Value name="Role.ЧтениеРезультатовПроверкиУчета">false</xr:Value>
+															<xr:Value name="Role.ЧтениеСоответствияНоменклатурыВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеУчетаГСМ">false</xr:Value>
+															<xr:Value name="Role.ЧтениеУчетаРодительскойПлаты">false</xr:Value>
+															<xr:Value name="Role.ЧтениеУчетаУчащихся">false</xr:Value>
+															<xr:Value name="Role.ЧтениеУчетныхЗаписейЭлектроннойПочты">false</xr:Value>
+															<xr:Value name="Role.ЧтениеФизическихЛиц">false</xr:Value>
+															<xr:Value name="Role.ЧтениеХозяйствующихСубъектовВЕТИС">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЧековККМДляРеестраПлатежей">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЧековККМИсправительных">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЧековККМНаПередачу">false</xr:Value>
+															<xr:Value name="Role.ЧтениеШаблоновСообщений">false</xr:Value>
+															<xr:Value name="Role.ЧтениеШтрихкодовУпаковокТоваров">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЭквайринговыхОпераций">false</xr:Value>
+															<xr:Value name="Role.ЧтениеЭлектронныхДокументов">false</xr:Value>
+														</UserVisible>
+														<Representation>PictureAndText</Representation>
+														<DefaultItem>true</DefaultItem>
+														<CommandName>Form.Command.ОткрытьРеестр</CommandName>
+														<Picture>
+															<xr:Ref>StdPicture.ListViewModeList</xr:Ref>
+															<xr:LoadTransparent>true</xr:LoadTransparent>
+														</Picture>
+														<PictureLocation>Left</PictureLocation>
+														<ExtendedTooltip name="РеестрДокументовРасширеннаяПодсказка" id="326"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ДокументыЭкспортаРасширеннаяПодсказка" id="255"/>
+											<SearchStringAddition name="ДокументыЭкспортаСтрокаПоиска" id="256">
+												<AdditionSource>
+													<Item>ДокументыЭкспорта</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыЭкспортаСтрокаПоискаКонтекстноеМеню" id="257"/>
+												<ExtendedTooltip name="ДокументыЭкспортаСтрокаПоискаРасширеннаяПодсказка" id="258"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ДокументыЭкспортаСостояниеПросмотра" id="259">
+												<AdditionSource>
+													<Item>ДокументыЭкспорта</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыЭкспортаСостояниеПросмотраКонтекстноеМеню" id="260"/>
+												<ExtendedTooltip name="ДокументыЭкспортаСостояниеПросмотраРасширеннаяПодсказка" id="261"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ДокументыЭкспортаУправлениеПоиском" id="262">
+												<AdditionSource>
+													<Item>ДокументыЭкспорта</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыЭкспортаУправлениеПоискомКонтекстноеМеню" id="263"/>
+												<ExtendedTooltip name="ДокументыЭкспортаУправлениеПоискомРасширеннаяПодсказка" id="264"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">ДокументыЭкспортаПриАктивизацииСтроки</Event>
+												<Event name="OnChange">ДокументыЭкспортаПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="ДокументыЭкспортаДата" id="55">
+													<DataPath>ДокументыЭкспорта.Date</DataPath>
+													<ContextMenu name="ДокументыЭкспортаДатаКонтекстноеМеню" id="56"/>
+													<ExtendedTooltip name="ДокументыЭкспортаДатаРасширеннаяПодсказка" id="265"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаНомер" id="57">
+													<DataPath>ДокументыЭкспорта.Number</DataPath>
+													<ContextMenu name="ДокументыЭкспортаНомерКонтекстноеМеню" id="58"/>
+													<ExtendedTooltip name="ДокументыЭкспортаНомерРасширеннаяПодсказка" id="266"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаУчреждение" id="59">
+													<DataPath>ДокументыЭкспорта.Организация</DataPath>
+													<ContextMenu name="ДокументыЭкспортаУчреждениеКонтекстноеМеню" id="60"/>
+													<ExtendedTooltip name="ДокументыЭкспортаУчреждениеРасширеннаяПодсказка" id="267"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаКассовыйОрган" id="61">
+													<DataPath>ДокументыЭкспорта.КассовыйОрган</DataPath>
+													<ContextMenu name="ДокументыЭкспортаКассовыйОрганКонтекстноеМеню" id="62"/>
+													<ExtendedTooltip name="ДокументыЭкспортаКассовыйОрганРасширеннаяПодсказка" id="268"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаТипФормата" id="63">
+													<DataPath>ДокументыЭкспорта.ВидОбмена</DataPath>
+													<ContextMenu name="ДокументыЭкспортаТипФорматаКонтекстноеМеню" id="64"/>
+													<ExtendedTooltip name="ДокументыЭкспортаТипФорматаРасширеннаяПодсказка" id="269"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаНастройкаФорматовОбмена" id="67">
+													<DataPath>ДокументыЭкспорта.НастройкаФорматов</DataPath>
+													<ContextMenu name="ДокументыЭкспортаНастройкаФорматовОбменаКонтекстноеМеню" id="68"/>
+													<ExtendedTooltip name="ДокументыЭкспортаНастройкаФорматовОбменаРасширеннаяПодсказка" id="270"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаНастройкаОбмена" id="69">
+													<DataPath>ДокументыЭкспорта.НастройкаОбмена</DataPath>
+													<ContextMenu name="ДокументыЭкспортаНастройкаОбменаКонтекстноеМеню" id="70"/>
+													<ExtendedTooltip name="ДокументыЭкспортаНастройкаОбменаРасширеннаяПодсказка" id="271"/>
+												</LabelField>
+												<LabelField name="ДокументыЭкспортаСсылка" id="240">
+													<DataPath>ДокументыЭкспорта.Ref</DataPath>
+													<UserVisible>
+														<xr:Common>false</xr:Common>
+													</UserVisible>
+													<ContextMenu name="ДокументыЭкспортаСсылкаКонтекстноеМеню" id="241"/>
+													<ExtendedTooltip name="ДокументыЭкспортаСсылкаРасширеннаяПодсказка" id="272"/>
+												</LabelField>
+											</ChildItems>
+										</Table>
+										<LabelField name="ДокументыЭкспортаКомментарий" id="168">
+											<DataPath>Items.ДокументыЭкспорта.CurrentData.Комментарий</DataPath>
+											<TextColor>style:FieldSelectionBackColor</TextColor>
+											<ContextMenu name="ДокументыЭкспортаКомментарийКонтекстноеМеню" id="169"/>
+											<ExtendedTooltip name="ДокументыЭкспортаКомментарийРасширеннаяПодсказка" id="273"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаТабличнаяЧасть" id="28">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные экспорта</v8:content>
+										</v8:item>
+									</Title>
+									<Height>10</Height>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<ExtendedTooltip name="ГруппаТабличнаяЧастьРасширеннаяПодсказка" id="274"/>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОтборЭкспорта" id="40">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор экспорта</v8:content>
+								</v8:item>
+							</Title>
+							<Width>40</Width>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОтборЭкспортаРасширеннаяПодсказка" id="275"/>
+							<ChildItems>
+								<Table name="ТабличныеЧасти" id="29">
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ТабличныеЧасти</DataPath>
+									<RowPictureDataPath>~ТабличныеЧасти.DefaultPicture</RowPictureDataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="ТабличныеЧастиКонтекстноеМеню" id="30"/>
+									<AutoCommandBar name="ТабличныеЧастиКоманднаяПанель" id="31"/>
+									<ExtendedTooltip name="ТабличныеЧастиРасширеннаяПодсказка" id="276"/>
+									<SearchStringAddition name="ТабличныеЧастиСтрокаПоиска" id="277">
+										<AdditionSource>
+											<Item>ТабличныеЧасти</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиСтрокаПоискаКонтекстноеМеню" id="278"/>
+										<ExtendedTooltip name="ТабличныеЧастиСтрокаПоискаРасширеннаяПодсказка" id="279"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ТабличныеЧастиСостояниеПросмотра" id="280">
+										<AdditionSource>
+											<Item>ТабличныеЧасти</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиСостояниеПросмотраКонтекстноеМеню" id="281"/>
+										<ExtendedTooltip name="ТабличныеЧастиСостояниеПросмотраРасширеннаяПодсказка" id="282"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ТабличныеЧастиУправлениеПоиском" id="283">
+										<AdditionSource>
+											<Item>ТабличныеЧасти</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиУправлениеПоискомКонтекстноеМеню" id="284"/>
+										<ExtendedTooltip name="ТабличныеЧастиУправлениеПоискомРасширеннаяПодсказка" id="285"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">ТабличныеЧастиВыбор</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ТабличныеЧастиОбъект" id="34">
+											<DataPath>ТабличныеЧасти.Объект</DataPath>
+											<ContextMenu name="ТабличныеЧастиОбъектКонтекстноеМеню" id="35"/>
+											<ExtendedTooltip name="ТабличныеЧастиОбъектРасширеннаяПодсказка" id="286"/>
+										</LabelField>
+										<InputField name="ТабличныеЧастиОписаниеОшибки" id="50">
+											<DataPath>ТабличныеЧасти.ПолеВывода</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Ошибки</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ТабличныеЧастиОписаниеОшибкиКонтекстноеМеню" id="51"/>
+											<ExtendedTooltip name="ТабличныеЧастиОписаниеОшибкиРасширеннаяПодсказка" id="287"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаДокументыИмпорта" id="171">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Импорт</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ЗагрузитьФайлСертификата</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:TransparentPixel x="14" y="1"/>
+					</Picture>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаДокументыИмпортаРасширеннаяПодсказка" id="288"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаШапкиСодержаниеИмпорта" id="172">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заголовки импорта и данные импорта</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаШапкиСодержаниеИмпортаРасширеннаяПодсказка" id="289"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаШапкиИмпорта" id="173">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заголовки импорта</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаШапкиИмпортаРасширеннаяПодсказка" id="290"/>
+									<ChildItems>
+										<Table name="ДокументыИмпорта" id="174">
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<FileDragMode>AsFile</FileDragMode>
+											<DataPath>ДокументыИмпорта</DataPath>
+											<RowPictureDataPath>ДокументыИмпорта.DefaultPicture</RowPictureDataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<AutoRefresh>false</AutoRefresh>
+											<AutoRefreshPeriod>60</AutoRefreshPeriod>
+											<Period>
+												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+											</Period>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<RestoreCurrentRow>false</RestoreCurrentRow>
+											<TopLevelParent xsi:nil="true"/>
+											<ShowRoot>true</ShowRoot>
+											<AllowRootChoice>false</AllowRootChoice>
+											<UpdateOnDataChange>Auto</UpdateOnDataChange>
+											<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+											<ContextMenu name="ДокументыИмпортаКонтекстноеМеню" id="175"/>
+											<AutoCommandBar name="ДокументыИмпортаКоманднаяПанель" id="176"/>
+											<ExtendedTooltip name="ДокументыИмпортаРасширеннаяПодсказка" id="291"/>
+											<SearchStringAddition name="ДокументыИмпортаСтрокаПоиска" id="292">
+												<AdditionSource>
+													<Item>ДокументыИмпорта</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыИмпортаСтрокаПоискаКонтекстноеМеню" id="293"/>
+												<ExtendedTooltip name="ДокументыИмпортаСтрокаПоискаРасширеннаяПодсказка" id="294"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ДокументыИмпортаСостояниеПросмотра" id="295">
+												<AdditionSource>
+													<Item>ДокументыИмпорта</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыИмпортаСостояниеПросмотраКонтекстноеМеню" id="296"/>
+												<ExtendedTooltip name="ДокументыИмпортаСостояниеПросмотраРасширеннаяПодсказка" id="297"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ДокументыИмпортаУправлениеПоиском" id="298">
+												<AdditionSource>
+													<Item>ДокументыИмпорта</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ДокументыИмпортаУправлениеПоискомКонтекстноеМеню" id="299"/>
+												<ExtendedTooltip name="ДокументыИмпортаУправлениеПоискомРасширеннаяПодсказка" id="300"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">ДокументыИмпортаПриАктивизацииСтроки</Event>
+												<Event name="OnChange">ДокументыИмпортаПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="ДокументыИмпортаДата" id="177">
+													<DataPath>ДокументыИмпорта.Date</DataPath>
+													<ContextMenu name="ДокументыИмпортаДатаКонтекстноеМеню" id="178"/>
+													<ExtendedTooltip name="ДокументыИмпортаДатаРасширеннаяПодсказка" id="301"/>
+												</LabelField>
+												<LabelField name="ДокументыИмпортаНомер" id="179">
+													<DataPath>ДокументыИмпорта.Number</DataPath>
+													<ContextMenu name="ДокументыИмпортаНомерКонтекстноеМеню" id="180"/>
+													<ExtendedTooltip name="ДокументыИмпортаНомерРасширеннаяПодсказка" id="302"/>
+												</LabelField>
+												<LabelField name="ДокументыИмпортаКассовыйОрган" id="189">
+													<DataPath>ДокументыИмпорта.КассовыйОрган</DataPath>
+													<ContextMenu name="ДокументыИмпортаКассовыйОрганКонтекстноеМеню" id="190"/>
+													<ExtendedTooltip name="ДокументыИмпортаКассовыйОрганРасширеннаяПодсказка" id="303"/>
+												</LabelField>
+												<LabelField name="ДокументыИмпортаВидОбмена" id="191">
+													<DataPath>ДокументыИмпорта.ВидОбмена</DataPath>
+													<ContextMenu name="ДокументыИмпортаВидОбменаКонтекстноеМеню" id="192"/>
+													<ExtendedTooltip name="ДокументыИмпортаВидОбменаРасширеннаяПодсказка" id="304"/>
+												</LabelField>
+												<LabelField name="ДокументыИмпортаСсылка" id="242">
+													<DataPath>ДокументыИмпорта.Ref</DataPath>
+													<UserVisible>
+														<xr:Common>false</xr:Common>
+													</UserVisible>
+													<ContextMenu name="ДокументыИмпортаСсылкаКонтекстноеМеню" id="243"/>
+													<ExtendedTooltip name="ДокументыИмпортаСсылкаРасширеннаяПодсказка" id="305"/>
+												</LabelField>
+											</ChildItems>
+										</Table>
+										<LabelField name="ДокументыИмпортаКомментарий" id="226">
+											<DataPath>Items.ДокументыИмпорта.CurrentData.Комментарий</DataPath>
+											<TextColor>style:FieldSelectionBackColor</TextColor>
+											<ContextMenu name="ДокументыИмпортаКомментарийКонтекстноеМеню" id="227"/>
+											<ExtendedTooltip name="ДокументыИмпортаКомментарийРасширеннаяПодсказка" id="306"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОтборИмпорта" id="193">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор импорта</v8:content>
+								</v8:item>
+							</Title>
+							<Width>40</Width>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОтборИмпортаРасширеннаяПодсказка" id="307"/>
+							<ChildItems>
+								<Table name="ТабличныеЧастиИмпорта" id="229">
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ТабличныеЧастиИмпорта</DataPath>
+									<RowPictureDataPath>~ТабличныеЧастиИмпорта.DefaultPicture</RowPictureDataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="ТабличныеЧастиИмпортаКонтекстноеМеню" id="230"/>
+									<AutoCommandBar name="ТабличныеЧастиИмпортаКоманднаяПанель" id="231"/>
+									<ExtendedTooltip name="ТабличныеЧастиИмпортаРасширеннаяПодсказка" id="308"/>
+									<SearchStringAddition name="ТабличныеЧастиИмпортаСтрокаПоиска" id="309">
+										<AdditionSource>
+											<Item>ТабличныеЧастиИмпорта</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиИмпортаСтрокаПоискаКонтекстноеМеню" id="310"/>
+										<ExtendedTooltip name="ТабличныеЧастиИмпортаСтрокаПоискаРасширеннаяПодсказка" id="311"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ТабличныеЧастиИмпортаСостояниеПросмотра" id="312">
+										<AdditionSource>
+											<Item>ТабличныеЧастиИмпорта</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиИмпортаСостояниеПросмотраКонтекстноеМеню" id="313"/>
+										<ExtendedTooltip name="ТабличныеЧастиИмпортаСостояниеПросмотраРасширеннаяПодсказка" id="314"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ТабличныеЧастиИмпортаУправлениеПоиском" id="315">
+										<AdditionSource>
+											<Item>ТабличныеЧастиИмпорта</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ТабличныеЧастиИмпортаУправлениеПоискомКонтекстноеМеню" id="316"/>
+										<ExtendedTooltip name="ТабличныеЧастиИмпортаУправлениеПоискомРасширеннаяПодсказка" id="317"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">ТабличныеЧастиИмпортаВыбор</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ТабличныеЧастиИмпортаОбъект" id="234">
+											<DataPath>ТабличныеЧастиИмпорта.Объект</DataPath>
+											<ContextMenu name="ТабличныеЧастиИмпортаОбъектКонтекстноеМеню" id="235"/>
+											<ExtendedTooltip name="ТабличныеЧастиИмпортаОбъектРасширеннаяПодсказка" id="318"/>
+										</LabelField>
+										<LabelField name="ТабличныеЧастиИмпортаОписаниеОшибки" id="236">
+											<DataPath>ТабличныеЧастиИмпорта.ОписаниеОшибки</DataPath>
+											<ContextMenu name="ТабличныеЧастиИмпортаОписаниеОшибкиКонтекстноеМеню" id="237"/>
+											<ExtendedTooltip name="ТабличныеЧастиИмпортаОписаниеОшибкиРасширеннаяПодсказка" id="319"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ИнформационныеСсылки" id="247">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационные ссылки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ИнформационныеСсылкиРасширеннаяПодсказка" id="320"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ЗаданияОбменаБанкКазначейство</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДокументыЭкспорта" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ДокументыЭкспорта.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.ЗаданиеНаЭкспортДанныхВБанкиКС</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Дата</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="v8:StandardBeginningDate">
+								<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+								<v8:date>0001-01-01T00:00:00</v8:date>
+							</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Номер</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:string"/>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">КассовыйОрган</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">НастройкаОбмена</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.НастройкиОбменаБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">ОбъектыОбмена.Объект</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">ОбъектыОбмена.Формат</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ФорматыОбменаБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ТабличныеЧасти" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Табличные части</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ТабличныеЧасти.ОписаниеОшибки</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Ссылка,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Объект КАК Объект,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.ОписаниеОшибки КАК ОписаниеОшибки,
+	ВЫБОР
+		КОГДА ПОДСТРОКА(КС_ЗаданиеНаЭкспортОбъектыОбмена.ОписаниеОшибки, 1, 1) = ""
+			ТОГДА ""
+		ИНАЧЕ "Подробно..."
+	КОНЕЦ КАК ПолеВывода
+{ВЫБРАТЬ
+	Объект,
+	ОписаниеОшибки,
+	ПолеВывода}
+ИЗ
+	Документ.ЗаданиеНаЭкспортДанныхВБанкиКС.ОбъектыОбмена КАК КС_ЗаданиеНаЭкспортОбъектыОбмена
+{ГДЕ
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Ссылка.*,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Объект.*,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Формат.*}</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Объект</dcssch:dataPath>
+					<dcssch:field>Объект</dcssch:field>
+					<dcssch:attributeUseRestriction>
+						<dcssch:condition>true</dcssch:condition>
+					</dcssch:attributeUseRestriction>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОписаниеОшибки</dcssch:dataPath>
+					<dcssch:field>ОписаниеОшибки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПолеВывода</dcssch:dataPath>
+					<dcssch:field>ПолеВывода</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поле вывода</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Формат</dcssch:dataPath>
+					<dcssch:field>Формат</dcssch:field>
+				</Field>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Ссылка</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Документ.ЗаданиеНаЭкспортДанныхВБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Формат</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ФорматыОбменаБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Объект</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ДокументыИмпорта" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы импорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ДокументыИмпорта.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.ЗаданиеНаИмпортДанныхБанкиКС</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Дата</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="v8:StandardBeginningDate">
+								<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+								<v8:date>0001-01-01T00:00:00</v8:date>
+							</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Номер</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:string"/>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">КассовыйОрган</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ТабличныеЧастиИмпорта" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Табличные части импорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ТабличныеЧастиИмпорта.ОписаниеОшибки</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Ссылка,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Объект КАК Объект,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.ОписаниеОшибки КАК ОписаниеОшибки,
+	ВЫБОР
+		КОГДА ПОДСТРОКА(КС_ЗаданиеНаЭкспортОбъектыОбмена.ОписаниеОшибки, 1, 1) = ""
+			ТОГДА ""
+		ИНАЧЕ "Подробно..."
+	КОНЕЦ КАК ПолеВывода
+{ВЫБРАТЬ
+	Объект.*,
+	ОписаниеОшибки,
+	ПолеВывода}
+ИЗ
+	Документ.ЗаданиеНаИмпортДанныхБанкиКС.ОбъектыОбмена КАК КС_ЗаданиеНаЭкспортОбъектыОбмена
+{ГДЕ
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Ссылка.*,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Объект.*,
+	КС_ЗаданиеНаЭкспортОбъектыОбмена.Формат.*}</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Ссылка</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Документ.ЗаданиеНаИмпортДанныхБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Формат</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ФорматыОбменаБанкиКС.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Объект</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОтборОрганизация" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборВидОбмена" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТипыОбменаБанкиКС</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьРеестр" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть реестр</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть реестр</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьРеестр</Action>
+		</Command>
+	</Commands>
+</Form>

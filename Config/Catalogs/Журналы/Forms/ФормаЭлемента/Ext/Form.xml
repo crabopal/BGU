@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="НомерЖурналаНаименование" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер журнала, наименование</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер журнала и наименование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="НомерЖурналаНаименованиеРасширеннаяПодсказка" id="65"/>
+			<ChildItems>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="66"/>
+				</InputField>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="67"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Родитель" id="5">
+			<DataPath>Объект.Parent</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="68"/>
+		</InputField>
+		<CheckBoxField name="МежотчетныйПериод" id="114">
+			<DataPath>Объект.МежотчетныйПериод</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал по операциям формирования входящих остатков следующего финансового года</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<BorderColor>style:FormTextColor</BorderColor>
+			<ContextMenu name="МежотчетныйПериодКонтекстноеМеню" id="115"/>
+			<ExtendedTooltip name="МежотчетныйПериодРасширеннаяПодсказка" id="116"/>
+			<Events>
+				<Event name="OnChange">МежотчетныйПериодПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<UsualGroup name="НастройкиЖурнала" id="112">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки журнала</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>None</ToolTipRepresentation>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="НастройкиЖурналаРасширеннаяПодсказка" id="113"/>
+			<ChildItems>
+				<UsualGroup name="ОбщиеНастройки" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общие настройки</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>StrongSeparation</Representation>
+					<ThroughAlign>DontUse</ThroughAlign>
+					<ExtendedTooltip name="ОбщиеНастройкиРасширеннаяПодсказка" id="71"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПриоритет" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Приоритет</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаПриоритетРасширеннаяПодсказка" id="72">
+								<AutoMaxWidth>false</AutoMaxWidth>
+								<MaxWidth>51</MaxWidth>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>При формировании проводки номер журнала присваивается равным номеру журнала счета дебета или кредита с наивысшим приоритетом. При равенстве приоритетов номер журнала определяется по счету кредита. Если приоритет не задан (0), то - это самый низкий из возможных приоритетов</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<InputField name="Приоритет" id="15">
+									<DataPath>Объект.Приоритет</DataPath>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПриоритетКонтекстноеМеню" id="16"/>
+									<ExtendedTooltip name="ПриоритетРасширеннаяПодсказка" id="73">
+										<MaxWidth>50</MaxWidth>
+										<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+									</ExtendedTooltip>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаРазделительОпераций" id="108">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Разделитель операций</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаРазделительОперацийРасширеннаяПодсказка" id="109">
+								<AutoMaxWidth>false</AutoMaxWidth>
+								<MaxWidth>51</MaxWidth>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Разделитель операций – вид объекта аналитического учета, для которого должен формироваться отдельный журнал. Например, "Журнал операций с безналичными денежными средствами" формируется отдельно по каждому расчетному (лицевому) счету, открытому в кредитной организации (органе казначейства)</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<LabelField name="РазделительОперацийСубконто" id="125">
+									<DataPath>РазделительПояснение</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+									<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="РазделительОперацийСубконтоКонтекстноеМеню" id="126"/>
+									<ExtendedTooltip name="РазделительОперацийСубконтоРасширеннаяПодсказка" id="127"/>
+								</LabelField>
+								<InputField name="РазделительОпераций" id="11">
+									<DataPath>Объект.РазделительСтрока</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Разделитель
+операций</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="РазделительОперацийКонтекстноеМеню" id="12"/>
+									<ExtendedTooltip name="РазделительОперацийРасширеннаяПодсказка" id="75"/>
+									<Events>
+										<Event name="StartChoice">РазделительОперацийНачалоВыбора</Event>
+										<Event name="Clearing">РазделительОперацийОчистка</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПоказатель" id="110">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Показатель</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаПоказательРасширеннаяПодсказка" id="111">
+								<AutoMaxWidth>false</AutoMaxWidth>
+								<MaxWidth>51</MaxWidth>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показатель – вид объекта аналитического учета, данные о котором приводятся в графе "Наименование показателя" журнала</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<LabelField name="Показатель" id="122">
+									<DataPath>ПоказательПояснение</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид субконто</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+									<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="ПоказательКонтекстноеМеню" id="123"/>
+									<ExtendedTooltip name="ПоказательРасширеннаяПодсказка" id="124"/>
+								</LabelField>
+								<InputField name="ПоказательСтрока" id="32">
+									<DataPath>Объект.ПоказательСтрока</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ПоказательСтрокаКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="ПоказательСтрокаРасширеннаяПодсказка" id="77"/>
+									<Events>
+										<Event name="StartChoice">ПоказательНачалоВыбора</Event>
+										<Event name="Clearing">ПоказательСтрокаОчистка</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОборотыГлавнойКниги" id="47">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа обороты главной книги</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОборотыГлавнойКнигиРасширеннаяПодсказка" id="79">
+								<AutoMaxWidth>false</AutoMaxWidth>
+								<MaxWidth>50</MaxWidth>
+								<VerticalStretch>true</VerticalStretch>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>При отключенном флажке раздел “Обороты для главной книги"  журнала операций формироваться не будет. При включенном флажке в рздел включаются проводки, в которых указан номер журнала, соответствующий формируемому журналу</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="ВыводитьОборотыГлавнойКниги" id="20">
+									<DataPath>Объект.ВыводитьОборотыГлавнойКниги</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выводить обороты для главной книги</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВыводитьОборотыГлавнойКнигиКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="ВыводитьОборотыГлавнойКнигиРасширеннаяПодсказка" id="80">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При отключенном флажке раздел “Обороты для главной книги"  журнала операций формироваться не будет. При включенном флажке в рздел включаются проводки, в которых указан номер журнала, соответствующий формируемому журналу</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ВыводитьОборотыГлавнойКнигиПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<CheckBoxField name="ОборотыГлавнойКнигиБезКорреспонденции" id="119">
+									<DataPath>Объект.ОборотыГлавнойКнигиБезКорреспонденции</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОборотыГлавнойКнигиБезКорреспонденцииКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="ОборотыГлавнойКнигиБезКорреспонденцииРасширеннаяПодсказка" id="121">
+										<VerticalStretch>true</VerticalStretch>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При включенном флажке обороты для главной книги будут группироваться по счетам, без разбивки по корреспонденциям</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ОперацииОбороты" id="45">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операции (обороты по счетам)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ОперацииОборотыРасширеннаяПодсказка" id="82">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<MaxWidth>50</MaxWidth>
+					</ExtendedTooltip>
+					<ChildItems>
+						<LabelDecoration name="ПояснениеОборотыЖурнала" id="48">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>51</MaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>1. В перечень операций, отражаемых в отчете, попадают все проводки, у которых реквизит “Номер журнала” равен номеру формируемого журнала. </v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="ПояснениеОборотыЖурналаКонтекстноеМеню" id="49"/>
+							<ExtendedTooltip name="ПояснениеОборотыЖурналаРасширеннаяПодсказка" id="83"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаДополнительныеОбороты" id="50">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительные условия включения проводок в журнал</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ГруппаДополнительныеОборотыРасширеннаяПодсказка" id="84"/>
+							<ChildItems>
+								<CheckBoxField name="ВыбиратьПроводкиСНомеромЖурналаСчета" id="18">
+									<DataPath>Объект.ВыбиратьПроводкиСНомеромЖурналаСчета</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дополнительно отбирать проводки с номером журнала счета, равным 
+формируемому журналу </v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВыбиратьПроводкиСНомеромЖурналаСчетаКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="ВыбиратьПроводкиСНомеромЖурналаСчетаРасширеннаяПодсказка" id="85">
+										<AutoMaxWidth>false</AutoMaxWidth>
+										<MaxWidth>50</MaxWidth>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>2. При включении флажка, в перечень операций, отражаемых в отчете, кроме проводок, удовлетворяющих условию п.1, попадают все проводки, у счета дебета или кредита которых реквизит “Номер журнала” равен номеру формируемого журнала, независимо от номера журнала, указанного в самой проводке</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+								<UsualGroup name="ГруппаОграниченияЖурналов" id="53">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа ограничения журналов</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalStretch>true</VerticalStretch>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОграниченияЖурналовРасширеннаяПодсказка" id="87"/>
+									<ChildItems>
+										<Table name="ВыбиратьИзСпискаЖО" id="22">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>50</MaxWidth>
+											<AutoMaxHeight>false</AutoMaxHeight>
+											<MaxHeight>4</MaxHeight>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<FileDragMode>AsFile</FileDragMode>
+											<DataPath>Объект.ВыбиратьИзСпискаЖО</DataPath>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ВыбиратьИзСпискаЖОКонтекстноеМеню" id="23"/>
+											<AutoCommandBar name="ВыбиратьИзСпискаЖОКоманднаяПанель" id="24"/>
+											<ExtendedTooltip name="ВыбиратьИзСпискаЖОРасширеннаяПодсказка" id="90">
+												<AutoMaxWidth>false</AutoMaxWidth>
+												<MaxWidth>50</MaxWidth>
+												<VerticalStretch>true</VerticalStretch>
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>3. Перечень операций, удовлетворяющих условию п.2, ограничивается проводками, у которых реквизит “Номер журнала” входит в заданный Список номеров журналов</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<SearchStringAddition name="ВыбиратьИзСпискаЖОСтрокаПоиска" id="91">
+												<AdditionSource>
+													<Item>ВыбиратьИзСпискаЖО</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ВыбиратьИзСпискаЖОСтрокаПоискаКонтекстноеМеню" id="92"/>
+												<ExtendedTooltip name="ВыбиратьИзСпискаЖОСтрокаПоискаРасширеннаяПодсказка" id="93"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ВыбиратьИзСпискаЖОСостояниеПросмотра" id="94">
+												<AdditionSource>
+													<Item>ВыбиратьИзСпискаЖО</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ВыбиратьИзСпискаЖОСостояниеПросмотраКонтекстноеМеню" id="95"/>
+												<ExtendedTooltip name="ВыбиратьИзСпискаЖОСостояниеПросмотраРасширеннаяПодсказка" id="96"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ВыбиратьИзСпискаЖОУправлениеПоиском" id="97">
+												<AdditionSource>
+													<Item>ВыбиратьИзСпискаЖО</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ВыбиратьИзСпискаЖОУправлениеПоискомКонтекстноеМеню" id="98"/>
+												<ExtendedTooltip name="ВыбиратьИзСпискаЖОУправлениеПоискомРасширеннаяПодсказка" id="99"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="ВыбиратьИзСпискаЖОЖурнал" id="27">
+													<DataPath>Объект.ВыбиратьИзСпискаЖО.Журнал</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ВыбиратьИзСпискаЖОЖурналКонтекстноеМеню" id="28"/>
+													<ExtendedTooltip name="ВыбиратьИзСпискаЖОЖурналРасширеннаяПодсказка" id="100"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ОстаткиНаНачалоИКонецПериода" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки на начало и конец периода</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>StrongSeparation</Representation>
+					<ThroughAlign>DontUse</ThroughAlign>
+					<ExtendedTooltip name="ОстаткиНаНачалоИКонецПериодаРасширеннаяПодсказка" id="101"/>
+					<ChildItems>
+						<CheckBoxField name="ТолькоОбороты" id="9">
+							<DataPath>Объект.НеВыводитьОстатки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Не выводить остатки</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТолькоОборотыКонтекстноеМеню" id="10"/>
+							<ExtendedTooltip name="ТолькоОборотыРасширеннаяПодсказка" id="102">
+								<AutoMaxWidth>false</AutoMaxWidth>
+								<MaxWidth>51</MaxWidth>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>При включенном флажке в журнале операций не выводятся остатки на начало и конец периода. 
+При отключении флажка остатки в журнале формируются по всем счетам, у которых реквизит "Номер журнала" соответсвует формируемому</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ТолькоОборотыПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="РасширеннаяНастройкаОстатков" id="117">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расширенная настройка остатков</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="РасширеннаяНастройкаОстатковРасширеннаяПодсказка" id="118"/>
+							<ChildItems>
+								<CheckBoxField name="ОстаткиВРазрезеПоказателя" id="13">
+									<DataPath>Объект.ОстаткиВРазрезеПоказателя</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОстаткиВРазрезеПоказателяКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="ОстаткиВРазрезеПоказателяРасширеннаяПодсказка" id="104">
+										<AutoMaxWidth>false</AutoMaxWidth>
+										<MaxWidth>50</MaxWidth>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При включении флажка остатки в журнале формируются по всем счетам, у которых реквизит "Номер журнала" соответсвует формируемому в разрезе показателя - объекта аналитического учета, данные о котором приводятся в графе "Наименование показателя"</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+								<CheckBoxField name="НеВыводитьОстаткиПоКЭК" id="61">
+									<DataPath>Объект.НеВыводитьОстаткиПоКЭК</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НеВыводитьОстаткиПоКЭККонтекстноеМеню" id="62"/>
+									<ExtendedTooltip name="НеВыводитьОстаткиПоКЭКРасширеннаяПодсказка" id="106">
+										<AutoMaxWidth>false</AutoMaxWidth>
+										<MaxWidth>50</MaxWidth>
+										<VerticalStretch>true</VerticalStretch>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При включении флажка остатки в журнале формируются без учета 24-26 разряда номера счета (КЭК)</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Журналы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РазделительПояснение" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разделитель пояснение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказательПояснение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показатель пояснение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

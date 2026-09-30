@@ -1,0 +1,194 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/budget/consolidation">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<import namespace="urn:schemas-1c-ru:reports/meta"/>
+	<import namespace="http://v8.1c.ru/8.1/language"/>
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="БланкОтчета" base="d2p1:ViewDef">
+		<property name="ЕдиницаИзмеренияПоУмолчанию" type="xs:NCName" lowerBound="0"/>
+		<property name="УровеньТочностиПоУмолчанию" type="xs:decimal" lowerBound="0"/>
+		<property name="РаскрытиеВМакете" type="xs:NCName" lowerBound="0"/>
+		<property name="РучнаяНастройкаКолонкиРаскрытия" type="xs:boolean" lowerBound="0"/>
+		<property name="КолонкаРаскрытия" type="xs:IDREF" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="ПараметрыНастройкиБланка" type="d3p1:ValueStorage" lowerBound="0"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/consolidation" name="СтраницыБланка" type="d3p1:СтраницаБланка" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ВариантФормы">
+		<property name="Название" type="xs:string"/>
+		<property name="Подсказка" type="xs:string"/>
+		<property name="Основной" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ВидАналитики" base="d2p1:UserEntityDef">
+		<property name="СоздаватьПриНеудачномПоискеПриИмпорте" type="xs:boolean" lowerBound="0"/>
+		<property name="ОбновлятьРеквизитыПриИмпорте" type="xs:boolean" lowerBound="0"/>
+		<property name="РазделятьПоОрганизациям" type="xs:boolean" lowerBound="0"/>
+		<property name="ВозможностьРедактированияВПодчиненныхКонфигурациях" type="xs:boolean" lowerBound="0"/>
+		<property name="ВыгружатьКлассификатор" type="xs:boolean" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/consolidation" name="РеквизитыДляСинхронизации" type="d3p1:РеквизитДляСинхронизации" lowerBound="0" upperBound="-1"/>
+		<property name="СписокЗначений" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="Значение" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+		<property name="ВидКлассификатораБК" type="xs:string" lowerBound="0"/>
+		<property name="АналитикаВладелецКод" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="АналитикаВладелецПубличныйИдентификатор" type="xs:string" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ВнешняяСсылка" base="d2p1:ExternalReference">
+		<property name="Метаданные" type="xs:Name" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="Владелец" type="d3p1:ReferencableName" lowerBound="0" form="Attribute"/>
+		<property name="Код" type="xs:string" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ГруппаРаскрытия" base="d2p1:GroupTemplate">
+		<property name="РазрешитьСовпаденияИзмерений" type="xs:boolean"/>
+	</objectType>
+	<objectType name="ДопИнфо">
+		<property ref="xml:base" lowerBound="0"/>
+		<property ref="xml:lang" lowerBound="0"/>
+		<property ref="xml:space" lowerBound="0"/>
+		<property ref="xml:id" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:refName" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:title" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:comment" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:desc" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="__content" type="d3p1:ValueStorage" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ДополнительныеРеквизиты" base="d2p1:GroupTemplate"/>
+	<objectType name="ИменованноеХранилище">
+		<property name="Имя" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="Тип" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="__content" type="d3p1:ValueStorage" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="КолонкаОтчета" base="d2p1:Column">
+		<property ref="d2p1:valueType" lowerBound="0"/>
+		<property ref="d2p1:calculatable" lowerBound="0"/>
+		<property ref="d2p1:unmovableFloatingPoint" lowerBound="0"/>
+		<property ref="d2p1:aggregation" lowerBound="0"/>
+		<property ref="d2p1:nonaggregatable" lowerBound="0"/>
+		<property name="hash_full" type="xs:string" lowerBound="0"/>
+		<property name="hash_mid" type="xs:string" lowerBound="0"/>
+		<property name="hash_min" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="КонтрольноеСоотношение" base="d2p1:AssertionDef">
+		<property name="НомерСоотношения" type="xs:string"/>
+		<property name="ПоказателиТекущегоОтчета" type="xs:boolean" lowerBound="0"/>
+		<property name="ВидОтчета" type="xs:IDREF" lowerBound="0"/>
+		<property name="Дополнительное" type="xs:boolean" lowerBound="0"/>
+		<property name="Пояснение" type="xs:string" lowerBound="0"/>
+		<property name="ДатаНачалаДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="ОкончаниеДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="КонтрольноеСоотношениеФЛК" base="d2p1:AssertionFLCDef">
+		<property name="НомерСоотношения" type="xs:string"/>
+		<property name="ВидОтчета" type="xs:IDREF" lowerBound="1"/>
+		<property name="ГруппаРаскрытия" type="xs:IDREF" lowerBound="0"/>
+		<property name="КодыСтрокПроверок" type="xs:string"/>
+		<property name="Дополнительное" type="xs:boolean" lowerBound="1"/>
+		<property name="Пояснение" type="xs:string" lowerBound="0"/>
+		<property name="ШаблонСообщения" type="xs:string" lowerBound="0"/>
+		<property name="ДатаНачалаДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="ОкончаниеДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="Недопустимое" type="xs:boolean" lowerBound="0"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="КонтрольноеСоотношениеБК" base="d2p1:AssertionBCDef">
+		<property name="НомерСоотношения" type="xs:string"/>
+		<property name="ВидОтчета" type="xs:IDREF" lowerBound="1"/>
+		<property name="ГруппаРаскрытия" type="xs:IDREF"/>
+		<property name="СтрокаОтчета" type="xs:IDREF"/>
+		<property name="Дополнительное" type="xs:boolean" lowerBound="1"/>
+		<property name="Пояснение" type="xs:string" lowerBound="0"/>
+		<property name="ДатаНачалаДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="ОкончаниеДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="КонтрольноеСоотношениеСверкаФ0503125" base="d2p1:Assertion0503125Def">
+		<property name="НомерСоотношения" type="xs:string"/>
+		<property name="ПоказателиТекущегоОтчета" type="xs:boolean" lowerBound="0"/>
+		<property name="ВидОтчета" type="xs:IDREF" lowerBound="0"/>
+		<property name="Дополнительное" type="xs:boolean" lowerBound="0"/>
+		<property name="Пояснение" type="xs:string" lowerBound="0"/>
+		<property name="ДатаНачалаДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="ОкончаниеДействия" type="xs:date" lowerBound="0" nillable="true"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="Настройка">
+		<property name="periodicity" type="xs:NMTOKEN" lowerBound="0" form="Attribute"/>
+		<property name="reportType" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:short" variety="Atomic" minInclusive="-1" maxInclusive="1"/>
+		</property>
+		<property name="edition" type="xs:IDREF" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:about" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" ref="d3p1:targets" lowerBound="0"/>
+		<property name="__content" type="xs:IDREF" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ОперандПоказателя" base="d2p1:AssertionOperand">
+		<property name="Показатель" type="xs:IDREF" lowerBound="0"/>
+		<property name="НеИспользуется" type="xs:boolean" lowerBound="0"/>
+		<property name="СпособПолучения" type="xs:NCName" lowerBound="0"/>
+		<property name="ТекстЗапросаМодуля" type="xs:string" lowerBound="0"/>
+		<property name="ПоказательОтбор" type="xs:IDREF" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="НастройкиОперандаРасчет" type="d3p1:ValueStorage" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="НастройкиОперандаИнтерфейс" type="d3p1:ValueStorage" lowerBound="0"/>
+		<property name="ПравилаВычисленияПараметровЗапроса" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="ИмяПараметра" type="xs:string" lowerBound="0"/>
+				<property name="ПредставлениеПараметра" type="xs:string" lowerBound="0"/>
+				<property name="СпособВычисленияПараметра" type="xs:NCName" lowerBound="0"/>
+				<property xmlns:d5p1="http://v8.1c.ru/8.1/data/core" name="УточнениеСпособаОпределения" type="d5p1:ValueStorage" lowerBound="0"/>
+				<property name="ВидАналитикиОтбор" type="xs:anyURI" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="ПравилаИспользованияПолейЗапроса" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="Поле" type="xs:string" lowerBound="0"/>
+				<property name="Синоним" type="xs:string" lowerBound="0"/>
+				<property name="АналитикаОперанда" type="xs:anyURI" lowerBound="0"/>
+				<property name="РеквизитАналитики" type="xs:string" lowerBound="0"/>
+				<property name="КодАналитики" type="xs:string" lowerBound="0"/>
+				<property name="ТаблицаАналитики" type="xs:string" lowerBound="0"/>
+				<property name="ИспользоватьДляСинхронизации" type="xs:boolean" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ПараметрОтчета" base="d2p1:Resource">
+		<property name="ЗначениеПоУмолчанию" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ПравилоОбработки" base="d2p1:HandlingRule">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/consolidation" name="Операнды" type="d3p1:ОперандПоказателя" lowerBound="0" upperBound="-1"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ПроизвольныйБланкФормы" base="d2p1:ViewDef">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/consolidation" name="ВариантыФорм" type="d3p1:ВариантФормы" lowerBound="0" upperBound="99999"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="РеквизитДляСинхронизации">
+		<property name="ИмяРеквизита" type="xs:string"/>
+		<property name="Ключ" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="СтрокаОтчета" base="d2p1:GroupTemplate">
+		<property ref="d2p1:valueType" lowerBound="0"/>
+		<property ref="d2p1:calculatable" lowerBound="0"/>
+		<property ref="d2p1:unmovableFloatingPoint" lowerBound="0"/>
+		<property ref="d2p1:aggregation" lowerBound="0"/>
+		<property ref="d2p1:nonaggregatable" lowerBound="0"/>
+		<property name="hash_full" type="xs:string" lowerBound="0"/>
+		<property name="hash_mid" type="xs:string" lowerBound="0"/>
+		<property name="hash_min" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="СпискиЗначенийАналитик" base="d2p1:IdentifiableObject">
+		<property name="ПубличныйИдентификатор" type="xs:anyURI" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="Значение" type="d3p1:CatalogizedEntity" lowerBound="0" upperBound="-1"/>
+		<property name="СоздаватьПриНеудачномПоискеПриИмпорте" type="xs:boolean" lowerBound="0"/>
+		<property name="ОбновлятьРеквизитыПриИмпорте" type="xs:boolean" lowerBound="0"/>
+		<property name="РазделятьПоОрганизациям" type="xs:boolean" lowerBound="0"/>
+		<property name="ВозможностьРедактированияВПодчиненныхКонфигурациях" type="xs:boolean" lowerBound="0"/>
+		<property name="ВыгружатьКлассификатор" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType name="СтраницаБланка">
+		<property name="ИмяСтраницы" type="xs:string"/>
+		<property name="РодительскаяСтраница" type="xs:string" lowerBound="0"/>
+		<property name="ПользовательскоеНаименование" type="xs:string"/>
+		<property name="Макет" type="xs:anyType"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="ПараметрыНастройкиБланка" type="d3p1:ValueStorage"/>
+	</objectType>
+</package>

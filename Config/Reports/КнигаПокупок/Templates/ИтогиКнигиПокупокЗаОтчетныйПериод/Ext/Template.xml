@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидЦенности</dataPath>
+			<field>ВидЦенности</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВсегоПокупок</dataPath>
+			<field>ВсегоПокупок</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОплаты</dataPath>
+			<field>ДатаОплаты</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаСобытия</dataPath>
+			<field>ДатаСобытия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НДС10</dataPath>
+			<field>НДС10</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НДС18</dataPath>
+			<field>НДС18</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НДС20</dataPath>
+			<field>НДС20</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПричинаНалогообложения</dataPath>
+			<field>ПричинаНалогообложения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтавкаНДС</dataPath>
+			<field>СтавкаНДС</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма0</dataPath>
+			<field>Сумма0</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезНДС10</dataPath>
+			<field>СуммаБезНДС10</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезНДС18</dataPath>
+			<field>СуммаБезНДС18</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезНДС20</dataPath>
+			<field>СуммаБезНДС20</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБН</dataPath>
+			<field>СуммаБН</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетФактура</dataPath>
+			<field>СчетФактура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИФО</dataPath>
+			<field>ИФО</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>////////////////////////////////////////////////////////////////////////////////
+// Книга покупок, дополнительные листы (отчет)
+
+////////////////////////////////////////////////////////////////////////////////
+// [0].	Строка Итого (обороты по Книге покупок за указанный налоговый период).
+//		(Финальная таблица)
+//
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЕСТЬNULL(
+		СУММА(КнигаПокупокОбороты.СуммаБезНДСОборот + КнигаПокупокОбороты.СуммаНДСОборот),
+		0)															КАК ВсегоПокупок,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС18)
+						ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС18_118) ТОГДА
+						КнигаПокупокОбороты.СуммаБезНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК СуммаБезНДС18,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС18)
+				ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС18_118) ТОГДА
+				КнигаПокупокОбороты.СуммаНДСОборот
+			ИНАЧЕ
+				0
+		КОНЕЦ),
+		0)															КАК НДС18,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС10)
+						ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС10_110) ТОГДА
+						КнигаПокупокОбороты.СуммаБезНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК СуммаБезНДС10,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС10)
+				ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС10_110) ТОГДА
+				КнигаПокупокОбороты.СуммаНДСОборот
+			ИНАЧЕ
+				0
+		КОНЕЦ),
+		0)															КАК НДС10,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС0) ТОГДА
+						КнигаПокупокОбороты.СуммаБезНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК Сумма0,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС20)
+						ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС20_120) ТОГДА
+						КнигаПокупокОбороты.СуммаБезНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК СуммаБезНДС20,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС20)
+						ИЛИ КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.НДС20_120) ТОГДА
+						КнигаПокупокОбороты.СуммаНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК НДС20,
+	ЕСТЬNULL(
+		СУММА(ВЫБОР
+			КОГДА КнигаПокупокОбороты.ПричинаНалогообложения В (&amp;ПричиныНалогообложенияАванс) ТОГДА
+				0
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА	КнигаПокупокОбороты.СтавкаНДС = ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.БезНДС) ТОГДА
+						КнигаПокупокОбороты.СуммаБезНДСОборот
+					ИНАЧЕ
+						0
+				КОНЕЦ
+		КОНЕЦ),
+		0)															КАК СуммаБН
+ИЗ
+	РегистрНакопления.КнигаПокупок.Обороты(&amp;ДатаНачалаНалоговогоПериода, &amp;ДатаОкончанияНалоговогоПериода) КАК КнигаПокупокОбороты
+{ГДЕ
+	КнигаПокупокОбороты.Организация.*,
+	КнигаПокупокОбороты.КФО.*,
+	КнигаПокупокОбороты.ПричинаНалогообложения,
+	КнигаПокупокОбороты.ДатаОплаты,
+	КнигаПокупокОбороты.ДатаСобытия,
+	КнигаПокупокОбороты.СчетФактура.ИФО.* КАК ИФО,
+	КнигаПокупокОбороты.СчетФактура.Контрагент.* КАК Контрагент}
+;
+</query>
+	</dataSet>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ДатаНачалаНалоговогоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала налогового периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончанияНалоговогоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания налогового периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ПричиныНалогообложенияАванс</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Причины налогообложения аванс</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ПричиныНалогообложенияНДС</v8:Type>
+		</valueType>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВсегоПокупок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НДС10</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НДС18</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НДС20</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБезНДС10</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБезНДС18</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБезНДС20</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБН</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма0</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КФО</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ПричинаНалогообложения</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДатаОплаты</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДатаСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

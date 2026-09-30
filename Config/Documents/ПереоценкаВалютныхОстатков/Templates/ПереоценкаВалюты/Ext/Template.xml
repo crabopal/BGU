@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Запрос</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВалютнаяСумма</dataPath>
+			<field>ВалютнаяСумма</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИФО</dataPath>
+			<field>ИФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КПС</dataPath>
+			<field>КПС</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КурсоваяРазница</dataPath>
+			<field>КурсоваяРазница</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПослеПереоценки</dataPath>
+			<field>СуммаПослеПереоценки</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаТекущая</dataPath>
+			<field>СуммаТекущая</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидСчета</dataPath>
+			<field>ВидСчета</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Кратность</dataPath>
+			<field>Кратность</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Курс</dataPath>
+			<field>Курс</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Счета.Ссылка КАК Ссылка
+ПОМЕСТИТЬ ВалютныеСчета
+ИЗ
+	ПланСчетов.ЕПСБУ КАК Счета
+ГДЕ
+	Счета.Ссылка В ИЕРАРХИИ
+			(ВЫБРАТЬ
+				Счета.Ссылка
+			ИЗ
+				ПланСчетов.ЕПСБУ КАК Счета
+			ГДЕ
+				Счета.Код В ("201.00", "204.00", "205.00", "207.00", "208.00", "209.00", "215.00", "301.00", "302.00"))
+	И ПОДСТРОКА(Счета.Код, 6, 1) &lt;&gt; "А"
+	И Счета.Валютный
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Регистр.Счет КАК Счет,
+	Регистр.Счет.Вид КАК ВидСчета,
+	Регистр.Субконто1 КАК Субконто1,
+	Регистр.Субконто2 КАК Субконто2,
+	Регистр.Субконто3 КАК Субконто3,
+	Регистр.Организация КАК Организация,
+	Регистр.КПС КАК КПС,
+	Регистр.ИФО КАК ИФО,
+	Регистр.Валюта КАК Валюта,
+	Регистр.Подразделение КАК Подразделение,
+	Регистр.КФО КАК КФО,
+	ВЫБОР
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.Активный)
+			ТОГДА Регистр.СуммаОстатокДт
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.Пассивный)
+			ТОГДА Регистр.СуммаОстатокКт
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.АктивноПассивный)
+			ТОГДА ВЫБОР
+					КОГДА Регистр.ВалютнаяСуммаОстаток = 0
+						ТОГДА Регистр.СуммаОстаток
+					КОГДА ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "208"
+						ТОГДА Регистр.СуммаОстатокКт
+					КОГДА ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "205"
+							ИЛИ ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "209"
+						ТОГДА Регистр.СуммаОстатокДт
+				КОНЕЦ
+	КОНЕЦ КАК СуммаТекущая,
+	ВЫБОР
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.Активный)
+			ТОГДА Регистр.ВалютнаяСуммаОстатокДт
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.Пассивный)
+			ТОГДА Регистр.ВалютнаяСуммаОстатокКт
+		КОГДА Регистр.Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.АктивноПассивный)
+			ТОГДА ВЫБОР
+					КОГДА ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "208"
+						ТОГДА Регистр.ВалютнаяСуммаОстатокКт
+					КОГДА ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "205"
+							ИЛИ ПОДСТРОКА(Регистр.Счет.Код, 1, 3) = "209"
+						ТОГДА Регистр.ВалютнаяСуммаОстатокДт
+				КОНЕЦ
+	КОНЕЦ КАК ВалютнаяСумма
+ПОМЕСТИТЬ ВТПереоценка
+ИЗ
+	РегистрБухгалтерии.ЖурналПроводокЕПСБУ.Остатки(
+			&amp;НаДату,
+			Счет В
+				(ВЫБРАТЬ
+					ВалютныеСчета.Ссылка
+				ИЗ
+					ВалютныеСчета),
+			,
+			Организация = &amp;Организация
+				И Валюта &lt;&gt; ЗНАЧЕНИЕ(Справочник.Валюты.ПустаяСсылка)) КАК Регистр
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТПереоценка.Счет КАК Счет,
+	ВТПереоценка.Счет.Вид КАК ВидСчета,
+	ВТПереоценка.Субконто1 КАК Субконто1,
+	ВТПереоценка.Субконто2 КАК Субконто2,
+	ВТПереоценка.Субконто3 КАК Субконто3,
+	ВТПереоценка.Организация КАК Организация,
+	ВТПереоценка.КПС КАК КПС,
+	ВТПереоценка.ИФО КАК ИФО,
+	ВТПереоценка.Валюта КАК Валюта,
+	ВТПереоценка.Подразделение КАК Подразделение,
+	ВТПереоценка.КФО КАК КФО,
+	ВТПереоценка.СуммаТекущая КАК СуммаТекущая,
+	ВТПереоценка.ВалютнаяСумма КАК ВалютнаяСумма,
+	КурсыВалют.Курс КАК Курс,
+	КурсыВалют.Кратность КАК Кратность,
+	ВТПереоценка.ВалютнаяСумма * КурсыВалют.Курс / КурсыВалют.Кратность КАК СуммаПослеПереоценки,
+	ВТПереоценка.ВалютнаяСумма * КурсыВалют.Курс / КурсыВалют.Кратность - ВТПереоценка.СуммаТекущая КАК КурсоваяРазница
+{ВЫБРАТЬ
+	Счет.*,
+	ВидСчета,
+	Субконто1.*,
+	Субконто2.*,
+	Субконто3.*,
+	Организация.*,
+	КПС.*,
+	ИФО.*,
+	Валюта.*,
+	Курс,
+	Кратность,
+	Подразделение.*,
+	КФО.*,
+	СуммаТекущая,
+	ВалютнаяСумма,
+	СуммаПослеПереоценки,
+	КурсоваяРазница}
+ИЗ
+	ВТПереоценка КАК ВТПереоценка
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(&amp;НаДату, ) КАК КурсыВалют
+		ПО ВТПереоценка.Валюта = КурсыВалют.Валюта
+ГДЕ
+	(ВЫРАЗИТЬ(ВТПереоценка.ВалютнаяСумма * КурсыВалют.Курс / КурсыВалют.Кратность КАК ЧИСЛО(18, 2))) - ВТПереоценка.СуммаТекущая &lt;&gt; 0
+{ГДЕ
+	ВТПереоценка.Счет.*,
+	ВТПереоценка.Субконто1.*,
+	ВТПереоценка.Субконто2.*,
+	ВТПереоценка.Субконто3.*,
+	ВТПереоценка.Организация.*,
+	ВТПереоценка.КПС.*,
+	ВТПереоценка.ИФО.*,
+	ВТПереоценка.Валюта.*,
+	ВТПереоценка.Подразделение.*,
+	ВТПереоценка.КФО.*,
+	ВТПереоценка.ВалютнаяСумма КАК ВалютнаяСумма}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<totalField>
+		<dataPath>ВалютнаяСумма</dataPath>
+		<expression>Сумма(ВалютнаяСумма)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КурсоваяРазница</dataPath>
+		<expression>Сумма(КурсоваяРазница)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПослеПереоценки</dataPath>
+		<expression>Сумма(СуммаПослеПереоценки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаТекущая</dataPath>
+		<expression>Сумма(СуммаТекущая)</expression>
+	</totalField>
+	<parameter>
+		<name>НаДату</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>На дату</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Организация</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИФО</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Подразделение</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КФО</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КПС</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Счет</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидСчета</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Валюта</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Курс</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Кратность</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Субконто1</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Субконто2</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Субконто3</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВалютнаяСумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаТекущая</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПослеПереоценки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КурсоваяРазница</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Валюта</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ИФО</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КПС</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КФО</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Субконто1</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Субконто2</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Субконто3</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Счет</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ВалютнаяСумма</dcsset:left>
+					<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Счет.Код</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Валюта.Код</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+	<settingsVariant>
+		<dcsset:name>Дополнительный</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дополнительный</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

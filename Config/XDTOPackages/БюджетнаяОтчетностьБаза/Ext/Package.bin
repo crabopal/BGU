@@ -1,0 +1,242 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/budget/base">
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ГруппаКД" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ГруппаКИФ" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ЕПСБУ" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="ЕПСБУ2009" base="d2p1:ЕПСБУ" variety="Atomic">
+		<pattern>\p{Nd}{3}(.\p{Nd}{2})?</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ИНН" base="d2p1:DigitalCode" variety="Atomic" minLength="10" maxLength="12">
+		<pattern>\p{Nd}{10}(\p{Nd}{2})?</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="ИННФизическогоЛица" base="d2p1:ИНН" variety="Atomic" minLength="12" maxLength="12"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="ИННЮридическогоЛица" base="d2p1:ИНН" variety="Atomic" minLength="10" maxLength="10"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КВД2009" base="d2p1:КодВидаДеятельности" variety="Atomic" length="1">
+		<enumeration>0</enumeration>
+		<enumeration>1</enumeration>
+		<enumeration>2</enumeration>
+		<enumeration>3</enumeration>
+	</valueType>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КВД2011" base="d2p1:КодВидаДеятельности" variety="Atomic" length="1"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КОСГУ2009" base="d2p1:КодОперацииСектораГосуправления" variety="Atomic" length="3"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КПП" base="d2p1:DigitalCode" variety="Atomic" length="9"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодВОбщероссийскомКлассификаторе" base="d2p1:DigitalCode" variety="Atomic" minLength="1">
+		<pattern>\p{Nd}*</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодВидаДеятельности" base="d2p1:DigitalCode" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодОперацииСектораГосуправления" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодСубъектаФедерации" base="d2p1:DigitalCode" variety="Atomic" length="2"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодУБП" base="d2p1:Code" variety="Atomic" minLength="1"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="КодЭлементаБюджета" base="d2p1:Code" variety="Atomic" length="2"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ОГРН" base="d2p1:DigitalCode" variety="Atomic" minLength="13" maxLength="15">
+		<pattern>\p{Nd}{13}(\p{Nd}{2})?</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ОКАТО" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ОКПО" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="ОКУД" base="d2p1:КодВОбщероссийскомКлассификаторе" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ППП" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="ППП2009" base="d2p1:ППП" variety="Atomic" length="3"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="РЗПР" base="d2p1:Code" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="ЦелеваяСтатья" base="d2p1:DigitalCode" variety="Atomic" length="7"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="АналитическийКодКПС" base="d2p1:Code" variety="Atomic"/>
+	<valueType name="ТипКонтрагента" base="xs:string" variety="Atomic"/>
+	<valueType name="ТипОрганизации" base="xs:string" variety="Atomic"/>
+	<valueType name="ТипКонсолидирующейОрганизации" base="xs:string" variety="Atomic"/>
+	<objectType name="АдминистративноТерриториальнаяЕдиница">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ОКАТО" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="СубъектРФ" type="d3p1:КодСубъектаФедерации" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="Бюджет">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Элемент" type="d3p1:КодЭлементаБюджета" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="__content" type="d3p1:ОКАТО" form="Text"/>
+	</objectType>
+	<objectType name="ВР">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ВидДоходов2009">
+		<property name="Группа" lowerBound="0" fixed="false" default="0">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="1"/>
+		</property>
+		<property name="Подгруппа" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Статья" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Подстатья" lowerBound="0" fixed="false" default="000">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="3"/>
+		</property>
+		<property name="Элемент" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+	</objectType>
+	<objectType name="ВидИФДБ2009">
+		<property name="Группа" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Подгруппа" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Статья" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Подстатья" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Элемент" lowerBound="0" fixed="false" default="00">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="2"/>
+		</property>
+		<property name="Программа" lowerBound="0" fixed="false" default="0000">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="4"/>
+		</property>
+	</objectType>
+	<objectType name="ВидКИФ">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ЕПСБУ2011">
+		<property name="about" type="xs:anyURI" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="__content" type="d3p1:ЕПСБУ" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КБК2009" base="d2p1:КодБюджетнойКлассификации">
+		<property name="ППП" type="d2p1:ППП2009" lowerBound="0" fixed="false" default="000"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КБКД2009" base="d2p1:КБК2009">
+		<property name="ВидДоходов" type="d2p1:ВидДоходов2009"/>
+		<property name="Программа" lowerBound="0" fixed="false" default="0000">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" minLength="4" maxLength="4"/>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КБКИФ2009" base="d2p1:КБК2009">
+		<property name="ВидИФДБ" type="d2p1:ВидИФДБ2009"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="КБКР2009" base="d2p1:КБК2009">
+		<property name="ФКР" type="d2p1:ФункциональнаяКлассификацияРасходов2009"/>
+	</objectType>
+	<objectType name="КодБюджетнойКлассификации"/>
+	<objectType name="КодСчетаБюджетногоУчета">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КВД" type="d3p1:КодВидаДеятельности"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодСчета" type="d3p1:ЕПСБУ"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КОСГУ" type="d3p1:КодОперацииСектораГосуправления"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="Контрагент" base="d2p1:Agent">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ИНН" type="d3p1:ИНН" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КПП" type="d3p1:КПП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ОГРН" type="d3p1:ОГРН" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодУБП" type="d3p1:КодУБП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодПоОКПО" type="d3p1:ОКПО" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодПоОКАТО" type="d3p1:ОКАТО" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодГлавыПоППП" type="d3p1:ППП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ЭлементБюджета" type="d3p1:КодЭлементаБюджета" lowerBound="0"/>
+		<property name="Наименование" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:normalizedString" variety="Atomic" maxLength="512"/>
+		</property>
+		<property name="СокращенноеНаименование" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:normalizedString" variety="Atomic" maxLength="160"/>
+		</property>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0"/>
+	</objectType>
+	<objectType name="ЛицевойСчет">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="МероприятиеВРамкахЦелевойПрограммы">
+		<property name="Код" type="xs:string"/>
+		<property name="Наименование" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/budget/base" name="НомерСчетаБюджетногоУчета" base="d2p1:КодСчетаБюджетногоУчета">
+		<property name="КБК" type="d2p1:КодБюджетнойКлассификации"/>
+	</objectType>
+	<objectType name="ОписаниеИсточника">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="classCode" type="d3p1:Code"/>
+		<property name="className" type="xs:normalizedString" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="code" type="d3p1:Code"/>
+		<property name="name" type="xs:normalizedString" lowerBound="0"/>
+	</objectType>
+	<objectType name="ППП2011">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="__content" type="d3p1:ППП" form="Text"/>
+	</objectType>
+	<objectType name="ПодвидКД">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ПодпрограммаЦСР">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ПрограммаЦСР">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="СтатьяКД">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="СтатьяКИФ">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="Учреждение" base="d2p1:Agent">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ИНН" type="d3p1:ИННЮридическогоЛица" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КПП" type="d3p1:КПП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ОГРН" type="d3p1:ОГРН" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодУБП" type="d3p1:КодУБП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодПоОКПО" type="d3p1:ОКПО" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодПоОКАТО" type="d3p1:ОКАТО" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="КодГлавыПоППП" type="d3p1:ППП" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ЭлементБюджета" type="d3p1:КодЭлементаБюджета" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ИсточникОтчетности" type="d3p1:ОписаниеИсточника" lowerBound="0"/>
+		<property name="Наименование" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:normalizedString" variety="Atomic" maxLength="512"/>
+		</property>
+		<property name="СокращенноеНаименование" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:normalizedString" variety="Atomic" maxLength="160"/>
+		</property>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0"/>
+	</objectType>
+	<objectType name="ФункциональнаяКлассификацияРасходов2009">
+		<property name="Раздел" lowerBound="0" fixed="false" default="0000">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="4"/>
+		</property>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="ЦелеваяСтатья" type="d3p1:ЦелеваяСтатья" lowerBound="0" fixed="false" default="0000000"/>
+		<property name="ВидРасхода" lowerBound="0" fixed="false" default="000">
+			<typeDef xmlns:d4p1="urn:schemas-1c-ru:reports/core" xsi:type="ValueType" base="d4p1:DigitalCode" variety="Atomic" length="3"/>
+		</property>
+	</objectType>
+	<objectType name="ЦСР">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ВидДохода2016">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ГруппаПодвидаДохода2016">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Бюджет" type="d3p1:ОКАТО" lowerBound="0" form="Attribute"/>
+		<property name="Дата" type="xs:date" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" name="__content" type="d3p1:Code" form="Text"/>
+	</objectType>
+	<objectType name="ОКЕИ">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Код" type="d3p1:КодВОбщероссийскомКлассификаторе" form="Element"/>
+		<property name="Наименование" type="xs:string" lowerBound="0" form="Element"/>
+	</objectType>
+	<objectType name="ОКСМ">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/budget/base" name="Код" type="d3p1:КодВОбщероссийскомКлассификаторе" form="Element"/>
+		<property name="Наименование" type="xs:string" lowerBound="0" form="Element"/>
+	</objectType>
+	<objectType name="ВидыЦелевыхСредств">
+		<property name="Код" type="xs:string"/>
+		<property name="Наименование" type="xs:string" lowerBound="0"/>
+	</objectType>
+</package>

@@ -1,0 +1,362 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/meta">
+	<import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<import namespace="urn:schemas-1c-ru:reports/props"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="aggregation" type="d2p1:AggregatingFunction"/>
+	<property name="appInfo"/>
+	<property name="calculatable" type="xs:boolean"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="case" type="d2p1:CaseDef"/>
+	<property name="nonaggregatable" type="xs:boolean"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="options" type="d2p1:OptionsList"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="script" type="d2p1:Script"/>
+	<property name="unmovableFloatingPoint" type="xs:boolean"/>
+	<property name="valueType" type="xs:QName"/>
+	<property name="active" type="xs:boolean" form="Attribute"/>
+	<property name="approved" type="xs:boolean" form="Attribute"/>
+	<property name="editions" type="xs:IDREFS" form="Attribute"/>
+	<property name="order" type="xs:NMTOKEN" form="Attribute"/>
+	<property name="targets" type="xs:IDREFS" form="Attribute"/>
+	<valueType name="AggregatingFunction" base="xs:NCName" variety="Atomic">
+		<enumeration>sum</enumeration>
+		<enumeration>average</enumeration>
+		<enumeration>min</enumeration>
+		<enumeration>max</enumeration>
+		<enumeration>count</enumeration>
+		<enumeration>countDistinct</enumeration>
+		<enumeration>none</enumeration>
+	</valueType>
+	<valueType name="ComparisonType" base="xs:NMTOKEN" variety="Atomic">
+		<enumeration>equal</enumeration>
+		<enumeration>inHierarchy</enumeration>
+		<enumeration>inList</enumeration>
+		<enumeration>inListByHierarchy</enumeration>
+		<enumeration xsi:type="xs:string">Like</enumeration>
+		<enumeration xsi:type="xs:string">LikeInList</enumeration>
+		<enumeration xsi:type="xs:string">NotInListByHierarchy</enumeration>
+		<enumeration xsi:type="xs:string">NotInHierarchy</enumeration>
+		<enumeration xsi:type="xs:string">NotEqual</enumeration>
+		<enumeration xsi:type="xs:string">NotInList</enumeration>
+		<enumeration xsi:type="xs:string">NotLike</enumeration>
+		<enumeration xsi:type="xs:string">NotLikeInList</enumeration>
+	</valueType>
+	<valueType name="LogicalComposition" base="xs:NMTOKEN" variety="Atomic">
+		<enumeration>and</enumeration>
+		<enumeration>or</enumeration>
+		<enumeration>not</enumeration>
+	</valueType>
+	<valueType name="PeriodicityToken" base="xs:NMTOKEN" variety="Atomic">
+		<enumeration>same</enumeration>
+		<enumeration>super</enumeration>
+		<enumeration>year</enumeration>
+		<enumeration xsi:type="xs:string">fullyear</enumeration>
+		<enumeration xsi:type="xs:string">lastmonth</enumeration>
+		<enumeration>caseDefinedMaximum</enumeration>
+	</valueType>
+	<valueType name="PeriodsComparisonMethod" base="xs:NMTOKEN" variety="Atomic">
+		<enumeration>startDatesMatch</enumeration>
+		<enumeration>endDatesMatch</enumeration>
+		<enumeration>matches</enumeration>
+		<enumeration>fallsInto</enumeration>
+		<enumeration>matchesOrFallsInto</enumeration>
+	</valueType>
+	<valueType name="QNameList" variety="List" itemType="xs:QName"/>
+	<valueType name="ScriptText" base="xs:string" variety="Atomic"/>
+	<valueType name="UnassignedOperandEffect" base="xs:NMTOKEN" variety="Atomic">
+		<enumeration>recoverWithZero</enumeration>
+		<enumeration>skipAssertion</enumeration>
+		<enumeration>failAssertion</enumeration>
+		<enumeration>fatalException</enumeration>
+	</valueType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="AssertionDef" base="d2p1:ServiceObject">
+		<property name="filter" type="d2p1:Filter" lowerBound="0"/>
+		<property name="operand" type="d2p1:AssertionOperand" upperBound="-1"/>
+		<property name="options" type="d2p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Assertion0503125Def" base="d2p1:ServiceObject">
+		<property name="filter" type="d2p1:Filter" lowerBound="0"/>
+		<property name="operand" type="d2p1:AssertionOperand" upperBound="-1"/>
+		<property name="options" type="d2p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="AssertionFLCDef" base="d2p1:ServiceObject">
+		<property name="filter" type="d2p1:Filter" lowerBound="0"/>
+		<property name="options" type="d2p1:OptionsList" lowerBound="0"/>
+		<property name="СтруктураТаблицыФЛК" type="d2p1:СтруктураФЛК"/>
+		<property name="ДанныеТаблицыФЛК" type="d2p1:ДанныеФЛК" lowerBound="0"/>
+		<property name="СвойстваТаблицыФЛК" type="d2p1:СвойстваФЛК" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="AssertionBCDef" base="d2p1:ServiceObject">
+		<property name="filter" type="d2p1:Filter" lowerBound="0"/>
+		<property name="options" type="d2p1:OptionsList" lowerBound="0"/>
+		<property name="ВариантКонтроляБК" type="xs:string" form="Attribute"/>
+		<property name="ГруппировочныеКодыНедопустимы" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="НезаполненныеКодыНедопустимы" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="СоответствиеАналитикиКонтроляБК" type="d2p1:СоответствияАналитикиБК" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="AssertionGroup" base="d2p1:Collector">
+		<property name="assertionGroup" type="d2p1:AssertionGroup" lowerBound="0" upperBound="-1"/>
+		<property name="assertionDef" type="d2p1:AssertionDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertionFLCDef" type="d2p1:AssertionFLCDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertionBCDef" type="d2p1:AssertionBCDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertion0503125Def" type="d2p1:Assertion0503125Def" lowerBound="0" upperBound="-1"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="AssertionOperand" base="d2p1:ServiceComponent">
+		<property name="onEvalFailure" type="d2p1:UnassignedOperandEffect" lowerBound="0" fixed="false" default="recoverWithZero" form="Attribute"/>
+		<property name="version" type="xs:string" lowerBound="0"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+		<property name="filterHashWithoutAP" type="xs:string" lowerBound="0"/>
+		<property name="filterHashWithAP" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="CaseDef" base="d2p1:IdentifiableObject">
+		<property name="vendor" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="version" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="generator" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="schemaVersion" type="xs:normalizedString" lowerBound="1" form="Attribute"/>
+		<property name="appInfo" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+		<property name="targetInfo" type="d2p1:TargetInfo" lowerBound="0" upperBound="-1"/>
+		<property name="renderableInfo" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+		<property name="externalRef" type="d2p1:ExternalReference" lowerBound="0" upperBound="-1"/>
+		<property name="userDefinedEntity" type="d2p1:UserEntityDef" lowerBound="0" upperBound="-1"/>
+		<property name="userEntityGroup" type="d2p1:UserEntityGroup" lowerBound="0" upperBound="-1"/>
+		<property name="editionInfo" type="d2p1:EditionInfo" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" ref="d3p1:propertySet" lowerBound="0"/>
+		<property name="reportFormGroup" type="d2p1:ReportFormGroup" lowerBound="0" upperBound="-1"/>
+		<property name="reportFormDef" type="d2p1:ReportFormDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertionGroup" type="d2p1:AssertionGroup" lowerBound="0" upperBound="-1"/>
+		<property name="assertionDef" type="d2p1:AssertionDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertion0503125Def" type="d2p1:Assertion0503125Def" lowerBound="0" upperBound="-1"/>
+		<property name="assertionFLCDef" type="d2p1:AssertionFLCDef" lowerBound="0" upperBound="-1"/>
+		<property name="assertionBCDef" type="d2p1:AssertionBCDef" lowerBound="0" upperBound="-1"/>
+		<property name="СпискиЗначенийАналитик" type="d2p1:IdentifiableObject" lowerBound="0" upperBound="-1"/>
+		<property name="options" type="d2p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType name="CaseObject" abstract="true">
+		<property ref="xml:base" lowerBound="0"/>
+		<property ref="xml:lang" lowerBound="0"/>
+		<property ref="xml:space" lowerBound="0"/>
+		<property ref="xml:id" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Collector" base="d2p1:IdentifiableObject" abstract="true">
+		<property name="item" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Column" base="d2p1:StructureComponent">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" ref="d3p1:property" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="CompositeObject" base="d2p1:IdentifiableObject" abstract="true"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ContainedComponent" base="d2p1:IdentifiableObject" abstract="true"/>
+	<objectType name="ContextDependentValue"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ContextPeriodTransformation" base="d2p1:ContextDependentValue">
+		<property name="deltaPeriodicity" type="d2p1:PeriodicityToken" lowerBound="0" fixed="false" default="same" form="Attribute"/>
+		<property name="deltaValue" type="xs:integer" lowerBound="0" fixed="false" default="0" form="Attribute"/>
+		<property name="comparisonMethod" type="d2p1:PeriodsComparisonMethod" lowerBound="0" fixed="false" default="matches" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ContextSourcePerimeter" base="d2p1:ContextDependentValue"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ContextValueCopy" base="d2p1:ContextDependentValue"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="CustomFilter" base="d2p1:Filter" ordered="false" sequenced="true">
+		<property name="type" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+		<property name="appInfo" type="xs:anyType"/>
+	</objectType>
+	<objectType name="DVSection">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:title" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="Rows" type="d3p1:DVSectionItem" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="Columns" type="d3p1:DVSectionItem" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="options" type="d3p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType name="DVSectionItem">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:title" lowerBound="0"/>
+		<property name="componentRef" type="xs:IDREF" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="options" type="d3p1:OptionsList" lowerBound="0"/>
+	</objectType>
+	<objectType name="DVSections">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="Section" type="d3p1:DVSection" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="DeclarativeView" base="d2p1:ViewDef"/>
+	<objectType name="DimensionMap">
+		<property name="about" type="xs:anyURI" lowerBound="1" form="Attribute"/>
+		<property name="destination" type="xs:anyURI" lowerBound="1" form="Attribute"/>
+		<property name="matching" type="xs:anyURI" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="EditionInfo">
+		<property ref="xml:base" lowerBound="0"/>
+		<property ref="xml:lang" lowerBound="0"/>
+		<property ref="xml:space" lowerBound="0"/>
+		<property ref="xml:id" lowerBound="0"/>
+		<property name="validFrom" type="xs:date" lowerBound="1" form="Attribute"/>
+		<property name="issued" type="xs:date" lowerBound="1" form="Attribute"/>
+		<property name="code" type="xs:NMTOKEN" lowerBound="1" form="Attribute"/>
+		<property name="title" type="xs:normalizedString" lowerBound="1" form="Attribute"/>
+		<property name="desc" type="xs:normalizedString" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ExternalReference" base="d2p1:CaseObject"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Filter" base="d2p1:CaseObject" abstract="true"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="FilterGroup" base="d2p1:Filter">
+		<property name="composition" type="d2p1:LogicalComposition" lowerBound="0" fixed="false" default="and" form="Attribute"/>
+		<property name="item" type="d2p1:Filter" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="FilterItem" base="d2p1:Filter">
+		<property name="about" type="xs:anyURI" lowerBound="0" form="Attribute"/>
+		<property name="verb" type="d2p1:ComparisonType"/>
+		<property name="object" type="xs:anyType" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="GroupTemplate" base="d2p1:StructureComponent">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" ref="d3p1:property" lowerBound="0" upperBound="-1"/>
+		<property name="key" type="d2p1:Key" upperBound="-1"/>
+		<property name="groupTemplate" type="d2p1:GroupTemplate" lowerBound="0" upperBound="-1"/>
+		<property name="resource" type="d2p1:Resource" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="HandlingRule" base="d2p1:ServiceObject">
+		<property name="operand" type="d2p1:AssertionOperand" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="IdentifiableObject" base="d2p1:CaseObject" abstract="true">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:refName" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:title" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:comment" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:desc" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:about" lowerBound="0"/>
+		<property ref="d2p1:targets" lowerBound="0"/>
+		<property ref="d2p1:editions" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Key" base="d2p1:StructureComponent">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" ref="d3p1:propertyRef" lowerBound="0"/>
+		<property name="value" type="xs:anyType"/>
+	</objectType>
+	<objectType name="NameAndValue">
+		<property name="name" type="xs:NMTOKEN" lowerBound="0" form="Attribute"/>
+		<property name="value" type="xs:anyType"/>
+	</objectType>
+	<objectType name="OptionsList">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="item" type="d3p1:NameAndValue" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ReportFormDef" base="d2p1:GroupTemplate">
+		<property name="column" type="d2p1:Column" upperBound="-1"/>
+		<property ref="d2p1:script" lowerBound="0" upperBound="-1"/>
+		<property ref="d2p1:appInfo" lowerBound="0" upperBound="-1"/>
+		<property name="validationRule" type="d2p1:ValidationRule" lowerBound="0" upperBound="-1"/>
+		<property name="handlingRule" type="d2p1:HandlingRule" lowerBound="0" upperBound="-1"/>
+		<property name="viewDef" type="d2p1:ViewDef" lowerBound="0" upperBound="-1"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ReportFormGroup" base="d2p1:Collector">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" ref="d3p1:property" lowerBound="0" upperBound="-1"/>
+		<property name="reportFormGroup" type="d2p1:ReportFormGroup" lowerBound="0" upperBound="-1"/>
+		<property name="reportFormDef" type="d2p1:ReportFormDef" lowerBound="0" upperBound="-1"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="Resource" base="d2p1:StructureComponent">
+		<property name="column" type="xs:IDREF" lowerBound="0" form="Attribute"/>
+		<property ref="d2p1:valueType" lowerBound="0"/>
+		<property ref="d2p1:calculatable" lowerBound="0"/>
+		<property ref="d2p1:unmovableFloatingPoint" lowerBound="0"/>
+		<property ref="d2p1:aggregation" lowerBound="0"/>
+		<property ref="d2p1:nonaggregatable" lowerBound="0"/>
+		<property name="allowSubtotals" type="xs:boolean" lowerBound="0"/>
+		<property name="version" type="xs:string" lowerBound="0"/>
+		<property name="hash" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ResourceExtractionDef" base="d2p1:AssertionOperand">
+		<property name="resource" type="xs:IDREF" lowerBound="0" form="Attribute"/>
+		<property name="includeSubtotals" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="filter" type="d2p1:Filter" lowerBound="0"/>
+		<property name="dimension" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ResourceFormula">
+		<property name="resource" type="xs:IDREF" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" ref="d3p1:script"/>
+	</objectType>
+	<objectType name="ResourceRule">
+		<property name="bindings" type="xs:IDREFS" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" ref="d3p1:script" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="operand" type="d3p1:AssertionOperand" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Script">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="events" type="d3p1:QNameList" lowerBound="0" form="Attribute"/>
+		<property name="language" type="xs:NMTOKEN" lowerBound="0" form="Attribute"/>
+		<property name="bindings" type="xs:IDREFS" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="__content" type="d3p1:ScriptText" form="Text"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ServiceComponent" base="d2p1:ContainedComponent" abstract="true"/>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ServiceObject" base="d2p1:CompositeObject" abstract="true">
+		<property ref="d2p1:active" lowerBound="0"/>
+		<property ref="d2p1:approved" lowerBound="0"/>
+		<property ref="d2p1:script" lowerBound="0" upperBound="-1"/>
+		<property ref="d2p1:appInfo" lowerBound="0" upperBound="-1"/>
+		<property name="resourceRule" type="d2p1:ResourceRule" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="StructureComponent" base="d2p1:ContainedComponent" abstract="true">
+		<property ref="d2p1:order" lowerBound="0"/>
+		<property ref="d2p1:options" lowerBound="0"/>
+	</objectType>
+	<objectType name="TargetInfo">
+		<property ref="xml:base" lowerBound="0"/>
+		<property ref="xml:lang" lowerBound="0"/>
+		<property ref="xml:space" lowerBound="0"/>
+		<property ref="xml:id" lowerBound="0"/>
+		<property name="userAgentId" type="xs:normalizedString" lowerBound="1" form="Attribute"/>
+		<property name="desc" type="xs:normalizedString" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="UserEntityDef" base="d2p1:CaseObject">
+		<property name="givenURI" type="xs:anyURI" lowerBound="1" form="Attribute"/>
+		<property name="dataType" type="xs:QName" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:refName" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:title" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:comment" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" ref="d3p1:desc" lowerBound="0"/>
+		<property ref="d2p1:targets" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="UserEntityGroup" base="d2p1:Collector">
+		<property name="userEntityGroup" type="d2p1:UserEntityGroup" lowerBound="0" upperBound="-1"/>
+		<property name="userDefinedEntity" type="d2p1:UserEntityDef" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ValidationRule" base="d2p1:ServiceObject">
+		<property name="assertions" type="xs:IDREFS" lowerBound="0" form="Attribute"/>
+		<property name="InheritedRules" type="xs:IDREFS" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="ValueList">
+		<property name="item" type="xs:anyType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ValueTemplate">
+		<property name="type" type="xs:QName" lowerBound="1" form="Attribute"/>
+		<property name="nillable" type="xs:boolean" lowerBound="0" fixed="false" default="false" form="Attribute"/>
+	</objectType>
+	<objectType xmlns:d2p1="urn:schemas-1c-ru:reports/meta" name="ViewDef" base="d2p1:ServiceObject">
+		<property name="template" type="xs:anyType"/>
+	</objectType>
+	<objectType name="СтруктураФЛК">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="ЭлементСтруктуры" type="d3p1:ЭлементСтруктурыФЛК" lowerBound="1" upperBound="-1"/>
+	</objectType>
+	<objectType name="ЭлементСтруктурыФЛК">
+		<property name="ИмяРеквизита" type="xs:string"/>
+		<property name="ПорядковыйНомер" type="xs:integer" lowerBound="1"/>
+		<property name="ПолныйПутьРеквизита" type="xs:string"/>
+		<property name="ОписаниеАналитики" type="xs:string" lowerBound="0"/>
+		<property name="ПредставлениеРеквизита" type="xs:string" lowerBound="0"/>
+		<property name="ПредставлениеПустого" type="xs:string" lowerBound="0"/>
+		<property name="НачалоОтбора" type="xs:integer" lowerBound="0"/>
+		<property name="КонецОтбора" type="xs:integer" lowerBound="0"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" ref="d3p1:valueType" lowerBound="0"/>
+	</objectType>
+	<objectType name="СвойстваФЛК">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="ЭлементСвойства" type="d3p1:ЭлементСвойстваФЛК" lowerBound="1" upperBound="-1"/>
+	</objectType>
+	<objectType name="ЭлементСвойстваФЛК">
+		<property name="НомерПроверки" type="xs:integer"/>
+		<property name="УсловиеПроверки" type="xs:string" lowerBound="0"/>
+		<property name="Отключено" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType name="ДанныеФЛК">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="ЭлементДанных" type="d3p1:ЭлементДанныхФЛК" lowerBound="1" upperBound="-1"/>
+	</objectType>
+	<objectType name="ЭлементДанныхФЛК">
+		<property name="НомерПроверки" type="xs:integer"/>
+		<property name="ИмяРеквизита" type="xs:string"/>
+		<property name="ВидСравнения" type="xs:string"/>
+		<property name="Значение" type="xs:anyType" lowerBound="0" upperBound="1" nillable="true"/>
+	</objectType>
+	<objectType name="СоответствияАналитикиБК">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/meta" name="АналитикаБК" type="d3p1:АналитикаКонтроляБК" upperBound="-1"/>
+	</objectType>
+	<objectType name="АналитикаКонтроляБК">
+		<property name="ВидКлассификатора" type="xs:string" form="Attribute"/>
+		<property name="ИдентификаторВидаАналитики" type="xs:string" form="Attribute"/>
+	</objectType>
+</package>

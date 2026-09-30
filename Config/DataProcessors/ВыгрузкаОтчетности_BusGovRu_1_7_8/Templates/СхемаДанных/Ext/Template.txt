@@ -1,0 +1,82 @@
+﻿<Model xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Model" xmlns:t="http://bus.gov.ru/types/1" xmlns:b="http://bus.gov.ru/types/2" xmlns:f="http://bus.gov.ru/types/3" xmlns:ns3="http://bus.gov.ru/fk/1" xmlns:ns4="http://bus.gov.ru/nsi/1">
+	<package targetNamespace="http://bus.gov.ru/external/1">
+		<import namespace="http://v8.1c.ru/8.1/data/enterprise"/>
+		<objectType name="ЗаписьКартыСтрок">
+			<property name="ИмяНабораДанных" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="КодВидаОтчета" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="КодСтроки" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="КодСтрокиРодитель" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ПоляПоиска" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ЗначенияПоиска" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ПоляПоискаТаблицы" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ЗначенияПоискаТаблицы" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ЭлементФайла" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Формула" type="d4p1:Формула" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="КартаВидовОтчета">
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Запись" type="d4p1:СоответствиеВидаОтчета" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="КартаСтрок">
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Запись" type="d4p1:ЗаписьКартыСтрок" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="НаборДанных">
+			<property name="ИмяНабора" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Отбор" type="d4p1:ЭлементОтбора" lowerBound="0" upperBound="-1"/>
+			<property name="ПолеАналитики" type="xs:NCName" lowerBound="0" upperBound="-1"/>
+			<property name="ПолеСвертки" type="xs:NCName" lowerBound="0" upperBound="-1"/>
+			<property name="СвойствоСтроки" type="xs:NCName" lowerBound="0" upperBound="-1"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Порядок" type="d4p1:ЭлементСортировки" lowerBound="0" upperBound="-1"/>
+			<property name="ПоляГруппировки" type="xs:string" lowerBound="0"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="ДополнительныеПоля" type="d4p1:Формула" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="ПравилаПреобразования">
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Правило" type="d4p1:ПравилоПреобразования" upperBound="-1"/>
+		</objectType>
+		<objectType name="ПравилоПреобразования">
+			<property name="КодПравила" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Пространство_xsi" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Пространство_xs" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Пространство_ns2" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Пространство_ns3" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ПространствоПустое" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="schemaLocation" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="НаборДанных" type="d4p1:НаборДанных" upperBound="-1"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="КартаСтрок" type="d4p1:КартаСтрок"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="СтруктураФайла" type="d4p1:ЭлементСтруктурыФайла"/>
+		</objectType>
+		<objectType name="СоответствиеВидаОтчета">
+			<property name="ИмяПравилПреобразования" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="КодВидаОтчета" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="Группировать" type="xs:boolean" default="false" form="Attribute"/>
+			<property name="Зависимости" type="xs:string" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="Формула">
+			<property name="ПолеДокумента" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Выражение" type="xs:string" lowerBound="0" form="Attribute"/>
+		</objectType>
+		<objectType name="ЭлементОтбора">
+			<property name="ЛевоеЗначение" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise" name="ВидСравнения" type="d4p1:ComparisonType" lowerBound="0" form="Attribute"/>
+			<property name="ЭтоОбъектИБ" type="xs:boolean" lowerBound="0" form="Attribute"/>
+			<property name="ПравоеЗначение"/>
+		</objectType>
+		<objectType name="ЭлементСортировки">
+			<property name="Поле" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="Направление" lowerBound="0" form="Attribute">
+				<typeDef xsi:type="ValueType" base="xs:string">
+					<enumeration>Возр</enumeration>
+					<enumeration>Убыв</enumeration>
+				</typeDef>
+			</property>
+		</objectType>
+		<objectType name="ЭлементСтруктурыФайла">
+			<property name="Имя" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ПространствоИмен" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ЗначениеПоУмолчанию" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="ЭтоАтрибут" type="xs:boolean" lowerBound="0" default="false" form="Attribute"/>
+			<property name="Обязательный" type="xs:boolean" lowerBound="0" default="false" form="Attribute"/>
+			<property name="ПодчиненныйЭлемент" type="xs:boolean" lowerBound="0" default="false" form="Attribute"/>
+			<property xmlns:d4p1="http://bus.gov.ru/external/1" name="Элемент" type="d4p1:ЭлементСтруктурыФайла" lowerBound="0" upperBound="-1"/>
+		</objectType>
+	</package>
+</Model>

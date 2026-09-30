@@ -1,0 +1,56 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/props">
+	<import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<import namespace="urn:schemas-1c-ru:reports/core"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/props" name="property" type="d2p1:Property"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/props" name="propertyDef" type="d2p1:PropertyDef"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/props" name="propertySet" type="d2p1:PropertySet"/>
+	<property form="Attribute" name="propertyRef" type="xsd:IDREF"/>
+	<objectType abstract="true" name="CharacterizedEntity">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" lowerBound="0" ref="d3p1:property" upperBound="-1"/>
+	</objectType>
+	<objectType name="NamedPropertySet">
+		<property lowerBound="0" ref="xml:base"/>
+		<property lowerBound="0" ref="xml:lang"/>
+		<property lowerBound="0" ref="xml:space"/>
+		<property lowerBound="0" ref="xml:id"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:refName"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:title"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:comment"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:desc"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" lowerBound="0" name="set" type="d3p1:NamedPropertySet" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" lowerBound="0" name="define" type="d3p1:PropertyDef" upperBound="-1"/>
+	</objectType>
+	<objectType name="Property">
+		<property form="Attribute" lowerBound="1" name="propertyRef" type="xsd:IDREF"/>
+		<property name="value" type="xsd:anyType" upperBound="-1"/>
+	</objectType>
+	<objectType name="PropertyDef">
+		<property lowerBound="0" ref="xml:base"/>
+		<property lowerBound="0" ref="xml:lang"/>
+		<property lowerBound="0" ref="xml:space"/>
+		<property lowerBound="0" ref="xml:id"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:refName"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:title"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:comment"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:desc"/>
+		<property form="Attribute" lowerBound="0" name="dataType" type="xsd:QName"/>
+		<property default="false" fixed="false" form="Attribute" lowerBound="0" name="fixed" type="xsd:boolean"/>
+		<property default="false" fixed="false" form="Attribute" lowerBound="0" name="list" type="xsd:boolean"/>
+		<property default="true" fixed="false" form="Attribute" lowerBound="0" name="optional" type="xsd:boolean"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/core" lowerBound="0" ref="d3p1:about"/>
+		<property lowerBound="0" name="enum" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property form="Attribute" lowerBound="0" name="title"/>
+				<property form="Text" name="__content" type="xsd:NMTOKEN"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="PropertySet">
+		<property lowerBound="0" ref="xml:base"/>
+		<property lowerBound="0" ref="xml:lang"/>
+		<property lowerBound="0" ref="xml:space"/>
+		<property lowerBound="0" ref="xml:id"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" lowerBound="0" name="set" type="d3p1:NamedPropertySet" upperBound="-1"/>
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/props" lowerBound="0" name="define" type="d3p1:PropertyDef" upperBound="-1"/>
+	</objectType>
+</package>

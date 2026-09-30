@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИнвентарныйНомер</dataPath>
+			<field>ИнвентарныйНомер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвентарный номер</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ИнвентарныеНомераОС</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидИмущества</dataPath>
+			<field>ВидИмущества</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетУчета</dataPath>
+			<field>СчетУчета</field>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>ОграниченияСчета</dcscor:choiceParameter>
+							<dcscor:value xsi:type="xs:string">101.00,102.00,103.00,108.00,111.60</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СпособНачисленияАмортизации</dataPath>
+			<field>СпособНачисленияАмортизации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОсновноеСредство</dataPath>
+			<field>ОсновноеСредство</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное средство</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидУчета</dataPath>
+			<field>ВидУчета</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПорядокПогашенияСтоимости</dataPath>
+			<field>ПорядокПогашенияСтоимости</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПринятияКУчету</dataPath>
+			<field>ДатаПринятияКУчету</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата принятия к учету</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<group>true</group>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерИнвентарнойКарточки</dataPath>
+			<field>НомерИнвентарнойКарточки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер инвентарной карточки</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<group>true</group>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦМО</dataPath>
+			<field>ЦМО</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЦМО</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Стоимость</dataPath>
+			<field>Стоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоимость</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	УчетныеДанныеОбъектаОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	УчетныеДанныеОбъектаОССрезПоследних.СчетУчета КАК СчетУчета,
+	УчетныеДанныеОбъектаОССрезПоследних.ВидУчета КАК ВидУчета,
+	УчетныеДанныеОбъектаОССрезПоследних.ВидИмущества КАК ВидИмущества,
+	УчетныеДанныеОбъектаОССрезПоследних.КФО КАК КФО
+ПОМЕСТИТЬ УчетныеДанные
+ИЗ
+	РегистрСведений.УчетныеДанныеОбъектаОС.СрезПоследних(&amp;Период, Организация = &amp;Организация
+	И ВидУчета = ЗНАЧЕНИЕ(Перечисление.ВидыУчетаНФА.НаБалансе) {ОсновноеСредство.* КАК ОсновноеСредство} {ВидУчета КАК
+		ВидУчета} {ОсновноеСредство В (&amp;ОбъектыНФА)}) КАК УчетныеДанныеОбъектаОССрезПоследних
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ПараметрыАмортизацииОСБухгалтерскийУчетСрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	ПараметрыАмортизацииОСБухгалтерскийУчетСрезПоследних.ПорядокПогашенияСтоимости КАК ПорядокПогашенияСтоимости,
+	ПараметрыАмортизацииОСБухгалтерскийУчетСрезПоследних.СпособНачисленияАмортизации КАК СпособНачисленияАмортизации
+ПОМЕСТИТЬ ПараметрыАмортизации
+ИЗ
+	РегистрСведений.ПараметрыАмортизацииОСБухгалтерскийУчет.СрезПоследних(&amp;Период, Организация = &amp;Организация
+		{ОсновноеСредство.* КАК ОсновноеСредство} {ОсновноеСредство В (&amp;ОбъектыНФА)}) КАК
+		ПараметрыАмортизацииОСБухгалтерскийУчетСрезПоследних
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СобытияОССрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	СобытияОССрезПоследних.ИнвНомер КАК ИнвентарныйНомер,
+	СобытияОССрезПоследних.ДатаСобытия КАК ДатаСобытия
+ПОМЕСТИТЬ СобытияОС
+ИЗ
+	РегистрСведений.СобытияОС.СрезПоследних(&amp;Период, Организация = &amp;Организация
+	И Событие = ЗНАЧЕНИЕ(Перечисление.ВидыСобытийОС.ПринятиеКУчету) {ИнвНомер.* КАК ИнвентарныйНомер} {ОсновноеСредство.*
+		КАК ОсновноеСредство} {ОсновноеСредство В (&amp;ОбъектыНФА)}) КАК СобытияОССрезПоследних
+ГДЕ
+	СобытияОССрезПоследних.ДатаСобытия &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СтоимостьОбъектовОСОстатки.ОсновноеСредство КАК ОсновноеСредство,
+	СтоимостьОбъектовОСОстатки.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	СтоимостьОбъектовОСОстатки.ЦМО КАК ЦМО,
+	СтоимостьОбъектовОСОстатки.Подразделение КАК Подразделение,
+	СтоимостьОбъектовОСОстатки.СтоимостьОстаток КАК Стоимость
+ПОМЕСТИТЬ ОстаткиОС
+ИЗ
+	РегистрНакопления.СтоимостьОбъектовОС.Остатки(&amp;Период, Организация = &amp;Организация
+	И ВидРаспоряжения = ЗНАЧЕНИЕ(Перечисление.ВидыРаспоряженияОС.НаБалансе) {ИнвентарныйНомер.* КАК ИнвентарныйНомер}
+		{ОсновноеСредство.* КАК ОсновноеСредство} {ОсновноеСредство В (&amp;ОбъектыНФА)}) КАК СтоимостьОбъектовОСОстатки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ
+	СобытияОС.ОсновноеСредство КАК ОсновноеСредство,
+	СобытияОС.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	СобытияОС.ДатаСобытия КАК ДатаПринятияКУчету,
+	ОстаткиОС.ЦМО КАК ЦМО,
+	ОстаткиОС.Подразделение КАК Подразделение,
+	ОстаткиОС.Стоимость КАК Стоимость
+ПОМЕСТИТЬ ИнвентарныеОбъекты
+ИЗ
+	СобытияОС КАК СобытияОС
+		ЛЕВОЕ СОЕДИНЕНИЕ ОстаткиОС КАК ОстаткиОС
+		ПО СобытияОС.ОсновноеСредство = ОстаткиОС.ОсновноеСредство
+		И СобытияОС.ИнвентарныйНомер = ОстаткиОС.ИнвентарныйНомер
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НомераИнвентарныхКарточекСрезПоследних.ОсновноеСредство КАК ОсновноеСредство,
+	НомераИнвентарныхКарточекСрезПоследних.НомерИнвентарнойКарточки КАК НомерИнвентарнойКарточки
+ПОМЕСТИТЬ НомераИнвентарныхКарточек
+ИЗ
+	РегистрСведений.НомераИнвентарныхКарточек.СрезПоследних(&amp;Период, Организация = &amp;Организация {ОсновноеСредство.* КАК
+		ОсновноеСредство} {ОсновноеСредство В (&amp;ОбъектыНФА)}) КАК НомераИнвентарныхКарточекСрезПоследних
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ
+	ОсновныеСредства.Ссылка КАК ОсновноеСредство,
+	ЕСТЬNULL(НомераИнвентарныхКарточек.НомерИнвентарнойКарточки, "") КАК НомерИнвентарнойКарточки,
+	ЕСТЬNULL(ИнвентарныеОбъекты.ИнвентарныйНомер, ЗНАЧЕНИЕ(Справочник.ИнвентарныеНомераОС.ПустаяСсылка)) КАК
+		ИнвентарныйНомер,
+	ЕСТЬNULL(ИнвентарныеОбъекты.ДатаПринятияКУчету, ДАТАВРЕМЯ(1, 1, 1)) КАК ДатаПринятияКУчету
+{ВЫБРАТЬ
+	ОсновноеСредство.* КАК ОсновноеСредство,
+	НомерИнвентарнойКарточки КАК НомерИнвентарнойКарточки,
+	ИнвентарныйНомер.* КАК ИнвентарныйНомер,
+	ДатаПринятияКУчету КАК ДатаПринятияКУчету}
+ИЗ
+	Справочник.ОсновныеСредства КАК ОсновныеСредства
+		ЛЕВОЕ СОЕДИНЕНИЕ УчетныеДанные КАК УчетныеДанные
+		ПО ОсновныеСредства.Ссылка = УчетныеДанные.ОсновноеСредство
+		ЛЕВОЕ СОЕДИНЕНИЕ ПараметрыАмортизации КАК ПараметрыАмортизации
+		ПО ОсновныеСредства.Ссылка = ПараметрыАмортизации.ОсновноеСредство
+		ЛЕВОЕ СОЕДИНЕНИЕ ИнвентарныеОбъекты КАК ИнвентарныеОбъекты
+		ПО ОсновныеСредства.Ссылка = ИнвентарныеОбъекты.ОсновноеСредство
+		ЛЕВОЕ СОЕДИНЕНИЕ НомераИнвентарныхКарточек КАК НомераИнвентарныхКарточек
+		ПО ОсновныеСредства.Ссылка = НомераИнвентарныхКарточек.ОсновноеСредство
+ГДЕ
+	ОсновныеСредства.Организация = &amp;Организация
+{ГДЕ
+	ОсновныеСредства.Ссылка.* КАК ОсновноеСредство,
+	ОсновныеСредства.Ссылка В (&amp;ОбъектыНФА),
+	УчетныеДанные.СчетУчета.* КАК СчетУчета,
+	УчетныеДанные.ВидУчета КАК ВидУчета,
+	УчетныеДанные.ВидИмущества КАК ВидИмущества,
+	(ЕСТЬNULL(УчетныеДанные.КФО, ЗНАЧЕНИЕ(Перечисление.КВД.ПустаяСсылка))) КАК КФО,
+	ПараметрыАмортизации.ПорядокПогашенияСтоимости КАК ПорядокПогашенияСтоимости,
+	ПараметрыАмортизации.СпособНачисленияАмортизации КАК СпособНачисленияАмортизации,
+	(ЕСТЬNULL(НомераИнвентарныхКарточек.НомерИнвентарнойКарточки, "")) КАК НомерИнвентарнойКарточки,
+	(ЕСТЬNULL(ИнвентарныеОбъекты.ИнвентарныйНомер, ЗНАЧЕНИЕ(Справочник.ИнвентарныеНомераОС.ПустаяСсылка))).* КАК
+		ИнвентарныйНомер,
+	(ЕСТЬNULL(ИнвентарныеОбъекты.ДатаПринятияКУчету, ДАТАВРЕМЯ(1, 1, 1))) КАК ДатаПринятияКУчету,
+	(ЕСТЬNULL(ИнвентарныеОбъекты.ЦМО, ЗНАЧЕНИЕ(Справочник.ЦМО.ПустаяСсылка))).* КАК ЦМО,
+	(ЕСТЬNULL(ИнвентарныеОбъекты.Подразделение, ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка))).* КАК Подразделение,
+	(ЕСТЬNULL(ИнвентарныеОбъекты.Стоимость, 0)) КАК Стоимость}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ФорматРедактирования</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ДЛФ=D</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>ОбъектыНФА</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Объекты НФА</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ОсновныеСредства</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+					<dcscor:item>
+						<dcscor:choiceParameter>Организация</dcscor:choiceParameter>
+						<dcscor:value>ПараметрыДанных.Организация</dcscor:value>
+						<dcscor:mode xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d7p1:LinkedValueChangeMode">Clear</dcscor:mode>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>ВидНФА</dcscor:choiceParameter>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНФА.ОС</dcscor:value>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНФА.НМА</dcscor:value>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНФА.НПА</dcscor:value>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНФА.Казна</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+	</parameter>
+	<parameter>
+		<name>ОтветственныйИсполнитель</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Ответственный исполнитель</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Сотрудники</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+						<dcscor:value>ПараметрыДанных.Организация</dcscor:value>
+						<dcscor:mode xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d7p1:LinkedValueChangeMode">Clear</dcscor:mode>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>СпособВыбора</dcscor:choiceParameter>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.СпособВыбораОтветственногоЦБ.ИзСотрудниковУчрежденияИЦБ</dcscor:value>
+					</dcscor:item>
+					<dcscor:item>
+						<dcscor:choiceParameter>ЦентрализованнаяБухгалтерия</dcscor:choiceParameter>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>СворачиватьАмортизациюПрошлыхЛет</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сворачивать по годам амортизацию прошлых лет в 5 разделе</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ИнвентарнаяКарточка61н</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Инвентарная карточка НФА (61н)</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОсновноеСредство</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИнвентарныйНомер</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcscor:value>
+					<dcsset:userSettingID>2538ab35-f106-4599-bff6-282cb35ad9c1</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Организация</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>8e8d9189-fd5d-4591-99ef-2738ba20a05d</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ОбъектыНФА</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>73eb4aa4-a8ed-4611-9a28-a1bc8a71f50f</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ОтветственныйИсполнитель</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>07c4a749-acc6-4dbe-85aa-a2c5a985e572</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СворачиватьАмортизациюПрошлыхЛет</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>f73ff5d8-bc55-442d-8588-dde7dcead89a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ОсновноеСредство.Наименование</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ОсновноеСредство.Код</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ИнвентарныйНомер.Код</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>НомерИнвентарнойКарточки</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОсновноеСредство</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ИнвентарныйНомер</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОсновноеСредство</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

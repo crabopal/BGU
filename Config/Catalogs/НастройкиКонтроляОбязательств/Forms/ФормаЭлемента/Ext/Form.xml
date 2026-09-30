@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗагрузитьНастройкуПоУмолчанию" id="189">
+				<Type>CommandBarButton</Type>
+				<UserVisible>
+					<xr:Common>false</xr:Common>
+					<xr:Value name="Role.НастройкаПараметровУчета">true</xr:Value>
+					<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+				</UserVisible>
+				<CommandName>Form.Command.ЗагрузитьНастройкуПоУмолчанию</CommandName>
+				<ExtendedTooltip name="ФормаЗагрузитьНастройкуПоУмолчаниюРасширеннаяПодсказка" id="220"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапкаНастройки" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка настройки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаНастройкиРасширеннаяПодсказка" id="221"/>
+			<ChildItems>
+				<InputField name="Организация" id="69">
+					<DataPath>Настройка.Организация</DataPath>
+					<Enabled>false</Enabled>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="70"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="222"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНачальныеНастройки" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНачальныеНастройкиРасширеннаяПодсказка" id="223"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаНастройкаРПД" id="98">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройка РПД</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкаРПДРасширеннаяПодсказка" id="224"/>
+					<ChildItems>
+						<CheckBoxField name="КонтрольРПД" id="99">
+							<DataPath>Настройка.КонтрольРПД</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль непревышения суммы расчетно-платежного документа над суммой:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КонтрольРПДКонтекстноеМеню" id="100"/>
+							<ExtendedTooltip name="КонтрольРПДРасширеннаяПодсказка" id="225"/>
+							<Events>
+								<Event name="OnChange">КонтрольРПДПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Table name="НастройкиКонтроляРПД" id="190">
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Настройка.НастройкиКонтроляРПД</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиКонтроляРПДКонтекстноеМеню" id="191"/>
+							<AutoCommandBar name="НастройкиКонтроляРПДКоманднаяПанель" id="192">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НастройкиКонтроляРПДРасширеннаяПодсказка" id="228"/>
+							<SearchStringAddition name="НастройкиКонтроляРПДСтрокаПоиска" id="229">
+								<AdditionSource>
+									<Item>НастройкиКонтроляРПД</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляРПДСтрокаПоискаКонтекстноеМеню" id="230"/>
+								<ExtendedTooltip name="НастройкиКонтроляРПДСтрокаПоискаРасширеннаяПодсказка" id="231"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиКонтроляРПДСостояниеПросмотра" id="232">
+								<AdditionSource>
+									<Item>НастройкиКонтроляРПД</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляРПДСостояниеПросмотраКонтекстноеМеню" id="233"/>
+								<ExtendedTooltip name="НастройкиКонтроляРПДСостояниеПросмотраРасширеннаяПодсказка" id="234"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиКонтроляРПДУправлениеПоиском" id="235">
+								<AdditionSource>
+									<Item>НастройкиКонтроляРПД</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляРПДУправлениеПоискомКонтекстноеМеню" id="236"/>
+								<ExtendedTooltip name="НастройкиКонтроляРПДУправлениеПоискомРасширеннаяПодсказка" id="237"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">НастройкиКонтроляРПДВыбор</Event>
+							</Events>
+							<ChildItems>
+								<CheckBoxField name="НастройкиКонтроляРПДИспользовать" id="193">
+									<DataPath>Настройка.НастройкиКонтроляРПД.Использовать</DataPath>
+									<EditMode>Directly</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НастройкиКонтроляРПДИспользоватьКонтекстноеМеню" id="194"/>
+									<ExtendedTooltip name="НастройкиКонтроляРПДИспользоватьРасширеннаяПодсказка" id="238"/>
+									<Events>
+										<Event name="OnChange">НастройкиКонтроляРПДИспользоватьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="НастройкиКонтроляРПДКонтрольПо" id="195">
+									<DataPath>Настройка.НастройкиКонтроляРПД.КонтрольПо</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<CellHyperlink>true</CellHyperlink>
+									<ContextMenu name="НастройкиКонтроляРПДКонтрольПоКонтекстноеМеню" id="196"/>
+									<ExtendedTooltip name="НастройкиКонтроляРПДКонтрольПоРасширеннаяПодсказка" id="239"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкаДО" id="74">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройка ДО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкаДОРасширеннаяПодсказка" id="241"/>
+					<ChildItems>
+						<CheckBoxField name="КонтрольДО" id="75">
+							<DataPath>Настройка.КонтрольДО</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль непревышения суммы принимаемого денежного обязательства над суммой:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КонтрольДОКонтекстноеМеню" id="76"/>
+							<ExtendedTooltip name="КонтрольДОРасширеннаяПодсказка" id="242"/>
+							<Events>
+								<Event name="OnChange">КонтрольДОПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Table name="НастройкиКонтроляДО" id="203">
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Настройка.НастройкиКонтроляДО</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиКонтроляДОКонтекстноеМеню" id="204"/>
+							<AutoCommandBar name="НастройкиКонтроляДОКоманднаяПанель" id="205">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НастройкиКонтроляДОРасширеннаяПодсказка" id="245"/>
+							<SearchStringAddition name="НастройкиКонтроляДОСтрокаПоиска" id="246">
+								<AdditionSource>
+									<Item>НастройкиКонтроляДО</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляДОСтрокаПоискаКонтекстноеМеню" id="247"/>
+								<ExtendedTooltip name="НастройкиКонтроляДОСтрокаПоискаРасширеннаяПодсказка" id="248"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиКонтроляДОСостояниеПросмотра" id="249">
+								<AdditionSource>
+									<Item>НастройкиКонтроляДО</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляДОСостояниеПросмотраКонтекстноеМеню" id="250"/>
+								<ExtendedTooltip name="НастройкиКонтроляДОСостояниеПросмотраРасширеннаяПодсказка" id="251"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиКонтроляДОУправлениеПоиском" id="252">
+								<AdditionSource>
+									<Item>НастройкиКонтроляДО</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляДОУправлениеПоискомКонтекстноеМеню" id="253"/>
+								<ExtendedTooltip name="НастройкиКонтроляДОУправлениеПоискомРасширеннаяПодсказка" id="254"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">НастройкиКонтроляДОВыбор</Event>
+							</Events>
+							<ChildItems>
+								<CheckBoxField name="НастройкиКонтроляДОИспользовать" id="206">
+									<DataPath>Настройка.НастройкиКонтроляДО.Использовать</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НастройкиКонтроляДОИспользоватьКонтекстноеМеню" id="207"/>
+									<ExtendedTooltip name="НастройкиКонтроляДОИспользоватьРасширеннаяПодсказка" id="255"/>
+									<Events>
+										<Event name="OnChange">НастройкиКонтроляДОИспользоватьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="НастройкиКонтроляДОКонтрольПо" id="208">
+									<DataPath>Настройка.НастройкиКонтроляДО.КонтрольПо</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<CellHyperlink>true</CellHyperlink>
+									<ContextMenu name="НастройкиКонтроляДОКонтрольПоКонтекстноеМеню" id="209"/>
+									<ExtendedTooltip name="НастройкиКонтроляДОКонтрольПоРасширеннаяПодсказка" id="256"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкаБО" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройка БО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкаБОРасширеннаяПодсказка" id="258"/>
+					<ChildItems>
+						<CheckBoxField name="КонтрольБО" id="83">
+							<DataPath>Настройка.КонтрольБО</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль непревышения суммы принимаемого обязательства над суммой:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КонтрольБОКонтекстноеМеню" id="84"/>
+							<ExtendedTooltip name="КонтрольБОРасширеннаяПодсказка" id="259"/>
+							<Events>
+								<Event name="OnChange">КонтрольБОПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Table name="НастройкиКонтроляБО" id="213">
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Настройка.НастройкиКонтроляБО</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НастройкиКонтроляБОКонтекстноеМеню" id="214"/>
+							<AutoCommandBar name="НастройкиКонтроляБОКоманднаяПанель" id="215">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НастройкиКонтроляБОРасширеннаяПодсказка" id="262"/>
+							<SearchStringAddition name="НастройкиКонтроляБОСтрокаПоиска" id="263">
+								<AdditionSource>
+									<Item>НастройкиКонтроляБО</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляБОСтрокаПоискаКонтекстноеМеню" id="264"/>
+								<ExtendedTooltip name="НастройкиКонтроляБОСтрокаПоискаРасширеннаяПодсказка" id="265"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НастройкиКонтроляБОСостояниеПросмотра" id="266">
+								<AdditionSource>
+									<Item>НастройкиКонтроляБО</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляБОСостояниеПросмотраКонтекстноеМеню" id="267"/>
+								<ExtendedTooltip name="НастройкиКонтроляБОСостояниеПросмотраРасширеннаяПодсказка" id="268"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НастройкиКонтроляБОУправлениеПоиском" id="269">
+								<AdditionSource>
+									<Item>НастройкиКонтроляБО</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НастройкиКонтроляБОУправлениеПоискомКонтекстноеМеню" id="270"/>
+								<ExtendedTooltip name="НастройкиКонтроляБОУправлениеПоискомРасширеннаяПодсказка" id="271"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">НастройкиКонтроляБОВыбор</Event>
+							</Events>
+							<ChildItems>
+								<CheckBoxField name="НастройкиКонтроляБОИспользовать" id="216">
+									<DataPath>Настройка.НастройкиКонтроляБО.Использовать</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НастройкиКонтроляБОИспользоватьКонтекстноеМеню" id="217"/>
+									<ExtendedTooltip name="НастройкиКонтроляБОИспользоватьРасширеннаяПодсказка" id="272"/>
+									<Events>
+										<Event name="OnChange">НастройкиКонтроляБОИспользоватьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="НастройкиКонтроляБОКонтрольПо" id="218">
+									<DataPath>Настройка.НастройкиКонтроляБО.КонтрольПо</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<CellHyperlink>true</CellHyperlink>
+									<ContextMenu name="НастройкиКонтроляБОКонтрольПоКонтекстноеМеню" id="219"/>
+									<ExtendedTooltip name="НастройкиКонтроляБОКонтрольПоРасширеннаяПодсказка" id="273"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Настройка" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.НастройкиКонтроляОбязательств</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Настройка.НастройкиКонтроляБО</Field>
+				<Field>Настройка.НастройкиКонтроляДО</Field>
+				<Field>Настройка.НастройкиКонтроляРПД</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="МассивИзмененныхНастроек" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Массив измененных настроек</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НастройкиКонтроляРПД</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Настройка.НастройкиКонтроляРПД.Использовать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЗавершенныйБизнесПроцесс</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НастройкиКонтроляДО</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Настройка.НастройкиКонтроляДО.Использовать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЗавершенныйБизнесПроцесс</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НастройкиКонтроляБО</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Настройка.НастройкиКонтроляБО.Использовать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЗавершенныйБизнесПроцесс</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ЗагрузитьНастройкуПоУмолчанию" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить настройку по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить настройку по умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьНастройкуПоУмолчанию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

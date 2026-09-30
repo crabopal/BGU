@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>КонтактнаяИнформацияАдрес</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АдресКонтрагента</dataPath>
+			<field>АдресКонтрагента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Контрагенты.Ссылка КАК Ссылка,
+	ЮридическиеЛицаКонтактнаяИнформация.Вид,
+	ЮридическиеЛицаКонтактнаяИнформация.Представление,
+	ЮридическиеЛицаКонтактнаяИнформация.ЗначенияПолей
+ПОМЕСТИТЬ КонтактнаяИнформация
+ИЗ
+	Справочник.Контрагенты КАК Контрагенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ЮридическиеЛица.КонтактнаяИнформация КАК ЮридическиеЛицаКонтактнаяИнформация
+		ПО Контрагенты.ЮридическоеФизическоеЛицо = ЮридическиеЛицаКонтактнаяИнформация.Ссылка
+ГДЕ
+	Контрагенты.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ЮрЛицо)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Контрагенты.Ссылка,
+	ФизическиеЛицаКонтактнаяИнформация.Вид,
+	ФизическиеЛицаКонтактнаяИнформация.Представление,
+	ФизическиеЛицаКонтактнаяИнформация.ЗначенияПолей
+ИЗ
+	Справочник.Контрагенты КАК Контрагенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица.КонтактнаяИнформация КАК ФизическиеЛицаКонтактнаяИнформация
+		ПО Контрагенты.ЮридическоеФизическоеЛицо = ФизическиеЛицаКонтактнаяИнформация.Ссылка
+ГДЕ
+	Контрагенты.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.АдресПоПропискеФизическиеЛица)
+				ИЛИ КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ЮридическийАдресКонтрагенты)
+			ТОГДА КонтактнаяИнформация.Представление
+	КОНЕЦ КАК АдресКонтрагента,
+	КонтактнаяИнформация.Ссылка КАК Контрагент
+ИЗ
+	КонтактнаяИнформация КАК КонтактнаяИнформация
+ГДЕ
+	(КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.АдресПоПропискеФизическиеЛица)
+			ИЛИ КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ЮридическийАдресКонтрагенты))</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>КонтактнаяИнформацияТелефон</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТелефонКонтрагента</dataPath>
+			<field>ТелефонКонтрагента</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Контрагенты.Ссылка КАК Ссылка,
+	ЮридическиеЛицаКонтактнаяИнформация.Вид,
+	ЮридическиеЛицаКонтактнаяИнформация.Представление,
+	ЮридическиеЛицаКонтактнаяИнформация.ЗначенияПолей
+ПОМЕСТИТЬ КонтактнаяИнформация
+ИЗ
+	Справочник.Контрагенты КАК Контрагенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ЮридическиеЛица.КонтактнаяИнформация КАК ЮридическиеЛицаКонтактнаяИнформация
+		ПО Контрагенты.ЮридическоеФизическоеЛицо = ЮридическиеЛицаКонтактнаяИнформация.Ссылка
+ГДЕ
+	Контрагенты.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ЮрЛицо)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Контрагенты.Ссылка,
+	ФизическиеЛицаКонтактнаяИнформация.Вид,
+	ФизическиеЛицаКонтактнаяИнформация.Представление,
+	ФизическиеЛицаКонтактнаяИнформация.ЗначенияПолей
+ИЗ
+	Справочник.Контрагенты КАК Контрагенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица.КонтактнаяИнформация КАК ФизическиеЛицаКонтактнаяИнформация
+		ПО Контрагенты.ЮридическоеФизическоеЛицо = ФизическиеЛицаКонтактнаяИнформация.Ссылка
+ГДЕ
+	Контрагенты.ВидКонтрагента = ЗНАЧЕНИЕ(Перечисление.ЮрФизЛицо.ФизЛицо)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонРабочийФизическиеЛица)
+				ИЛИ КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонКонтрагенты)
+			ТОГДА КонтактнаяИнформация.Представление
+	КОНЕЦ КАК ТелефонКонтрагента,
+	КонтактнаяИнформация.Ссылка КАК Контрагент
+ИЗ
+	КонтактнаяИнформация КАК КонтактнаяИнформация
+ГДЕ
+	(КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонРабочийФизическиеЛица)
+			ИЛИ КонтактнаяИнформация.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонКонтрагенты))</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Основной</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГосударственныйОборонныйЗаказ</dataPath>
+			<field>ГосударственныйОборонныйЗаказ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Государственный контракт</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КЭК</dataPath>
+			<field>КЭК</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЖурналОпераций</dataPath>
+			<field>ЖурналОпераций</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОтдельныйСчетДляРасчетовПоГОЗ</dataPath>
+			<field>ОтдельныйСчетДляРасчетовПоГОЗ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отдельный счет для расчетов по ГОЗ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерДоговора</dataPath>
+			<field>НомерДоговора</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КЭККор</dataPath>
+			<field>КЭККор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Стоимость</dataPath>
+			<field>Стоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоимость</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КПС</dataPath>
+			<field>КПС</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодразделениеКор</dataPath>
+			<field>ПодразделениеКор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КПСКор</dataPath>
+			<field>КПСКор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИФО</dataPath>
+			<field>ИФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Договор</dataPath>
+			<field>Договор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договор</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаДоговора</dataPath>
+			<field>ДатаДоговора</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭтоКонтрактСЗаказчиком</dataPath>
+			<field>ЭтоКонтрактСЗаказчиком</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это контракт с заказчиком</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВалютаКор</dataPath>
+			<field>ВалютаКор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидОбязательства</dataPath>
+			<field>ВидОбязательства</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент.ЭтоИностраннаяОрганизация</dataPath>
+			<field>ЭтоИностраннаяОрганизация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КонтрактСЗаказчикомПоКооперации</dataPath>
+			<field>КонтрактСЗаказчикомПоКооперации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контракт с заказчиком</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Договоры</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Организация</dcscor:choiceParameter>
+							<dcscor:value>Организация</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.КонтрактСУчастникомГОЗ</dcscor:choiceParameter>
+							<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+						</dcscor:item>
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.ВидДоговора</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыДоговоровКонтрагентов.СПокупателем</dcscor:value>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыДоговоровКонтрагентов.СОтправителемТрансферта</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаКонтрактаСЗаказчиком</dataPath>
+			<field>ДатаКонтрактаСЗаказчиком</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата контракта с заказчиком</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидОбязательстваКонтрактаСЗаказчиком</dataPath>
+			<field>ВидОбязательстваКонтрактаСЗаказчиком</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид обязательства контракта с заказчиком</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерКонтрактаСЗаказчиком</dataPath>
+			<field>НомерКонтрактаСЗаказчиком</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер контракта с заказчиком</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Обязательство</dataPath>
+			<field>Обязательство</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидХарактеристики</dataPath>
+			<field>ВидХарактеристики</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РазделЛицевогоСчета</dataPath>
+			<field>РазделЛицевогоСчета</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерРеестровойЗаписи</dataPath>
+			<field>НомерРеестровойЗаписи</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Договоры.Ссылка КАК Договор,
+	Договоры.ДатаДоговора КАК ДатаДоговора,
+	Договоры.НомерДоговора КАК НомерДоговора,
+	Договоры.ВидОбязательства КАК ВидОбязательства,
+	Договоры.Контрагент КАК Контрагент,
+	ВЫБОР
+		КОГДА Договоры.Контрагент.ЮридическоеФизическоеЛицо ССЫЛКА Справочник.ЮридическиеЛица
+			ТОГДА ВЫБОР
+					КОГДА НЕ(Договоры.Контрагент.ЮридическоеФизическоеЛицо.СтранаРегистрации = ЗНАЧЕНИЕ(Справочник.СтраныМира.Россия)
+								ИЛИ Договоры.Контрагент.ЮридическоеФизическоеЛицо.СтранаРегистрации = ЗНАЧЕНИЕ(Справочник.СтраныМира.ПустаяСсылка))
+						ТОГДА ИСТИНА
+					ИНАЧЕ ЛОЖЬ
+				КОНЕЦ
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ЭтоИностраннаяОрганизация,
+	Договоры.Организация КАК Организация,
+	Договоры.ОтдельныйСчетДляРасчетовПоГОЗ КАК ОтдельныйСчетДляРасчетовПоГОЗ,
+	Договоры.РазделЛицевогоСчета КАК РазделЛицевогоСчета,
+	Договоры.ОтдельныйСчетДляРасчетовПоГОЗ.КазначейскоеСопровождениеНаРазделах КАК КазначейскоеСопровождениеНаРазделах,
+	ВЫБОР
+		КОГДА Договоры.ОтдельныйСчетДляРасчетовПоГОЗ.КазначейскоеСопровождениеНаРазделах
+			ТОГДА Договоры.РазделЛицевогоСчета.ГосударственныйКонтракт
+		ИНАЧЕ Договоры.ОтдельныйСчетДляРасчетовПоГОЗ.ГосударственныйКонтрактПоГОЗ
+	КОНЕЦ КАК ГосударственныйОборонныйЗаказ,
+	ИСТИНА КАК ЭтоКонтрактСЗаказчиком
+ПОМЕСТИТЬ КонтрактыПоГОЗсЗаказчиками
+ИЗ
+	Справочник.Договоры КАК Договоры
+ГДЕ
+	Договоры.КонтрактСУчастникомГОЗ
+	И (Договоры.ВидДоговора = ЗНАЧЕНИЕ(Перечисление.ВидыДоговоровКонтрагентов.СПокупателем)
+			ИЛИ Договоры.ВидДоговора = ЗНАЧЕНИЕ(Перечисление.ВидыДоговоровКонтрагентов.СОтправителемТрансферта))
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Договоры.Ссылка КАК Договор,
+	Договоры.ДатаДоговора КАК ДатаДоговора,
+	Договоры.НомерДоговора КАК НомерДоговора,
+	Договоры.ВидОбязательства КАК ВидОбязательства,
+	Договоры.Контрагент КАК Контрагент,
+	ВЫБОР
+		КОГДА Договоры.Контрагент.ЮридическоеФизическоеЛицо ССЫЛКА Справочник.ЮридическиеЛица
+			ТОГДА ВЫБОР
+					КОГДА НЕ(Договоры.Контрагент.ЮридическоеФизическоеЛицо.СтранаРегистрации = ЗНАЧЕНИЕ(Справочник.СтраныМира.Россия)
+								ИЛИ Договоры.Контрагент.ЮридическоеФизическоеЛицо.СтранаРегистрации = ЗНАЧЕНИЕ(Справочник.СтраныМира.ПустаяСсылка))
+						ТОГДА ИСТИНА
+					ИНАЧЕ ЛОЖЬ
+				КОНЕЦ
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ЭтоИностраннаяОрганизация,
+	Договоры.Организация КАК Организация,
+	Договоры.ОтдельныйСчетДляРасчетовПоГОЗ КАК ОтдельныйСчетДляРасчетовПоГОЗ,
+	Договоры.РазделЛицевогоСчета КАК РазделЛицевогоСчета,
+	ВЫБОР
+		КОГДА Договоры.ОтдельныйСчетДляРасчетовПоГОЗ.КазначейскоеСопровождениеНаРазделах
+			ТОГДА Договоры.РазделЛицевогоСчета.ГосударственныйКонтракт
+		ИНАЧЕ Договоры.ОтдельныйСчетДляРасчетовПоГОЗ.ГосударственныйКонтрактПоГОЗ
+	КОНЕЦ КАК ГосударственныйОборонныйЗаказ,
+	ЛОЖЬ КАК ЭтоКонтрактСЗаказчиком
+ПОМЕСТИТЬ КонтрактыПоГОЗсИсполнителями
+ИЗ
+	Справочник.Договоры КАК Договоры
+ГДЕ
+	Договоры.КонтрактСУчастникомГОЗ
+	И Договоры.ВидДоговора = ЗНАЧЕНИЕ(Перечисление.ВидыДоговоровКонтрагентов.СПоставщиком)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КонтрактыПоГОЗ.Договор КАК Договор,
+	КонтрактыПоГОЗ.ДатаДоговора КАК ДатаДоговора,
+	КонтрактыПоГОЗ.НомерДоговора КАК НомерДоговора,
+	КонтрактыПоГОЗ.ВидОбязательства КАК ВидОбязательства,
+	КонтрактыПоГОЗ.Контрагент КАК Контрагент,
+	КонтрактыПоГОЗ.ЭтоИностраннаяОрганизация КАК ЭтоИностраннаяОрганизация,
+	КонтрактыПоГОЗ.Организация КАК Организация,
+	КонтрактыПоГОЗсЗаказчиками.Договор КАК КонтрактСЗаказчикомПоКооперации,
+	КонтрактыПоГОЗсЗаказчиками.ДатаДоговора КАК ДатаКонтрактаСЗаказчиком,
+	КонтрактыПоГОЗсЗаказчиками.НомерДоговора КАК НомерКонтрактаСЗаказчиком,
+	КонтрактыПоГОЗсЗаказчиками.ВидОбязательства КАК ВидОбязательстваКонтрактаСЗаказчиком,
+	КонтрактыПоГОЗ.ОтдельныйСчетДляРасчетовПоГОЗ КАК ОтдельныйСчетДляРасчетовПоГОЗ,
+	КонтрактыПоГОЗ.РазделЛицевогоСчета КАК РазделЛицевогоСчета,
+	КонтрактыПоГОЗ.ГосударственныйОборонныйЗаказ КАК ГосударственныйОборонныйЗаказ,
+	КонтрактыПоГОЗ.ЭтоКонтрактСЗаказчиком КАК ЭтоКонтрактСЗаказчиком,
+	ЕСТЬNULL(СрокиИсполненияИСуммыОбязательствСрезПоследних.Сумма, 0) КАК Стоимость,
+	ЕСТЬNULL(ХарактеристикиОбязательствСрезПоследних.ЗначениеХарактеристики, "") КАК НомерРеестровойЗаписи,
+	СрокиИсполненияИСуммыОбязательствСрезПоследних.Регистратор КАК Регистратор
+ИЗ
+	КонтрактыПоГОЗсИсполнителями КАК КонтрактыПоГОЗ
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СрокиИсполненияИСуммыОбязательств.СрезПоследних(
+				,
+				Обязательство В
+					(ВЫБРАТЬ
+						Т.Договор
+					ИЗ
+						КонтрактыПоГОЗсИсполнителями КАК Т)) КАК СрокиИсполненияИСуммыОбязательствСрезПоследних
+		ПО КонтрактыПоГОЗ.Договор = СрокиИсполненияИСуммыОбязательствСрезПоследних.Обязательство
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ХарактеристикиОбязательств.СрезПоследних(
+				,
+				Договор В
+					(ВЫБРАТЬ
+						Т.Договор
+					ИЗ
+						КонтрактыПоГОЗсИсполнителями КАК Т)) КАК ХарактеристикиОбязательствСрезПоследних
+		ПО КонтрактыПоГОЗ.Договор = ХарактеристикиОбязательствСрезПоследних.Договор
+			И (ХарактеристикиОбязательствСрезПоследних.ВидХарактеристики = ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыХарактеристикОбязательства.НомерРеестровойЗаписи))
+		ЛЕВОЕ СОЕДИНЕНИЕ КонтрактыПоГОЗсЗаказчиками КАК КонтрактыПоГОЗсЗаказчиками
+		ПО КонтрактыПоГОЗ.ОтдельныйСчетДляРасчетовПоГОЗ = КонтрактыПоГОЗсЗаказчиками.ОтдельныйСчетДляРасчетовПоГОЗ
+			И КонтрактыПоГОЗ.РазделЛицевогоСчета = КонтрактыПоГОЗсЗаказчиками.РазделЛицевогоСчета
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КонтрактыПоГОЗ.Договор,
+	КонтрактыПоГОЗ.ДатаДоговора,
+	КонтрактыПоГОЗ.НомерДоговора,
+	КонтрактыПоГОЗ.ВидОбязательства,
+	КонтрактыПоГОЗ.Контрагент,
+	КонтрактыПоГОЗ.ЭтоИностраннаяОрганизация,
+	КонтрактыПоГОЗ.Организация,
+	КонтрактыПоГОЗ.Договор,
+	КонтрактыПоГОЗ.ДатаДоговора,
+	КонтрактыПоГОЗ.НомерДоговора,
+	КонтрактыПоГОЗ.ВидОбязательства,
+	КонтрактыПоГОЗ.ОтдельныйСчетДляРасчетовПоГОЗ,
+	КонтрактыПоГОЗ.РазделЛицевогоСчета,
+	КонтрактыПоГОЗ.ГосударственныйОборонныйЗаказ,
+	КонтрактыПоГОЗ.ЭтоКонтрактСЗаказчиком,
+	ЕСТЬNULL(ЖурналПроводокЕПСБУОбороты.СуммаОборотДт, 0),
+	NULL,
+	ЖурналПроводокЕПСБУОбороты.Регистратор
+ИЗ
+	КонтрактыПоГОЗсЗаказчиками КАК КонтрактыПоГОЗ
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.ЖурналПроводокЕПСБУ.Обороты(
+				,
+				,
+				Регистратор,
+				Счет В (&amp;СчетаОбъемФО),
+				,
+				КФО = ЗНАЧЕНИЕ(Перечисление.КВД.Внебюджет)
+					И ВЫРАЗИТЬ(Субконто1 КАК Справочник.РазделыЛицевыхСчетов).Владелец В
+						(ВЫБРАТЬ
+							Т.ОтдельныйСчетДляРасчетовПоГОЗ
+						ИЗ
+							КонтрактыПоГОЗсЗаказчиками КАК Т),
+				КорСчет В (&amp;СчетаСметыДоход),
+				) КАК ЖурналПроводокЕПСБУОбороты
+		ПО (КонтрактыПоГОЗ.ОтдельныйСчетДляРасчетовПоГОЗ = ВЫРАЗИТЬ(ЖурналПроводокЕПСБУОбороты.Субконто1 КАК Справочник.РазделыЛицевыхСчетов).Владелец)
+			И (НЕ КонтрактыПоГОЗ.КазначейскоеСопровождениеНаРазделах
+				ИЛИ КонтрактыПоГОЗ.РазделЛицевогоСчета = ЖурналПроводокЕПСБУОбороты.Субконто1)
+{ХАРАКТЕРИСТИКИ
+	ТИП(Справочник.Договоры)
+	ВИДЫХАРАКТЕРИСТИК (ВЫБРАТЬ
+			ВидыХарактеристикОбязательства.Ссылка КАК Ссылка,
+			ВидыХарактеристикОбязательства.Наименование КАК Наименование,
+			ВидыХарактеристикОбязательства.ТипЗначения КАК ТипЗначения
+		ИЗ
+			ПланВидовХарактеристик.ВидыХарактеристикОбязательства КАК ВидыХарактеристикОбязательства
+		ГДЕ
+			НЕ ВидыХарактеристикОбязательства.Ссылка = ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыХарактеристикОбязательства.НомерРеестровойЗаписи))
+	ПОЛЕКЛЮЧА Ссылка
+	ПОЛЕИМЕНИ Наименование
+	ПОЛЕТИПАЗНАЧЕНИЯ ТипЗначения
+	ЗНАЧЕНИЯХАРАКТЕРИСТИК (ВЫБРАТЬ
+			ХарактеристикиОбязательств.Договор КАК Договор,
+			ХарактеристикиОбязательств.ВидХарактеристики КАК ВидХарактеристики,
+			ХарактеристикиОбязательств.ЗначениеХарактеристики КАК ЗначениеХарактеристики
+		ИЗ
+			РегистрСведений.ХарактеристикиОбязательств.СрезПоследних(, ) КАК ХарактеристикиОбязательств)
+	ПОЛЕОБЪЕКТА Договор
+	ПОЛЕВИДА ВидХарактеристики
+	ПОЛЕЗНАЧЕНИЯ ЗначениеХарактеристики }</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>Основной</sourceDataSet>
+		<destinationDataSet>КонтактнаяИнформацияАдрес</destinationDataSet>
+		<sourceExpression>Контрагент</sourceExpression>
+		<destinationExpression>Контрагент</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>Основной</sourceDataSet>
+		<destinationDataSet>КонтактнаяИнформацияТелефон</destinationDataSet>
+		<sourceExpression>Контрагент</sourceExpression>
+		<destinationExpression>Контрагент</destinationExpression>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>Контрагент.ИННКППРегНомер</dataPath>
+		<expression> ВЫБОР 
+			КОГДА Контрагент.ЭтоИностраннаяОрганизация
+				ТОГДА Контрагент.ЮридическоеФизическоеЛицо.НалоговыйНомер
+			ИНАЧЕ 
+				ВЫБОР 
+ 					КОГДА ЗначениеЗаполнено(Контрагент.ИНН) ТОГДА (НСтр("ru= 'ИНН:'") + Контрагент.ИНН) 
+ 					ИНАЧЕ "" КОНЕЦ
+ 			+ ВЫБОР 
+ 					КОГДА ЗначениеЗаполнено(Контрагент.ИНН) И ЗначениеЗаполнено(Контрагент.КПП) ТОГДА (", ") 
+ 				ИНАЧЕ "" КОНЕЦ
+			+ ВЫБОР 
+ 					КОГДА ЗначениеЗаполнено(Контрагент.КПП) ТОГДА (НСтр("ru= 'КПП:'") + Контрагент.КПП) 
+ 				ИНАЧЕ "" КОНЕЦ
+	КОНЕЦ 
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ИНН, КПП, регистрационный номер</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Контрагент.ОфициальноеНаименование</dataPath>
+		<expression> ВЫБОР 
+			КОГДА  Контрагент.ЮридическоеФизическоеЛицо.НаименованиеПолное = "" ТОГДА Контрагент.Наименование
+			ИНАЧЕ  Контрагент.ЮридическоеФизическоеЛицо.НаименованиеПолное	КОНЕЦ 
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Наименование</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Договор.ДатаНомер</dataPath>
+		<expression>ВидОбязательства + ВЫБОР КОГДА ЗначениеЗаполнено(НомерДоговора) ТОГДА " № " + Строка(НомерДоговора) ИНАЧЕ "" КОНЕЦ
++ ВЫБОР КОГДА ЗначениеЗаполнено(НомерДоговора) И ЗначениеЗаполнено(ДатаДоговора) ТОГДА НСтр("ru= ' от '") ИНАЧЕ "" КОНЕЦ
++ ВЫБОР КОГДА ЗначениеЗаполнено(ДатаДоговора) ТОГДА Строка(Формат(ДатаДоговора, "Л=ru_RU; ДФ=dd.MM.yyyy")) ИНАЧЕ "" КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Контракт, договор</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КонтрактСЗаказчикомПоКооперации.ДатаНомер</dataPath>
+		<expression>ВидОбязательстваКонтрактаСЗаказчиком + ВЫБОР КОГДА ЗначениеЗаполнено(НомерКонтрактаСЗаказчиком) ТОГДА " № " + Строка(НомерКонтрактаСЗаказчиком) ИНАЧЕ "" КОНЕЦ
++ ВЫБОР КОГДА ЗначениеЗаполнено(НомерКонтрактаСЗаказчиком) И ЗначениеЗаполнено(ДатаКонтрактаСЗаказчиком) ТОГДА НСтр("ru= ' от '") ИНАЧЕ "" КОНЕЦ
++ ВЫБОР КОГДА ЗначениеЗаполнено(ДатаКонтрактаСЗаказчиком) ТОГДА Строка(Формат(ДатаКонтрактаСЗаказчиком, "Л=ru_RU; ДФ=dd.MM.yyyy")) ИНАЧЕ "" КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Контракт, договор</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>Стоимость</dataPath>
+		<expression>Сумма(Стоимость)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СчетаОбъемФО</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета объем ФО</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+		</valueType>
+		<useRestriction>true</useRestriction>
+		<expression>БухгалтерскийУчетПовтИсп.ПолучитьМассивСчетов("507.10,507.20")</expression>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>СчетаСметыДоход</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета сметы доход</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>БухгалтерскийУчетПовтИсп.ПолучитьМассивСчетов("504.11,504.21")</expression>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<template>
+		<name>Макет1</name>
+		<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="dcscor:Parameter">Контрагент.ОфициальноеНаименование</dcsat:value>
+					</dcsat:item>
+					<dcsat:appearance>
+						<dcscor:item>
+							<dcscor:parameter>Расшифровка</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:Parameter">Контрагент</dcscor:value>
+						</dcscor:item>
+					</dcsat:appearance>
+				</dcsat:tableCell>
+			</dcsat:item>
+		</template>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Контрагент.ОфициальноеНаименование</dcsat:name>
+			<dcsat:expression>Контрагент.ОфициальноеНаименование</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+			<dcsat:name>Контрагент</dcsat:name>
+			<dcsat:fieldExpression>
+				<dcsat:field>Контрагент</dcsat:field>
+				<dcsat:expression>Контрагент</dcsat:expression>
+			</dcsat:fieldExpression>
+			<dcsat:mainAction>OpenValue</dcsat:mainAction>
+		</parameter>
+	</template>
+	<template>
+		<name>Макет2</name>
+		<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="dcscor:Parameter">Договор.ДатаНомер</dcsat:value>
+					</dcsat:item>
+					<dcsat:appearance>
+						<dcscor:item>
+							<dcscor:parameter>Расшифровка</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:Parameter">Договор</dcscor:value>
+						</dcscor:item>
+					</dcsat:appearance>
+				</dcsat:tableCell>
+			</dcsat:item>
+		</template>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Договор.ДатаНомер</dcsat:name>
+			<dcsat:expression>Договор.ДатаНомер</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+			<dcsat:name>Договор</dcsat:name>
+			<dcsat:fieldExpression>
+				<dcsat:field>Договор</dcsat:field>
+				<dcsat:expression>Договор</dcsat:expression>
+			</dcsat:fieldExpression>
+			<dcsat:mainAction>OpenValue</dcsat:mainAction>
+		</parameter>
+	</template>
+	<template>
+		<name>Макет3</name>
+		<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="dcscor:Parameter">КонтрактСЗаказчикомПоКооперации.ДатаНомер</dcsat:value>
+					</dcsat:item>
+					<dcsat:appearance>
+						<dcscor:item>
+							<dcscor:parameter>Расшифровка</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:Parameter">Договор</dcscor:value>
+						</dcscor:item>
+					</dcsat:appearance>
+				</dcsat:tableCell>
+			</dcsat:item>
+		</template>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+			<dcsat:name>Договор</dcsat:name>
+			<dcsat:fieldExpression>
+				<dcsat:field>КонтрактСЗаказчикомПоКооперации</dcsat:field>
+				<dcsat:expression>КонтрактСЗаказчикомПоКооперации</dcsat:expression>
+			</dcsat:fieldExpression>
+			<dcsat:mainAction>OpenValue</dcsat:mainAction>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>КонтрактСЗаказчикомПоКооперации.ДатаНомер</dcsat:name>
+			<dcsat:expression>КонтрактСЗаказчикомПоКооперации.ДатаНомер</dcsat:expression>
+		</parameter>
+	</template>
+	<fieldTemplate>
+		<field>Контрагент.ОфициальноеНаименование</field>
+		<template>Макет1</template>
+	</fieldTemplate>
+	<fieldTemplate>
+		<field>Договор.ДатаНомер</field>
+		<template>Макет2</template>
+	</fieldTemplate>
+	<fieldTemplate>
+		<field>КонтрактСЗаказчикомПоКооперации.ДатаНомер</field>
+		<template>Макет3</template>
+	</fieldTemplate>
+	<settingsVariant>
+		<dcsset:name>СведенияОКооперацииГОЗ</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сведения о кооперации по государственным контрактам</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>81f40fca-df4e-48a2-b8c6-8fe188a60647</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ГосударственныйОборонныйЗаказ</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>1ee24c80-82a7-409b-b79e-0a90746b7169</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КонтрактСЗаказчикомПоКооперации</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>946714dc-5a53-4340-8547-72390af72f25</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>47d9cabb-b94f-4ad1-bca5-d15b2b68c1a0</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Контрагент.ОфициальноеНаименование</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Размещение</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:DataCompositionTextPlacementType">Wrap</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Auto</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сведения о кооперации по государственным контрактам</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ЭтоКонтрактСЗаказчиком</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto">
+						<dcsset:use>false</dcsset:use>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Договор.ДатаНомер</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ГосударственныйОборонныйЗаказ</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор государственного контракта</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заказчик (покупатель)</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Контрагент.ОфициальноеНаименование</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наименование</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Контрагент.ЮридическоеФизическоеЛицо.ИНН</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ИНН</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Контрагент.ЮридическоеФизическоеЛицо.КПП</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>КПП</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>АдресКонтрагента</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ТелефонКонтрагента</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Телефон</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Стоимость</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Контракты с заказчиками</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ЭтоКонтрактСЗаказчиком</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto">
+						<dcsset:use>false</dcsset:use>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Договор.ДатаНомер</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ГосударственныйОборонныйЗаказ</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор государственного контракта</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КонтрактСЗаказчикомПоКооперации.ДатаНомер</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Входит в кооперацию контракта</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>НомерРеестровойЗаписи</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Номер реестровой записи</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Исполнитель (поставщик, подрядчик)</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Контрагент.ОфициальноеНаименование</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наименование</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Контрагент.ИННКППРегНомер</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ИНН, КПП, регистрационный номер</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>АдресКонтрагента</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ТелефонКонтрагента</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Телефон</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Стоимость</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Контракты с исполнителями</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

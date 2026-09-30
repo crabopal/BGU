@@ -1,0 +1,55 @@
+﻿<xs:schema xmlns:tns="Operation_VD_1_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="Operation_VD_1_1" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:complexType name="НастройкаОперации">
+		<xs:sequence>
+			<xs:element name="Наименование" type="xs:string"/>
+			<xs:element name="АльтернативныйВариант" type="xs:boolean"/>
+			<xs:element name="ВидОперации" type="xs:string"/>
+			<xs:element name="СпособФормированияОперации" type="xs:string"/>
+			<xs:element name="ВидДокумента" type="xs:string" nillable="true"/>
+			<xs:element name="ТиповаяОперация" type="xs:string" nillable="true"/>
+			<xs:element name="РеквизитыДокумента" type="tns:РеквизитыДокумента" nillable="true"/>
+			<xs:element name="РеквизитыОперации" type="tns:РеквизитыОперации" nillable="true"/>
+			<xs:element name="ПараметрыОбмена" type="tns:ПараметрыОбмена" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ПараметрыОбмена">
+		<xs:sequence>
+			<xs:element name="Строка" type="tns:ПараметрыОбмена.Строка" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ПараметрыОбмена.Строка">
+		<xs:sequence>
+			<xs:element name="ЗначениеПараметра" type="xs:string"/>
+			<xs:element name="ИмяПараметра" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="РеквизитыДокумента">
+		<xs:sequence>
+			<xs:element name="Строка" type="tns:РеквизитыДокумента.Строка" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="РеквизитыДокумента.Строка">
+		<xs:sequence>
+			<xs:element name="ЗначениеРеквизита" type="xs:string"/>
+			<xs:element name="ИмяРеквизита" type="xs:string"/>
+			<xs:element name="УстанавливатьЗначение" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="РеквизитыОперации">
+		<xs:sequence>
+			<xs:element name="Строка" type="tns:РеквизитыОперации.Строка" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="РеквизитыОперации.Строка">
+		<xs:sequence>
+			<xs:element name="ЗначениеРеквизита" type="xs:string"/>
+			<xs:element name="ИмяРеквизита" type="xs:string"/>
+			<xs:element name="УстанавливатьЗначение" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="СписокОпераций">
+		<xs:sequence>
+			<xs:element name="Операция" type="tns:НастройкаОперации" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

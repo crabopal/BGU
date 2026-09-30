@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнитьДокумент" id="15">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьДокумент</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьДокументРасширеннаяПодсказка" id="16"/>
+			</Button>
+			<Popup name="КомандыЭДО" id="301">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="302"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка документа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="18"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаШапкаПерваяСтрока" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка, первая строка</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаПерваяСтрокаРасширеннаяПодсказка" id="20"/>
+					<ChildItems>
+						<InputField name="ПредставлениеПериодаРегистрации" id="28">
+							<DataPath>ПредставлениеПериодаРегистрации</DataPath>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="ПредставлениеПериодаРегистрацииКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="ПредставлениеПериодаРегистрацииРасширеннаяПодсказка" id="30"/>
+							<Events>
+								<Event name="StartChoice">ПредставлениеПериодаРегистрацииНачалоВыбора</Event>
+								<Event name="Clearing">ПредставлениеПериодаРегистрацииОчистка</Event>
+							</Events>
+						</InputField>
+						<InputField name="Номер" id="31">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="33"/>
+						</InputField>
+						<InputField name="Организация" id="21">
+							<DataPath>Объект.Организация</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="23"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаШапкаВтораяСтрока" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка, вторая строка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаВтораяСтрокаРасширеннаяПодсказка" id="25"/>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="35"/>
+			<ChildItems>
+				<Page name="СтраницаЗакрытиеСчетаН90" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Закрытие счета Н90</v8:content>
+						</v8:item>
+					</Title>
+					<TitleDataPath>Объект.ЗакрытиеСчетаН90.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаЗакрытиеСчетаН90РасширеннаяПодсказка" id="37"/>
+					<ChildItems>
+						<Table name="ЗакрытиеСчетаН90" id="42">
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ЗакрытиеСчетаН90</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЗакрытиеСчетаН90КонтекстноеМеню" id="43"/>
+							<AutoCommandBar name="ЗакрытиеСчетаН90КоманднаяПанель" id="44"/>
+							<ExtendedTooltip name="ЗакрытиеСчетаН90РасширеннаяПодсказка" id="45"/>
+							<SearchStringAddition name="ЗакрытиеСчетаН90СтрокаПоиска" id="46">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН90</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН90СтрокаПоискаКонтекстноеМеню" id="49"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН90СтрокаПоискаРасширеннаяПодсказка" id="50"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЗакрытиеСчетаН90СостояниеПросмотра" id="51">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН90</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН90СостояниеПросмотраКонтекстноеМеню" id="54"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН90СостояниеПросмотраРасширеннаяПодсказка" id="55"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЗакрытиеСчетаН90УправлениеПоиском" id="56">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН90</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН90УправлениеПоискомКонтекстноеМеню" id="59"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН90УправлениеПоискомРасширеннаяПодсказка" id="60"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">ЗакрытиеСчетаН90ПриОкончанииРедактирования</Event>
+								<Event name="OnStartEdit">ЗакрытиеСчетаН90ПриНачалеРедактирования</Event>
+								<Event name="AfterDeleteRow">ЗакрытиеСчетаН90ПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ЗакрытиеСчетаН90НомерСтроки" id="61">
+									<DataPath>Объект.ЗакрытиеСчетаН90.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН90НомерСтрокиКонтекстноеМеню" id="62"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН90НомерСтрокиРасширеннаяПодсказка" id="63"/>
+								</LabelField>
+								<InputField name="ЗакрытиеСчетаН90ИФО" id="258">
+									<DataPath>Объект.ЗакрытиеСчетаН90.ИФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН90ИФОКонтекстноеМеню" id="259"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН90ИФОРасширеннаяПодсказка" id="260"/>
+								</InputField>
+								<InputField name="ЗакрытиеСчетаН90КФО" id="261">
+									<DataPath>Объект.ЗакрытиеСчетаН90.КФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН90КФОКонтекстноеМеню" id="262"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН90КФОРасширеннаяПодсказка" id="263"/>
+									<Events>
+										<Event name="StartChoice">ЗакрытиеСчетаН90КФОНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ЗакрытиеСчетаН90ГруппаСуммыЗаголовки" id="204">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Суммы (заголовки)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ЗакрытиеСчетаН90ГруппаСуммыЗаголовкиРасширеннаяПодсказка" id="205"/>
+									<ChildItems>
+										<InputField name="ЗакрытиеСчетаН90ЗаголовокСуммаНУ" id="206">
+											<DataPath>Объект.ЗакрытиеСчетаН90.ЗаголовокСуммаНУ</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН90ЗаголовокСуммаНУКонтекстноеМеню" id="207"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90ЗаголовокСуммаНУРасширеннаяПодсказка" id="208"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН90ЗаголовокСуммаНеУчитываетсяНУ" id="209">
+											<DataPath>Объект.ЗакрытиеСчетаН90.ЗаголовокСуммаНеУчитываетсяНУ</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН90ЗаголовокСуммаНеУчитываетсяНУКонтекстноеМеню" id="210"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90ЗаголовокСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="211"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН90ЗаголовокСуммаЕНВД" id="212">
+											<DataPath>Объект.ЗакрытиеСчетаН90.ЗаголовокСуммаЕНВД</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН90ЗаголовокСуммаЕНВДКонтекстноеМеню" id="213"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90ЗаголовокСуммаЕНВДРасширеннаяПодсказка" id="214"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ЗакрытиеСчетаН90ГруппаСуммы" id="194">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прибыль
+(убыток) от продаж</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Финансовый результат по обычным видам деятельности</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ЗакрытиеСчетаН90ГруппаСуммыРасширеннаяПодсказка" id="195"/>
+									<ChildItems>
+										<InputField name="ЗакрытиеСчетаН90СуммаНУ" id="82">
+											<DataPath>Объект.ЗакрытиеСчетаН90.СуммаНУ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН90.TotalСуммаНУ</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН90СуммаНУКонтекстноеМеню" id="83"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90СуммаНУРасширеннаяПодсказка" id="84"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН90СуммаНеУчитываетсяНУ" id="85">
+											<DataPath>Объект.ЗакрытиеСчетаН90.СуммаНеУчитываетсяНУ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН90.TotalСуммаНеУчитываетсяНУ</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН90СуммаНеУчитываетсяНУКонтекстноеМеню" id="86"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90СуммаНеУчитываетсяНУРасширеннаяПодсказка" id="87"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН90СуммаЕНВД" id="88">
+											<DataPath>Объект.ЗакрытиеСчетаН90.СуммаЕНВД</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН90.TotalСуммаЕНВД</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН90СуммаЕНВДКонтекстноеМеню" id="89"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН90СуммаЕНВДРасширеннаяПодсказка" id="90"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаЗакрытиеСчетаН91" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Закрытие счета Н91</v8:content>
+						</v8:item>
+					</Title>
+					<TitleDataPath>Объект.ЗакрытиеСчетаН91.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаЗакрытиеСчетаН91РасширеннаяПодсказка" id="39"/>
+					<ChildItems>
+						<Table name="ЗакрытиеСчетаН91" id="91">
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ЗакрытиеСчетаН91</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЗакрытиеСчетаН91КонтекстноеМеню" id="92"/>
+							<AutoCommandBar name="ЗакрытиеСчетаН91КоманднаяПанель" id="93"/>
+							<ExtendedTooltip name="ЗакрытиеСчетаН91РасширеннаяПодсказка" id="94"/>
+							<SearchStringAddition name="ЗакрытиеСчетаН91СтрокаПоиска" id="95">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН91</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН91СтрокаПоискаКонтекстноеМеню" id="98"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН91СтрокаПоискаРасширеннаяПодсказка" id="99"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЗакрытиеСчетаН91СостояниеПросмотра" id="100">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН91</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН91СостояниеПросмотраКонтекстноеМеню" id="103"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН91СостояниеПросмотраРасширеннаяПодсказка" id="104"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЗакрытиеСчетаН91УправлениеПоиском" id="105">
+								<AdditionSource>
+									<Item>ЗакрытиеСчетаН91</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЗакрытиеСчетаН91УправлениеПоискомКонтекстноеМеню" id="108"/>
+								<ExtendedTooltip name="ЗакрытиеСчетаН91УправлениеПоискомРасширеннаяПодсказка" id="109"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">ЗакрытиеСчетаН91ПриОкончанииРедактирования</Event>
+								<Event name="OnStartEdit">ЗакрытиеСчетаН91ПриНачалеРедактирования</Event>
+								<Event name="AfterDeleteRow">ЗакрытиеСчетаН91ПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ЗакрытиеСчетаН91НомерСтроки" id="110">
+									<DataPath>Объект.ЗакрытиеСчетаН91.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН91НомерСтрокиКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91НомерСтрокиРасширеннаяПодсказка" id="112"/>
+								</LabelField>
+								<InputField name="ЗакрытиеСчетаН91ИФО" id="264">
+									<DataPath>Объект.ЗакрытиеСчетаН91.ИФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН91ИФОКонтекстноеМеню" id="265"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91ИФОРасширеннаяПодсказка" id="266"/>
+								</InputField>
+								<InputField name="ЗакрытиеСчетаН91КФО" id="267">
+									<DataPath>Объект.ЗакрытиеСчетаН91.КФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЗакрытиеСчетаН91КФОКонтекстноеМеню" id="268"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91КФОРасширеннаяПодсказка" id="269"/>
+									<Events>
+										<Event name="StartChoice">ЗакрытиеСчетаН91КФОНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ЗакрытиеСчетаН91ГруппаСуммыЗаголовки" id="229">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Суммы (заголовки)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91ГруппаСуммыЗаголовкиРасширеннаяПодсказка" id="230"/>
+									<ChildItems>
+										<InputField name="ЗакрытиеСчетаН91ЗаголовокСуммаНУ" id="231">
+											<DataPath>Объект.ЗакрытиеСчетаН91.ЗаголовокСуммаНУ</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН91ЗаголовокСуммаНУКонтекстноеМеню" id="232"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91ЗаголовокСуммаНУРасширеннаяПодсказка" id="233"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН91ЗаголовокСуммаНеУчитываетсяНУ" id="234">
+											<DataPath>Объект.ЗакрытиеСчетаН91.ЗаголовокСуммаНеУчитываетсяНУ</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН91ЗаголовокСуммаНеУчитываетсяНУКонтекстноеМеню" id="235"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91ЗаголовокСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="236"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН91ЗаголовокСуммаЕНВД" id="237">
+											<DataPath>Объект.ЗакрытиеСчетаН91.ЗаголовокСуммаЕНВД</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЗаголовкиСтрокЦветТекста</TextColor>
+											<ContextMenu name="ЗакрытиеСчетаН91ЗаголовокСуммаЕНВДКонтекстноеМеню" id="238"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91ЗаголовокСуммаЕНВДРасширеннаяПодсказка" id="239"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ЗакрытиеСчетаН91ГруппаСуммы" id="198">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сальдо прочих доходов и расходов</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Финансовый результат от прочих операций</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91ГруппаСуммыРасширеннаяПодсказка" id="199"/>
+									<ChildItems>
+										<InputField name="ЗакрытиеСчетаН91СуммаНУ" id="131">
+											<DataPath>Объект.ЗакрытиеСчетаН91.СуммаНУ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН91.TotalСуммаНУ</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН91СуммаНУКонтекстноеМеню" id="132"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91СуммаНУРасширеннаяПодсказка" id="133"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН91СуммаНеУчитываетсяНУ" id="134">
+											<DataPath>Объект.ЗакрытиеСчетаН91.СуммаНеУчитываетсяНУ</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН91.TotalСуммаНеУчитываетсяНУ</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН91СуммаНеУчитываетсяНУКонтекстноеМеню" id="135"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91СуммаНеУчитываетсяНУРасширеннаяПодсказка" id="136"/>
+										</InputField>
+										<InputField name="ЗакрытиеСчетаН91СуммаЕНВД" id="137">
+											<DataPath>Объект.ЗакрытиеСчетаН91.СуммаЕНВД</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<FooterDataPath>Объект.ЗакрытиеСчетаН91.TotalСуммаЕНВД</FooterDataPath>
+											<Width>24</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MarkNegatives>true</MarkNegatives>
+											<ContextMenu name="ЗакрытиеСчетаН91СуммаЕНВДКонтекстноеМеню" id="138"/>
+											<ExtendedTooltip name="ЗакрытиеСчетаН91СуммаЕНВДРасширеннаяПодсказка" id="139"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ЗакрытиеСчетаН91СуммаРаспределяемыхЗатрат" id="283">
+									<DataPath>Объект.ЗакрытиеСчетаН91.СуммаРаспределяемыхЗатрат</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>в т.ч. распределяемых затрат</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Объект.ЗакрытиеСчетаН91.TotalСуммаРаспределяемыхЗатрат</FooterDataPath>
+									<ContextMenu name="ЗакрытиеСчетаН91СуммаРаспределяемыхЗатратКонтекстноеМеню" id="284"/>
+									<ExtendedTooltip name="ЗакрытиеСчетаН91СуммаРаспределяемыхЗатратРасширеннаяПодсказка" id="285"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<InputField name="ДоляЕНВД" id="255">
+							<DataPath>Объект.ДоляЕНВД</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДоляЕНВДКонтекстноеМеню" id="256"/>
+							<ExtendedTooltip name="ДоляЕНВДРасширеннаяПодсказка" id="257"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСписаниеУбытковПрошлыхЛет" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Списание убытков прошлых лет</v8:content>
+						</v8:item>
+					</Title>
+					<TitleDataPath>Объект.СписаниеУбытковПрошлыхЛет.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаСписаниеУбытковПрошлыхЛетРасширеннаяПодсказка" id="41"/>
+					<ChildItems>
+						<Table name="СписаниеУбытковПрошлыхЛет" id="140">
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.СписаниеУбытковПрошлыхЛет</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписаниеУбытковПрошлыхЛетКонтекстноеМеню" id="141"/>
+							<AutoCommandBar name="СписаниеУбытковПрошлыхЛетКоманднаяПанель" id="142"/>
+							<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетРасширеннаяПодсказка" id="143"/>
+							<SearchStringAddition name="СписаниеУбытковПрошлыхЛетСтрокаПоиска" id="144">
+								<AdditionSource>
+									<Item>СписаниеУбытковПрошлыхЛет</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписаниеУбытковПрошлыхЛетСтрокаПоискаКонтекстноеМеню" id="147"/>
+								<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетСтрокаПоискаРасширеннаяПодсказка" id="148"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписаниеУбытковПрошлыхЛетСостояниеПросмотра" id="149">
+								<AdditionSource>
+									<Item>СписаниеУбытковПрошлыхЛет</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписаниеУбытковПрошлыхЛетСостояниеПросмотраКонтекстноеМеню" id="152"/>
+								<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетСостояниеПросмотраРасширеннаяПодсказка" id="153"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписаниеУбытковПрошлыхЛетУправлениеПоиском" id="154">
+								<AdditionSource>
+									<Item>СписаниеУбытковПрошлыхЛет</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписаниеУбытковПрошлыхЛетУправлениеПоискомКонтекстноеМеню" id="157"/>
+								<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">СписаниеУбытковПрошлыхЛетПриОкончанииРедактирования</Event>
+								<Event name="AfterDeleteRow">СписаниеУбытковПрошлыхЛетПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписаниеУбытковПрошлыхЛетНомерСтроки" id="159">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетНомерСтрокиКонтекстноеМеню" id="160"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетНомерСтрокиРасширеннаяПодсказка" id="161"/>
+								</LabelField>
+								<InputField name="СписаниеУбытковПрошлыхЛетИФО" id="162">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.ИФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетИФОКонтекстноеМеню" id="163"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетИФОРасширеннаяПодсказка" id="164"/>
+								</InputField>
+								<InputField name="СписаниеУбытковПрошлыхЛетКФО" id="165">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.КФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетКФОКонтекстноеМеню" id="166"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетКФОРасширеннаяПодсказка" id="167"/>
+									<Events>
+										<Event name="StartChoice">СписаниеУбытковПрошлыхЛетКФОНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="СписаниеУбытковПрошлыхЛетУбытокПрошлыхЛет" id="171">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.УбыткиПрошлыхЛет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетУбытокПрошлыхЛетКонтекстноеМеню" id="172"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетУбытокПрошлыхЛетРасширеннаяПодсказка" id="173"/>
+								</InputField>
+								<InputField name="СписаниеУбытковПрошлыхЛетСчет" id="168">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.Счет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетСчетКонтекстноеМеню" id="169"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетСчетРасширеннаяПодсказка" id="170"/>
+								</InputField>
+								<InputField name="СписаниеУбытковПрошлыхЛетОстатокНУ" id="174">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.ОстатокНУ</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Объект.СписаниеУбытковПрошлыхЛет.TotalОстатокНУ</FooterDataPath>
+									<MarkNegatives>true</MarkNegatives>
+									<TextColor>style:ЦветНедоступноеПоле</TextColor>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетОстатокНУКонтекстноеМеню" id="175"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетОстатокНУРасширеннаяПодсказка" id="176"/>
+								</InputField>
+								<InputField name="СписаниеУбытковПрошлыхЛетСписатьНУ" id="183">
+									<DataPath>Объект.СписаниеУбытковПрошлыхЛет.СписатьНУ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Объект.СписаниеУбытковПрошлыхЛет.TotalСписатьНУ</FooterDataPath>
+									<MarkNegatives>true</MarkNegatives>
+									<ContextMenu name="СписаниеУбытковПрошлыхЛетСписатьНУКонтекстноеМеню" id="184"/>
+									<ExtendedTooltip name="СписаниеУбытковПрошлыхЛетСписатьНУРасширеннаяПодсказка" id="185"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="БухгалтерскаяОперация" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бухгалтерская операция</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="БухгалтерскаяОперацияРасширеннаяПодсказка" id="13"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаПодвал" id="294">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="295"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСостояниеЭДО" id="296">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="297"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСостояниеЭДО" id="298">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="299"/>
+							<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="300"/>
+							<Events>
+								<Event name="Click">ДекорацияЭДОНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтветственныйКомментарий" id="286">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подвал</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтветственныйКомментарийРасширеннаяПодсказка" id="287"/>
+					<ChildItems>
+						<InputField name="Комментарий" id="288">
+							<DataPath>Объект.Комментарий</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="289"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="290"/>
+						</InputField>
+						<InputField name="Ответственный" id="291">
+							<DataPath>Объект.Ответственный</DataPath>
+							<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ОтветственныйКонтекстноеМеню" id="292"/>
+							<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="293"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИтоги" id="270">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="271"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаИтогоПоДокументу" id="275">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итого по документу</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ExtendedTooltip name="ГруппаИтогоПоДокументуРасширеннаяПодсказка" id="276"/>
+							<ChildItems>
+								<InputField name="ДвиженияДокументаИтогСумма" id="277">
+									<DataPath>Объект.СуммаДокумента</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Налоговая база</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДвиженияДокументаИтогСуммаКонтекстноеМеню" id="278"/>
+									<ExtendedTooltip name="ДвиженияДокументаИтогСуммаРасширеннаяПодсказка" id="279"/>
+								</InputField>
+								<LabelField name="ВалютаИтоговРубли" id="280">
+									<DataPath>ВалютаРубли</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ВалютаИтоговРублиКонтекстноеМеню" id="281"/>
+									<ExtendedTooltip name="ВалютаИтоговРублиРасширеннаяПодсказка" id="282"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.РасчетБазыПоНалогуНаПрибыль</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.СписаниеУбытковПрошлыхЛет">
+					<Column name="ЗаголовокСуммаНУ" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаНеУчитываетсяНУ" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не учитывается (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаЕНВД" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>ЕНВД (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.ЗакрытиеСчетаН91">
+					<Column name="ЗаголовокСуммаНУ" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаНеУчитываетсяНУ" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не учитывается (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаЕНВД" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>ЕНВД (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.ЗакрытиеСчетаН90">
+					<Column name="ЗаголовокСуммаНУ" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаНеУчитываетсяНУ" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не учитывается (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗаголовокСуммаЕНВД" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>ЕНВД (НУ)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПредставлениеПериодаРегистрации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВалютаРубли" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта рубли</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документ по данным учета</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокумент</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

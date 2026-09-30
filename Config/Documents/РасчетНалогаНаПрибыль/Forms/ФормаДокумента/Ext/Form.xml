@@ -1,0 +1,854 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="КомандыЭДО" id="170">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="171"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="95"/>
+			<ChildItems>
+				<UsualGroup name="ЛеваяКолонка" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период / Организация</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ЛеваяКолонкаРасширеннаяПодсказка" id="96"/>
+					<ChildItems>
+						<UsualGroup name="ДатаНомер" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата номер</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ДатаНомерРасширеннаяПодсказка" id="97"/>
+							<ChildItems>
+								<InputField name="ПредставлениеПериодаРегистрации" id="137">
+									<DataPath>ПредставлениеПериодаРегистрации</DataPath>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>true</ChoiceButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ПредставлениеПериодаРегистрацииКонтекстноеМеню" id="138"/>
+									<ExtendedTooltip name="ПредставлениеПериодаРегистрацииРасширеннаяПодсказка" id="139"/>
+									<Events>
+										<Event name="StartChoice">ПредставлениеПериодаРегистрацииНачалоВыбора</Event>
+										<Event name="Clearing">ПредставлениеПериодаРегистрацииОчистка</Event>
+									</Events>
+								</InputField>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="99"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Организация" id="5">
+							<DataPath>Объект.Организация</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="100"/>
+							<Events>
+								<Event name="OnChange">ОрганизацияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ПраваяКолонка" id="80">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отбор</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ПраваяКолонкаРасширеннаяПодсказка" id="102"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаИФОКФО" id="81">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ИФО / КФО</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаИФОКФОРасширеннаяПодсказка" id="104"/>
+							<ChildItems>
+								<InputField name="ИФО" id="62">
+									<DataPath>Объект.ИФО</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ИФО</v8:content>
+										</v8:item>
+									</Title>
+									<ClearButton>true</ClearButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Без отбора&gt;</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ИФОКонтекстноеМеню" id="63"/>
+									<ExtendedTooltip name="ИФОРасширеннаяПодсказка" id="105"/>
+								</InputField>
+								<InputField name="КФО" id="64">
+									<DataPath>Объект.КФО</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>КФО</v8:content>
+										</v8:item>
+									</Title>
+									<Width>11</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Без отбора&gt;</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="КФОКонтекстноеМеню" id="65"/>
+									<ExtendedTooltip name="КФОРасширеннаяПодсказка" id="106"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="НадписьСтавкиНалогаНаПрибыль" id="93">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налоговые ставки: в федеральный бюджет 2%, в бюджет субъекта РФ 18%</v8:content>
+				</v8:item>
+			</Title>
+			<Hyperlink>true</Hyperlink>
+			<ContextMenu name="НадписьСтавкиНалогаНаПрибыльКонтекстноеМеню" id="94"/>
+			<ExtendedTooltip name="НадписьСтавкиНалогаНаПрибыльРасширеннаяПодсказка" id="101"/>
+			<Events>
+				<Event name="Click">НадписьСтавкиНалогаНаПрибыльНажатие</Event>
+			</Events>
+		</LabelDecoration>
+		<Pages name="Страницы" id="181">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="182"/>
+			<ChildItems>
+				<Page name="СтраницаРасчет" id="183">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расчет</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаРасчетРасширеннаяПодсказка" id="184"/>
+					<ChildItems>
+						<Table name="ДвиженияДокумента" id="15">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ДвиженияДокумента</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДвиженияДокументаКонтекстноеМеню" id="16"/>
+							<AutoCommandBar name="ДвиженияДокументаКоманднаяПанель" id="17">
+								<ChildItems>
+									<Button name="ДвиженияДокументаЗаполнить" id="66">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Заполнить</CommandName>
+										<ExtendedTooltip name="ДвиженияДокументаЗаполнитьРасширеннаяПодсказка" id="108"/>
+									</Button>
+									<Button name="ДвиженияДокументаРаспределить" id="92">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Распределить</CommandName>
+										<ExtendedTooltip name="ДвиженияДокументаРаспределитьРасширеннаяПодсказка" id="109"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ДвиженияДокументаРасширеннаяПодсказка" id="110"/>
+							<SearchStringAddition name="ДвиженияДокументаСтрокаПоиска" id="111">
+								<AdditionSource>
+									<Item>ДвиженияДокумента</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДвиженияДокументаСтрокаПоискаКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="ДвиженияДокументаСтрокаПоискаРасширеннаяПодсказка" id="113"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДвиженияДокументаСостояниеПросмотра" id="114">
+								<AdditionSource>
+									<Item>ДвиженияДокумента</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДвиженияДокументаСостояниеПросмотраКонтекстноеМеню" id="115"/>
+								<ExtendedTooltip name="ДвиженияДокументаСостояниеПросмотраРасширеннаяПодсказка" id="116"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДвиженияДокументаУправлениеПоиском" id="117">
+								<AdditionSource>
+									<Item>ДвиженияДокумента</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДвиженияДокументаУправлениеПоискомКонтекстноеМеню" id="118"/>
+								<ExtendedTooltip name="ДвиженияДокументаУправлениеПоискомРасширеннаяПодсказка" id="119"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeRowChange">ДвиженияДокументаПередНачаломИзменения</Event>
+								<Event name="OnStartEdit">ДвиженияДокументаПриНачалеРедактирования</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ДвиженияДокументаНомерСтроки" id="18">
+									<DataPath>Объект.ДвиженияДокумента.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<ContextMenu name="ДвиженияДокументаНомерСтрокиКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="ДвиженияДокументаНомерСтрокиРасширеннаяПодсказка" id="120"/>
+								</LabelField>
+								<InputField name="ДвиженияДокументаСумма" id="54">
+									<DataPath>Объект.ДвиженияДокумента.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<MarkNegatives>true</MarkNegatives>
+									<ContextMenu name="ДвиженияДокументаСуммаКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="ДвиженияДокументаСуммаРасширеннаяПодсказка" id="126"/>
+								</InputField>
+								<InputField name="ДвиженияДокументаВидНалога" id="90">
+									<DataPath>Объект.ДвиженияДокумента.ВидНалога</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Налог на прибыль (Федеральный бюджет)</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыНалоговИПлатежей.ПрибыльФБ</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Налог на прибыль (бюджет субъекта РФ)</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыНалоговИПлатежей.ПрибыльРБ</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ДвиженияДокументаВидНалогаКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="ДвиженияДокументаВидНалогаРасширеннаяПодсказка" id="122"/>
+									<Events>
+										<Event name="OnChange">ДвиженияДокументаВидНалогаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ДвиженияДокументаНалогСборПлатеж" id="172">
+									<DataPath>Объект.ДвиженияДокумента.НалогСборПлатеж</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДвиженияДокументаНалогСборПлатежКонтекстноеМеню" id="173"/>
+									<ExtendedTooltip name="ДвиженияДокументаНалогСборПлатежРасширеннаяПодсказка" id="174"/>
+								</InputField>
+								<InputField name="ДвиженияДокументаКФО" id="22">
+									<DataPath>Объект.ДвиженияДокумента.КФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДвиженияДокументаКФОКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="ДвиженияДокументаКФОРасширеннаяПодсказка" id="124"/>
+									<Events>
+										<Event name="OnChange">ДвиженияДокументаКФОПриИзменении</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="ДвиженияДокументаГруппаСчетДебета" id="68">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет дебета</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ДвиженияДокументаГруппаСчетДебетаРасширеннаяПодсказка" id="127"/>
+									<ChildItems>
+										<ColumnGroup name="ДвиженияДокументаГруппаРабочийСчетДт" id="69">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий счет (Дт)</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ДвиженияДокументаГруппаРабочийСчетДтРасширеннаяПодсказка" id="129"/>
+											<ChildItems>
+												<InputField name="ДвиженияДокументаКПСДт" id="28">
+													<DataPath>Объект.ДвиженияДокумента.КПСДт</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КПС</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<Width>18</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<InputHint>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КПС</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="ДвиженияДокументаКПСДтКонтекстноеМеню" id="29"/>
+													<ExtendedTooltip name="ДвиженияДокументаКПСДтРасширеннаяПодсказка" id="130"/>
+													<Events>
+														<Event name="StartChoice">ДвиженияДокументаКПСДтНачалоВыбора</Event>
+													</Events>
+												</InputField>
+												<InputField name="ДвиженияДокументаСчетДт" id="24">
+													<DataPath>Объект.ДвиженияДокумента.СчетДт</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Счет</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<InputHint>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Счет</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="ДвиженияДокументаСчетДтКонтекстноеМеню" id="25"/>
+													<ExtendedTooltip name="ДвиженияДокументаСчетДтРасширеннаяПодсказка" id="131"/>
+													<Events>
+														<Event name="OnChange">ДвиженияДокументаСчетДтПриИзменении</Event>
+														<Event name="StartChoice">ДвиженияДокументаСчетДтНачалоВыбора</Event>
+														<Event name="ChoiceProcessing">ДвиженияДокументаСчетДтОбработкаВыбора</Event>
+													</Events>
+												</InputField>
+												<InputField name="ДвиженияДокументаКЭКДт" id="30">
+													<DataPath>Объект.ДвиженияДокумента.КЭКДт</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КЭК</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<InputHint>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КЭК</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="ДвиженияДокументаКЭКДтКонтекстноеМеню" id="31"/>
+													<ExtendedTooltip name="ДвиженияДокументаКЭКДтРасширеннаяПодсказка" id="132"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<InputField name="ДвиженияДокументаПодразделениеДт" id="26">
+											<DataPath>Объект.ДвиженияДокумента.ПодразделениеДт</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подразделение</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<Width>36</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подразделение</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ДвиженияДокументаПодразделениеДтКонтекстноеМеню" id="27"/>
+											<ExtendedTooltip name="ДвиженияДокументаПодразделениеДтРасширеннаяПодсказка" id="128"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ДвиженияДокументаГруппаСубконтоДебета" id="140">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто дебета</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ДвиженияДокументаГруппаСубконтоДебетаРасширеннаяПодсказка" id="141"/>
+									<ChildItems>
+										<InputField name="ДвиженияДокументаСубконтоДт1" id="32">
+											<DataPath>Объект.ДвиженияДокумента.СубконтоДт1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Субконто</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДвиженияДокументаСубконтоДт1КонтекстноеМеню" id="33"/>
+											<ExtendedTooltip name="ДвиженияДокументаСубконтоДт1РасширеннаяПодсказка" id="133"/>
+											<Events>
+												<Event name="OnChange">ДвиженияДокументаСубконтоДт1ПриИзменении</Event>
+												<Event name="StartChoice">ДвиженияДокументаСубконтоДт1НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДвиженияДокументаСубконтоДт2" id="34">
+											<DataPath>Объект.ДвиженияДокумента.СубконтоДт2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДвиженияДокументаСубконтоДт2КонтекстноеМеню" id="35"/>
+											<ExtendedTooltip name="ДвиженияДокументаСубконтоДт2РасширеннаяПодсказка" id="134"/>
+											<Events>
+												<Event name="OnChange">ДвиженияДокументаСубконтоДт2ПриИзменении</Event>
+												<Event name="StartChoice">ДвиженияДокументаСубконтоДт2НачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДвиженияДокументаСубконтоДт3" id="36">
+											<DataPath>Объект.ДвиженияДокумента.СубконтоДт3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДвиженияДокументаСубконтоДт3КонтекстноеМеню" id="37"/>
+											<ExtendedTooltip name="ДвиженияДокументаСубконтоДт3РасширеннаяПодсказка" id="135"/>
+											<Events>
+												<Event name="OnChange">ДвиженияДокументаСубконтоДт3ПриИзменении</Event>
+												<Event name="StartChoice">ДвиженияДокументаСубконтоДт3НачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ДвиженияДокументаИФО" id="20">
+									<DataPath>Объект.ДвиженияДокумента.ИФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДвиженияДокументаИФОКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="ДвиженияДокументаИФОРасширеннаяПодсказка" id="123"/>
+									<Events>
+										<Event name="OnChange">ДвиженияДокументаИФОПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="БухгалтерскаяОперация" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бухгалтерская операция</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="БухгалтерскаяОперацияРасширеннаяПодсказка" id="107"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаПодвал" id="163">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="164"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИтоги" id="142">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="143"/>
+					<ChildItems>
+						<InputField name="ГлавныйБухгалтер" id="175">
+							<DataPath>Объект.ГлавныйБухгалтер</DataPath>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ГлавныйБухгалтерКонтекстноеМеню" id="176"/>
+							<ExtendedTooltip name="ГлавныйБухгалтерРасширеннаяПодсказка" id="177"/>
+						</InputField>
+						<InputField name="ОтветственныйИсполнитель" id="178">
+							<DataPath>Объект.ОтветственныйИсполнитель</DataPath>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ОтветственныйИсполнительКонтекстноеМеню" id="179"/>
+							<ExtendedTooltip name="ОтветственныйИсполнительРасширеннаяПодсказка" id="180"/>
+						</InputField>
+						<UsualGroup name="ГруппаИтогоПоДокументу" id="150">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итого по документу</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ExtendedTooltip name="ГруппаИтогоПоДокументуРасширеннаяПодсказка" id="151"/>
+							<ChildItems>
+								<InputField name="ДвиженияДокументаИтогСумма" id="144">
+									<DataPath>Объект.ДвиженияДокумента.TotalСумма</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Налог на прибыль</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДвиженияДокументаИтогСуммаКонтекстноеМеню" id="145"/>
+									<ExtendedTooltip name="ДвиженияДокументаИтогСуммаРасширеннаяПодсказка" id="146"/>
+								</InputField>
+								<LabelField name="ВалютаИтоговРубли" id="152">
+									<DataPath>ВалютаРубли</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ВалютаИтоговРублиКонтекстноеМеню" id="153"/>
+									<ExtendedTooltip name="ВалютаИтоговРублиРасширеннаяПодсказка" id="154"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСостояниеЭДО" id="165">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="166"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСостояниеЭДО" id="167">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="168"/>
+							<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="169"/>
+							<Events>
+								<Event name="Click">ДекорацияЭДОНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтветственныйКомментарий" id="155">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подвал</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтветственныйКомментарийРасширеннаяПодсказка" id="156"/>
+					<ChildItems>
+						<InputField name="Комментарий" id="157">
+							<DataPath>Объект.Комментарий</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="158"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="159"/>
+						</InputField>
+						<InputField name="Ответственный" id="160">
+							<DataPath>Объект.Ответственный</DataPath>
+							<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ОтветственныйКонтекстноеМеню" id="161"/>
+							<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="162"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.РасчетНалогаНаПрибыль</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ДвиженияДокумента">
+					<Column name="КПСДтДоступность" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>КПС Дт доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="КЭКДтДоступность" id="6">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>КЭК Дт доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ПодразделениеДтДоступность" id="7">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подразделение Дт доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="СубконтоДт1Доступность" id="8">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто Дт 1 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="СубконтоДт2Доступность" id="9">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто Дт 2 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="СубконтоДт3Доступность" id="10">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Субконто Дт 3 доступность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПредставлениеПериодаРегистрации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВалютаРубли" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта рубли</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ЭтоКазенноеУчреждение" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это казенное учреждение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать налог на прибыль и заполнить таблицу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокумент</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Распределить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить налог на прибыль по данным о доходах текущего месяца</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РаспределитьПоДоходам</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

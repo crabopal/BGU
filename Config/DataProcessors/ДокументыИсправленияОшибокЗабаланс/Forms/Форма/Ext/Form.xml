@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<CommandBarLocation>None</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<LabelDecoration name="Пояснение" id="57">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По нажатию кнопки "&lt;b&gt;Заполнить&lt;/&gt;" в таблицу будут подобраны документы&lt;b&gt; 2021&lt;/&gt; года с установленным признаком "&lt;b&gt;Исправление ошибок прошлых лет&lt;/&gt;" и имеющие движения по забалансовым счетам.
+При перепроведении документов в проводки по забалансовым счетам будет добавлен признак исправления ошибок прошлых лет.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПояснениеКонтекстноеМеню" id="58"/>
+			<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="59"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОрганизация" id="52">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа организация</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОрганизацияРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<InputField name="Организация" id="1">
+					<DataPath>Объект.Организация</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<LabelDecoration name="НайденоДокументов" id="54">
+					<TextColor>style:ТекстИнформационнойНадписи</TextColor>
+					<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<ContextMenu name="НайденоДокументовКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="НайденоДокументовРасширеннаяПодсказка" id="56"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ДокументыКПроведению" id="4">
+			<ChangeRowSet>false</ChangeRowSet>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ДокументыКПроведению</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДокументыКПроведениюКонтекстноеМеню" id="5"/>
+			<AutoCommandBar name="ДокументыКПроведениюКоманднаяПанель" id="6">
+				<ChildItems>
+					<Button name="Заполнить" id="41">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="42"/>
+					</Button>
+					<Button name="ПровестиВыбранные" id="43">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПровестиВыбранные</CommandName>
+						<ExtendedTooltip name="ПровестиВыбранныеРасширеннаяПодсказка" id="44"/>
+					</Button>
+					<Button name="ОтметитьВсе" id="48">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОтметитьВсе</CommandName>
+						<ExtendedTooltip name="ОтметитьВсеРасширеннаяПодсказка" id="49"/>
+					</Button>
+					<Button name="СнятьВсеОтметки" id="50">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СнятьВсеОтметки</CommandName>
+						<ExtendedTooltip name="СнятьВсеОтметкиРасширеннаяПодсказка" id="51"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДокументыКПроведениюРасширеннаяПодсказка" id="7"/>
+			<SearchStringAddition name="ДокументыКПроведениюСтрокаПоиска" id="8">
+				<AdditionSource>
+					<Item>ДокументыКПроведению</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыКПроведениюСтрокаПоискаКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ДокументыКПроведениюСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДокументыКПроведениюСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>ДокументыКПроведению</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыКПроведениюСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ДокументыКПроведениюСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДокументыКПроведениюУправлениеПоиском" id="14">
+				<AdditionSource>
+					<Item>ДокументыКПроведению</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыКПроведениюУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ДокументыКПроведениюУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДокументыКПроведениюВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ДокументыКПроведениюНомерСтроки" id="17">
+					<DataPath>Объект.ДокументыКПроведению.LineNumber</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>4</MaxWidth>
+					<ContextMenu name="ДокументыКПроведениюНомерСтрокиКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ДокументыКПроведениюНомерСтрокиРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+				<CheckBoxField name="ДокументыКПроведениюОтметка" id="20">
+					<DataPath>Объект.ДокументыКПроведению.Отметка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отм.</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДокументыКПроведениюОтметкаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ДокументыКПроведениюОтметкаРасширеннаяПодсказка" id="22"/>
+				</CheckBoxField>
+				<InputField name="ДокументыКПроведениюДокументИсправленияОшибки" id="23">
+					<DataPath>Объект.ДокументыКПроведению.ДокументИсправленияОшибки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКПроведениюДокументИсправленияОшибкиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ДокументыКПроведениюДокументИсправленияОшибкиРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ДокументыКПроведениюПериодВозникновенияОшибки" id="26">
+					<DataPath>Объект.ДокументыКПроведению.ПериодВозникновенияОшибки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период ошибки</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>12</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>17</MaxWidth>
+					<ContextMenu name="ДокументыКПроведениюПериодВозникновенияОшибкиКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДокументыКПроведениюПериодВозникновенияОшибкиРасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<InputField name="ДокументыКПроведениюИсточникИнформацииОбОшибке" id="29">
+					<DataPath>Объект.ДокументыКПроведению.ИсточникИнформацииОбОшибке</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выявлено</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>14</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ДокументыКПроведениюИсточникИнформацииОбОшибкеКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДокументыКПроведениюИсточникИнформацииОбОшибкеРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="ДокументыКПроведениюСчет" id="32">
+					<DataPath>Объект.ДокументыКПроведению.Счет</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>5</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>5</MaxWidth>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ДокументыКПроведениюСчетКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ДокументыКПроведениюСчетРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="ДокументыКПроведениюОрганизация" id="38">
+					<DataPath>Объект.ДокументыКПроведению.Организация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДокументыКПроведениюОрганизацияКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ДокументыКПроведениюОрганизацияРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ДокументыКПроведениюКомментарий" id="45">
+					<DataPath>Объект.ДокументыКПроведению.Комментарий</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ДокументыКПроведениюКомментарийКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="ДокументыКПроведениюКомментарийРасширеннаяПодсказка" id="47"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ДокументыИсправленияОшибокЗабаланс</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Columns>
+				<AdditionalColumns table="Объект.ДокументыКПроведению"/>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+		</Command>
+		<Command name="ПровестиВыбранные" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести выбранные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести выбранные</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПровестиВыбранные</Action>
+		</Command>
+		<Command name="ОтметитьВсе" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтметитьВсе</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="СнятьВсеОтметки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все отметки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все отметки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьВсеОтметки</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

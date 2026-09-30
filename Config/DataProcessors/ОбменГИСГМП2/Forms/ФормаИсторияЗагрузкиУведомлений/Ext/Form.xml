@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>История загрузки уведомлений по подпискам из сервиса</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Участник" id="31">
+			<DataPath>Объект.Участник</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="УчастникКонтекстноеМеню" id="32"/>
+			<ExtendedTooltip name="УчастникРасширеннаяПодсказка" id="33"/>
+			<Events>
+				<Event name="OnChange">УчастникПриИзменении</Event>
+			</Events>
+		</InputField>
+		<Table name="ИсторияОбмена" id="1">
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialListView>Beginning</InitialListView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>ИсторияОбмена</DataPath>
+			<RowPictureDataPath>~ИсторияОбмена.DefaultPicture</RowPictureDataPath>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="ИсторияОбменаКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ИсторияОбменаКоманднаяПанель" id="3">
+				<ChildItems>
+					<Button name="ИсторияОбменаСохранитьФайлыОбмена" id="26">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СохранитьФайлыОбмена</CommandName>
+						<ExtendedTooltip name="ИсторияОбменаСохранитьФайлыОбменаРасширеннаяПодсказка" id="27"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ИсторияОбменаРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ИсторияОбменаСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>ИсторияОбмена</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ИсторияОбменаСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ИсторияОбменаСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ИсторияОбменаСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>ИсторияОбмена</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ИсторияОбменаСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ИсторияОбменаСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ИсторияОбменаУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>ИсторияОбмена</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ИсторияОбменаУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ИсторияОбменаУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ИсторияОбменаВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ИсторияОбменаДатаОтвета" id="28">
+					<DataPath>ИсторияОбмена.ДатаОтвета</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата уведомления</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ИсторияОбменаДатаОтветаКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ИсторияОбменаДатаОтветаРасширеннаяПодсказка" id="30"/>
+				</LabelField>
+				<LabelField name="ИсторияОбменаДатаПодтверждения" id="17">
+					<DataPath>ИсторияОбмена.ДатаПодтверждения</DataPath>
+					<ContextMenu name="ИсторияОбменаДатаПодтвержденияКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ИсторияОбменаДатаПодтвержденияРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+				<CheckBoxField name="ИсторияОбменаБылИзменен" id="14">
+					<DataPath>ИсторияОбмена.БылИзменен</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изм.</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ПоказательИзменен</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИсторияОбменаБылИзмененКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ИсторияОбменаБылИзмененРасширеннаяПодсказка" id="16"/>
+				</CheckBoxField>
+				<LabelField name="ИсторияОбменаЗагруженныйОбъект" id="23">
+					<DataPath>ИсторияОбмена.ЗагруженныйОбъект</DataPath>
+					<ContextMenu name="ИсторияОбменаЗагруженныйОбъектКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ИсторияОбменаЗагруженныйОбъектРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<LabelField name="ИсторияОбменаИдентификаторСообщенияСМЭВ" id="34">
+					<DataPath>ИсторияОбмена.ИдентификаторСообщенияСМЭВ</DataPath>
+					<ContextMenu name="ИсторияОбменаИдентификаторСообщенияСМЭВКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ИсторияОбменаИдентификаторСообщенияСМЭВРасширеннаяПодсказка" id="36"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ОбменГИСГМП2</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ИсторияОбмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~ИсторияОбмена.Данные</Field>
+				<Field>~ИсторияОбмена.ЗагруженоДанных</Field>
+				<Field>~ИсторияОбмена.ИдентификаторСообщения</Field>
+				<Field>~ИсторияОбмена.ОбменСЭмулятором</Field>
+				<Field>ИсторияОбмена.ЗагруженныйОбъект</Field>
+				<Field>ИсторияОбмена.ИдентификаторСообщенияСМЭВ</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СообщенияПодтвержденияПолученияДанныхИзСМЭВ3.ДатаЗапроса КАК ДатаПодтверждения,
+	ВложенныйЗапрос.ДатаОтвета КАК ДатаОтвета,
+	ВложенныйЗапрос.ЗагруженныйОбъект КАК ЗагруженныйОбъект,
+	ВложенныйЗапрос.БылИзменен КАК БылИзменен,
+	ВложенныйЗапрос.ИдентификаторСообщенияСМЭВ КАК ИдентификаторСообщенияСМЭВ,
+	ВложенныйЗапрос.ФорматОбмена КАК ФорматОбмена
+ИЗ
+	(ВЫБРАТЬ
+		СообщенияЗапросаДанныхОчередиСМЭВ3.ДатаОтвета КАК ДатаОтвета,
+		СообщенияЗапросаДанныхОчередиСМЭВ3.ИдентификаторСообщенияСМЭВ КАК ИдентификаторСообщенияСМЭВ,
+		СообщенияЗапросаДанныхОчередиСМЭВ3.ЕстьДанные КАК ЕстьДанные,
+		СообщенияЗапросаДанныхОчередиСМЭВ3.ФорматОбмена КАК ФорматОбмена,
+		ЗагруженныеДанныеСМЭВ3.ЗагруженныйОбъект КАК ЗагруженныйОбъект,
+		ЗагруженныеДанныеСМЭВ3.БылИзменен КАК БылИзменен,
+		СообщенияЗапросаДанныхОчередиСМЭВ3.Организация КАК Организация
+	ИЗ
+		(ВЫБРАТЬ
+			СообщенияЗапросаДанныхОчередиСМЭВ3.ДатаЗапроса КАК ДатаОтвета,
+			СообщенияЗапросаДанныхОчередиСМЭВ3.ИдентификаторСообщенияСМЭВ КАК ИдентификаторСообщенияСМЭВ,
+			СообщенияЗапросаДанныхОчередиСМЭВ3.ЕстьДанные КАК ЕстьДанные,
+			СообщенияЗапросаДанныхОчередиСМЭВ3.ФорматОбмена КАК ФорматОбмена,
+			СообщенияЗапросаДанныхОчередиСМЭВ3.Организация КАК Организация
+		ИЗ
+			РегистрСведений.СообщенияЗапросаДанныхОчередиСМЭВ3 КАК СообщенияЗапросаДанныхОчередиСМЭВ3
+		ГДЕ
+			СообщенияЗапросаДанныхОчередиСМЭВ3.ИдентификаторСообщенияУчастника = ""
+			И СообщенияЗапросаДанныхОчередиСМЭВ3.ЕстьДанные
+			И СообщенияЗапросаДанныхОчередиСМЭВ3.ИдентификаторСообщенияСМЭВ &lt;&gt; ""
+			И СообщенияЗапросаДанныхОчередиСМЭВ3.Организация = &amp;Организация) КАК СообщенияЗапросаДанныхОчередиСМЭВ3
+			ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+				ЗагруженныеДанныеСМЭВ3.ИдентификаторСообщения КАК ИдентификаторСообщения,
+				ЗагруженныеДанныеСМЭВ3.ЗагруженныйОбъект КАК ЗагруженныйОбъект,
+				ЗагруженныеДанныеСМЭВ3.ДатаОбмена КАК ДатаОбмена,
+				ЗагруженныеДанныеСМЭВ3.БылИзменен КАК БылИзменен
+			ИЗ
+				РегистрСведений.ЗагруженныеДанныеСМЭВ3 КАК ЗагруженныеДанныеСМЭВ3
+			ГДЕ
+				ЗагруженныеДанныеСМЭВ3.ЗапросКСМЭВ = ЗНАЧЕНИЕ(Документ.ЗапросУНИФО.ПустаяСсылка)
+				И ЗагруженныеДанныеСМЭВ3.ИдентификаторСообщения &lt;&gt; "") КАК ЗагруженныеДанныеСМЭВ3
+			ПО (ЗагруженныеДанныеСМЭВ3.ИдентификаторСообщения = СообщенияЗапросаДанныхОчередиСМЭВ3.ИдентификаторСообщенияСМЭВ)) КАК ВложенныйЗапрос
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СообщенияПодтвержденияПолученияДанныхИзСМЭВ3 КАК СообщенияПодтвержденияПолученияДанныхИзСМЭВ3
+		ПО ВложенныйЗапрос.ИдентификаторСообщенияСМЭВ = СообщенияПодтвержденияПолученияДанныхИзСМЭВ3.ИдентификаторСообщенияСМЭВ
+			И ВложенныйЗапрос.Организация = СообщенияПодтвержденияПолученияДанныхИзСМЭВ3.Организация</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторСообщения</dcssch:dataPath>
+					<dcssch:field>ИдентификаторСообщения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПодтверждения</dcssch:dataPath>
+					<dcssch:field>ДатаПодтверждения</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата подтверждения</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторСообщенияСМЭВ</dcssch:dataPath>
+					<dcssch:field>ИдентификаторСообщенияСМЭВ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>БылИзменен</dcssch:dataPath>
+					<dcssch:field>БылИзменен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗагруженныйОбъект</dcssch:dataPath>
+					<dcssch:field>ЗагруженныйОбъект</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОбмена</dcssch:dataPath>
+					<dcssch:field>ДатаОбмена</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОтвета</dcssch:dataPath>
+					<dcssch:field>ДатаОтвета</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата ответа</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьДанные</dcssch:dataPath>
+					<dcssch:field>ЕстьДанные</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФорматОбмена</dcssch:dataPath>
+					<dcssch:field>ФорматОбмена</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Организация</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ДатаОтвета</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СохранитьФайлыОбмена" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файлы обмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файлы обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьФайлыОбмена</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Участник">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

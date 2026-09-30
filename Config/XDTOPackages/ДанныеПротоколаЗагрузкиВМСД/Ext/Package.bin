@@ -1,0 +1,88 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="MSD_DATA_FHD/VerificationProtocol" elementFormQualified="true" attributeFormQualified="false">
+	<property xmlns:d2p1="MSD_DATA_FHD/VerificationProtocol" name="Body" type="d2p1:Body"/>
+	<valueType name="GUID" base="xs:string" variety="Atomic" maxLength="36"/>
+	<objectType name="AccountType">
+		<property name="AccountCode" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="RecordAnalytics" type="d3p1:RecordAnalyticsType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Body">
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Header" type="d3p1:HeaderType" lowerBound="0"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Partition1" type="d3p1:Partition1Type" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Partition2" type="d3p1:Partition2Type" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Partition3" type="d3p1:Partition3Type" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Partition4" type="d3p1:Partition4Type" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Partition5" type="d3p1:Partition5Type" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="HeaderType">
+		<property name="Preparatory" type="xs:boolean"/>
+		<property name="Status" type="xs:integer" lowerBound="0"/>
+	</objectType>
+	<objectType name="MessageType">
+		<property name="DetailErrorDescription" type="xs:string"/>
+	</objectType>
+	<objectType name="NSIType">
+		<property name="ClassifierName" type="xs:string" lowerBound="0"/>
+		<property name="isBlockingErr" type="xs:boolean"/>
+		<property name="DetailErrorDescription" type="xs:string"/>
+		<property name="Value" type="xs:string"/>
+		<property name="Completed" type="xs:boolean"/>
+	</objectType>
+	<objectType name="Partition1Details">
+		<property name="Date" type="xs:string"/>
+		<property name="Status" type="xs:string"/>
+	</objectType>
+	<objectType name="Partition1Type">
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="GUID" type="d3p1:GUID"/>
+		<property name="FileName" type="xs:string"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Details" type="d3p1:Partition1Details" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition2Details">
+		<property name="ErrorDescription" type="xs:string"/>
+		<property name="SigFileName" type="xs:string"/>
+		<property name="DateInspection" type="xs:string"/>
+		<property name="FileName" type="xs:string"/>
+		<property name="FileSigned" type="xs:string"/>
+		<property name="SigValid" type="xs:string"/>
+	</objectType>
+	<objectType name="Partition2Type">
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="GUID" type="d3p1:GUID"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Details" type="d3p1:Partition2Details" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition3Details">
+		<property name="DataType" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+				<enumeration>НачальныйОстаток</enumeration>
+				<enumeration>Обороты</enumeration>
+				<enumeration>КонечныйОстаток</enumeration>
+				<enumeration>РеквизитыАналитик</enumeration>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Account" type="d3p1:AccountType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition3Type">
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="BlockingErr" type="d3p1:Partition3Details" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Notifications" type="d3p1:Partition3Details" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition4Details">
+		<property name="idNSI" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="NSI" type="d3p1:NSIType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition4Type">
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="RequestMechanism" type="d3p1:Partition4Details" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="NoRequestMechanism" type="d3p1:Partition4Details" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Partition5Type">
+		<property name="Description" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="ControlRatio" type="d3p1:GUID"/>
+		<property name="isBlockingErr" type="xs:boolean"/>
+		<property name="Name" type="xs:string"/>
+		<property name="Code" type="xs:string"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Message" type="d3p1:MessageType" lowerBound="0" upperBound="-1"/>
+		<property name="isNotification" type="xs:boolean"/>
+	</objectType>
+	<objectType name="RecordAnalyticsType">
+		<property name="AnalyticName" type="xs:string"/>
+		<property name="isBlockingErr" type="xs:boolean"/>
+		<property xmlns:d3p1="MSD_DATA_FHD/VerificationProtocol" name="Message" type="d3p1:MessageType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

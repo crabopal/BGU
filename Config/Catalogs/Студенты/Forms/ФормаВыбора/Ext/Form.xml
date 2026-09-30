@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Учащиеся</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОтборы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отборы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборыExtendedTooltip" id="62"/>
+			<ChildItems>
+				<InputField name="ОтборОрганизация" id="2">
+					<DataPath>ОтборОрганизация</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОтборОрганизацияКонтекстноеМеню" id="3"/>
+					<ExtendedTooltip name="ОтборОрганизацияExtendedTooltip" id="63"/>
+					<Events>
+						<Event name="OnChange">ОтборОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОтборФакультет" id="4">
+					<DataPath>ОтборФакультет</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<ClearButton>true</ClearButton>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">ОтборОрганизация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ОтборФакультетКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОтборФакультетExtendedTooltip" id="64"/>
+					<Events>
+						<Event name="OnChange">ОтборФакультетПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОтборАктуальность" id="6">
+					<DataPath>ОтборАктуальность</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<TextEdit>false</TextEdit>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Все</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Все</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Актуальные</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Актуальные</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Архивные</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Архивные</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ОтборАктуальностьКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ОтборАктуальностьExtendedTooltip" id="65"/>
+					<Events>
+						<Event name="OnChange">ОтборАктуальностьПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыExtendedTooltip" id="66"/>
+			<ChildItems>
+				<Page name="СтраницаСписокБезЗначений" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список без значений</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаСписокБезЗначенийExtendedTooltip" id="67"/>
+					<ChildItems>
+						<Table name="Список" id="10">
+							<ChoiceMode>true</ChoiceMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Список</DataPath>
+							<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<UserSettingsGroup>ГруппаПользовательскиеОтборы</UserSettingsGroup>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокКонтекстноеМеню" id="11">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокКонтекстноеМенюИзменитьАктуальностьСписок" id="21">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИзменитьАктуальностьСписок</CommandName>
+										<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьАктуальностьСписокExtendedTooltip" id="68"/>
+									</Button>
+									<ButtonGroup name="СписокКонтекстноеМенюГруппаСписок" id="22">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список контекстное меню группа список</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.Список</CommandSource>
+										<ExtendedTooltip name="СписокКонтекстноеМенюГруппаСписокExtendedTooltip" id="69"/>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="СписокКоманднаяПанель" id="12">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<ButtonGroup name="КомандыСписок" id="23">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Команды список</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.Список</CommandSource>
+										<ExtendedTooltip name="КомандыСписокExtendedTooltip" id="70"/>
+									</ButtonGroup>
+									<ButtonGroup name="ГруппаГлобальныеКомандыСписок" id="24">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа глобальные команды список</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаГлобальныеКомандыСписокExtendedTooltip" id="71"/>
+										<ChildItems>
+											<Button name="СписокОбщаяКомандаДополнительныеСведения" id="25">
+												<Type>CommandBarButton</Type>
+												<CommandName>CommonCommand.ДополнительныеСведенияКоманднаяПанель</CommandName>
+												<ExtendedTooltip name="СписокОбщаяКомандаДополнительныеСведенияExtendedTooltip" id="72"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Popup name="ГруппаСоздатьНаОснованииСписок" id="26">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаСоздатьНаОснованииСписокExtendedTooltip" id="73"/>
+										<ChildItems>
+											<Button name="СписокДокументПриказСоздатьНаОсновании" id="27">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.ПриказОбразование.StandardCommand.CreateBasedOn</CommandName>
+												<ExtendedTooltip name="СписокДокументПриказСоздатьНаОснованииExtendedTooltip" id="74"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="КомандФормыСписок" id="28">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Команд формы список по факультету</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="КомандФормыСписокExtendedTooltip" id="75"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокExtendedTooltip" id="76"/>
+							<SearchStringAddition name="СписокСтрокаПоиска" id="95">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="96"/>
+								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="97"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСостояниеПросмотра" id="98">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="99"/>
+								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="100"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокУправлениеПоиском" id="101">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="102"/>
+								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="103"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ValueChoice">СписокВыборЗначения</Event>
+								<Event name="Selection">СписокВыбор</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="ГруппаПользовательскиеОтборы" id="116">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользовательские отборы</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаПользовательскиеОтборыРасширеннаяПодсказка" id="117"/>
+								</ColumnGroup>
+								<LabelField name="СписокКод" id="48">
+									<DataPath>Список.Code</DataPath>
+									<ContextMenu name="СписокКодКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="СписокКодExtendedTooltip" id="77"/>
+								</LabelField>
+								<LabelField name="СписокНаименование" id="50">
+									<DataPath>Список.Description</DataPath>
+									<ContextMenu name="СписокНаименованиеКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="СписокНаименованиеExtendedTooltip" id="78"/>
+								</LabelField>
+								<LabelField name="СписокОрганизация" id="52">
+									<DataPath>Список.Организация</DataPath>
+									<ContextMenu name="СписокОрганизацияКонтекстноеМеню" id="53"/>
+									<ExtendedTooltip name="СписокОрганизацияExtendedTooltip" id="79"/>
+								</LabelField>
+								<LabelField name="СписокСсылка" id="54">
+									<DataPath>Список.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СписокСсылкаКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="СписокСсылкаExtendedTooltip" id="80"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСписокСоЗначениями" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список со значениями</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаСписокСоЗначениямиExtendedTooltip" id="81"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПользовательскиеОтборыПоФакультету" id="118">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пользовательские отборы</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПользовательскиеОтборыПоФакультетуРасширеннаяПодсказка" id="119"/>
+						</UsualGroup>
+						<Table name="СписокПоФакультету" id="30">
+							<ChoiceMode>true</ChoiceMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокПоФакультету</DataPath>
+							<RowPictureDataPath>СписокПоФакультету.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<UserSettingsGroup>ГруппаПользовательскиеОтборыПоФакультету</UserSettingsGroup>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокПоФакультетуКонтекстноеМеню" id="31">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокПоФакультетуКонтекстноеМенюИзменитьАктуальностьСписокПоФакультету" id="40">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИзменитьАктуальностьСписокПоФакультету</CommandName>
+										<ExtendedTooltip name="СписокПоФакультетуКонтекстноеМенюИзменитьАктуальностьСписокПоФакультетуExtendedTooltip" id="82"/>
+									</Button>
+									<ButtonGroup name="СписокКонтекстноеМенюГруппаСписокПоФакультету" id="41">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список контекстное меню группа список</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.СписокПоФакультету</CommandSource>
+										<ExtendedTooltip name="СписокКонтекстноеМенюГруппаСписокПоФакультетуExtendedTooltip" id="83"/>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="СписокПоФакультетуКоманднаяПанель" id="32">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<ButtonGroup name="КомандыСписокПоФакультету" id="42">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Команды формы</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.СписокПоФакультету</CommandSource>
+										<ExtendedTooltip name="КомандыСписокПоФакультетуExtendedTooltip" id="84"/>
+									</ButtonGroup>
+									<ButtonGroup name="ГруппаГлобальныеКомандыСписокПоФакультету" id="43">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа глобальные команды список по факультету</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаГлобальныеКомандыСписокПоФакультетуExtendedTooltip" id="85"/>
+										<ChildItems>
+											<Button name="СписокПоФакультетуОбщаяКомандаДополнительныеСведения" id="44">
+												<Type>CommandBarButton</Type>
+												<CommandName>CommonCommand.ДополнительныеСведенияКоманднаяПанель</CommandName>
+												<DataPath>Items.СписокПоФакультету.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокПоФакультетуОбщаяКомандаДополнительныеСведенияExtendedTooltip" id="86"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Popup name="ГруппаСоздатьНаОснованииСписокПоФакультету" id="45">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаСоздатьНаОснованииСписокПоФакультетуExtendedTooltip" id="87"/>
+										<ChildItems>
+											<Button name="СписокПоФакультетуДокументПриказСоздатьНаОсновании" id="46">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.ПриказОбразование.StandardCommand.CreateBasedOn</CommandName>
+												<DataPath>Items.СписокПоФакультету.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокПоФакультетуДокументПриказСоздатьНаОснованииExtendedTooltip" id="88"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="КомандФормыСписокПоФакультету" id="47">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Команд формы список по факультету</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="КомандФормыСписокПоФакультетуExtendedTooltip" id="89"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокПоФакультетуExtendedTooltip" id="90"/>
+							<SearchStringAddition name="СписокПоФакультетуСтрокаПоиска" id="104">
+								<AdditionSource>
+									<Item>СписокПоФакультету</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПоФакультетуСтрокаПоискаКонтекстноеМеню" id="105"/>
+								<ExtendedTooltip name="СписокПоФакультетуСтрокаПоискаРасширеннаяПодсказка" id="106"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокПоФакультетуСостояниеПросмотра" id="107">
+								<AdditionSource>
+									<Item>СписокПоФакультету</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПоФакультетуСостояниеПросмотраКонтекстноеМеню" id="108"/>
+								<ExtendedTooltip name="СписокПоФакультетуСостояниеПросмотраРасширеннаяПодсказка" id="109"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокПоФакультетуУправлениеПоиском" id="110">
+								<AdditionSource>
+									<Item>СписокПоФакультету</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПоФакультетуУправлениеПоискомКонтекстноеМеню" id="111"/>
+								<ExtendedTooltip name="СписокПоФакультетуУправлениеПоискомРасширеннаяПодсказка" id="112"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ValueChoice">СписокПоФакультетуВыборЗначения</Event>
+								<Event name="Selection">СписокПоФакультетуВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокПоФакультетуКод" id="56">
+									<DataPath>СписокПоФакультету.Код</DataPath>
+									<ContextMenu name="СписокПоФакультетуКодКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="СписокПоФакультетуКодExtendedTooltip" id="91"/>
+								</LabelField>
+								<LabelField name="СписокПоФакультетуНаименование" id="58">
+									<DataPath>СписокПоФакультету.Наименование</DataPath>
+									<ContextMenu name="СписокПоФакультетуНаименованиеКонтекстноеМеню" id="59"/>
+									<ExtendedTooltip name="СписокПоФакультетуНаименованиеExtendedTooltip" id="92"/>
+								</LabelField>
+								<ColumnGroup name="СписокПоФакультетуГруппаТекущиеЗначения" id="37">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Текущие значения</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+									<ExtendedTooltip name="СписокПоФакультетуГруппаТекущиеЗначенияExtendedTooltip" id="93"/>
+								</ColumnGroup>
+								<LabelField name="СписокПоФакультетуСсылка" id="60">
+									<DataPath>СписокПоФакультету.Ссылка</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СписокПоФакультетуСсылкаКонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="СписокПоФакультетуСсылкаExtendedTooltip" id="94"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ОтборАктуальность" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальность</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборОрганизация" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборФакультет" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факультет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Список" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~Список.Field1</Field>
+				<Field>~Список.Актуальность</Field>
+				<Field>~Список.Период</Field>
+				<Field>~Список.Состояние</Field>
+				<Field>~Список.ТекущийДень</Field>
+				<Field>Список.Ref</Field>
+				<Field>Список.ВАрхиве</Field>
+				<Field>Список.Организация</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Студенты.ВАрхиве,
+	Студенты.Организация,
+	Студенты.Код,
+	Студенты.Наименование,
+	Студенты.Ссылка
+ИЗ
+	Справочник.Студенты КАК Студенты</QueryText>
+				<MainTable>Catalog.Студенты</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СписокПоФакультету" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список по факультету</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~СписокПоФакультету.Актуальность</Field>
+				<Field>СписокПоФакультету.ВАрхиве</Field>
+				<Field>СписокПоФакультету.Организация</Field>
+				<Field>СписокПоФакультету.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Студенты.ВАрхиве,
+	ВЫРАЗИТЬ(&amp;ТекущийДень КАК ДАТА) КАК ТекущийДень,
+	Студенты.Организация,
+	Студенты.Код,
+	Студенты.Наименование,
+	Студенты.Ссылка
+ИЗ
+	Справочник.Студенты КАК Студенты
+ГДЕ
+	Студенты.Ссылка В  (ВЫБРАТЬ РАЗЛИЧНЫЕ
+				СведенияОСтудентах.Студент КАК Студент
+			ИЗ
+				РегистрСведений.СведенияОСтудентах КАК СведенияОСтудентах
+			ГДЕ
+				СведенияОСтудентах.Факультет = &amp;Факультет
+		
+			ОБЪЕДИНИТЬ ВСЕ
+		
+			ВЫБРАТЬ РАЗЛИЧНЫЕ
+				СведенияОПрочихУслугахСтудентам.Студент
+			ИЗ
+				РегистрСведений.СведенияОПрочихУслугахСтудентам КАК СведенияОПрочихУслугахСтудентам
+			ГДЕ
+				СведенияОПрочихУслугахСтудентам.Факультет = &amp;Факультет)
+{ХАРАКТЕРИСТИКИ
+	ТИП(Справочник.Студенты)
+	ВИДЫХАРАКТЕРИСТИК (ВЫБРАТЬ
+			ПоляПриказовОбразование.Ссылка,
+			"Текущее значение: " + ПоляПриказовОбразование.Наименование КАК Наименование,
+			ПоляПриказовОбразование.ТипЗначения
+		ИЗ
+			ПланВидовХарактеристик.ПоляПриказовОбразование КАК ПоляПриказовОбразование)
+	ПОЛЕКЛЮЧА Ссылка
+	ПОЛЕИМЕНИ Наименование
+	ПОЛЕТИПАЗНАЧЕНИЯ ТипЗначения
+	ЗНАЧЕНИЯХАРАКТЕРИСТИК (ВЫБРАТЬ
+			СведенияОСтудентахСрезПоследних.Студент,
+			СведенияОСтудентахСрезПоследних.Поле,
+			СведенияОСтудентахСрезПоследних.Значение
+		ИЗ
+			РегистрСведений.СведенияОСтудентах.СрезПоследних(&amp;ТекущийДень, Факультет = &amp;Факультет) КАК СведенияОСтудентахСрезПоследних)
+	ПОЛЕОБЪЕКТА Студент
+	ПОЛЕВИДА Поле
+	ПОЛЕЗНАЧЕНИЯ Значение }</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВАрхиве</dcssch:dataPath>
+					<dcssch:field>ВАрхиве</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Код</dcssch:dataPath>
+					<dcssch:field>Код</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеРеквизиты</dcssch:dataPath>
+					<dcssch:field>ДополнительныеРеквизиты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТекущийДень</dcssch:dataPath>
+					<dcssch:field>ТекущийДень</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущий день</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>ТекущийДень</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущий день</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>Факультет</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Факультет</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>Catalog.Студенты</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИзменитьАктуальностьСписок" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поместить в/извлечь из архива</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поместить в/извлечь из архива</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+				<xr:Value name="Role.ДобавлениеИзменениеУчащихся">true</xr:Value>
+			</Use>
+			<Action>ИзменитьАктуальностьСписок</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИзменитьАктуальностьСписокПоФакультету" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поместить в/извлечь из архива</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поместить в/извлечь из архива</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+				<xr:Value name="Role.ДобавлениеИзменениеУчащихся">true</xr:Value>
+			</Use>
+			<Action>ИзменитьАктуальностьСписокПоФакультету</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Проверка номенклатуры прейскуранта</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПроверить" id="26">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Проверить</CommandName>
+				<ExtendedTooltip name="ФормаПроверитьРасширеннаяПодсказка" id="27"/>
+			</Button>
+			<Button name="ФормаСформироватьКодыSKU" id="44">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СформироватьКодыSKU</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Проверка и заполнение кодов SKU для офлайн ККМ</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаСформироватьКодыSKUРасширеннаяПодсказка" id="45"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="28">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Закрыть</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="29"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Организация" id="1">
+			<DataPath>Организация</DataPath>
+			<ClearButton>true</ClearButton>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<RadioButtonField name="ТипПроверки" id="54">
+			<DataPath>ТипПроверки</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<RadioButtonType>Tumbler</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Проверка заполнения реквизитов</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">0</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Проверка кодов вида номенклатурной классификации</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ТипПроверкиКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="ТипПроверкиРасширеннаяПодсказка" id="56"/>
+			<Events>
+				<Event name="OnChange">ТипПроверкиПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="ГруппаНастройкиПроверки" id="30">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиПроверкиРасширеннаяПодсказка" id="31"/>
+			<ChildItems>
+				<CheckBoxField name="ПроверятьЗаполнениеШтрихкодов" id="35">
+					<DataPath>ПроверятьЗаполнениеШтрихкодов</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПроверятьЗаполнениеШтрихкодовКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ПроверятьЗаполнениеШтрихкодовРасширеннаяПодсказка" id="37"/>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаЦены" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа цены</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЦеныРасширеннаяПодсказка" id="47"/>
+					<ChildItems>
+						<CheckBoxField name="ПроверятьЗаполнениеЦен" id="41">
+							<DataPath>ПроверятьЗаполнениеЦен</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПроверятьЗаполнениеЦенКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ПроверятьЗаполнениеЦенРасширеннаяПодсказка" id="43"/>
+							<Events>
+								<Event name="OnChange">ПроверятьЗаполнениеЦенПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ТипЦен" id="48">
+							<DataPath>ТипЦен</DataPath>
+							<ContextMenu name="ТипЦенКонтекстноеМеню" id="49"/>
+							<ExtendedTooltip name="ТипЦенРасширеннаяПодсказка" id="50"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИнформацияОПроверке" id="57">
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаИнформацияОПроверкеРасширеннаяПодсказка" id="58"/>
+			<ChildItems>
+				<LabelDecoration name="ПодсказкаОПроверке" id="59">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ТекстИнформационнойНадписи</TextColor>
+					<ContextMenu name="ПодсказкаОПроверкеКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ПодсказкаОПроверкеРасширеннаяПодсказка" id="61"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Замечания" id="4">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Замечания</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ЗамечанияКонтекстноеМеню" id="5"/>
+			<AutoCommandBar name="ЗамечанияКоманднаяПанель" id="6">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ЗамечанияРасширеннаяПодсказка" id="7"/>
+			<SearchStringAddition name="ЗамечанияСтрокаПоиска" id="8">
+				<AdditionSource>
+					<Item>Замечания</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗамечанияСтрокаПоискаКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ЗамечанияСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ЗамечанияСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>Замечания</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗамечанияСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ЗамечанияСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ЗамечанияУправлениеПоиском" id="14">
+				<AdditionSource>
+					<Item>Замечания</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗамечанияУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ЗамечанияУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ЗамечанияНоменклатураПрейскуранта" id="17">
+					<DataPath>Замечания.НоменклатураПрейскуранта</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>30</Width>
+					<OpenButton>true</OpenButton>
+					<ContextMenu name="ЗамечанияНоменклатураПрейскурантаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ЗамечанияНоменклатураПрейскурантаРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="ЗамечанияНоменклатура" id="20">
+					<DataPath>Замечания.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>30</Width>
+					<OpenButton>true</OpenButton>
+					<ContextMenu name="ЗамечанияНоменклатураКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ЗамечанияНоменклатураРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="ЗамечанияЗамечание" id="23">
+					<DataPath>Замечания.Замечание</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>100</Width>
+					<ContextMenu name="ЗамечанияЗамечаниеКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ЗамечанияЗамечаниеРасширеннаяПодсказка" id="25"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Организация" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Замечания" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Замечания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НоменклатураПрейскуранта" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура прейскуранта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Прейскурант</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Номенклатура" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Замечание" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Замечание</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПроверятьЗаполнениеШтрихкодов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверять заполнение штрихкодов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроверятьЗаполнениеЦен" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверять заполнение цен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипЦен" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип цен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТипыЦенНоменклатуры</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипПроверки" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Проверить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Проверить</Action>
+		</Command>
+		<Command name="СформироватьКодыSKU" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать коды SKU</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать коды SKU</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СформироватьКодыSKU</Action>
+		</Command>
+	</Commands>
+</Form>

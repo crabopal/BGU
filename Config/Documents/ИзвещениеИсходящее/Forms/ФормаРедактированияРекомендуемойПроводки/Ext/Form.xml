@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Редактирование рекомендуемой проводки</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСохранитьИЗакрыть" id="40">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.СохранитьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьИЗакрытьРасширеннаяПодсказка" id="41"/>
+			</Button>
+			<Button name="ФормаЗакрытьФорму" id="42">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗакрытьФорму</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьФормуРасширеннаяПодсказка" id="43"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ПроводкаОтправителя" id="37">
+			<DataPath>ПроводкаОтправителя</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Width>55</Width>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ПроводкаОтправителяКонтекстноеМеню" id="38"/>
+			<ExtendedTooltip name="ПроводкаОтправителяРасширеннаяПодсказка" id="39"/>
+		</InputField>
+		<InputField name="ПроводкаПолучателя" id="44">
+			<DataPath>ПроводкаПолучателя</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Width>55</Width>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ПроводкаПолучателяКонтекстноеМеню" id="45"/>
+			<ExtendedTooltip name="ПроводкаПолучателяРасширеннаяПодсказка" id="46"/>
+		</InputField>
+		<UsualGroup name="ГруппаКФО" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа КФО</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКФОРасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<InputField name="КФО" id="1">
+					<DataPath>КФО</DataPath>
+					<Width>6</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="КФОКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КФОРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">КФОПриИзменении</Event>
+					</Events>
+				</InputField>
+				<LabelDecoration name="ДекорацияРазделитель" id="31">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ДекорацияРазделительКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ДекорацияРазделительРасширеннаяПодсказка" id="33"/>
+				</LabelDecoration>
+				<InputField name="НомерПроводки" id="47">
+					<DataPath>НомерПроводки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>№ отправителя</v8:content>
+						</v8:item>
+					</Title>
+					<Width>4</Width>
+					<MinValue xsi:type="xs:decimal">1</MinValue>
+					<ContextMenu name="НомерПроводкиКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="НомерПроводкиРасширеннаяПодсказка" id="49"/>
+				</InputField>
+				<InputField name="ДатаСведений" id="34">
+					<DataPath>ДатаСведений</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<ContextMenu name="ДатаСведенийКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ДатаСведенийРасширеннаяПодсказка" id="36"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДт" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дебет</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДтРасширеннаяПодсказка" id="5"/>
+			<ChildItems>
+				<InputField name="СчетДт" id="6">
+					<DataPath>СчетДт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет учета</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СчетДтКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СчетДтРасширеннаяПодсказка" id="8"/>
+					<Events>
+						<Event name="OnChange">СчетДтПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="КПСДт" id="9">
+					<DataPath>КПСДт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПС</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="КПСДтКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="КПСДтРасширеннаяПодсказка" id="11"/>
+					<Events>
+						<Event name="OnChange">КПСДтПриИзменении</Event>
+						<Event name="StartChoice">КПСДтНачалоВыбора</Event>
+						<Event name="ChoiceProcessing">КПСДтОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="КЭКДт" id="12">
+					<DataPath>КЭКДт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КЭК</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<ContextMenu name="КЭКДтКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="КЭКДтРасширеннаяПодсказка" id="14"/>
+					<Events>
+						<Event name="OnChange">КЭКДтПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКт" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кредит</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаКтРасширеннаяПодсказка" id="16"/>
+			<ChildItems>
+				<InputField name="СчетКт" id="17">
+					<DataPath>СчетКт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет учета</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СчетКтКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="СчетКтРасширеннаяПодсказка" id="19"/>
+					<Events>
+						<Event name="OnChange">СчетКтПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="КПСКт" id="20">
+					<DataPath>КПСКт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПС</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="КПСКтКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="КПСКтРасширеннаяПодсказка" id="22"/>
+					<Events>
+						<Event name="OnChange">КПСКтПриИзменении</Event>
+						<Event name="StartChoice">КПСКтНачалоВыбора</Event>
+						<Event name="ChoiceProcessing">КПСКтОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="КЭККт" id="23">
+					<DataPath>КЭККт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КЭК</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<ContextMenu name="КЭККтКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="КЭККтРасширеннаяПодсказка" id="25"/>
+					<Events>
+						<Event name="OnChange">КЭККтПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Содержание" id="26">
+			<DataPath>Содержание</DataPath>
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="СодержаниеКонтекстноеМеню" id="27"/>
+			<ExtendedTooltip name="СодержаниеРасширеннаяПодсказка" id="28"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="КФО" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КФО</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.КВД</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СчетДт" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет Дт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КПСДт" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КПС Дт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>17</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КЭКДт" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КЭК Дт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КОСГУ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СчетКт" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет Кт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КПСКт" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КПС Кт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>17</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КЭККт" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КЭК Кт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КОСГУ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Содержание" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Содержание</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаСведений" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата сведений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроводкаОтправителя" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проводка отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерПроводкиПоПорядку" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер проводки по порядку</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерПроводки" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер проводки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроводкаПолучателя" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проводка получателя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоПроводокОтправителя" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество проводок отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СохранитьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИЗакрыть</Action>
+		</Command>
+		<Command name="ЗакрытьФорму" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьФорму</Action>
+		</Command>
+	</Commands>
+</Form>

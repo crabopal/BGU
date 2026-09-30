@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="Отправка" id="31">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отправка</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Выгрузка</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ОтправкаExtendedTooltip" id="43"/>
+				<ChildItems>
+					<ButtonGroup name="ГруппаОтправкаВКонтролирующийОрган" id="32">
+						<ExtendedTooltip name="ГруппаОтправкаВКонтролирующийОрганExtendedTooltip" id="44"/>
+						<ChildItems>
+							<Button name="ПроверитьВИнтернете" id="42">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПроверитьВИнтернете</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.CheckSyntax</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Проверить в Интернете</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ПроверитьВИнтернетеExtendedTooltip" id="45"/>
+							</Button>
+							<Button name="ОтправитьВКонтролирующийОрган" id="33">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Отправить</CommandName>
+								<Picture>
+									<xr:Ref>CommonPicture.ВКонвертПодписатьИОтправить</xr:Ref>
+									<xr:LoadTransparent>false</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отправить в ФНС</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ОтправитьВКонтролирующийОрганExtendedTooltip" id="46"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ФормаПоказатьЦиклыОбмена" id="34">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПоказатьЦиклыОбмена</CommandName>
+						<ExtendedTooltip name="ФормаПоказатьЦиклыОбменаExtendedTooltip" id="47"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПанельОтправки" id="35">
+			<EnableContentChange>true</EnableContentChange>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаПанельОтправкиExtendedTooltip" id="48"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияКартинкаФНС" id="36">
+					<Width>3</Width>
+					<Height>1</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация картинка ФНС</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.НДФЛ</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<FileDragMode>AsFile</FileDragMode>
+					<ContextMenu name="ДекорацияКартинкаФНСКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ДекорацияКартинкаФНСExtendedTooltip" id="49"/>
+				</PictureDecoration>
+				<LabelDecoration name="НадписьСостояниеОтправки" id="38">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="НадписьСостояниеОтправкиКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="НадписьСостояниеОтправкиExtendedTooltip" id="50"/>
+				</LabelDecoration>
+				<Button name="КнопкаОткрытьПротоколОтправки" id="40">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<Width>17</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.ОткрытьПротоколОтправки</CommandName>
+					<TextColor>#FF0000</TextColor>
+					<Picture>
+						<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показать протокол</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="КнопкаОткрытьПротоколОтправкиExtendedTooltip" id="51"/>
+				</Button>
+				<Button name="КнопкаОбновитьСостояниеОтправки" id="41">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<Width>3</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.ОбновитьСостояниеОтправки</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.Refresh</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="КнопкаОбновитьСостояниеОтправкиExtendedTooltip" id="52"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НомерИДата" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер и дата</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НомерИДатаExtendedTooltip" id="53"/>
+			<ChildItems>
+				<InputField name="Номер" id="2">
+					<DataPath>Объект.Number</DataPath>
+					<ContextMenu name="НомерКонтекстноеМеню" id="3"/>
+					<ExtendedTooltip name="НомерExtendedTooltip" id="54"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаExtendedTooltip" id="55"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Организация" id="7">
+			<DataPath>Объект.Организация</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="56"/>
+		</InputField>
+		<InputField name="ОтчетныйПериод" id="9">
+			<DataPath>Объект.ОтчетныйПериод</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ОтчетныйПериодКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ОтчетныйПериодExtendedTooltip" id="57"/>
+		</InputField>
+		<UsualGroup name="РеквизитыКонверта" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты конверта</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="РеквизитыКонвертаExtendedTooltip" id="58"/>
+			<ChildItems>
+				<UsualGroup name="КодИФНСИНомерКорректировки" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код ИФНС и Номер корректировки</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КодИФНСИНомерКорректировкиExtendedTooltip" id="59"/>
+					<ChildItems>
+						<InputField name="КодИФНСПолучателя" id="13">
+							<DataPath>Объект.КодИФНСПолучателя</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="КодИФНСПолучателяКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="КодИФНСПолучателяExtendedTooltip" id="60"/>
+						</InputField>
+						<InputField name="НомерКорректировки" id="15">
+							<DataPath>Объект.НомерКорректировки</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<SpinButton>true</SpinButton>
+							<ContextMenu name="НомерКорректировкиКонтекстноеМеню" id="16"/>
+							<ExtendedTooltip name="НомерКорректировкиExtendedTooltip" id="61"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="НастройкаФормата" id="17">
+					<DataPath>Объект.ФорматВыгрузки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="НастройкаФорматаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="НастройкаФорматаExtendedTooltip" id="62"/>
+				</InputField>
+				<InputField name="Пакет" id="78">
+					<DataPath>Объект.Пакет</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ПакетКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="ПакетРасширеннаяПодсказка" id="80"/>
+				</InputField>
+				<InputField name="ИмяФайлаВыгрузки" id="19">
+					<DataPath>Объект.ИмяФайлаВыгрузки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ИмяФайлаВыгрузкиКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ИмяФайлаВыгрузкиExtendedTooltip" id="63"/>
+				</InputField>
+				<InputField name="ВидДокумента" id="21">
+					<DataPath>Объект.ВидДокумента</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ВидДокументаКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="ВидДокументаExtendedTooltip" id="64"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ЭкземплярыОтчетовГруппа" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экземпляры отчетов</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ЭкземплярыОтчетовГруппаExtendedTooltip" id="65"/>
+			<ChildItems>
+				<Table name="ЭкземплярыОтчетов" id="24">
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Объект.ЭкземплярыОтчетов</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ЭкземплярыОтчетовКонтекстноеМеню" id="25"/>
+					<AutoCommandBar name="ЭкземплярыОтчетовКоманднаяПанель" id="26"/>
+					<ExtendedTooltip name="ЭкземплярыОтчетовExtendedTooltip" id="66"/>
+					<SearchStringAddition name="ЭкземплярыОтчетовСтрокаПоиска" id="69">
+						<AdditionSource>
+							<Item>ЭкземплярыОтчетов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЭкземплярыОтчетовСтрокаПоискаКонтекстноеМеню" id="70"/>
+						<ExtendedTooltip name="ЭкземплярыОтчетовСтрокаПоискаРасширеннаяПодсказка" id="71"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ЭкземплярыОтчетовСостояниеПросмотра" id="72">
+						<AdditionSource>
+							<Item>ЭкземплярыОтчетов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЭкземплярыОтчетовСостояниеПросмотраКонтекстноеМеню" id="73"/>
+						<ExtendedTooltip name="ЭкземплярыОтчетовСостояниеПросмотраРасширеннаяПодсказка" id="74"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ЭкземплярыОтчетовУправлениеПоиском" id="75">
+						<AdditionSource>
+							<Item>ЭкземплярыОтчетов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ЭкземплярыОтчетовУправлениеПоискомКонтекстноеМеню" id="76"/>
+						<ExtendedTooltip name="ЭкземплярыОтчетовУправлениеПоискомРасширеннаяПодсказка" id="77"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ЭкземплярыОтчетовВыбор</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="ЭкземплярыОтчетовНомерСтроки" id="27">
+							<DataPath>Объект.ЭкземплярыОтчетов.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ЭкземплярыОтчетовНомерСтрокиКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="ЭкземплярыОтчетовНомерСтрокиExtendedTooltip" id="67"/>
+						</LabelField>
+						<InputField name="ЭкземплярыОтчетовОтчет" id="29">
+							<DataPath>Объект.ЭкземплярыОтчетов.Отчет</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ЭкземплярыОтчетовОтчетКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ЭкземплярыОтчетовОтчетExtendedTooltip" id="68"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ЭлектронныйДокументБухгалтерскийОтчет</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Отправить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВКонвертПодписатьИОтправить</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтправитьВКонтролирующийОрган</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПоказатьЦиклыОбмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать отправки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать отправки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ДокументооборотСКонтролирующимиОрганами</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоказатьЦиклыОбмена</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьПротоколОтправки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть протокол отправки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть протокол отправки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПротоколОтправки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьСостояниеОтправки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние отправки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние отправки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбновитьСостояниеОтправки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПроверитьВИнтернете" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить в Интернете</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить в интернете</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьВИнтернете</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Document.ЭлектронныйДокументБухгалтерскийОтчет.Command.Отправить</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

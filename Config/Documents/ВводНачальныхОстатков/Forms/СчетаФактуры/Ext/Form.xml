@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Список созданных счетов-фактур</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ОтборДокСсылка" id="16">
+			<DataPath>ОтборДокСсылка</DataPath>
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ-основание</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ОтборДокСсылкаКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ОтборДокСсылкаExtendedTooltip" id="42"/>
+			<Events>
+				<Event name="OnChange">ОтборДокСсылкаПриИзменении</Event>
+			</Events>
+		</InputField>
+		<Table name="Список" id="3">
+			<TitleLocation>Auto</TitleLocation>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</RowsPicture>
+			<TitleTextColor>style:ТекстИнформационнойНадписи</TitleTextColor>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="5">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокExtendedTooltip" id="43"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="58">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="59"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="60"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="61">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="62"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="63"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="64">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="66"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Представление" id="34">
+					<DataPath>Список.Представление</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет-фактура</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<ContextMenu name="ПредставлениеКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="44"/>
+				</LabelField>
+				<ColumnGroup name="ГруппаНомерДата" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа номер дата</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="45"/>
+					<ChildItems>
+						<LabelField name="Номер" id="32">
+							<DataPath>Список.Номер</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="НомерКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="НомерExtendedTooltip" id="46"/>
+						</LabelField>
+						<LabelField name="Дата" id="30">
+							<DataPath>Список.Дата</DataPath>
+							<Width>14</Width>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="ДатаExtendedTooltip" id="47"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаПервичныйДокумент" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Первичный документ</v8:content>
+						</v8:item>
+					</Title>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="ГруппаПервичныйДокументExtendedTooltip" id="48"/>
+					<ChildItems>
+						<LabelField name="НомерПервичногоДокумента" id="25">
+							<DataPath>Список.НомерПервичногоДокумента</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер</v8:content>
+								</v8:item>
+							</Title>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>12</Width>
+							<ContextMenu name="НомерПервичногоДокументаКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="НомерПервичногоДокументаExtendedTooltip" id="49"/>
+						</LabelField>
+						<LabelField name="ДатаПервичногоДокумента" id="28">
+							<DataPath>Список.ДатаПервичногоДокумента</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата</v8:content>
+								</v8:item>
+							</Title>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>8</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ=dd.MM.yyyy</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="ДатаПервичногоДокументаКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="ДатаПервичногоДокументаExtendedTooltip" id="50"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаКонтрагентДоговор" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент, договор</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаКонтрагентДоговорExtendedTooltip" id="51"/>
+					<ChildItems>
+						<LabelField name="Контрагент" id="38">
+							<DataPath>Список.Контрагент</DataPath>
+							<Width>16</Width>
+							<ContextMenu name="КонтрагентКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="КонтрагентExtendedTooltip" id="52"/>
+						</LabelField>
+						<LabelField name="Договор" id="40">
+							<DataPath>Список.Договор</DataPath>
+							<Width>16</Width>
+							<ContextMenu name="ДоговорКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="ДоговорExtendedTooltip" id="53"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="СуммаСНДС" id="18">
+					<DataPath>Список.СуммаСНДС</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=2; ЧН=0,00</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="СуммаСНДСКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="СуммаСНДСExtendedTooltip" id="56"/>
+				</LabelField>
+				<LabelField name="СуммаНДС" id="14">
+					<DataPath>Список.СуммаНДС</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма НДС</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=2; ЧН=0,00</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="СуммаНДСКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="СуммаНДСExtendedTooltip" id="54"/>
+				</LabelField>
+				<LabelField name="СуммаБезНДС" id="20">
+					<DataPath>Список.СуммаБезНДС</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма без НДС</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=2; ЧН=0,00</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="СуммаБезНДСКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="СуммаБезНДСExtendedTooltip" id="57"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>	////////////////////////////////////////////////////////////////////////
+	// Счета-фактуры выданные
+	//
+	ВЫБРАТЬ
+		Док.Ссылка					КАК Ссылка,
+		"Счет-фактура выданный"		КАК Представление,
+		Док.Дата					КАК Дата,
+		Док.Номер					КАК Номер,
+		Док.Дата					КАК ДатаПервичногоДокумента,
+		Док.Номер					КАК НомерПервичногоДокумента,
+		
+		Док.Контрагент				КАК Контрагент,
+		Док.Договор					КАК Договор,
+		
+		ВЫБОР
+			КОГДА Док.ПометкаУдаления ТОГДА
+				1	// картинка "Документ помечен на удаление"
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА Док.Проведен ТОГДА
+						0	// картинка "Документ проведен"
+					ИНАЧЕ
+						2	// картинка "Документ не проведен"
+				КОНЕЦ
+			
+		КОНЕЦ					КАК ИндексКартинки,
+		
+		ВЫРАЗИТЬ(Док.Комментарий	КАК СТРОКА(200))	КАК Комментарий,
+		
+		Док.СуммаНДС			КАК СуммаНДС,
+		
+		ВЫБОР
+			КОГДА Док.СуммаВключаетНДС ТОГДА
+				Док.СуммаДокумента - Док.СуммаНДС
+			ИНАЧЕ
+				Док.СуммаДокумента
+		КОНЕЦ					КАК СуммаБезНДС,
+		
+		ВЫБОР
+			КОГДА Док.СуммаВключаетНДС ТОГДА
+				Док.СуммаДокумента
+			ИНАЧЕ
+				Док.СуммаДокумента + Док.СуммаНДС
+		КОНЕЦ					КАК СуммаСНДС
+		
+	ИЗ
+		Документ.СчетФактураВыданный	КАК Док
+	ГДЕ
+		Док.ДокументОснование = &amp;ДокСсылка
+
+
+	ОБЪЕДИНИТЬ ВСЕ
+
+	////////////////////////////////////////////////////////////////////////
+	// Счета-фактуры полученные
+	//
+	ВЫБРАТЬ РАЗЛИЧНЫЕ
+		Основания.Ссылка							КАК Ссылка,
+		"Счет-фактура полученный"					КАК Представление,
+		Основания.Ссылка.Дата						КАК Дата,
+		Основания.Ссылка.Номер						КАК Номер,
+		Основания.Ссылка.ДатаПервичногоДокумента	КАК ДатаПервичногоДокумента,
+		Основания.Ссылка.НомерПервичногоДокумента	КАК НомерПервичногоДокумента,
+		
+		Основания.Ссылка.Контрагент.Наименование	КАК Контрагент,
+		Основания.Ссылка.Договор.Наименование		КАК Договор,
+		
+		ВЫБОР
+			КОГДА Основания.Ссылка.ПометкаУдаления ТОГДА
+				1	// картинка "Документ помечен на удаление"
+			ИНАЧЕ
+				ВЫБОР
+					КОГДА Основания.Ссылка.Проведен ТОГДА
+						0	// картинка "Документ проведен"
+					ИНАЧЕ
+						2	// картинка "Документ не проведен"
+				КОНЕЦ
+			
+		КОНЕЦ								КАК ИндексКартинки,
+		
+		
+		ВЫРАЗИТЬ(Основания.Ссылка.Комментарий	КАК СТРОКА(200))	КАК Комментарий,
+		
+		Основания.Ссылка.СуммаНДС		КАК СуммаНДС,
+		
+		ВЫБОР
+			КОГДА Основания.Ссылка.СуммаВключаетНДС ТОГДА
+				Основания.Ссылка.СуммаДокумента - Основания.Ссылка.СуммаНДС
+			ИНАЧЕ
+				Основания.Ссылка.СуммаДокумента
+		КОНЕЦ								КАК СуммаБезНДС,
+		
+		ВЫБОР
+			КОГДА Основания.Ссылка.СуммаВключаетНДС ТОГДА
+				Основания.Ссылка.СуммаДокумента
+			ИНАЧЕ
+				Основания.Ссылка.СуммаДокумента + Основания.Ссылка.СуммаНДС
+		КОНЕЦ								КАК СуммаСНДС
+		
+	ИЗ
+		Документ.СчетФактураПолученный.ДокументыОснования	КАК Основания
+	ГДЕ
+		Основания.ДокументОснование = &amp;ДокСсылка
+</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОтборДокСсылка" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор док ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ВводНачальныхОстатков</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="ДокСсылка">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ВводНачальныхОстатков</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

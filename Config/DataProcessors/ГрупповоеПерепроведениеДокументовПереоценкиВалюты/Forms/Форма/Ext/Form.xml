@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Выполнить" id="15">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВыполнитьОбработку</CommandName>
+				<ExtendedTooltip name="ВыполнитьРасширеннаяПодсказка" id="36"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<RadioButtonField name="ВариантОбработки" id="1">
+			<DataPath>Объект.ВариантОбработки</DataPath>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>За период</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Список документов</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">2</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ВариантОбработкиКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ВариантОбработкиРасширеннаяПодсказка" id="37"/>
+			<Events>
+				<Event name="OnChange">ВариантОбработкиПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="ГруппаЗаПериод" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа за период</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаЗаПериодРасширеннаяПодсказка" id="38"/>
+			<ChildItems>
+				<InputField name="Период" id="6">
+					<DataPath>Период.Variant</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПериодКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="39"/>
+					<Events>
+						<Event name="OnChange">ПериодПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаГраницыПериода" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа границы периода</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаГраницыПериодаРасширеннаяПодсказка" id="40"/>
+					<ChildItems>
+						<InputField name="ПериодДатаНачала" id="20">
+							<DataPath>Период.StartDate</DataPath>
+							<ContextMenu name="ПериодДатаНачалаКонтекстноеМеню" id="21"/>
+							<ExtendedTooltip name="ПериодДатаНачалаРасширеннаяПодсказка" id="41"/>
+							<Events>
+								<Event name="OnChange">ПериодДатаНачалаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ПериодДатаОкончания" id="22">
+							<DataPath>Период.EndDate</DataPath>
+							<ContextMenu name="ПериодДатаОкончанияКонтекстноеМеню" id="23"/>
+							<ExtendedTooltip name="ПериодДатаОкончанияРасширеннаяПодсказка" id="42"/>
+							<Events>
+								<Event name="OnChange">ПериодДатаОкончанияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСписокДокументов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа список документов</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСписокДокументовРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<Table name="СписокДокументов" id="8">
+					<Representation>List</Representation>
+					<TitleLocation>Auto</TitleLocation>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СписокДокументов</DataPath>
+					<RowPictureDataPath>СписокДокументов.Картинка</RowPictureDataPath>
+					<RowsPicture>
+						<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:TransparentPixel x="79" y="3"/>
+					</RowsPicture>
+					<CommandSet>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СписокДокументовКонтекстноеМеню" id="9"/>
+					<AutoCommandBar name="СписокДокументовКоманднаяПанель" id="10">
+						<ChildItems>
+							<Button name="СписокДокументовПодборДокументов" id="32">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодборДокументов</CommandName>
+								<ExtendedTooltip name="СписокДокументовПодборДокументовРасширеннаяПодсказка" id="44"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокДокументовРасширеннаяПодсказка" id="45"/>
+					<SearchStringAddition name="СписокДокументовСтрокаПоиска" id="46">
+						<AdditionSource>
+							<Item>СписокДокументов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокДокументовСтрокаПоискаКонтекстноеМеню" id="47"/>
+						<ExtendedTooltip name="СписокДокументовСтрокаПоискаРасширеннаяПодсказка" id="48"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокДокументовСостояниеПросмотра" id="49">
+						<AdditionSource>
+							<Item>СписокДокументов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокДокументовСостояниеПросмотраКонтекстноеМеню" id="50"/>
+						<ExtendedTooltip name="СписокДокументовСостояниеПросмотраРасширеннаяПодсказка" id="51"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокДокументовУправлениеПоиском" id="52">
+						<AdditionSource>
+							<Item>СписокДокументов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокДокументовУправлениеПоискомКонтекстноеМеню" id="53"/>
+						<ExtendedTooltip name="СписокДокументовУправлениеПоискомРасширеннаяПодсказка" id="54"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="BeforeDeleteRow">СписокДокументовПередУдалением</Event>
+						<Event name="ChoiceProcessing">СписокДокументовОбработкаВыбора</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="СписокДокументовСсылка" id="28">
+							<DataPath>СписокДокументов.Ссылка</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СписокДокументовСсылкаКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="СписокДокументовСсылкаРасширеннаяПодсказка" id="55"/>
+							<Events>
+								<Event name="ChoiceProcessing">СписокДокументовСсылкаОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ГрупповоеПерепроведениеДокументовПереоценкиВалюты</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>1/0:23d8dace-aff8-47be-95d4-cfba650f197d</Field>
+				<Field>1/0:4cc6c63e-f0bc-4b60-a6d2-ce97325dae55</Field>
+				<Field>1/0:cf548fa8-1825-4531-b63f-de7206c59604</Field>
+				<Field>Объект.ВариантОбработки</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СписокДокументов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список документов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ПереоценкаВалютныхОстатков</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Картинка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Период" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>Период.Variant</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьОбработку" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить обработку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбработку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборДокументов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор документов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборДокументов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

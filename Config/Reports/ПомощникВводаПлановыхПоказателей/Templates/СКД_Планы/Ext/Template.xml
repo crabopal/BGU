@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Основной</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидПоказателя</dataPath>
+			<field>ВидПоказателя</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.ВидыКБК</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИндексКартинки</dataPath>
+			<field>ИндексКартинки</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИФО</dataPath>
+			<field>ИФО</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ИсточникиФинансовогоОбеспечения</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.КВД</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>План</dataPath>
+			<field>План</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ПланыПоступленийВыбытий</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субсидия</dataPath>
+			<field>Субсидия</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Субсидии</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагВидПоказателяОтличается</dataPath>
+			<field>флагВидПоказателяОтличается</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагДетальнаяЗапись</dataPath>
+			<field>флагДетальнаяЗапись</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагКФООтличаются</dataPath>
+			<field>флагКФООтличаются</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагПланНазначенОрганизации</dataPath>
+			<field>флагПланНазначенОрганизации</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УточнениеПоказателя</dataPath>
+			<field>УточнениеПоказателя</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.ВидыКБК</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагУточнениеПоказателяОтличается</dataPath>
+			<field>флагУточнениеПоказателяОтличается</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>флагИскаженоЗначениеИФО</dataPath>
+			<field>флагИскаженоЗначениеИФО</field>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>////////////////////////////////////////////////////////////////////////////////
+// [0]. Все планы и все их назначения
+//
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ // Различные - для исключения дублей назначений при отключенном учете по ИФО.
+	ПланыПоступленийВыбытий.Ссылка								КАК План,
+	ПланыПоПоступлениямВыбытиямОрганизаций.КФО					КАК КФО,
+	ПланыПоПоступлениямВыбытиямОрганизаций.ВидПоказателя		КАК ВидПоказателя,
+	ПланыПоПоступлениямВыбытиямОрганизаций.УточнениеПоказателя	КАК УточнениеПоказателя,
+	ПланыПоПоступлениямВыбытиямОрганизаций.Субсидия				КАК Субсидия,
+	ВЫБОР
+		КОГДА &amp;ФОУчетПоИФО ТОГДА
+			ПланыПоПоступлениямВыбытиямОрганизаций.ИФО
+		ИНАЧЕ
+			ЗНАЧЕНИЕ(Справочник.ИсточникиФинансовогоОбеспечения.ПустаяСсылка)
+	КОНЕЦ														КАК ИФО,
+	
+	// Служебные поля
+	3															КАК ИндексКартинки,
+	ИСТИНА														КАК флагДетальнаяЗапись,
+	ВЫБОР
+		КОГДА НЕ ПланыПоПоступлениямВыбытиямОрганизаций.КФО ЕСТЬ NULL
+			И ПланыПоступленийВыбытий.КФО &lt;&gt; ПланыПоПоступлениямВыбытиямОрганизаций.КФО ТОГДА
+			ИСТИНА
+		ИНАЧЕ
+			ЛОЖЬ
+	КОНЕЦ														КАК флагКФООтличаются,
+	ВЫБОР
+		КОГДА НЕ ПланыПоПоступлениямВыбытиямОрганизаций.ВидПоказателя ЕСТЬ NULL
+			И ПланыПоступленийВыбытий.ВидПоказателя &lt;&gt; ПланыПоПоступлениямВыбытиямОрганизаций.ВидПоказателя ТОГДА
+			ИСТИНА
+		ИНАЧЕ
+			ЛОЖЬ
+	КОНЕЦ														КАК флагВидПоказателяОтличается,
+	ВЫБОР
+		КОГДА НЕ ПланыПоПоступлениямВыбытиямОрганизаций.УточнениеПоказателя ЕСТЬ NULL
+			И ПланыПоступленийВыбытий.УточнениеПоказателя &lt;&gt; ПланыПоПоступлениямВыбытиямОрганизаций.УточнениеПоказателя ТОГДА
+			ИСТИНА
+		ИНАЧЕ
+			ЛОЖЬ
+	КОНЕЦ														КАК флагУточнениеПоказателяОтличается,
+	ВЫБОР
+		КОГДА ПланыПоПоступлениямВыбытиямОрганизаций.Организация = &amp;Организация	ТОГДА
+			ИСТИНА
+		ИНАЧЕ
+			ЛОЖЬ
+	КОНЕЦ														КАК флагПланНазначенОрганизации,
+	ВЫБОР
+		КОГДА НЕ &amp;ФОУчетПоИФО И ПланыПоПоступлениямВыбытиямОрганизаций.ИФО &lt;&gt; ЗНАЧЕНИЕ(Справочник.ИсточникиФинансовогоОбеспечения.ПустаяСсылка) ТОГДА
+			ИСТИНА
+		ИНАЧЕ
+			ЛОЖЬ
+	КОНЕЦ														КАК флагИскаженоЗначениеИФО
+ИЗ
+	Справочник.ПланыПоступленийВыбытий	КАК ПланыПоступленийВыбытий
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПланыПоПоступлениямВыбытиямОрганизаций	КАК ПланыПоПоступлениямВыбытиямОрганизаций
+		ПО	ПланыПоступленийВыбытий.Ссылка = ПланыПоПоступлениямВыбытиямОрганизаций.ПланПоступленийВыбытий
+</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>КоличествоНекорректныхНазначений</dataPath>
+		<expression>ВЫБОР
+	КОГДА (флагПланНазначенОрганизации И (флагКФООтличаются ИЛИ флагВидПоказателяОтличается ИЛИ флагУточнениеПоказателяОтличается ИЛИ флагИскаженоЗначениеИФО)) ТОГДА
+		1
+	ИНАЧЕ
+		0
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество некорректных назначений</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>6</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоКорректныхНазначений</dataPath>
+		<expression>ВЫБОР
+	КОГДА (флагПланНазначенОрганизации И НЕ флагКФООтличаются И НЕ флагВидПоказателяОтличается И НЕ флагУточнениеПоказателяОтличается И НЕ флагИскаженоЗначениеИФО) ТОГДА
+		1
+	ИНАЧЕ
+		0
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество корректных назначений</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>6</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоИскаженныхНазначений</dataPath>
+		<expression>ВЫБОР
+	КОГДА флагИскаженоЗначениеИФО ТОГДА
+		1
+	ИНАЧЕ
+		0
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество искаженных назначений</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоРасходящихсяСПланомНазначений</dataPath>
+		<expression>ВЫБОР
+	КОГДА (флагПланНазначенОрганизации И (флагКФООтличаются ИЛИ флагВидПоказателяОтличается ИЛИ флагУточнениеПоказателяОтличается)) ТОГДА
+		1
+	ИНАЧЕ
+		0
+КОНЕЦ
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество расходящихся с планом назначений</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>6</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>флагВидПоказателяОтличается</dataPath>
+		<expression>Максимум(флагВидПоказателяОтличается)</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>ИндексКартинки</dataPath>
+		<expression>ВЫБОР
+	КОГДА План.ПометкаУдаления ТОГДА
+		4
+	ИНАЧЕ
+		-1
+КОНЕЦ</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>КФО</dataPath>
+		<expression>План.КФО</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>ВидПоказателя</dataPath>
+		<expression>План.ВидПоказателя</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>УточнениеПоказателя</dataPath>
+		<expression>План.УточнениеПоказателя</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>флагКФООтличаются</dataPath>
+		<expression>Максимум(флагКФООтличаются)</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>флагУточнениеПоказателяОтличается</dataPath>
+		<expression>Максимум(флагУточнениеПоказателяОтличается)</expression>
+		<group>План</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоНекорректныхНазначений</dataPath>
+		<expression>Сумма(КоличествоНекорректныхНазначений)</expression>
+		<group>План</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоКорректныхНазначений</dataPath>
+		<expression>Сумма(КоличествоКорректныхНазначений)</expression>
+		<group>План</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоИскаженныхНазначений</dataPath>
+		<expression>Сумма(КоличествоИскаженныхНазначений)</expression>
+		<group>План</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоРасходящихсяСПланомНазначений</dataPath>
+		<expression>Сумма(КоличествоРасходящихсяСПланомНазначений)</expression>
+		<group>План</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ФОУчетПоИФО</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ФОУчет по ИФО</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПомощникВводаПлановыхПоказателей</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Помощник ввода плановых показателей</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>План</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИФО</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Субсидия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагДетальнаяЗапись</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагПланНазначенОрганизации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагИскаженоЗначениеИФО</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КФО</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидПоказателя</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>УточнениеПоказателя</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИндексКартинки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагКФООтличаются</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагВидПоказателяОтличается</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>флагУточнениеПоказателяОтличается</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоНекорректныхНазначений</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоКорректныхНазначений</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоИскаженныхНазначений</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоРасходящихсяСПланомНазначений</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Организация</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Begin</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеПолейГруппировки</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionGroupFieldsPlacement">SeparatelyAndInTotalsOnly</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеГруппировки</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionGroupPlacement">Begin</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>План</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

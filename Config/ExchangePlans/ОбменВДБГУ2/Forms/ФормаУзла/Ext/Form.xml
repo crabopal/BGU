@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ОрганизацииГруппа2" id="19">
+				<ExtendedTooltip name="ОрганизацииГруппа2РасширеннаяПодсказка" id="56"/>
+				<ChildItems>
+					<Button name="ОрганизацииНайти" id="14">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Организации.StandardCommand.Find</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ОрганизацииНайтиРасширеннаяПодсказка" id="57"/>
+					</Button>
+					<Button name="ОрганизацииОтменитьПоиск" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Организации.StandardCommand.CancelSearch</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ОрганизацииОтменитьПоискРасширеннаяПодсказка" id="58"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="ОрганизацииВывестиСписок" id="16">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.Организации.StandardCommand.OutputList</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ОрганизацииВывестиСписокРасширеннаяПодсказка" id="59"/>
+			</Button>
+			<Button name="ОрганизацииКопироватьВБуферОбмена" id="17">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.Организации.StandardCommand.CopyToClipboard</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ОрганизацииКопироватьВБуферОбменаРасширеннаяПодсказка" id="60"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="62"/>
+				</InputField>
+				<InputField name="Код" id="22">
+					<DataPath>Объект.Code</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Префикс</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КодКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="63"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаЗагружатьСуммыВыбытияМЗ" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загружать суммы выбытия МЗ</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаЗагружатьСуммыВыбытияМЗРасширеннаяПодсказка" id="84"/>
+			<ChildItems>
+				<CheckBoxField name="ЗагружатьСуммыВыбытияМЗ" id="85">
+					<DataPath>Объект.ЗагружатьСуммыВыбытияМЗ</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗагружатьСуммыВыбытияМЗКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="ЗагружатьСуммыВыбытияМЗРасширеннаяПодсказка" id="87"/>
+				</CheckBoxField>
+				<LabelDecoration name="Декорация1" id="88">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>80</MaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При загрузке устанавливается специальный признак в документах и загружаются суммы движений. При проведении документов суммы не пересчитываются.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация1КонтекстноеМеню" id="89"/>
+					<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="90"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаЗапрещатьПовторнуюЗагрузкуОбъектов" id="95">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрещать повторную загрузку объектов</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаЗапрещатьПовторнуюЗагрузкуОбъектовРасширеннаяПодсказка" id="96"/>
+			<ChildItems>
+				<CheckBoxField name="ЗапрещатьПовторнуюЗагрузкуОбъектов" id="97">
+					<DataPath>Объект.ЗапрещатьПовторнуюЗагрузкуОбъектов</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запрещать повторную загрузку документов при загрузке</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗапрещатьПовторнуюЗагрузкуОбъектовКонтекстноеМеню" id="98"/>
+					<ExtendedTooltip name="ЗапрещатьПовторнуюЗагрузкуОбъектовРасширеннаяПодсказка" id="99"/>
+				</CheckBoxField>
+				<LabelDecoration name="Декорация2" id="100">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При загрузке автоматически устанавливается запрет на повторную загрузку документов при следующих обменах. Чтобы повторно загрузить измененный документ из "Вещевого довольствия" необходимо перейти в форму "Объекты, запрещенные к повторной загрузке" и снять запрет.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация2КонтекстноеМеню" id="101"/>
+					<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="102"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНеПроводитьДокументы" id="103">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не проводить документы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНеПроводитьДокументыРасширеннаяПодсказка" id="104"/>
+			<ChildItems>
+				<CheckBoxField name="НеПроводитьДокументы" id="105">
+					<DataPath>Объект.НеПроводитьДокументы</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не проводить загруженные документы</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="НеПроводитьДокументыКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="НеПроводитьДокументыРасширеннаяПодсказка" id="107"/>
+				</CheckBoxField>
+				<LabelDecoration name="Декорация3" id="108">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загруженные документы никогда не проводятся. Документы проводит пользователь самостоятельно.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация3КонтекстноеМеню" id="109"/>
+					<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="110"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="НастройкиВыгрузкиДанныхЗаголовок" id="50">
+			<TextColor>style:ЦветРазделаПанелиФункций</TextColor>
+			<Font faceName="" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать данные по организациям:</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НастройкиВыгрузкиДанныхЗаголовокКонтекстноеМеню" id="51"/>
+			<ExtendedTooltip name="НастройкиВыгрузкиДанныхЗаголовокРасширеннаяПодсказка" id="64"/>
+		</LabelDecoration>
+		<Table name="Организации" id="5">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
+			<RowSelectionMode>Row</RowSelectionMode>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Организации</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОрганизацииКонтекстноеМеню" id="6">
+				<Autofill>false</Autofill>
+			</ContextMenu>
+			<AutoCommandBar name="ОрганизацииКоманднаяПанель" id="7">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ОрганизацииВключитьВсеОрганизации" id="12">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ВключитьВсеОрганизации</CommandName>
+						<ExtendedTooltip name="ОрганизацииВключитьВсеОрганизацииРасширеннаяПодсказка" id="65"/>
+					</Button>
+					<Button name="ОрганизацииОтключитьВсеОрганизации" id="13">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОтключитьВсеОрганизации</CommandName>
+						<ExtendedTooltip name="ОрганизацииОтключитьВсеОрганизацииРасширеннаяПодсказка" id="66"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ОрганизацииРасширеннаяПодсказка" id="67"/>
+			<SearchStringAddition name="ОрганизацииСтрокаПоиска" id="68">
+				<AdditionSource>
+					<Item>Организации</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОрганизацииСтрокаПоискаКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="ОрганизацииСтрокаПоискаРасширеннаяПодсказка" id="70"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОрганизацииСостояниеПросмотра" id="71">
+				<AdditionSource>
+					<Item>Организации</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОрганизацииСостояниеПросмотраКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="ОрганизацииСостояниеПросмотраРасширеннаяПодсказка" id="73"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОрганизацииУправлениеПоиском" id="74">
+				<AdditionSource>
+					<Item>Организации</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОрганизацииУправлениеПоискомКонтекстноеМеню" id="75"/>
+				<ExtendedTooltip name="ОрганизацииУправлениеПоискомРасширеннаяПодсказка" id="76"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<CheckBoxField name="ОрганизацииИспользовать" id="8">
+					<DataPath>Организации.Использовать</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОрганизацииИспользоватьКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="ОрганизацииИспользоватьРасширеннаяПодсказка" id="77"/>
+				</CheckBoxField>
+				<InputField name="ОрганизацииОрганизация" id="10">
+					<DataPath>Организации.Организация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ОрганизацииОрганизацияКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ОрганизацииОрганизацияРасширеннаяПодсказка" id="78"/>
+				</InputField>
+				<InputField name="ОрганизацииЦМО" id="25">
+					<DataPath>Организации.ЦМО</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЦМО</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Items.Организации.CurrentData.Организация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ОрганизацииЦМОКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="ОрганизацииЦМОРасширеннаяПодсказка" id="79"/>
+				</InputField>
+				<InputField name="ОрганизацииПодразделение" id="54">
+					<DataPath>Организации.Подразделение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Items.Организации.CurrentData.Организация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ОрганизацииПодразделениеКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ОрганизацииПодразделениеРасширеннаяПодсказка" id="80"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаДополнительныеНастройки" id="91">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДополнительныеНастройкиРасширеннаяПодсказка" id="92"/>
+			<ChildItems>
+				<Button name="ОткрытьНастройкуВариантовУчета" id="52">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ОткрытьНастройкуВариантовУчета</CommandName>
+					<ExtendedTooltip name="ОткрытьНастройкуВариантовУчетаРасширеннаяПодсказка" id="81"/>
+				</Button>
+				<Button name="ОткрытьНастройкуСтатейАналитики" id="53">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ОткрытьНастройкуСтатейАналитики</CommandName>
+					<ExtendedTooltip name="ОткрытьНастройкуСтатейАналитикиРасширеннаяПодсказка" id="82"/>
+				</Button>
+				<Button name="ОткрытьОбъектыЗапрещенныеКПовторнойЗагрузке" id="93">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ОткрытьОбъектыЗагруженныеИзВД</CommandName>
+					<ExtendedTooltip name="ОткрытьОбъектыЗапрещенныеКПовторнойЗагрузкеРасширеннаяПодсказка" id="94"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExchangePlanObject.ОбменВДБГУ2</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Организации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Использовать" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Организация" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЦМО" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЦМО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ЦМО</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Подразделение" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОрганизацииЦМО</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Организации.Использовать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОрганизацииЦМО</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Организации.Использовать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Организации.ЦМО</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ВключитьВсеОрганизации" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все организации</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все организации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВключитьВсеОрганизации</Action>
+		</Command>
+		<Command name="ОтключитьВсеОрганизации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все организации</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все организации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтключитьВсеОрганизации</Action>
+		</Command>
+		<Command name="ОткрытьНастройкуВариантовУчета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Операции учета вещевого имущества</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список вариантов операций учета вещевого имущества</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьНастройкуВариантовУчета</Action>
+		</Command>
+		<Command name="ОткрытьНастройкуСтатейАналитики" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статьи аналитики вещевого имущества</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список статей аналитики вещевого имущества</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьНастройкуСтатейАналитики</Action>
+		</Command>
+		<Command name="ОткрытьОбъектыЗагруженныеИзВД" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объекты, загруженные из Вещевого довольствия</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОткрытьОбъектыЗагруженныеИзВД</Action>
+		</Command>
+	</Commands>
+</Form>

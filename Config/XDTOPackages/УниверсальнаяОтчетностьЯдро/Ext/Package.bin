@@ -1,0 +1,25 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:schemas-1c-ru:reports/core">
+	<property name="about" type="xs:anyURI" form="Attribute"/>
+	<property name="comment" type="xs:string" form="Attribute"/>
+	<property name="desc" type="xs:string" form="Attribute"/>
+	<property xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="refName" type="d2p1:ReferencableName" form="Attribute"/>
+	<property name="title" type="xs:normalizedString" form="Attribute"/>
+	<valueType name="Code" base="xs:normalizedString" variety="Atomic"/>
+	<valueType xmlns:d2p1="urn:schemas-1c-ru:reports/core" name="DigitalCode" base="d2p1:Code" variety="Atomic">
+		<pattern>\p{Nd}*</pattern>
+	</valueType>
+	<valueType name="ReferencableName" base="xs:NMTOKEN" variety="Atomic"/>
+	<valueType name="ShortString" base="xs:string" variety="Atomic" maxLength="255"/>
+	<objectType name="Agent"/>
+	<objectType name="CatalogizedEntity">
+		<property name="idString" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="title" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="catalogNamespaceURI" type="xs:anyURI" lowerBound="1" form="Attribute"/>
+		<property name="fullName" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="OwnerId" type="xs:string" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="Coverage">
+		<property name="startDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property name="duration" type="xs:duration" lowerBound="1" form="Attribute"/>
+	</objectType>
+</package>

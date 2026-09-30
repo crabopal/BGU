@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Родитель" id="4">
+			<DataPath>Объект.Parent</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<RadioButtonField name="РежимВводаГрафикаОплаты" id="7">
+			<DataPath>Объект.РежимВводаГрафикаОплаты</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>График оплаты указан</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<RadioButtonType>RadioButtons</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>В абсолютных величинах (суммы платежей)</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">0</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>В относительных величинах (процентах, долях)</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="РежимВводаГрафикаОплатыКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РежимВводаГрафикаОплатыРасширеннаяПодсказка" id="9"/>
+			<Events>
+				<Event name="OnChange">РежимВводаГрафикаОплатыПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<InputField name="Валюта" id="47">
+			<DataPath>Объект.Валюта</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ВалютаКонтекстноеМеню" id="48"/>
+			<ExtendedTooltip name="ВалютаРасширеннаяПодсказка" id="49"/>
+		</InputField>
+		<Table name="ПорядокОплаты" id="10">
+			<Representation>List</Representation>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.ПорядокОплаты</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПорядокОплатыКонтекстноеМеню" id="11"/>
+			<AutoCommandBar name="ПорядокОплатыКоманднаяПанель" id="12"/>
+			<ExtendedTooltip name="ПорядокОплатыРасширеннаяПодсказка" id="13"/>
+			<SearchStringAddition name="ПорядокОплатыСтрокаПоиска" id="14">
+				<AdditionSource>
+					<Item>ПорядокОплаты</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПорядокОплатыСтрокаПоискаКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ПорядокОплатыСтрокаПоискаРасширеннаяПодсказка" id="16"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПорядокОплатыСостояниеПросмотра" id="17">
+				<AdditionSource>
+					<Item>ПорядокОплаты</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПорядокОплатыСостояниеПросмотраКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ПорядокОплатыСостояниеПросмотраРасширеннаяПодсказка" id="19"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПорядокОплатыУправлениеПоиском" id="20">
+				<AdditionSource>
+					<Item>ПорядокОплаты</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПорядокОплатыУправлениеПоискомКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ПорядокОплатыУправлениеПоискомРасширеннаяПодсказка" id="22"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnEditEnd">ПорядокОплатыПриОкончанииРедактирования</Event>
+				<Event name="BeforeEditEnd">ПорядокОплатыПередОкончаниемРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ПорядокОплатыНомерСтроки" id="23">
+					<DataPath>Объект.ПорядокОплаты.LineNumber</DataPath>
+					<Visible>false</Visible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПорядокОплатыНомерСтрокиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ПорядокОплатыНомерСтрокиРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<InputField name="ПорядокОплатыОплатитьДо" id="26">
+					<DataPath>Объект.ПорядокОплаты.ОплатитьДо</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ПорядокОплатыОплатитьДоКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ПорядокОплатыОплатитьДоРасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<InputField name="ПорядокОплатыСуммаПроцент" id="29">
+					<DataPath>Объект.ПорядокОплаты.СуммаПроцент</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма, процент</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.ПорядокОплаты.TotalСуммаПроцент</FooterDataPath>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ПорядокОплатыСуммаПроцентКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ПорядокОплатыСуммаПроцентРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<ColumnGroup name="ПорядокОплатыГруппаПериод" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период обучения</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="ПорядокОплатыГруппаПериодРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
+						<InputField name="ПорядокОплатыНачалоПериода" id="32">
+							<DataPath>Объект.ПорядокОплаты.НачалоПериода</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПорядокОплатыНачалоПериодаКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="ПорядокОплатыНачалоПериодаРасширеннаяПодсказка" id="34"/>
+						</InputField>
+						<InputField name="ПорядокОплатыКонецПериода" id="35">
+							<DataPath>Объект.ПорядокОплаты.КонецПериода</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПорядокОплатыКонецПериодаКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ПорядокОплатыКонецПериодаРасширеннаяПодсказка" id="37"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ПорядокОплатыПримечание" id="38">
+					<DataPath>Объект.ПорядокОплаты.Примечание</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>20</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ПорядокОплатыПримечаниеКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ПорядокОплатыПримечаниеРасширеннаяПодсказка" id="40"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыExtendedTooltip" id="51"/>
+		</UsualGroup>
+		<UsualGroup name="ИнформационныеСсылки" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационные ссылки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ИнформационныеСсылкиРасширеннаяПодсказка" id="46"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ГрафикиОплатыОбразование</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВалютаРегламентированногоУчета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта регламентированного учета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

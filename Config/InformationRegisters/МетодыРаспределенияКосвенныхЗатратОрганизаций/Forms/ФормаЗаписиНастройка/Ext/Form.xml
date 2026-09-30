@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="18">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьExtendedTooltip" id="21"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьExtendedTooltip" id="22"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="20">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Перечитать</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="23"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Период" id="5">
+			<DataPath>Период</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начало действия</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="ПериодКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ПериодExtendedTooltip" id="24"/>
+			<Events>
+				<Event name="OnChange">ПериодПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Организация" id="1">
+			<DataPath>Организация</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<OpenButton>false</OpenButton>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОрганизацияExtendedTooltip" id="25"/>
+		</InputField>
+		<InputField name="ВидОбщихЗатратНаПроизводство" id="3">
+			<DataPath>ВидОбщихЗатратНаПроизводство</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид общих затрат</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ВидОбщихЗатратНаПроизводствоКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="ВидОбщихЗатратНаПроизводствоExtendedTooltip" id="26"/>
+		</InputField>
+		<InputField name="БазаРаспределения" id="7">
+			<DataPath>БазаРаспределения</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная база распределения</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="БазаРаспределенияКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="БазаРаспределенияExtendedTooltip" id="27"/>
+			<Events>
+				<Event name="OnChange">БазаРаспределенияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкаРасчетаБазыОплатаТруда" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить затраты по КЭК</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаНастройкаРасчетаБазыОплатаТрудаРасширеннаяПодсказка" id="54"/>
+			<ChildItems>
+				<CheckBoxField name="ВключатьВБазуОплатаТрудаКЭК211" id="47">
+					<DataPath>ВключатьВБазуОплатаТрудаКЭК211</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключатьВБазуОплатаТрудаКЭК211КонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ВключатьВБазуОплатаТрудаКЭК211РасширеннаяПодсказка" id="49"/>
+				</CheckBoxField>
+				<CheckBoxField name="ВключатьВБазуОплатаТрудаКЭК212" id="50">
+					<DataPath>ВключатьВБазуОплатаТрудаКЭК212</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключатьВБазуОплатаТрудаКЭК212КонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ВключатьВБазуОплатаТрудаКЭК212РасширеннаяПодсказка" id="52"/>
+				</CheckBoxField>
+				<CheckBoxField name="ВключатьВБазуОплатаТрудаКЭК213" id="41">
+					<DataPath>ВключатьВБазуОплатаТрудаКЭК213</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключатьВБазуОплатаТрудаКЭК213КонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ВключатьВБазуОплатаТрудаКЭК213РасширеннаяПодсказка" id="43"/>
+				</CheckBoxField>
+				<CheckBoxField name="ВключатьВБазуОплатаТрудаКЭК214" id="44">
+					<DataPath>ВключатьВБазуОплатаТрудаКЭК214</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключатьВБазуОплатаТрудаКЭК214КонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ВключатьВБазуОплатаТрудаКЭК214РасширеннаяПодсказка" id="46"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="РасширеннаяНастройка" id="9">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>РасширеннаяНастройка</DataPath>
+			<CommandSet>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="РасширеннаяНастройкаКонтекстноеМеню" id="10"/>
+			<AutoCommandBar name="РасширеннаяНастройкаКоманднаяПанель" id="11"/>
+			<ExtendedTooltip name="РасширеннаяНастройкаExtendedTooltip" id="28"/>
+			<SearchStringAddition name="РасширеннаяНастройкаСтрокаПоиска" id="32">
+				<AdditionSource>
+					<Item>РасширеннаяНастройка</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="РасширеннаяНастройкаСтрокаПоискаКонтекстноеМеню" id="33"/>
+				<ExtendedTooltip name="РасширеннаяНастройкаСтрокаПоискаРасширеннаяПодсказка" id="34"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="РасширеннаяНастройкаСостояниеПросмотра" id="35">
+				<AdditionSource>
+					<Item>РасширеннаяНастройка</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="РасширеннаяНастройкаСостояниеПросмотраКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="РасширеннаяНастройкаСостояниеПросмотраРасширеннаяПодсказка" id="37"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="РасширеннаяНастройкаУправлениеПоиском" id="38">
+				<AdditionSource>
+					<Item>РасширеннаяНастройка</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="РасширеннаяНастройкаУправлениеПоискомКонтекстноеМеню" id="39"/>
+				<ExtendedTooltip name="РасширеннаяНастройкаУправлениеПоискомРасширеннаяПодсказка" id="40"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="РасширеннаяНастройкаИФО" id="12">
+					<DataPath>РасширеннаяНастройка.ИФО</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="РасширеннаяНастройкаИФОКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаИФОExtendedTooltip" id="29"/>
+				</InputField>
+				<InputField name="РасширеннаяНастройкаКФО" id="14">
+					<DataPath>РасширеннаяНастройка.КФО</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="РасширеннаяНастройкаКФОКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаКФОExtendedTooltip" id="30"/>
+				</InputField>
+				<InputField name="РасширеннаяНастройкаБазаРаспределения" id="16">
+					<DataPath>РасширеннаяНастройка.БазаРаспределения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="РасширеннаяНастройкаБазаРаспределенияКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаБазаРаспределенияExtendedTooltip" id="31"/>
+				</InputField>
+				<CheckBoxField name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК212" id="61">
+					<DataPath>РасширеннаяНастройка.ВключатьВБазуОплатаТрудаКЭК212</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК212КонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК212РасширеннаяПодсказка" id="63"/>
+				</CheckBoxField>
+				<CheckBoxField name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК213" id="55">
+					<DataPath>РасширеннаяНастройка.ВключатьВБазуОплатаТрудаКЭК213</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК213КонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК213РасширеннаяПодсказка" id="57"/>
+				</CheckBoxField>
+				<CheckBoxField name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК214" id="58">
+					<DataPath>РасширеннаяНастройка.ВключатьВБазуОплатаТрудаКЭК214</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК214КонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК214РасширеннаяПодсказка" id="60"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Организация" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидОбщихЗатратНаПроизводство" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид общих затрат на производство</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыОбщихЗатратНаПроизводство</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПериодПрежний" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период прежний</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="БазаРаспределения" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>База распределения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхЗатрат</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="РасширеннаяНастройка" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширенная настройка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ИФО" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИФО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ИсточникиФинансовогоОбеспечения</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.ИспользоватьУчетПоИФО</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="КФО" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КФО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.КВД</v8:Type>
+					</Type>
+				</Column>
+				<Column name="БазаРаспределения" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>База распределения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхЗатрат</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК213" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>213</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК214" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>214</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК212" id="18">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>212</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РасширеннаяНастройкаПрежняя" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширенная настройка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИФО" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИФО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ИсточникиФинансовогоОбеспечения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КФО" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КФО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.КВД</v8:Type>
+					</Type>
+				</Column>
+				<Column name="БазаРаспределения" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>База распределения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхЗатрат</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК213" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включать в базу оплата труда КЭК213</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК214" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включать в базу оплата труда КЭК214</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВключатьВБазуОплатаТрудаКЭК212" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включать в базу оплата труда КЭК212</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="БазаРаспределенияПрежняя" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>База распределения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.БазыРаспределенияКосвенныхЗатрат</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоНовый" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это новый</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВключатьВБазуОплатаТрудаКЭК213" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включать в базу оплата труда КЭК213</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВключатьВБазуОплатаТрудаКЭК214" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включать в базу оплата труда КЭК214</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВключатьВБазуОплатаТрудаКЭК211" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включать в базу оплата труда КЭК211</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВключатьВБазуОплатаТрудаКЭК212" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включать в базу оплата труда КЭК212</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК212</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК213</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>РасширеннаяНастройкаВключатьВБазуОплатаТрудаКЭК214</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">РасширеннаяНастройка.БазаРаспределения</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.БазыРаспределенияКосвенныхЗатрат.ОплатаТруда</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType"/>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Отображать</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="Записать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Записать</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Перечитать" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Reread</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Перечитать</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ВидОбщихЗатратНаПроизводство">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыОбщихЗатратНаПроизводство</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Период">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ВключатьВБазуОплатаТрудаКЭК213">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ВключатьВБазуОплатаТрудаКЭК214">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ВключатьВБазуОплатаТрудаКЭК212">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

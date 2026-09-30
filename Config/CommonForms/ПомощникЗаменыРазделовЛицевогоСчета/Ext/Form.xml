@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Помощник замены разделов лицевого счета</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыполнитьЗамену" id="37">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВыполнитьЗамену</CommandName>
+				<ExtendedTooltip name="ФормаВыполнитьЗаменуРасширеннаяПодсказка" id="38"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияПредупреждение" id="62">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:ЦветНедоступноеПоле</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обработка выполняет замену значений разделов лицевых счетов в бухгалтерских проводках и в связанных с ними документах и типовых операциях в режиме ОбменДанными.Загрузка = Истина. Заменять можно только разделы лицевых счетов, у которых установлено ведение казначейского сопровождения в разрезе разделов лицевых счетов</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияПредупреждениеКонтекстноеМеню" id="63"/>
+			<ExtendedTooltip name="ДекорацияПредупреждениеРасширеннаяПодсказка" id="64"/>
+		</LabelDecoration>
+		<UsualGroup name="Отбор" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ОтборРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<InputField name="Организация" id="4">
+					<DataPath>Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<InputField name="ЛицевойСчет" id="1">
+					<DataPath>ЛицевойСчет</DataPath>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Организация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ChoiceParameters>
+						<app:item name="Отбор.КазначейскоеСопровождениеНаРазделах">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="ЛицевойСчетКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ЛицевойСчетРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="РазделЛицевогоСчета" id="7">
+					<DataPath>РазделЛицевогоСчета</DataPath>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">ЛицевойСчет</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="РазделЛицевогоСчетаКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="РазделЛицевогоСчетаРасширеннаяПодсказка" id="9"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДокументы" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<Table name="Документы" id="10">
+					<Representation>List</Representation>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>ТаблицаДокументов</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Add</ExcludedCommand>
+					</CommandSet>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ДокументыКонтекстноеМеню" id="11"/>
+					<AutoCommandBar name="ДокументыКоманднаяПанель" id="12">
+						<ChildItems>
+							<ButtonGroup name="ДокументыГруппаОтметки" id="56">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Документы группа отметки</v8:content>
+									</v8:item>
+								</Title>
+								<Representation>Compact</Representation>
+								<ExtendedTooltip name="ДокументыГруппаОтметкиРасширеннаяПодсказка" id="57"/>
+								<ChildItems>
+									<Button name="ДокументыВключитьВсе" id="58">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВключитьВсе</CommandName>
+										<ExtendedTooltip name="ДокументыВключитьВсеРасширеннаяПодсказка" id="59"/>
+									</Button>
+									<Button name="ДокументыОтключитьВсе" id="60">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОтключитьВсе</CommandName>
+										<ExtendedTooltip name="ДокументыОтключитьВсеРасширеннаяПодсказка" id="61"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+							<ButtonGroup name="ДокументыГруппаВыделенные" id="65">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Документы группа выделенные</v8:content>
+									</v8:item>
+								</Title>
+								<Representation>Compact</Representation>
+								<ExtendedTooltip name="ДокументыГруппаВыделенныеРасширеннаяПодсказка" id="66"/>
+								<ChildItems>
+									<Popup name="НайденныеСсылкиПодменюОтметкаВыделенных" id="69">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отметка выделенных</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="НайденныеСсылкиПодменюОтметкаВыделенныхРасширеннаяПодсказка" id="70"/>
+										<ChildItems>
+											<Button name="НайденныеСсылкиОтметитьВыделенные" id="71">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОтметитьВыделенные</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отметить</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="НайденныеСсылкиОтметитьВыделенныеРасширеннаяПодсказка" id="72"/>
+											</Button>
+											<Button name="НайденныеСсылкиСнятьОтметкиВыделенных" id="73">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СнятьОтметкиВыделенных</CommandName>
+												<ExtendedTooltip name="НайденныеСсылкиСнятьОтметкиВыделенныхРасширеннаяПодсказка" id="74"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</ButtonGroup>
+							<Button name="ДокументыНайти" id="39">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Заполнить</CommandName>
+								<ExtendedTooltip name="ДокументыНайтиРасширеннаяПодсказка" id="40"/>
+							</Button>
+							<Button name="ДокументыУстановитьРаздел" id="41">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьНовыйРаздел</CommandName>
+								<ExtendedTooltip name="ДокументыУстановитьРазделРасширеннаяПодсказка" id="42"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ДокументыРасширеннаяПодсказка" id="13"/>
+					<SearchStringAddition name="ДокументыСтрокаПоиска" id="14">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="15"/>
+						<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="16"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="17">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="18"/>
+						<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="19"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ДокументыУправлениеПоиском" id="20">
+						<AdditionSource>
+							<Item>Документы</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="21"/>
+						<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="22"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ДокументыВыбор</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="ДокументыОтметка" id="46">
+							<DataPath>ТаблицаДокументов.Отметка</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ДокументыОтметкаКонтекстноеМеню" id="47"/>
+							<ExtendedTooltip name="ДокументыОтметкаРасширеннаяПодсказка" id="48"/>
+						</CheckBoxField>
+						<InputField name="ДокументыДокумент" id="23">
+							<DataPath>ТаблицаДокументов.Документ</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДокументыДокументКонтекстноеМеню" id="24"/>
+							<ExtendedTooltip name="ДокументыДокументРасширеннаяПодсказка" id="25"/>
+						</InputField>
+						<InputField name="ДокументыКонтрагент" id="43">
+							<DataPath>ТаблицаДокументов.Контрагент</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДокументыКонтрагентКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="ДокументыКонтрагентРасширеннаяПодсказка" id="45"/>
+						</InputField>
+						<InputField name="ДокументыСуммаДокумента" id="26">
+							<DataPath>ТаблицаДокументов.СуммаДокумента</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<ContextMenu name="ДокументыСуммаДокументаКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="ДокументыСуммаДокументаРасширеннаяПодсказка" id="28"/>
+						</InputField>
+						<InputField name="ДокументыТекущийРаздел" id="29">
+							<DataPath>ТаблицаДокументов.ТекущийРаздел</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДокументыТекущийРазделКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ДокументыТекущийРазделРасширеннаяПодсказка" id="31"/>
+						</InputField>
+						<InputField name="ДокументыНовыйРаздел" id="32">
+							<DataPath>ТаблицаДокументов.НовыйРаздел</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.Владелец</xr:Name>
+									<xr:DataPath xsi:type="xs:string">ЛицевойСчет</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="ДокументыНовыйРазделКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="ДокументыНовыйРазделРасширеннаяПодсказка" id="34"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ЛицевойСчет" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лицевой счет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЛицевыеСчета</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>ЛицевойСчет</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>Организация</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="РазделЛицевогоСчета" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздел счета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РазделыЛицевыхСчетов</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>РазделЛицевогоСчета</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТаблицаДокументов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица документов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Документ" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="СуммаДокумента" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>18</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТекущийРаздел" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущий раздел</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РазделыЛицевыхСчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НовыйРаздел" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Новый раздел</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РазделыЛицевыхСчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Отметка" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отм.</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьЗамену" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену раздела лицевого счета</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьЗамену</Action>
+		</Command>
+		<Command name="Заполнить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по отбору</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Заполнить</Action>
+		</Command>
+		<Command name="ЗаполнитьНовыйРаздел" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить новый раздел в отмеченных строках</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить новый раздел</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьНовыйРаздел</Action>
+		</Command>
+		<Command name="ВключитьВсе" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВключитьВсе</Action>
+		</Command>
+		<Command name="ОтключитьВсе" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтключитьВсе</Action>
+		</Command>
+		<Command name="ОтметитьВыделенные" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить выделенные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить выделенные</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтметитьВыделенные</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьОтметкиВыделенных" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отметки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отметки выделенных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьОтметкиВыделенных</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЛицевойСчет">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЛицевыеСчета</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

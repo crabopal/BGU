@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Аналитика затрат</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПеренестиВДокумент" id="14">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+				<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="28"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияПояснение" id="62">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:ТекстИнформационнойНадписи</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все строки документа с такими КФО и КПС будут одинаково заполнены указанной аналитикой затрат</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="63"/>
+			<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="64">
+				<AutoMaxWidth>false</AutoMaxWidth>
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Представленные здесь значения КФО и КПС выбраны из табличной части документа.
+Но выбираются только различные пары КФО + КПС.
+Поэтому, количество строк здесь может быть меньше, чем в табличной части документа.
+
+На данной форме КФО и КПС не редактируются.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+		</LabelDecoration>
+		<Table name="СчетаДебета" id="1">
+			<Representation>List</Representation>
+			<HeightInTableRows>4</HeightInTableRows>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>СчетаДебета</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета дебета</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>OutputList</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СчетаДебетаКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СчетаДебетаКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СчетаДебетаРасширеннаяПодсказка" id="29">
+				<AutoMaxWidth>false</AutoMaxWidth>
+			</ExtendedTooltip>
+			<SearchStringAddition name="СчетаДебетаСтрокаПоиска" id="30">
+				<AdditionSource>
+					<Item>СчетаДебета</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаДебетаСтрокаПоискаКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="СчетаДебетаСтрокаПоискаРасширеннаяПодсказка" id="32"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СчетаДебетаСостояниеПросмотра" id="33">
+				<AdditionSource>
+					<Item>СчетаДебета</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаДебетаСостояниеПросмотраКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="СчетаДебетаСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СчетаДебетаУправлениеПоиском" id="36">
+				<AdditionSource>
+					<Item>СчетаДебета</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СчетаДебетаУправлениеПоискомКонтекстноеМеню" id="37"/>
+				<ExtendedTooltip name="СчетаДебетаУправлениеПоискомРасширеннаяПодсказка" id="38"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СчетаДебетаПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">СчетаДебетаПередУдалением</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="СчетаДебетаКФО" id="4">
+					<DataPath>СчетаДебета.КФО</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КФО получается из документа и изменению в этой форме не подлежит</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>3</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СчетаДебетаКФОКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="СчетаДебетаКФОРасширеннаяПодсказка" id="39"/>
+				</InputField>
+				<InputField name="СчетаДебетаКПС" id="6">
+					<DataPath>СчетаДебета.КПССчетаДебета</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>20</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СчетаДебетаКПСКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СчетаДебетаКПСРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="СчетаДебетаСчетДт" id="8">
+					<DataPath>СчетаДебета.СчетДт</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ChoiceButton>true</ChoiceButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ChoiceParameters>
+						<app:item name="Отбор.ЗапретитьИспользоватьВПроводках">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">false</Value>
+							</app:value>
+						</app:item>
+						<app:item name="Отбор.ЭлементГруппа">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">false</Value>
+							</app:value>
+						</app:item>
+						<app:item name="ОграниченияСписокСчетов">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="v8:FixedArray">
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">106.10</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">106.20</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">106.30</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">109.60</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">109.70</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">109.80</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">106.40</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">106.60</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">110.00</Value>
+									</v8:Value>
+								</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="СчетаДебетаСчетДтКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="СчетаДебетаСчетДтРасширеннаяПодсказка" id="41"/>
+					<Events>
+						<Event name="OnChange">СчетаДебетаСчетДтПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="СчетаДебетаКЭК" id="10">
+					<DataPath>СчетаДебета.КЭКСчетаДебета</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>6</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="СчетаДебетаКЭККонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="СчетаДебетаКЭКРасширеннаяПодсказка" id="42"/>
+					<Events>
+						<Event name="StartChoice">СчетаДебетаКЭКНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<ColumnGroup name="СчетаДебетаСубконто" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субконто</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="СчетаДебетаСубконтоРасширеннаяПодсказка" id="43"/>
+					<ChildItems>
+						<InputField name="СчетаДебетаСубконтоДт1" id="16">
+							<DataPath>СчетаДебета.СубконтоДт1</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<Width>20</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChooseType>false</ChooseType>
+							<TypeLink>
+								<xr:DataPath>Items.СчетаДебета.CurrentData.СчетДт</xr:DataPath>
+								<xr:LinkItem>1</xr:LinkItem>
+							</TypeLink>
+							<ContextMenu name="СчетаДебетаСубконтоДт1КонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="СчетаДебетаСубконтоДт1РасширеннаяПодсказка" id="44"/>
+							<Events>
+								<Event name="StartChoice">СчетаДебетаСубконтоДт1НачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="СчетаДебетаСубконтоДт2" id="18">
+							<DataPath>СчетаДебета.СубконтоДт2</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<Width>20</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChooseType>false</ChooseType>
+							<TypeLink>
+								<xr:DataPath>Items.СчетаДебета.CurrentData.СчетДт</xr:DataPath>
+								<xr:LinkItem>2</xr:LinkItem>
+							</TypeLink>
+							<ContextMenu name="СчетаДебетаСубконтоДт2КонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="СчетаДебетаСубконтоДт2РасширеннаяПодсказка" id="45"/>
+							<Events>
+								<Event name="StartChoice">СчетаДебетаСубконтоДт2НачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="СчетаДебетаСубконтоДт3" id="20">
+							<DataPath>СчетаДебета.СубконтоДт3</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<Width>20</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChooseType>false</ChooseType>
+							<TypeLink>
+								<xr:DataPath>Items.СчетаДебета.CurrentData.СчетДт</xr:DataPath>
+								<xr:LinkItem>3</xr:LinkItem>
+							</TypeLink>
+							<ContextMenu name="СчетаДебетаСубконтоДт3КонтекстноеМеню" id="21"/>
+							<ExtendedTooltip name="СчетаДебетаСубконтоДт3РасширеннаяПодсказка" id="46"/>
+							<Events>
+								<Event name="StartChoice">СчетаДебетаСубконтоДт3НачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<PictureField name="СчетаДебетаПолеПустое" id="54">
+					<DataPath>СчетаДебета.ВремНомер</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ShowInHeader>false</ShowInHeader>
+					<ShowInFooter>false</ShowInFooter>
+					<Width>1</Width>
+					<FileDragMode>AsFile</FileDragMode>
+					<ContextMenu name="СчетаДебетаПолеПустоеКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="СчетаДебетаПолеПустоеРасширеннаяПодсказка" id="56"/>
+				</PictureField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаВидЗатрат" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа вид затрат</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<VerticalAlign>Center</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВидЗатратРасширеннаяПодсказка" id="47"/>
+			<ChildItems>
+				<InputField name="ВидЗатрат" id="22">
+					<DataPath>ВидЗатрат</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ВидЗатратКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ВидЗатратРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<PictureDecoration name="ДекорацияСтрелка" id="51">
+					<Width>2</Width>
+					<Height>1</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация стрелка</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.MoveUp</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<FileDragMode>AsFile</FileDragMode>
+					<ContextMenu name="ДекорацияСтрелкаКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ДекорацияСтрелкаРасширеннаяПодсказка" id="53"/>
+				</PictureDecoration>
+				<Button name="ЗаполнитьВидЗатрат" id="57">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ЗаполнитьВидЗатрат</CommandName>
+					<ExtendedTooltip name="ЗаполнитьВидЗатратРасширеннаяПодсказка" id="58"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СчетаДебета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета дебета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КФО" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КФО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.КВД</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КПССчетаДебета" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификационныеПризнакиСчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СчетДт" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет дебета</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КЭКСчетаДебета" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КЭК</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КОСГУ</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СубконтоДт1" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субконто 1</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ВидыСубконто</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="СубконтоДт2" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субконто 2</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ВидыСубконто</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="СубконтоДт3" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субконто 3</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ВидыСубконто</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ВремНомер" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Врем номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидЗатрат" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид затрат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыЗатрат</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИФО" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИФО</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИсточникиФинансовогоОбеспечения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Дата" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НадписьУстановитьЗначениеВидаЗатрат" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись установить значение вида затрат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПеренестиВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеренестиВДокумент</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьВидЗатрат" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить в выделенных строках</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьВидЗатрат</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="АдресХранилища">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="РежимЗаполненияПоКФОиКПС">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="СтруктураДанных">
+			<Type/>
+		</Parameter>
+		<Parameter name="КоличествоСтрок">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

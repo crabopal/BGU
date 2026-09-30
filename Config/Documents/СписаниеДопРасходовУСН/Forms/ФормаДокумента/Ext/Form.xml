@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ScalingMode>Compact</ScalingMode>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнитьДокумент" id="104">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьДокумент</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьДокументРасширеннаяПодсказка" id="109"/>
+			</Button>
+			<Popup name="КомандыЭДО" id="408">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="409"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка документа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="110"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаШапкаПерваяСтрока" id="69">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка, первая строка</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаПерваяСтрокаРасширеннаяПодсказка" id="111"/>
+					<ChildItems>
+						<InputField name="ПредставлениеПериодаРегистрации" id="400">
+							<DataPath>ПредставлениеПериодаРегистрации</DataPath>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="ПредставлениеПериодаРегистрацииКонтекстноеМеню" id="401"/>
+							<ExtendedTooltip name="ПредставлениеПериодаРегистрацииРасширеннаяПодсказка" id="402"/>
+							<Events>
+								<Event name="StartChoice">ПредставлениеПериодаРегистрацииНачалоВыбора</Event>
+								<Event name="Clearing">ПредставлениеПериодаРегистрацииОчистка</Event>
+							</Events>
+						</InputField>
+						<InputField name="Номер" id="81">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="82"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="119"/>
+						</InputField>
+						<InputField name="Организация" id="85">
+							<DataPath>Объект.Организация</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="86"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="121"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаШапкаВтораяСтрока" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка, вторая строка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаВтораяСтрокаРасширеннаяПодсказка" id="117"/>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="130"/>
+			<ChildItems>
+				<Page name="ДанныеДокумента" id="100">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные документа</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ДанныеДокументаРасширеннаяПодсказка" id="131"/>
+					<ChildItems>
+						<UsualGroup name="РасчетДолейСписанияДопРасходов" id="300">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расчет долей списания доп. расходов (списание материальных запасов)</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="РасчетДолейСписанияДопРасходовРасширеннаяПодсказка" id="301"/>
+							<ChildItems>
+								<Table name="РасчетДолейСписания" id="166">
+									<ChangeRowSet>false</ChangeRowSet>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>Объект.РасчетДолейСписания</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="РасчетДолейСписанияКонтекстноеМеню" id="167"/>
+									<AutoCommandBar name="РасчетДолейСписанияКоманднаяПанель" id="168"/>
+									<ExtendedTooltip name="РасчетДолейСписанияРасширеннаяПодсказка" id="169"/>
+									<SearchStringAddition name="РасчетДолейСписанияСтрокаПоиска" id="170">
+										<AdditionSource>
+											<Item>РасчетДолейСписания</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="РасчетДолейСписанияСтрокаПоискаКонтекстноеМеню" id="173"/>
+										<ExtendedTooltip name="РасчетДолейСписанияСтрокаПоискаРасширеннаяПодсказка" id="174"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="РасчетДолейСписанияСостояниеПросмотра" id="175">
+										<AdditionSource>
+											<Item>РасчетДолейСписания</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="РасчетДолейСписанияСостояниеПросмотраКонтекстноеМеню" id="178"/>
+										<ExtendedTooltip name="РасчетДолейСписанияСостояниеПросмотраРасширеннаяПодсказка" id="179"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="РасчетДолейСписанияУправлениеПоиском" id="180">
+										<AdditionSource>
+											<Item>РасчетДолейСписания</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="РасчетДолейСписанияУправлениеПоискомКонтекстноеМеню" id="183"/>
+										<ExtendedTooltip name="РасчетДолейСписанияУправлениеПоискомРасширеннаяПодсказка" id="184"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnEditEnd">РасчетДолейСписанияПриОкончанииРедактирования</Event>
+										<Event name="BeforeDeleteRow">РасчетДолейСписанияПередУдалением</Event>
+										<Event name="OnActivateRow">РасчетДолейСписанияПриАктивизацииСтроки</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="РасчетДолейСписанияНомерСтроки" id="185">
+											<DataPath>Объект.РасчетДолейСписания.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>2</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="РасчетДолейСписанияНомерСтрокиКонтекстноеМеню" id="186"/>
+											<ExtendedTooltip name="РасчетДолейСписанияНомерСтрокиРасширеннаяПодсказка" id="187"/>
+										</LabelField>
+										<ColumnGroup name="ГруппаМатериальныеЗапасы" id="286">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа материальные запасы</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаМатериальныеЗапасыРасширеннаяПодсказка" id="287"/>
+											<ChildItems>
+												<InputField name="РасчетДолейСписанияПартия" id="206">
+													<DataPath>Объект.РасчетДолейСписания.Партия</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="РасчетДолейСписанияПартияКонтекстноеМеню" id="207"/>
+													<ExtendedTooltip name="РасчетДолейСписанияПартияРасширеннаяПодсказка" id="208"/>
+												</InputField>
+												<InputField name="РасчетДолейСписанияНоменклатура" id="203">
+													<DataPath>Объект.РасчетДолейСписания.Номенклатура</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="РасчетДолейСписанияНоменклатураКонтекстноеМеню" id="204"/>
+													<ExtendedTooltip name="РасчетДолейСписанияНоменклатураРасширеннаяПодсказка" id="205"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОстаткиМатериальныхЗапасов" id="278">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа остатки материальных запасов</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаОстаткиМатериальныхЗапасовРасширеннаяПодсказка" id="279"/>
+											<ChildItems>
+												<InputField name="РасчетДолейСписанияОстатокСумма" id="212">
+													<DataPath>Объект.РасчетДолейСписания.ОстатокСумма</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="РасчетДолейСписанияОстатокСуммаКонтекстноеМеню" id="213"/>
+													<ExtendedTooltip name="РасчетДолейСписанияОстатокСуммаРасширеннаяПодсказка" id="214"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаСписано" id="315">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа списано</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ГруппаСписаноРасширеннаяПодсказка" id="316"/>
+											<ChildItems>
+												<ColumnGroup name="ГруппаСписаноСуммаСНДС" id="280">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа списано сумма СНДС</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ГруппаСписаноСуммаСНДСРасширеннаяПодсказка" id="281"/>
+													<ChildItems>
+														<InputField name="РасчетДолейСписанияСписаноСуммаУСН" id="218">
+															<DataPath>Объект.РасчетДолейСписания.СписаноСуммаУСН</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="РасчетДолейСписанияСписаноСуммаУСНКонтекстноеМеню" id="219"/>
+															<ExtendedTooltip name="РасчетДолейСписанияСписаноСуммаУСНРасширеннаяПодсказка" id="220"/>
+														</InputField>
+														<InputField name="РасчетДолейСписанияСписаноСуммаЕНВД" id="325">
+															<DataPath>Объект.РасчетДолейСписания.СписаноСуммаЕНВД</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="РасчетДолейСписанияСписаноСуммаЕНВДКонтекстноеМеню" id="326"/>
+															<ExtendedTooltip name="РасчетДолейСписанияСписаноСуммаЕНВДРасширеннаяПодсказка" id="327"/>
+														</InputField>
+														<InputField name="РасчетДолейСписанияСписаноСуммаНеУчитываетсяНУ" id="319">
+															<DataPath>Объект.РасчетДолейСписания.СписаноСуммаНеУчитываетсяНУ</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="РасчетДолейСписанияСписаноСуммаНеУчитываетсяНУКонтекстноеМеню" id="320"/>
+															<ExtendedTooltip name="РасчетДолейСписанияСписаноСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="321"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ГруппаСписаноСуммаНеУчитываетсяНУ" id="317">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа списано сумма не учитывается НУ</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ГруппаСписаноСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="318"/>
+													<ChildItems>
+														<InputField name="РасчетДолейСписанияПроцентСписанияУСН" id="221">
+															<DataPath>Объект.РасчетДолейСписания.ПроцентСписанияУСН</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>2</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<MinValue xsi:type="xs:decimal">0</MinValue>
+															<MaxValue xsi:type="xs:decimal">100</MaxValue>
+															<ContextMenu name="РасчетДолейСписанияПроцентСписанияУСНКонтекстноеМеню" id="222"/>
+															<ExtendedTooltip name="РасчетДолейСписанияПроцентСписанияУСНРасширеннаяПодсказка" id="223"/>
+															<Events>
+																<Event name="OnChange">РасчетДолейСписанияПроцентСписанияУСНПриИзменении</Event>
+															</Events>
+														</InputField>
+														<InputField name="РасчетДолейСписанияПроцентСписанияЕНВД" id="328">
+															<DataPath>Объект.РасчетДолейСписания.ПроцентСписанияЕНВД</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="РасчетДолейСписанияПроцентСписанияЕНВДКонтекстноеМеню" id="329"/>
+															<ExtendedTooltip name="РасчетДолейСписанияПроцентСписанияЕНВДРасширеннаяПодсказка" id="330"/>
+															<Events>
+																<Event name="OnChange">РасчетДолейСписанияПроцентСписанияЕНВДПриИзменении</Event>
+															</Events>
+														</InputField>
+														<InputField name="РасчетДолейСписанияПроцентСписанияНеУчитываетсяНУ" id="322">
+															<DataPath>Объект.РасчетДолейСписания.ПроцентСписанияНеУчитываетсяНУ</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="РасчетДолейСписанияПроцентСписанияНеУчитываетсяНУКонтекстноеМеню" id="323"/>
+															<ExtendedTooltip name="РасчетДолейСписанияПроцентСписанияНеУчитываетсяНУРасширеннаяПодсказка" id="324"/>
+															<Events>
+																<Event name="OnChange">РасчетДолейСписанияПроцентСписанияНеУчитываетсяНУПриИзменении</Event>
+															</Events>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОбщиеРазрезыУчета" id="276">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа общие разрезы учета</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаОбщиеРазрезыУчетаРасширеннаяПодсказка" id="277"/>
+											<ChildItems>
+												<InputField name="РасчетДолейСписанияИФО" id="191">
+													<DataPath>Объект.РасчетДолейСписания.ИФО</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="РасчетДолейСписанияИФОКонтекстноеМеню" id="192"/>
+													<ExtendedTooltip name="РасчетДолейСписанияИФОРасширеннаяПодсказка" id="193"/>
+												</InputField>
+												<ColumnGroup name="ГруппаКФОКПС" id="290">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа КФО, КПС</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<ExtendedTooltip name="ГруппаКФОКПСРасширеннаяПодсказка" id="291"/>
+													<ChildItems>
+														<InputField name="РасчетДолейСписанияКФО" id="194">
+															<DataPath>Объект.РасчетДолейСписания.КФО</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>6</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="РасчетДолейСписанияКФОКонтекстноеМеню" id="195"/>
+															<ExtendedTooltip name="РасчетДолейСписанияКФОРасширеннаяПодсказка" id="196"/>
+														</InputField>
+														<InputField name="РасчетДолейСписанияКПС" id="197">
+															<DataPath>Объект.РасчетДолейСписания.КПС</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>16</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="РасчетДолейСписанияКПСКонтекстноеМеню" id="198"/>
+															<ExtendedTooltip name="РасчетДолейСписанияКПСРасширеннаяПодсказка" id="199"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="РасчетДолейСписанияПодразделение" id="200">
+													<DataPath>Объект.РасчетДолейСписания.Подразделение</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="РасчетДолейСписанияПодразделениеКонтекстноеМеню" id="201"/>
+													<ExtendedTooltip name="РасчетДолейСписанияПодразделениеРасширеннаяПодсказка" id="202"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ДопРасходыКСписанию" id="302">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остатки доп. расходов к списанию</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<ExtendedTooltip name="ДопРасходыКСписаниюРасширеннаяПодсказка" id="303"/>
+							<ChildItems>
+								<Table name="ДопРасходыУСН" id="227">
+									<ChangeRowSet>false</ChangeRowSet>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>Объект.ДопРасходыУСН</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ДопРасходыУСНКонтекстноеМеню" id="228"/>
+									<AutoCommandBar name="ДопРасходыУСНКоманднаяПанель" id="229"/>
+									<ExtendedTooltip name="ДопРасходыУСНРасширеннаяПодсказка" id="230"/>
+									<SearchStringAddition name="ДопРасходыУСНСтрокаПоиска" id="231">
+										<AdditionSource>
+											<Item>ДопРасходыУСН</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДопРасходыУСНСтрокаПоискаКонтекстноеМеню" id="234"/>
+										<ExtendedTooltip name="ДопРасходыУСНСтрокаПоискаРасширеннаяПодсказка" id="235"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДопРасходыУСНСостояниеПросмотра" id="236">
+										<AdditionSource>
+											<Item>ДопРасходыУСН</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДопРасходыУСНСостояниеПросмотраКонтекстноеМеню" id="239"/>
+										<ExtendedTooltip name="ДопРасходыУСНСостояниеПросмотраРасширеннаяПодсказка" id="240"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДопРасходыУСНУправлениеПоиском" id="241">
+										<AdditionSource>
+											<Item>ДопРасходыУСН</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДопРасходыУСНУправлениеПоискомКонтекстноеМеню" id="244"/>
+										<ExtendedTooltip name="ДопРасходыУСНУправлениеПоискомРасширеннаяПодсказка" id="245"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnStartEdit">ДопРасходыУСНПриНачалеРедактирования</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="СчетУчета" id="292">
+											<DataPath>Объект.ДопРасходыУСН.СчетУчета</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>style:ЦветНедоступноеПоле</TextColor>
+											<ContextMenu name="СчетУчетаКонтекстноеМеню" id="293"/>
+											<ExtendedTooltip name="СчетУчетаРасширеннаяПодсказка" id="294"/>
+										</InputField>
+										<ColumnGroup name="ГруппаДопРасходыУСН" id="298">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа доп. расходы УСН</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаДопРасходыУСНРасширеннаяПодсказка" id="299"/>
+											<ChildItems>
+												<ColumnGroup name="ГруппаДопРасходыУСНВалюта" id="310">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа доп расходы УСН, валюта</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<ExtendedTooltip name="ГруппаДопРасходыУСНВалютаРасширеннаяПодсказка" id="311"/>
+													<ChildItems>
+														<InputField name="ДопРасходУСН" id="249">
+															<DataPath>Объект.ДопРасходыУСН.РасходыУСН</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="ДопРасходУСНКонтекстноеМеню" id="250"/>
+															<ExtendedTooltip name="ДопРасходУСНРасширеннаяПодсказка" id="251"/>
+														</InputField>
+														<InputField name="ДопРасходыУСНВалюта" id="312">
+															<DataPath>Объект.ДопРасходыУСН.Валюта</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>6</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<TextColor>style:ЦветНедоступноеПоле</TextColor>
+															<ContextMenu name="ДопРасходыУСНВалютаКонтекстноеМеню" id="313"/>
+															<ExtendedTooltip name="ДопРасходыУСНВалютаРасширеннаяПодсказка" id="314"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="Субконто3" id="295">
+													<DataPath>Объект.ДопРасходыУСН.Субконто3</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Документ оплаты</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="Субконто3КонтекстноеМеню" id="296"/>
+													<ExtendedTooltip name="Субконто3РасширеннаяПодсказка" id="297"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОстатокДопРасходов" id="282">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа остаток доп. расходов</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаОстатокДопРасходовРасширеннаяПодсказка" id="283"/>
+											<ChildItems>
+												<InputField name="ДопРасходыУСНОстатокСуммаВал" id="346">
+													<DataPath>Объект.ДопРасходыУСН.ОстатокСуммаВал</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="ДопРасходыУСНОстатокСуммаВалКонтекстноеМеню" id="347"/>
+													<ExtendedTooltip name="ДопРасходыУСНОстатокСуммаВалРасширеннаяПодсказка" id="348"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНОстатокСумма" id="349">
+													<DataPath>Объект.ДопРасходыУСН.ОстатокСумма</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="ДопРасходыУСНОстатокСуммаКонтекстноеМеню" id="350"/>
+													<ExtendedTooltip name="ДопРасходыУСНОстатокСуммаРасширеннаяПодсказка" id="351"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНОстатокНДС" id="352">
+													<DataPath>Объект.ДопРасходыУСН.ОстатокНДС</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="ДопРасходыУСНОстатокНДСКонтекстноеМеню" id="353"/>
+													<ExtendedTooltip name="ДопРасходыУСНОстатокНДСРасширеннаяПодсказка" id="354"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНОстатокНеУчитываетсяНУ" id="355">
+													<DataPath>Объект.ДопРасходыУСН.ОстатокНеУчитываетсяНУ</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="ДопРасходыУСНОстатокНеУчитываетсяНУКонтекстноеМеню" id="356"/>
+													<ExtendedTooltip name="ДопРасходыУСНОстатокНеУчитываетсяНУРасширеннаяПодсказка" id="357"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНОстатокЕНВД" id="358">
+													<DataPath>Объект.ДопРасходыУСН.ОстатокЕНВД</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<TextColor>style:ЦветНедоступноеПоле</TextColor>
+													<ContextMenu name="ДопРасходыУСНОстатокЕНВДКонтекстноеМеню" id="359"/>
+													<ExtendedTooltip name="ДопРасходыУСНОстатокЕНВДРасширеннаяПодсказка" id="360"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОтнесеноКУСН" id="284">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Относится к УСН</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отнесено к материальным запасам, списанным по деятельности на УСН</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ShowInHeader>true</ShowInHeader>
+											<ExtendedTooltip name="ГруппаОтнесеноКУСНРасширеннаяПодсказка" id="285"/>
+											<ChildItems>
+												<InputField name="ДопРасходыУСНСписатьНаУСНСуммаВал" id="331">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаУСНСуммаВал</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаУСНСуммаВалКонтекстноеМеню" id="332"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаУСНСуммаВалРасширеннаяПодсказка" id="333"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаУСНСумма" id="334">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаУСНСумма</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаУСНСуммаКонтекстноеМеню" id="335"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаУСНСуммаРасширеннаяПодсказка" id="336"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаУСНСуммаНДС" id="337">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаУСНСуммаНДС</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаУСНСуммаНДСКонтекстноеМеню" id="338"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаУСНСуммаНДСРасширеннаяПодсказка" id="339"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаУСНСуммаНеУчитываетсяНУ" id="340">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаУСНСуммаНеУчитываетсяНУ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаУСНСуммаНеУчитываетсяНУКонтекстноеМеню" id="341"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаУСНСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="342"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаУСНСуммаЕНВД" id="343">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаУСНСуммаЕНВД</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаУСНСуммаЕНВДКонтекстноеМеню" id="344"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаУСНСуммаЕНВДРасширеннаяПодсказка" id="345"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОтнеменоКЕНВД" id="378">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Относится к ЕНВД</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отнесено к материальным запасам, списанным по деятельности на ЕНВД</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ShowInHeader>true</ShowInHeader>
+											<ExtendedTooltip name="ГруппаОтнеменоКЕНВДРасширеннаяПодсказка" id="379"/>
+											<ChildItems>
+												<InputField name="ДопРасходыУСНСписатьНаЕНВДСуммаВал" id="380">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаЕНВДСуммаВал</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаЕНВДСуммаВалКонтекстноеМеню" id="381"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаЕНВДСуммаВалРасширеннаяПодсказка" id="382"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаЕНВДСумма" id="383">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаЕНВДСумма</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаЕНВДСуммаКонтекстноеМеню" id="384"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаЕНВДСуммаРасширеннаяПодсказка" id="385"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаЕНВДСуммаНДС" id="392">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаЕНВДСуммаНДС</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаЕНВДСуммаНДСКонтекстноеМеню" id="393"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаЕНВДСуммаНДСРасширеннаяПодсказка" id="394"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаЕНВДСуммаНеУчитываетсяНУ" id="386">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаЕНВДСуммаНеУчитываетсяНУ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаЕНВДСуммаНеУчитываетсяНУКонтекстноеМеню" id="387"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаЕНВДСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="388"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаЕНВДСуммаЕНВД" id="389">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаЕНВДСуммаЕНВД</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаЕНВДСуммаЕНВДКонтекстноеМеню" id="390"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаЕНВДСуммаЕНВДРасширеннаяПодсказка" id="391"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+										<ColumnGroup name="ГруппаОтнесеноКНеУчитываемым" id="361">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Неучитываемые расходы</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отнесено к материальным запасам, списанным на неучитываемые расходы</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ShowInHeader>true</ShowInHeader>
+											<ExtendedTooltip name="ГруппаОтнесеноКНеУчитываемымРасширеннаяПодсказка" id="362"/>
+											<ChildItems>
+												<InputField name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаВал" id="363">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаНеУчитываемыеСуммаВал</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаВалКонтекстноеМеню" id="364"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаВалРасширеннаяПодсказка" id="365"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаНеУчитываемыеСумма" id="366">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаНеУчитываемыеСумма</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаКонтекстноеМеню" id="367"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаРасширеннаяПодсказка" id="368"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНДС" id="375">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаНеУчитываемыеСуммаНДС</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНДСКонтекстноеМеню" id="376"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНДСРасширеннаяПодсказка" id="377"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНеУчитываетсяНУ" id="369">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаНеУчитываемыеСуммаНеУчитываетсяНУ</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНеУчитываетсяНУКонтекстноеМеню" id="370"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаНеУчитываетсяНУРасширеннаяПодсказка" id="371"/>
+												</InputField>
+												<InputField name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаЕНВД" id="372">
+													<DataPath>Объект.ДопРасходыУСН.СписатьНаНеУчитываемыеСуммаЕНВД</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ContextMenu name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаЕНВДКонтекстноеМеню" id="373"/>
+													<ExtendedTooltip name="ДопРасходыУСНСписатьНаНеУчитываемыеСуммаЕНВДРасширеннаяПодсказка" id="374"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="БухгалтерскаяОперация" id="101">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бухгалтерская операция</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="БухгалтерскаяОперацияРасширеннаяПодсказка" id="164"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаСостояниеЭДО" id="403">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние ЭДО</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="404"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияСостояниеЭДО" id="405">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние ЭДО</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="406"/>
+					<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="407"/>
+					<Events>
+						<Event name="Click">ДекорацияЭДОНажатие</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКомментарийОтветственный" id="395">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий ответственный</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомментарийОтветственныйРасширеннаяПодсказка" id="396"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="102">
+					<DataPath>Объект.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="103"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="165"/>
+				</InputField>
+				<InputField name="Ответственный" id="397">
+					<DataPath>Объект.Ответственный</DataPath>
+					<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="398"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="399"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.СписаниеДопРасходовУСН</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ДопРасходыУСН"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекущийИдСтроки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий ид строки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидСубконтоСчета106" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид субконто счета106</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.ВидыСубконто</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставлениеПериодаРегистрации" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить документ по данным учета</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокумент</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

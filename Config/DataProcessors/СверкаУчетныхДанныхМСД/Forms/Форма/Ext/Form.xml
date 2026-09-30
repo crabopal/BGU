@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Декорация1" id="113">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:SpecialTextColor</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В этой версии доступна расшифровка не по всем счетам учета и субконто. 
+Перечень счетов и субконто будет расширен в новой версии. 
+Текущий состав расшифровываемых счетов и субконто доступен на вкладке "Соответствие сверки субконто и аналитик."</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="Декорация1КонтекстноеМеню" id="114"/>
+			<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="115"/>
+		</LabelDecoration>
+		<Pages name="Страницы" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="19"/>
+			<ChildItems>
+				<Page name="СверкаДанныхВыгрузки" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сверка данных БГУ с файлом выгрузки</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СверкаДанныхВыгрузкиРасширеннаяПодсказка" id="50"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаГоризонт" id="111">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа горизонт</v8:content>
+								</v8:item>
+							</Title>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаГоризонтРасширеннаяПодсказка" id="112"/>
+							<ChildItems>
+								<CheckBoxField name="СРасшифровкойБГУ" id="102">
+									<DataPath>СРасшифровкойБГУ</DataPath>
+									<Visible>false</Visible>
+									<CheckBoxType>Switcher</CheckBoxType>
+									<ContextMenu name="СРасшифровкойБГУКонтекстноеМеню" id="103"/>
+									<ExtendedTooltip name="СРасшифровкойБГУРасширеннаяПодсказка" id="104"/>
+								</CheckBoxField>
+								<RadioButtonField name="СпособСравнения" id="108">
+									<DataPath>СпособСравнения</DataPath>
+									<Visible>false</Visible>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Открыть файл</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Выбрать пакет с данными</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="СпособСравненияКонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="СпособСравненияРасширеннаяПодсказка" id="110"/>
+									<Events>
+										<Event name="OnChange">СпособСравненияПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<InputField name="ПакетДанныхДляМСД" id="105">
+									<DataPath>ПакетДанныхДляМСД</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ПакетДанныхДляМСДКонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="ПакетДанныхДляМСДРасширеннаяПодсказка" id="107"/>
+									<Events>
+										<Event name="OnChange">ПакетДанныхДляМСДПриИзменении</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="ТолькоСОтклонением" id="307">
+									<DataPath>ТолькоСОтклонением</DataPath>
+									<CheckBoxType>Switcher</CheckBoxType>
+									<ContextMenu name="ТолькоСОтклонениемКонтекстноеМеню" id="308"/>
+									<ExtendedTooltip name="ТолькоСОтклонениемРасширеннаяПодсказка" id="309"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="ПроизвестиСверкуБГУ" id="51">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ПроизвестиСверкуБГУ</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Произвести сверку учетных данных БГУ с пакетом выгрузки МСД</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ПроизвестиСверкуБГУРасширеннаяПодсказка" id="52"/>
+						</Button>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСоответствиеАналитик" id="116">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Соответствие сверки субконто и аналитик</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа соответствие аналитик</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСоответствиеАналитикРасширеннаяПодсказка" id="117"/>
+					<ChildItems>
+						<Table name="ТаблицаСоответствия" id="118">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаСоответствия</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаСоответствияКонтекстноеМеню" id="119"/>
+							<AutoCommandBar name="ТаблицаСоответствияКоманднаяПанель" id="120">
+								<ChildItems>
+									<Button name="ТаблицаСоответствияОбновитьТаблицуСоответствия" id="230">
+										<Type>CommandBarButton</Type>
+										<Representation>Picture</Representation>
+										<CommandName>Form.Command.ОбновитьТаблицуСоответствия</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.Refresh</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ТаблицаСоответствияОбновитьТаблицуСоответствияРасширеннаяПодсказка" id="231"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаСоответствияРасширеннаяПодсказка" id="121"/>
+							<SearchStringAddition name="ТаблицаСоответствияСтрокаПоиска" id="122">
+								<AdditionSource>
+									<Item>ТаблицаСоответствия</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСоответствияСтрокаПоискаКонтекстноеМеню" id="123"/>
+								<ExtendedTooltip name="ТаблицаСоответствияСтрокаПоискаРасширеннаяПодсказка" id="124"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаСоответствияСостояниеПросмотра" id="125">
+								<AdditionSource>
+									<Item>ТаблицаСоответствия</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСоответствияСостояниеПросмотраКонтекстноеМеню" id="126"/>
+								<ExtendedTooltip name="ТаблицаСоответствияСостояниеПросмотраРасширеннаяПодсказка" id="127"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаСоответствияУправлениеПоиском" id="128">
+								<AdditionSource>
+									<Item>ТаблицаСоответствия</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСоответствияУправлениеПоискомКонтекстноеМеню" id="129"/>
+								<ExtendedTooltip name="ТаблицаСоответствияУправлениеПоискомРасширеннаяПодсказка" id="130"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ТаблицаСоответствияСчет" id="232">
+									<DataPath>ТаблицаСоответствия.Счет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаСоответствияСчетКонтекстноеМеню" id="233"/>
+									<ExtendedTooltip name="ТаблицаСоответствияСчетРасширеннаяПодсказка" id="234"/>
+								</InputField>
+								<ColumnGroup name="ТаблицаСоответствияГруппа1" id="134">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа1РасширеннаяПодсказка" id="135"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика1" id="235">
+											<DataPath>ТаблицаСоответствия.Аналитика1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика1КонтекстноеМеню" id="236"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика1РасширеннаяПодсказка" id="237"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто1" id="238">
+											<DataPath>ТаблицаСоответствия.ТипСубконто1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто1КонтекстноеМеню" id="239"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто1РасширеннаяПодсказка" id="240"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа2" id="142">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа2РасширеннаяПодсказка" id="143"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто1" id="241">
+													<DataPath>ТаблицаСоответствия.НомерСубконто1</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто1КонтекстноеМеню" id="242"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто1РасширеннаяПодсказка" id="243"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении1" id="244">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении1</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении1КонтекстноеМеню" id="245"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении1РасширеннаяПодсказка" id="246"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаСоответствияГруппа3" id="150">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа3РасширеннаяПодсказка" id="151"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика2" id="247">
+											<DataPath>ТаблицаСоответствия.Аналитика2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика2КонтекстноеМеню" id="248"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика2РасширеннаяПодсказка" id="249"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто2" id="250">
+											<DataPath>ТаблицаСоответствия.ТипСубконто2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто2КонтекстноеМеню" id="251"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто2РасширеннаяПодсказка" id="252"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа4" id="158">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа4РасширеннаяПодсказка" id="159"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто2" id="253">
+													<DataPath>ТаблицаСоответствия.НомерСубконто2</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто2КонтекстноеМеню" id="254"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто2РасширеннаяПодсказка" id="255"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении2" id="256">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении2</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении2КонтекстноеМеню" id="257"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении2РасширеннаяПодсказка" id="258"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаСоответствияГруппа5" id="166">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа5РасширеннаяПодсказка" id="167"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика3" id="259">
+											<DataPath>ТаблицаСоответствия.Аналитика3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика3КонтекстноеМеню" id="260"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика3РасширеннаяПодсказка" id="261"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто3" id="262">
+											<DataPath>ТаблицаСоответствия.ТипСубконто3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто3КонтекстноеМеню" id="263"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто3РасширеннаяПодсказка" id="264"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа6" id="174">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа6РасширеннаяПодсказка" id="175"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто3" id="265">
+													<DataPath>ТаблицаСоответствия.НомерСубконто3</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто3КонтекстноеМеню" id="266"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто3РасширеннаяПодсказка" id="267"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении3" id="268">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении3</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении3КонтекстноеМеню" id="269"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении3РасширеннаяПодсказка" id="270"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаСоответствияГруппа7" id="182">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа7РасширеннаяПодсказка" id="183"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика4" id="271">
+											<DataPath>ТаблицаСоответствия.Аналитика4</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика4КонтекстноеМеню" id="272"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика4РасширеннаяПодсказка" id="273"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто4" id="274">
+											<DataPath>ТаблицаСоответствия.ТипСубконто4</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто4КонтекстноеМеню" id="275"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто4РасширеннаяПодсказка" id="276"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа8" id="190">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа8РасширеннаяПодсказка" id="191"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто4" id="277">
+													<DataPath>ТаблицаСоответствия.НомерСубконто4</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто4КонтекстноеМеню" id="278"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто4РасширеннаяПодсказка" id="279"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении4" id="280">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении4</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении4КонтекстноеМеню" id="281"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении4РасширеннаяПодсказка" id="282"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаСоответствияГруппа9" id="198">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа9РасширеннаяПодсказка" id="199"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика5" id="283">
+											<DataPath>ТаблицаСоответствия.Аналитика5</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика5КонтекстноеМеню" id="284"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика5РасширеннаяПодсказка" id="285"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто5" id="286">
+											<DataPath>ТаблицаСоответствия.ТипСубконто5</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто5КонтекстноеМеню" id="287"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто5РасширеннаяПодсказка" id="288"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа10" id="206">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа10РасширеннаяПодсказка" id="207"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто5" id="289">
+													<DataPath>ТаблицаСоответствия.НомерСубконто5</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто5КонтекстноеМеню" id="290"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто5РасширеннаяПодсказка" id="291"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении5" id="292">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении5</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении5КонтекстноеМеню" id="293"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении5РасширеннаяПодсказка" id="294"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаСоответствияГруппа11" id="214">
+									<ExtendedTooltip name="ТаблицаСоответствияГруппа11РасширеннаяПодсказка" id="215"/>
+									<ChildItems>
+										<InputField name="ТаблицаСоответствияАналитика6" id="295">
+											<DataPath>ТаблицаСоответствия.Аналитика6</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияАналитика6КонтекстноеМеню" id="296"/>
+											<ExtendedTooltip name="ТаблицаСоответствияАналитика6РасширеннаяПодсказка" id="297"/>
+										</InputField>
+										<InputField name="ТаблицаСоответствияТипСубконто6" id="298">
+											<DataPath>ТаблицаСоответствия.ТипСубконто6</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="ТаблицаСоответствияТипСубконто6КонтекстноеМеню" id="299"/>
+											<ExtendedTooltip name="ТаблицаСоответствияТипСубконто6РасширеннаяПодсказка" id="300"/>
+										</InputField>
+										<ColumnGroup name="ТаблицаСоответствияГруппа12" id="222">
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ТаблицаСоответствияГруппа12РасширеннаяПодсказка" id="223"/>
+											<ChildItems>
+												<InputField name="ТаблицаСоответствияНомерСубконто6" id="301">
+													<DataPath>ТаблицаСоответствия.НомерСубконто6</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+													<ContextMenu name="ТаблицаСоответствияНомерСубконто6КонтекстноеМеню" id="302"/>
+													<ExtendedTooltip name="ТаблицаСоответствияНомерСубконто6РасширеннаяПодсказка" id="303"/>
+												</InputField>
+												<CheckBoxField name="ТаблицаСоответствияУчаствуетВСравнении6" id="304">
+													<DataPath>ТаблицаСоответствия.УчаствуетВСравнении6</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ТаблицаСоответствияУчаствуетВСравнении6КонтекстноеМеню" id="305"/>
+													<ExtendedTooltip name="ТаблицаСоответствияУчаствуетВСравнении6РасширеннаяПодсказка" id="306"/>
+												</CheckBoxField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.СверкаУчетныхДанныхМСД</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="АдресРасшифровкиПротоколаСверки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес расшифровки протокола сверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресРезультатаПротокола" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес результата протокола</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресТаблицаРезультат" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес таблица результат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресРезультатаРасшифровки" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес результата расшифровки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбъектСсылка" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ОбработкаВКонфигурации" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обработка в конфигурации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПолноеИмяОбъекта" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя объекта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СРасшифровкойБГУ" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>С расшифровкой</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПакетДанныхДляМСД" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пакет данных для МСД</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ПакетыДанныхДляМСД</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СпособСравнения" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ сравнения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаСоответствия" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица соответствия</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Счет" id="1000000">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:ChartOfAccountsRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика1" id="1000001">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 1</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто1" id="1000002">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто1" id="1000003">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении1" id="1000004">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика2" id="1000005">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 2</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто2" id="1000006">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто2" id="1000007">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении2" id="1000008">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика3" id="1000009">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 3</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто3" id="1000010">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто3" id="1000011">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении3" id="1000012">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика4" id="1000013">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 4</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто4" id="1000014">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто4" id="1000015">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении4" id="1000016">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика5" id="1000017">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 5</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто5" id="1000018">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто5" id="1000019">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении5" id="1000020">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика6" id="1000021">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 6</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипСубконто6" id="1000022">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСубконто6" id="1000023">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер субконто</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>1</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчаствуетВСравнении6" id="1000024">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участвует в сравнении</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТолькоСОтклонением" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только с отклонением</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПроизвестиСверкуБГУ" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести сверку БГУ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести сверку БГУ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроизвестиСверкуБГУ</Action>
+		</Command>
+		<Command name="ОбновитьТаблицуСоответствия" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить таблицу соответствия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить таблицу соответствия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбновитьТаблицуСоответствия</Action>
+		</Command>
+	</Commands>
+</Form>

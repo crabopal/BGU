@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПрименить" id="10">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Применить</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьРасширеннаяПодсказка" id="11"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ВидОбмена" id="1">
+			<DataPath>ВидОбмена</DataPath>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="ВидОбменаКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ВидОбменаРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="НастройкаОбмена" id="4">
+			<DataPath>НастройкаОбмена</DataPath>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">ВидОбмена</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="НастройкаОбменаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НастройкаОбменаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="НастройкаФорматов" id="7">
+			<DataPath>НастройкаФорматов</DataPath>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">ВидОбмена</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="НастройкаФорматовКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="НастройкаФорматовРасширеннаяПодсказка" id="9"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ВидОбмена" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТипыОбменаБанкиКС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаОбмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиОбменаБанкиКС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаФорматов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка форматов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкаФорматовОбменаБанкиКС</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Применить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Применить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВидОбмена">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ТипыОбменаБанкиКС</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="НастройкаОбмена">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиОбменаБанкиКС</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="НастройкаФорматов">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкаФорматовОбменаБанкиКС</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Удаление дублей регламентированной отчетности</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="СпособыИсправленияОшибок" id="99">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Способы исправления ошибок</v8:content>
+					</v8:item>
+				</Title>
+				<Picture>
+					<xr:Ref>StdPicture.AppearanceCheckBox</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="СпособыИсправленияОшибокРасширеннаяПодсказка" id="100"/>
+				<ChildItems>
+					<Button name="ФормаНайтиДублиЭлементов" id="25">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.НайтиДублиЭлементов</CommandName>
+						<ExtendedTooltip name="ФормаНайтиДублиЭлементовРасширеннаяПодсказка" id="26"/>
+					</Button>
+					<Button name="ФормаПроверитьГруппыРаскрытия" id="93">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПроверитьГруппыРаскрытия</CommandName>
+						<ExtendedTooltip name="ФормаПроверитьГруппыРаскрытияРасширеннаяПодсказка" id="94"/>
+					</Button>
+					<Button name="ФормаОчиститьСохраненныеНастройки" id="103">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОчиститьСохраненныеНастройки</CommandName>
+						<ExtendedTooltip name="ФормаОчиститьСохраненныеНастройкиРасширеннаяПодсказка" id="104"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Button name="ФормаОбновитьКомплектОтчетности" id="27">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОбновитьКомплектОтчетности</CommandName>
+				<ExtendedTooltip name="ФормаОбновитьКомплектОтчетностиРасширеннаяПодсказка" id="28"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаТаблицы" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа таблицы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТаблицыРасширеннаяПодсказка" id="46"/>
+			<ChildItems>
+				<Pages name="СтраницыТаблиц" id="87">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страницы таблиц</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="СтраницыТаблицРасширеннаяПодсказка" id="88"/>
+					<ChildItems>
+						<Page name="СтраницаПустая" id="101">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница пустая</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="СтраницаПустаяРасширеннаяПодсказка" id="102"/>
+							<ChildItems>
+								<LabelDecoration name="Декорация1" id="105">
+									<ContextMenu name="Декорация1КонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="107"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="СтраницаЗаменяемые" id="89">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница заменяемые</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="СтраницаЗаменяемыеРасширеннаяПодсказка" id="90"/>
+							<ChildItems>
+								<CommandBar name="ГруппаКоманднаяПанель" id="53">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа командная панель</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="54"/>
+									<ChildItems>
+										<Button name="УстановитьПометкиДерева" id="57">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.УстановитьПометкиДерева</CommandName>
+											<ExtendedTooltip name="УстановитьПометкиДереваРасширеннаяПодсказка" id="58"/>
+										</Button>
+										<Button name="СнятьПометкиДерева" id="55">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.СнятьПометкиДерева</CommandName>
+											<ExtendedTooltip name="СнятьПометкиДереваРасширеннаяПодсказка" id="56"/>
+										</Button>
+										<Button name="ВыполнитьОбъединение" id="97">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВыполнитьОбъединение</CommandName>
+											<ExtendedTooltip name="ВыполнитьОбъединениеРасширеннаяПодсказка" id="98"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<Table name="ЗаменяемыеЗначения" id="3">
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ЗаменяемыеЗначения</DataPath>
+									<RowPictureDataPath>ЗаменяемыеЗначения.Уровень</RowPictureDataPath>
+									<RowsPicture>
+										<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</RowsPicture>
+									<ContextMenu name="ЗаменяемыеЗначенияКонтекстноеМеню" id="4"/>
+									<AutoCommandBar name="ЗаменяемыеЗначенияКоманднаяПанель" id="5">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ЗаменяемыеЗначенияРасширеннаяПодсказка" id="6"/>
+									<SearchStringAddition name="ЗаменяемыеЗначенияСтрокаПоиска" id="7">
+										<AdditionSource>
+											<Item>ЗаменяемыеЗначения</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ЗаменяемыеЗначенияСтрокаПоискаКонтекстноеМеню" id="8"/>
+										<ExtendedTooltip name="ЗаменяемыеЗначенияСтрокаПоискаРасширеннаяПодсказка" id="9"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ЗаменяемыеЗначенияСостояниеПросмотра" id="10">
+										<AdditionSource>
+											<Item>ЗаменяемыеЗначения</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ЗаменяемыеЗначенияСостояниеПросмотраКонтекстноеМеню" id="11"/>
+										<ExtendedTooltip name="ЗаменяемыеЗначенияСостояниеПросмотраРасширеннаяПодсказка" id="12"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ЗаменяемыеЗначенияУправлениеПоиском" id="13">
+										<AdditionSource>
+											<Item>ЗаменяемыеЗначения</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ЗаменяемыеЗначенияУправлениеПоискомКонтекстноеМеню" id="14"/>
+										<ExtendedTooltip name="ЗаменяемыеЗначенияУправлениеПоискомРасширеннаяПодсказка" id="15"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<CheckBoxField name="ЗаменяемыеЗначенияПометка" id="50">
+											<DataPath>ЗаменяемыеЗначения.Пометка</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ЗаменяемыеЗначенияПометкаКонтекстноеМеню" id="51"/>
+											<ExtendedTooltip name="ЗаменяемыеЗначенияПометкаРасширеннаяПодсказка" id="52"/>
+											<Events>
+												<Event name="OnChange">ЗаменяемыеЗначенияПометкаПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ЗаменяемыеЗначенияВидСправочника" id="47">
+											<DataPath>ЗаменяемыеЗначения.ВидСправочника</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЗаменяемыеЗначенияВидСправочникаКонтекстноеМеню" id="48"/>
+											<ExtendedTooltip name="ЗаменяемыеЗначенияВидСправочникаРасширеннаяПодсказка" id="49"/>
+										</InputField>
+										<InputField name="ЗаменяемыеЗначенияКодЭлемента" id="16">
+											<DataPath>ЗаменяемыеЗначения.КодЭлемента</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЗаменяемыеЗначенияКодЭлементаКонтекстноеМеню" id="17"/>
+											<ExtendedTooltip name="ЗаменяемыеЗначенияКодЭлементаРасширеннаяПодсказка" id="18"/>
+										</InputField>
+										<InputField name="ЗаменяемыеЗначенияЧтоЗаменять" id="19">
+											<DataPath>ЗаменяемыеЗначения.ЧтоЗаменять</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<OpenButton>true</OpenButton>
+											<ContextMenu name="ЗаменяемыеЗначенияЧтоЗаменятьКонтекстноеМеню" id="20"/>
+											<ExtendedTooltip name="ЗаменяемыеЗначенияЧтоЗаменятьРасширеннаяПодсказка" id="21"/>
+										</InputField>
+										<InputField name="ЗаменяемыеЗначенияНаЧтоЗаменять" id="22">
+											<DataPath>ЗаменяемыеЗначения.НаЧтоЗаменять</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЗаменяемыеЗначенияНаЧтоЗаменятьКонтекстноеМеню" id="23"/>
+											<ExtendedTooltip name="ЗаменяемыеЗначенияНаЧтоЗаменятьРасширеннаяПодсказка" id="24"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="СтраницаГруппыРаскрытия" id="91">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница группы раскрытия</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="СтраницаГруппыРаскрытияРасширеннаяПодсказка" id="92"/>
+							<ChildItems>
+								<Button name="ОчиститьГруппыРаскрытия" id="95">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ОчиститьГруппыРаскрытия</CommandName>
+									<ExtendedTooltip name="ОчиститьГруппыРаскрытияРасширеннаяПодсказка" id="96"/>
+								</Button>
+								<Table name="ДублиГруппРаскрытия" id="62">
+									<Representation>List</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДублиГруппРаскрытия</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ДублиГруппРаскрытияКонтекстноеМеню" id="63"/>
+									<AutoCommandBar name="ДублиГруппРаскрытияКоманднаяПанель" id="64">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДублиГруппРаскрытияРасширеннаяПодсказка" id="65"/>
+									<SearchStringAddition name="ДублиГруппРаскрытияСтрокаПоиска" id="66">
+										<AdditionSource>
+											<Item>ДублиГруппРаскрытия</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДублиГруппРаскрытияСтрокаПоискаКонтекстноеМеню" id="67"/>
+										<ExtendedTooltip name="ДублиГруппРаскрытияСтрокаПоискаРасширеннаяПодсказка" id="68"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДублиГруппРаскрытияСостояниеПросмотра" id="69">
+										<AdditionSource>
+											<Item>ДублиГруппРаскрытия</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДублиГруппРаскрытияСостояниеПросмотраКонтекстноеМеню" id="70"/>
+										<ExtendedTooltip name="ДублиГруппРаскрытияСостояниеПросмотраРасширеннаяПодсказка" id="71"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДублиГруппРаскрытияУправлениеПоиском" id="72">
+										<AdditionSource>
+											<Item>ДублиГруппРаскрытия</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДублиГруппРаскрытияУправлениеПоискомКонтекстноеМеню" id="73"/>
+										<ExtendedTooltip name="ДублиГруппРаскрытияУправлениеПоискомРасширеннаяПодсказка" id="74"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="ДублиГруппРаскрытияВидОтчета" id="75">
+											<DataPath>ДублиГруппРаскрытия.ВидОтчета</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="ДублиГруппРаскрытияВидОтчетаКонтекстноеМеню" id="76"/>
+											<ExtendedTooltip name="ДублиГруппРаскрытияВидОтчетаРасширеннаяПодсказка" id="77"/>
+										</InputField>
+										<InputField name="ДублиГруппРаскрытияГруппаРаскрытия" id="78">
+											<DataPath>ДублиГруппРаскрытия.ГруппаРаскрытия</DataPath>
+											<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<ChoiceButton>false</ChoiceButton>
+											<OpenButton>true</OpenButton>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ДублиГруппРаскрытияГруппаРаскрытияКонтекстноеМеню" id="79"/>
+											<ExtendedTooltip name="ДублиГруппРаскрытияГруппаРаскрытияРасширеннаяПодсказка" id="80"/>
+											<Events>
+												<Event name="StartChoice">ДублиГруппРаскрытияГруппаРаскрытияНачалоВыбора</Event>
+												<Event name="Clearing">ДублиГруппРаскрытияГруппаРаскрытияОчистка</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДублиГруппРаскрытияВидАналитики" id="81">
+											<DataPath>ДублиГруппРаскрытия.ВидАналитики</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ДублиГруппРаскрытияВидАналитикиКонтекстноеМеню" id="82"/>
+											<ExtendedTooltip name="ДублиГруппРаскрытияВидАналитикиРасширеннаяПодсказка" id="83"/>
+										</InputField>
+										<InputField name="ДублиГруппРаскрытияНомерСтроки" id="84">
+											<DataPath>ДублиГруппРаскрытия.НомерСтроки</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ДублиГруппРаскрытияНомерСтрокиКонтекстноеМеню" id="85"/>
+											<ExtendedTooltip name="ДублиГруппРаскрытияНомерСтрокиРасширеннаяПодсказка" id="86"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.УдалениеДублейРегламентированнойОтчетности</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ЗаменяемыеЗначения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заменяемые значения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КодЭлемента" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код элемента</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЧтоЗаменять" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Что заменять</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="НаЧтоЗаменять" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На что заменять</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="ВидСправочника" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид справочника</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Пометка" id="5">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Уровень" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОбщееКоличествоЭлементов" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общее количество элементов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДублиГруппРаскрытия" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дубли групп раскрытия</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ВидОтчета" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид отчета</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыОтчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ГруппаРаскрытия" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа раскрытия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ГруппыРаскрытия</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидАналитики" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид аналитики</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.АналитикаОтчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НомерСтроки" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекстОшибки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ошибки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьОбъединение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить объединение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить объединение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыполнитьОбъединение</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="НайтиДублиЭлементов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>1. Найти дубли элементов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти дубли элементов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НайтиДублиЭлементов</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьКомплектОтчетности" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к обновлению комплекта</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить комплект отчетности</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВидыОтчетов</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьКомплектОтчетности</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьПометкиДерева" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьПометкиДерева</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьПометкиДерева" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьПометкиДерева</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПроверитьГруппыРаскрытия" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>2. Проверить группы раскрытия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить группы раскрытия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьГруппыРаскрытия</Action>
+			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОчиститьГруппыРаскрытия" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить ошибочные группы раскрытия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить группы раскрытия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьГруппыРаскрытия</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОчиститьСохраненныеНастройки" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>3. Очистить сохраненные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить сохраненные настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьСохраненныеНастройки</Action>
+		</Command>
+	</Commands>
+</Form>

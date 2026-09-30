@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИнвентарныйНомер</dataPath>
+			<field>ИнвентарныйНомер</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодПроверки</dataPath>
+			<field>ПериодПроверки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период проверки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Объект</dataPath>
+			<field>Объект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОшибкаРегистрации</dataPath>
+			<field>ОшибкаРегистрации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка регистрации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОшибкаДолей</dataPath>
+			<field>ОшибкаДолей</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка долей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОСНаименование</dataPath>
+			<field>ОСНаименование</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОСНаименование</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОСКод</dataPath>
+			<field>ОСКод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОСКод</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИнвНомерКод</dataPath>
+			<field>ИнвНомерКод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инв номер код</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	УчетныеДанныеОбъектаОС.ОсновноеСредство КАК ОсновноеСредство
+ПОМЕСТИТЬ ВТНедвижимоеИмущество
+ИЗ
+	РегистрСведений.УчетныеДанныеОбъектаОС КАК УчетныеДанныеОбъектаОС
+ГДЕ
+	УчетныеДанныеОбъектаОС.ВидУчета = ЗНАЧЕНИЕ(Перечисление.ВидыУчетаНФА.НаБалансе)
+	И УчетныеДанныеОбъектаОС.ВидИмущества = ЗНАЧЕНИЕ(Перечисление.ВидыИмущества.НедвижимоеИмущество)
+	И УчетныеДанныеОбъектаОС.ОсновноеСредство.ВидНФА = ЗНАЧЕНИЕ(Перечисление.ВидыНФА.ОС)
+{ГДЕ
+	УчетныеДанныеОбъектаОС.Организация.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СтоимостьОбъектовОСОстатки.Организация КАК Организация,
+	СтоимостьОбъектовОСОстатки.ОсновноеСредство КАК ОсновноеСредство,
+	СтоимостьОбъектовОСОстатки.ИнвентарныйНомер КАК ИнвентарныйНомер
+ПОМЕСТИТЬ ВТОСкПроверке
+ИЗ
+	РегистрНакопления.СтоимостьОбъектовОС.Остатки(&amp;НачалоПериодаНачалоДня,
+		ВидРаспоряжения = ЗНАЧЕНИЕ(Перечисление.ВидыРаспоряженияОС.НаБалансе)
+	И ОсновноеСредство В
+		(ВЫБРАТЬ
+			Таб.ОсновноеСредство
+		ИЗ
+			ВТНедвижимоеИмущество КАК Таб) {(Организация).*}) КАК СтоимостьОбъектовОСОстатки
+ГДЕ
+	СтоимостьОбъектовОСОстатки.КоличествоОстаток &gt; 0
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СтоимостьОбъектовОС.Организация,
+	СтоимостьОбъектовОС.ОсновноеСредство,
+	СтоимостьОбъектовОС.ИнвентарныйНомер
+ИЗ
+	РегистрНакопления.СтоимостьОбъектовОС КАК СтоимостьОбъектовОС
+ГДЕ
+	СтоимостьОбъектовОС.Период &gt;= &amp;НачалоПериодаНачалоДня
+	И СтоимостьОбъектовОС.Активность
+	И СтоимостьОбъектовОС.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Приход)
+	И СтоимостьОбъектовОС.ВидРаспоряжения = ЗНАЧЕНИЕ(Перечисление.ВидыРаспоряженияОС.НаБалансе)
+	И СтоимостьОбъектовОС.ОсновноеСредство В
+		(ВЫБРАТЬ
+			Таб.ОсновноеСредство
+		ИЗ
+			ВТНедвижимоеИмущество КАК Таб)
+{ГДЕ
+	СтоимостьОбъектовОС.Организация.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Ставки.Период КАК Период,
+	&amp;НачалоПериодаНачалоДня КАК ПериодПроверки,
+	Ставки.Организация КАК Организация,
+	Ставки.ОсновноеСредство КАК ОсновноеСредство,
+	Ставки.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	Ставки.НалоговыйОрган КАК НалоговыйОрган,
+	Ставки.КодПоОКТМО КАК КодПоОКТМО,
+	Ставки.ПорядокНалогообложения КАК ПорядокНалогообложения,
+	Ставки.НалоговаяСтавка КАК НалоговаяСтавка,
+	Ставки.НалоговаяБаза КАК НалоговаяБаза,
+	Ставки.КодВидаИмущества КАК КодВидаИмущества,
+	Ставки.ОсвобождениеОтНалогообложенияКодЛьготы КАК ОсвобождениеОтНалогообложенияКодЛьготы,
+	Ставки.ПроцентУменьшенияСуммыНалога КАК ПроцентУменьшенияСуммыНалога,
+	Ставки.СуммаУменьшенияСуммыНалога КАК СуммаУменьшенияСуммыНалога,
+	Ставки.КодОснованияЛьготы КАК КодОснованияЛьготы,
+	Ставки.ДоляСтоимостиЧислитель КАК ДоляСтоимостиЧислитель,
+	Ставки.ДоляСтоимостиЗнаменатель КАК ДоляСтоимостиЗнаменатель
+ПОМЕСТИТЬ ВТСтавкиВсе
+ИЗ
+	РегистрСведений.СтавкиНалогаНаИмуществоПоОсновнымСредствам.СрезПоследних(&amp;НачалоПериода, (Организация,
+		ОсновноеСредство, ИнвентарныйНомер) В
+		(ВЫБРАТЬ
+			Таб.Организация,
+			Таб.ОсновноеСредство,
+			Таб.ИнвентарныйНомер
+		ИЗ
+			ВТОСкПроверке КАК Таб)) КАК Ставки
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Ставки.Период КАК Период,
+	ВЫБОР
+		КОГДА Ставки.НачалоДействия = ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА ВЫБОР
+				КОГДА НАЧАЛОПЕРИОДА(Ставки.Период, МЕСЯЦ) = НАЧАЛОПЕРИОДА(Ставки.Период, ДЕНЬ)
+					ТОГДА НАЧАЛОПЕРИОДА(Ставки.Период, МЕСЯЦ)
+				КОГДА КОНЕЦПЕРИОДА(Ставки.Период, ГОД) = КОНЕЦПЕРИОДА(Ставки.Период, МЕСЯЦ)
+					ТОГДА КОНЕЦПЕРИОДА(Ставки.Период, ГОД)
+				ИНАЧЕ ДОБАВИТЬКДАТЕ(НАЧАЛОПЕРИОДА(Ставки.Период, МЕСЯЦ), МЕСЯЦ, 1)
+			КОНЕЦ
+		ИНАЧЕ ВЫБОР
+			КОГДА НАЧАЛОПЕРИОДА(Ставки.НачалоДействия, МЕСЯЦ) = Ставки.НачалоДействия
+				ТОГДА Ставки.НачалоДействия
+			КОГДА КОНЕЦПЕРИОДА(Ставки.НачалоДействия, ГОД) = КОНЕЦПЕРИОДА(Ставки.НачалоДействия, МЕСЯЦ)
+				ТОГДА КОНЕЦПЕРИОДА(Ставки.НачалоДействия, ГОД)
+			ИНАЧЕ ДОБАВИТЬКДАТЕ(НАЧАЛОПЕРИОДА(Ставки.НачалоДействия, МЕСЯЦ), МЕСЯЦ, 1)
+		КОНЕЦ
+	КОНЕЦ КАК ПериодПроверки,
+	Ставки.Организация КАК Организация,
+	Ставки.ОсновноеСредство КАК ОсновноеСредство,
+	Ставки.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	Ставки.НалоговыйОрган КАК НалоговыйОрган,
+	Ставки.КодПоОКТМО КАК КодПоОКТМО,
+	Ставки.ПорядокНалогообложения КАК ПорядокНалогообложения,
+	Ставки.НалоговаяСтавка,
+	Ставки.НалоговаяБаза КАК НалоговаяБаза,
+	Ставки.КодВидаИмущества КАК КодВидаИмущества,
+	Ставки.ОсвобождениеОтНалогообложенияКодЛьготы,
+	Ставки.ПроцентУменьшенияСуммыНалога,
+	Ставки.СуммаУменьшенияСуммыНалога,
+	Ставки.КодОснованияЛьготы,
+	Ставки.ДоляСтоимостиЧислитель КАК ДоляСтоимостиЧислитель,
+	Ставки.ДоляСтоимостиЗнаменатель КАК ДоляСтоимостиЗнаменатель
+ИЗ
+	РегистрСведений.СтавкиНалогаНаИмуществоПоОсновнымСредствам КАК Ставки
+ГДЕ
+	(Ставки.Организация, Ставки.ОсновноеСредство, Ставки.ИнвентарныйНомер) В
+		(ВЫБРАТЬ
+			Таб.Организация,
+			Таб.ОсновноеСредство,
+			Таб.ИнвентарныйНомер
+		ИЗ
+			ВТОСкПроверке КАК Таб)
+	И Ставки.Активность
+	И Ставки.Период &gt; &amp;НачалоПериода
+	И (Ставки.Период &lt;= &amp;КонецПериода
+	ИЛИ &amp;КонецПериода = ДАТАВРЕМЯ(1, 1, 1)
+	ИЛИ Ставки.НачалоДействия &lt;= &amp;КонецПериода)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТСтавкиВсе.Период КАК Период,
+	ВТСтавкиВсе.ПериодПроверки КАК ПериодПроверки,
+	ВТСтавкиВсе.Организация КАК Организация,
+	ВТСтавкиВсе.ОсновноеСредство КАК ОсновноеСредство,
+	ВТСтавкиВсе.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТСтавкиВсе.НалоговыйОрган КАК НалоговыйОрган,
+	ВТСтавкиВсе.КодПоОКТМО КАК КодПоОКТМО,
+	ВТСтавкиВсе.ПорядокНалогообложения КАК ПорядокНалогообложения,
+	ВТСтавкиВсе.НалоговаяСтавка КАК НалоговаяСтавка,
+	ВТСтавкиВсе.НалоговаяБаза КАК НалоговаяБаза,
+	ВТСтавкиВсе.КодВидаИмущества КАК КодВидаИмущества,
+	ВТСтавкиВсе.ОсвобождениеОтНалогообложенияКодЛьготы КАК ОсвобождениеОтНалогообложенияКодЛьготы,
+	ВТСтавкиВсе.ПроцентУменьшенияСуммыНалога КАК ПроцентУменьшенияСуммыНалога,
+	ВТСтавкиВсе.СуммаУменьшенияСуммыНалога КАК СуммаУменьшенияСуммыНалога,
+	ВТСтавкиВсе.КодОснованияЛьготы КАК КодОснованияЛьготы,
+	ВТСтавкиВсе.ДоляСтоимостиЧислитель КАК ДоляСтоимостиЧислитель,
+	ВТСтавкиВсе.ДоляСтоимостиЗнаменатель КАК ДоляСтоимостиЗнаменатель
+ПОМЕСТИТЬ ВТСтавкиПоследние
+ИЗ
+	ВТСтавкиВсе КАК ВТСтавкиВсе
+ГДЕ
+	НЕ ИСТИНА В
+		(ВЫБРАТЬ ПЕРВЫЕ 1
+			ИСТИНА
+		ИЗ
+			(ВЫБРАТЬ
+				ВТСтавкиВсе.Период КАК Период,
+				ВТСтавкиВсе.ПериодПроверки КАК ПериодПроверки,
+				ВТСтавкиВсе.Организация КАК Организация,
+				ВТСтавкиВсе.ОсновноеСредство КАК ОсновноеСредство,
+				ВТСтавкиВсе.ИнвентарныйНомер КАК ИнвентарныйНомер
+			ИЗ
+				ВТСтавкиВсе КАК ВТСтавкиВсе) КАК Т
+		ГДЕ
+			Т.Период &gt; ВТСтавкиВсе.Период
+			И Т.ПериодПроверки &lt;= ВТСтавкиВсе.ПериодПроверки
+			И Т.Организация = ВТСтавкиВсе.Организация
+			И Т.ОсновноеСредство = ВТСтавкиВсе.ОсновноеСредство
+			И Т.ИнвентарныйНомер = ВТСтавкиВсе.ИнвентарныйНомер)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТСтавки.Период КАК Период,
+	ВТСтавки.Организация КАК Организация,
+	ВТСтавки.ОсновноеСредство КАК ОсновноеСредство,
+	ВТСтавки.ИнвентарныйНомер КАК ИнвентарныйНомер
+ПОМЕСТИТЬ ВТОшибкаРегистрации
+ИЗ
+	(ВЫБРАТЬ
+		ВТСтавкиПоследние.Период КАК Период,
+		ВТСтавкиПоследние.ПериодПроверки КАК ПериодПроверки,
+		ВТСтавкиПоследние.Организация КАК Организация,
+		ВТСтавкиПоследние.ОсновноеСредство КАК ОсновноеСредство,
+		ВТСтавкиПоследние.ИнвентарныйНомер КАК ИнвентарныйНомер,
+		ВТСтавкиПоследние.НалоговыйОрган КАК НалоговыйОрган,
+		ВТСтавкиПоследние.КодПоОКТМО КАК КодПоОКТМО,
+		ВТСтавкиПоследние.НалоговаяСтавка КАК НалоговаяСтавка,
+		ВЫБОР
+			КОГДА ВТСтавкиПоследние.КодВидаИмущества = "02"
+				ТОГДА ЛОЖЬ
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ КАК ЕстьИмущество,
+		ВТСтавкиПоследние.ОсвобождениеОтНалогообложенияКодЛьготы КАК ОсвобождениеОтНалогообложенияКодЛьготы,
+		ВТСтавкиПоследние.ПроцентУменьшенияСуммыНалога КАК ПроцентУменьшенияСуммыНалога,
+		ВТСтавкиПоследние.СуммаУменьшенияСуммыНалога КАК СуммаУменьшенияСуммыНалога,
+		ВТСтавкиПоследние.КодОснованияЛьготы КАК КодОснованияЛьготы,
+		ВТСтавкиПоследние.ДоляСтоимостиЧислитель КАК ДоляСтоимостиЧислитель,
+		ВТСтавкиПоследние.ДоляСтоимостиЗнаменатель КАК ДоляСтоимостиЗнаменатель
+	ИЗ
+		ВТСтавкиПоследние КАК ВТСтавкиПоследние
+	ГДЕ
+		ВТСтавкиПоследние.НалоговаяБаза = ЗНАЧЕНИЕ(Перечисление.НалоговаяБазаПоНалогуНаИмущество.СреднегодоваяСтоимость)
+		И
+			ВТСтавкиПоследние.ПорядокНалогообложения &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПорядокНалогообложенияИмущества.НеПодлежитНалогообложению)) КАК
+		ВТСтавки
+СГРУППИРОВАТЬ ПО
+	ВТСтавки.Организация,
+	ВТСтавки.ОсновноеСредство,
+	ВТСтавки.ИнвентарныйНомер,
+	ВТСтавки.Период
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(*) &gt; 1
+	И МАКСИМУМ(ВТСтавки.ЕстьИмущество)
+	ИЛИ КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ВТСтавки.ПериодПроверки) &gt; 1
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТСтавкиПоследние.Организация КАК Организация,
+	ВТСтавкиПоследние.ОсновноеСредство КАК ОсновноеСредство,
+	ВТСтавкиПоследние.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТСтавкиПоследние.ПериодПроверки КАК ПериодПроверки,
+	ВТСтавкиПоследние.Период КАК Период,
+	ВЫРАЗИТЬ(СУММА(ВЫБОР
+		КОГДА ВТСтавкиПоследние.ДоляСтоимостиЧислитель = 0
+			ТОГДА 1
+		ИНАЧЕ ВТСтавкиПоследние.ДоляСтоимостиЧислитель
+	КОНЕЦ / ВЫБОР
+		КОГДА ВТСтавкиПоследние.ДоляСтоимостиЗнаменатель = 0
+			ТОГДА 1
+		ИНАЧЕ ВТСтавкиПоследние.ДоляСтоимостиЗнаменатель
+	КОНЕЦ) КАК ЧИСЛО(15, 2)) КАК СуммаДолей
+ПОМЕСТИТЬ ВТОшибкаДолей
+ИЗ
+	ВТСтавкиПоследние КАК ВТСтавкиПоследние
+ГДЕ
+	ВТСтавкиПоследние.КодВидаИмущества = "02"
+СГРУППИРОВАТЬ ПО
+	ВТСтавкиПоследние.Организация,
+	ВТСтавкиПоследние.ОсновноеСредство,
+	ВТСтавкиПоследние.ИнвентарныйНомер,
+	ВТСтавкиПоследние.ПериодПроверки,
+	ВТСтавкиПоследние.Период
+ИМЕЮЩИЕ
+	ВЫРАЗИТЬ(СУММА(ВЫБОР
+		КОГДА ВТСтавкиПоследние.ДоляСтоимостиЧислитель = 0
+			ТОГДА 1
+		ИНАЧЕ ВТСтавкиПоследние.ДоляСтоимостиЧислитель
+	КОНЕЦ / ВЫБОР
+		КОГДА ВТСтавкиПоследние.ДоляСтоимостиЗнаменатель = 0
+			ТОГДА 1
+		ИНАЧЕ ВТСтавкиПоследние.ДоляСтоимостиЗнаменатель
+	КОНЕЦ) КАК ЧИСЛО(15, 2)) &lt;&gt; 1
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТОшибкаРегистрации.Организация КАК Организация,
+	ВТОшибкаРегистрации.ОсновноеСредство КАК Объект,
+	ВТОшибкаРегистрации.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТОшибкаРегистрации.Период КАК Период,
+	ВТСтавкиПоследние.ПериодПроверки КАК ПериодПроверки,
+	ИСТИНА КАК ОшибкаРегистрации,
+	ЛОЖЬ КАК ОшибкаДолей,
+	ОсновныеСредства.Наименование КАК ОСНаименование,
+	ОсновныеСредства.Код КАК ОСКод,
+	ЕСТЬNULL(ИнвентарныеНомераОС.Код, "") КАК ИнвНомерКод
+{ВЫБРАТЬ
+	Организация.*,
+	Объект.*,
+	ИнвентарныйНомер.*,
+	Период,
+	ПериодПроверки,
+	ОшибкаРегистрации,
+	ОшибкаДолей,
+	ОСНаименование,
+	ОСКод,
+	ИнвНомерКод}
+ИЗ
+	ВТОшибкаРегистрации КАК ВТОшибкаРегистрации
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТСтавкиПоследние КАК ВТСтавкиПоследние
+		ПО ВТОшибкаРегистрации.Организация = ВТСтавкиПоследние.Организация
+		И ВТОшибкаРегистрации.ОсновноеСредство = ВТСтавкиПоследние.ОсновноеСредство
+		И ВТОшибкаРегистрации.ИнвентарныйНомер = ВТСтавкиПоследние.ИнвентарныйНомер
+		И ВТОшибкаРегистрации.Период = ВТСтавкиПоследние.Период
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ИнвентарныеНомераОС КАК ИнвентарныеНомераОС
+		ПО ВТОшибкаРегистрации.ИнвентарныйНомер = ИнвентарныеНомераОС.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ОсновныеСредства КАК ОсновныеСредства
+		ПО ВТОшибкаРегистрации.ОсновноеСредство = ОсновныеСредства.Ссылка
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТОшибкаДолей.Организация КАК Организация,
+	ВТОшибкаДолей.ОсновноеСредство КАК Объект,
+	ВТОшибкаДолей.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТОшибкаДолей.Период КАК Период,
+	ВТОшибкаДолей.ПериодПроверки КАК ПериодПроверки,
+	ЛОЖЬ КАК ОшибкаРегистрации,
+	ИСТИНА КАК ОшибкаДолей,
+	ОсновныеСредства.Наименование КАК ОСНаименование,
+	ОсновныеСредства.Код КАК ОСКод,
+	ЕСТЬNULL(ИнвентарныеНомераОС.Код, "") КАК ИнвНомерКод
+ИЗ
+	ВТОшибкаДолей КАК ВТОшибкаДолей
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ИнвентарныеНомераОС КАК ИнвентарныеНомераОС
+		ПО ВТОшибкаДолей.ИнвентарныйНомер = ИнвентарныеНомераОС.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ОсновныеСредства КАК ОсновныеСредства
+		ПО ВТОшибкаДолей.ОсновноеСредство = ОсновныеСредства.Ссылка</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериодаНачалоДня</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода начало дня</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>НачалоПериода(&amp;НачалоПериода, "День")</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Объект</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Организация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Объект</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОСНаименование</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОСКод</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ИнвентарныйНомер</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ИнвНомерКод</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОшибкаДолей</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОшибкаРегистрации</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПериодПроверки</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Период</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

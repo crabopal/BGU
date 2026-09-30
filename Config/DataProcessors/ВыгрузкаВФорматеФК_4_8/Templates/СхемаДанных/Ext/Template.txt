@@ -1,0 +1,138 @@
+﻿<Model xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Model">
+	<package targetNamespace="urn:schemas-1c-ru:reports/data/conversion/treasury">
+		<property xmlns:d3p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="FormatDescription" type="d3p1:TreasuryFormatDescription"/>
+		<valueType name="ComparsionType" base="xs:NMTOKEN">
+			<enumeration>Equal</enumeration>
+			<enumeration>InList</enumeration>
+			<enumeration>InHierarchy</enumeration>
+			<enumeration>NotEqual</enumeration>
+			<enumeration>NotInList</enumeration>
+			<enumeration>NotInHierarchy</enumeration>
+		</valueType>
+		<valueType name="ContextExpression" base="xs:string"/>
+		<valueType name="FieldRole" base="xs:NMTOKEN">
+			<enumeration>Default</enumeration>
+			<enumeration>Presentation</enumeration>
+			<enumeration>AccountPresentation</enumeration>
+			<enumeration>Indicator</enumeration>
+		</valueType>
+		<valueType name="FilterGroupingMethod" base="xs:string">
+			<enumeration>And</enumeration>
+			<enumeration>Or</enumeration>
+			<enumeration>Not</enumeration>
+		</valueType>
+		<valueType name="QueryAggregation" base="xs:string">
+			<enumeration>Sum</enumeration>
+			<enumeration>Max</enumeration>
+			<enumeration>Min</enumeration>
+			<enumeration>Avg</enumeration>
+			<enumeration>Count</enumeration>
+		</valueType>
+		<valueType name="QueryField" base="xs:string"/>
+		<valueType name="TotalsPlacement" base="xs:NMTOKEN">
+			<enumeration>Top</enumeration>
+			<enumeration>Bottom</enumeration>
+			<enumeration>None</enumeration>
+		</valueType>
+		<objectType xmlns:d3p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="DataFilter" base="d3p1:FilterElement">
+			<property name="DataPath" type="d3p1:QueryField"/>
+			<property name="ComparsionType" type="d3p1:ComparsionType"/>
+			<property name="Value"/>
+		</objectType>
+		<objectType name="DataSource">
+			<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Property" type="d4p1:RowProperty" lowerBound="0" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="ReportQueryDescription" type="d4p1:ReportQueryDescriprion"/>
+		</objectType>
+		<objectType name="ExternalXMLValue">
+			<property name="extName" type="xs:QName" lowerBound="0" form="Attribute"/>
+			<property name="simpleValue" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Property" type="d4p1:ObjectProperty" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="FieldPlacement">
+			<property name="noDelimiter" type="xs:boolean" lowerBound="0" form="Attribute"/>
+			<property name="__content" type="xs:string" form="Text"/>
+		</objectType>
+		<objectType name="FilterElement" abstract="true">
+			<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+		</objectType>
+		<objectType xmlns:d3p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="FilterGroup" base="d3p1:FilterElement">
+			<property name="grouping" type="d3p1:FilterGroupingMethod" lowerBound="0" form="Attribute"/>
+			<property name="Filter" type="d3p1:FilterElement" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="Module">
+			<property name="procMain" type="xs:string"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Procedure" type="d4p1:Procedure" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="NamedValue">
+			<property name="name" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Value" nillable="true"/>
+		</objectType>
+		<objectType xmlns:d3p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="ObjectProperty" base="d3p1:NamedValue"/>
+		<objectType name="Procedure">
+			<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="Text" type="xs:string"/>
+		</objectType>
+		<objectType name="ReportQueryDescriprion">
+			<property name="reportCode" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Attribute" type="d4p1:NamedValue" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="ReportSection">
+			<property name="sectionNumber" lowerBound="0" form="Attribute">
+				<typeDef xsi:type="ValueType" base="xs:integer" totalDigits="2"/>
+			</property>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="DataSet" type="d4p1:SectionDataSet" upperBound="-1"/>
+		</objectType>
+		<objectType name="ReportVariant">
+			<property name="FormID" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="Name" type="xs:string" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Attribute" type="d4p1:NamedValue" lowerBound="0" upperBound="-1"/>
+			<property name="AdditionalAlgorithm" type="xs:string" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="RowProperty">
+			<property name="code" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property name="ordered" type="xs:boolean" lowerBound="0" default="false" form="Attribute"/>
+		</objectType>
+		<objectType name="SectionDataSet">
+			<property name="dataSourceName" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="totalsPlacement" type="d4p1:TotalsPlacement" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Filter" type="d4p1:FilterElement" lowerBound="0" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Field" type="d4p1:SectionField" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="PostProcessAlgorithm" type="d4p1:Module"/>
+		</objectType>
+		<objectType name="SectionField">
+			<property name="name" type="xs:NCName" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="role" type="d4p1:FieldRole" lowerBound="0" form="Attribute"/>
+			<property name="Service" type="xs:boolean" form="Attribute"/>
+			<property name="noDelimiter" type="xs:boolean" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="aggregation" type="d4p1:QueryAggregation" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="DataPath" type="d4p1:QueryField"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="EmptyValueDefinition" type="d4p1:ValueSubstitution" lowerBound="0"/>
+		</objectType>
+		<objectType name="SourceReport">
+			<property name="reportCode" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="exportable" type="xs:boolean" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="ReportRef" type="d4p1:ReportVariant" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="TreasuryFormatDescription">
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="TreasuryFormatReport" type="d4p1:TreasuryFormatReport" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="SourceReport" type="d4p1:SourceReport" upperBound="-1"/>
+		</objectType>
+		<objectType name="TreasuryFormatReport">
+			<property name="FormID" type="xs:string" form="Attribute"/>
+			<property name="workingCode" type="xs:string" form="Attribute"/>
+			<property name="directExport" type="xs:boolean" form="Attribute"/>
+			<property name="allowEmptyRows" type="xs:boolean" form="Attribute"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="DataSource" type="d4p1:DataSource" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Attribute" type="d4p1:NamedValue" lowerBound="0" upperBound="-1"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="Section" type="d4p1:ReportSection" upperBound="-1"/>
+		</objectType>
+		<objectType name="ValueList">
+			<property name="ListItem" lowerBound="0" upperBound="-1"/>
+		</objectType>
+		<objectType name="ValueSubstitution">
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="DefaultValue" type="d4p1:FieldPlacement"/>
+			<property xmlns:d4p1="urn:schemas-1c-ru:reports/data/conversion/treasury" name="TotalsValue" type="d4p1:FieldPlacement"/>
+		</objectType>
+	</package>
+</Model>

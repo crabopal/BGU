@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:tns="urn:schemas-1c-ru:budget:update-package/manifest" elementFormDefault="qualified" targetNamespace="urn:schemas-1c-ru:budget:update-package/manifest" version="1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UpdateManifest">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="package" type="tns:UpdatePackageManifest" />
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:normalizedString" use="required" />
+  </xs:complexType>
+  <xs:complexType name="UpdatePackageManifest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vendor" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="version" type="xs:string" />
+      <xs:element minOccurs="0" name="revision" type="xs:string" />
+      <xs:element name="modified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="url" type="xs:anyURI" />
+      <xs:element name="updateItems" type="tns:UpdateItemList" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:anyURI" use="required" />
+  </xs:complexType>
+  <xs:complexType name="UpdateItemList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="item">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:UpdateItemInfo" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UpdateItemInfo">
+    <xs:attribute name="type" type="xs:anyURI" use="required" />
+    <xs:attribute name="contentType" type="xs:normalizedString" use="optional" />
+    <xs:attribute name="relationshipId" type="xs:token" />
+  </xs:complexType>
+  <xs:element name="updateManifest">
+    <xs:complexType>
+      <xs:complexContent mixed="false">
+        <xs:extension base="tns:UpdateManifest" />
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

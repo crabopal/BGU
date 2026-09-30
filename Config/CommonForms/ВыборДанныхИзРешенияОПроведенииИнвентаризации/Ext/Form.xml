@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор данных из Решения с учетом изменений</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Решение" id="34">
+			<DataPath>Решение</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="РешениеКонтекстноеМеню" id="35"/>
+			<ExtendedTooltip name="РешениеРасширеннаяПодсказка" id="36"/>
+		</InputField>
+		<InputField name="ПоследнееИзменение" id="39">
+			<DataPath>ПоследнееИзменение</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>отсутствует</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="ПоследнееИзменениеКонтекстноеМеню" id="40"/>
+			<ExtendedTooltip name="ПоследнееИзменениеРасширеннаяПодсказка" id="41"/>
+		</InputField>
+		<UsualGroup name="ГруппаСотрудник" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаСотрудникРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<InputField name="Сотрудник" id="31">
+					<DataPath>Сотрудник</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ClearButton>true</ClearButton>
+					<CreateButton>false</CreateButton>
+					<QuickChoice>true</QuickChoice>
+					<ChooseType>false</ChooseType>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Ссылка</xr:Name>
+							<xr:DataPath xsi:type="xs:string">ОбщийСписокСотрудников</xr:DataPath>
+							<xr:ValueChange>DontChange</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>все сотрудники из раздела 1</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="СотрудникКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="СотрудникРасширеннаяПодсказка" id="33"/>
+					<Events>
+						<Event name="OnChange">СотрудникПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтрокаКоманднойПанели" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строка командной панели</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСтрокаКоманднойПанелиРасширеннаяПодсказка" id="54"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОбъединениеСтрок" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объединение строк</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>NormalSeparation</Representation>
+					<ExtendedTooltip name="ГруппаОбъединениеСтрокРасширеннаяПодсказка" id="72"/>
+					<ChildItems>
+						<CheckBoxField name="ОбъединитьСтрокиПоСчетам" id="47">
+							<DataPath>ОбъединитьСтрокиПоСчетам</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По счетам</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОбъединитьСтрокиПоСчетамКонтекстноеМеню" id="48"/>
+							<ExtendedTooltip name="ОбъединитьСтрокиПоСчетамРасширеннаяПодсказка" id="49">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Объединить строки Решения с различными счетами в одну строку, если инвентаризационная опись предполагает заполнение по списку счетов.
+Таким образом, в один документ инвентаризационной описи будет включено сразу несколько строк Решения о проведении инвентаризации, при условии совпадения значений всех остальных колонок в таких строках.
+
+Изменение флажка возможно только если инвентаризационная опись предполагает заполнение по списку счетов.
+
+&lt;b&gt;Внимание!&lt;/&gt;
+При установленном флажке возможно образование документа описи большого размера, так как документ описи будет содержать данные бух.учета по большому количеству счетов.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ОбъединитьСтрокиПоСчетамПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<CheckBoxField name="ОбъединитьСтрокиПоМестамИнвентаризации" id="73">
+							<DataPath>ОбъединитьСтрокиПоМестамИнвентаризации</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По местам инвентаризации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОбъединитьСтрокиПоМестамИнвентаризацииКонтекстноеМеню" id="74"/>
+							<ExtendedTooltip name="ОбъединитьСтрокиПоМестамИнвентаризацииРасширеннаяПодсказка" id="75">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Объединить строки Решения с различными местами проведения инвентаризации в одну строку, если инвентаризационная опись предполагает заполнение по списку мест проведения инвентаризации.
+Таким образом, в один документ инвентаризационной описи будет включено сразу несколько строк Решения о проведении инвентаризации, при условии совпадения значений всех остальных колонок в таких строках.
+
+Изменение флажка возможно только если инвентаризационная опись предполагает заполнение по списку мест проведения инвентаризации.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ОбъединитьСтрокиПоМестамИнвентаризацииПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="ГруппаКоманднаяПанель" id="55">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа командная панель</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="56"/>
+					<ChildItems>
+						<Button name="ФормаПоказатьВсеКолонки" id="69">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ПоказатьВсеКолонки</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаПоказатьВсеКолонкиРасширеннаяПодсказка" id="70"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаОтметок" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТаблицаОтметок</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаОтметокКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ТаблицаОтметокКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаОтметокРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ТаблицаОтметокСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>ТаблицаОтметок</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаОтметокСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ТаблицаОтметокСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаОтметокСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>ТаблицаОтметок</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаОтметокСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ТаблицаОтметокСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаОтметокУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>ТаблицаОтметок</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаОтметокУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ТаблицаОтметокУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ТаблицаОтметокВыбор</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ТаблицаОтметокОтметка" id="23">
+					<DataPath>ТаблицаОтметок.Отметка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FixingInTable>Left</FixingInTable>
+					<ShowInHeader>false</ShowInHeader>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ФлажокУзкий</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<ShowInFooter>false</ShowInFooter>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаОтметокОтметкаКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ТаблицаОтметокОтметкаРасширеннаяПодсказка" id="25"/>
+					<Events>
+						<Event name="OnChange">ТаблицаОтметокОтметкаПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ТаблицаОтметокКодСтрокиПредставление" id="44">
+					<DataPath>ТаблицаОтметок.КодСтрокиПредставление</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<OpenButton>true</OpenButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокКодСтрокиПредставлениеКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ТаблицаОтметокКодСтрокиПредставлениеРасширеннаяПодсказка" id="46"/>
+					<Events>
+						<Event name="Clearing">ТаблицаОтметокКодСтрокиПредставлениеОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокСчетПредставление" id="20">
+					<DataPath>ТаблицаОтметок.СчетПредставление</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<OpenButton>true</OpenButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокСчетПредставлениеКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ТаблицаОтметокСчетПредставлениеРасширеннаяПодсказка" id="22"/>
+					<Events>
+						<Event name="Clearing">ТаблицаОтметокСчетПредставлениеОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокСотрудникПредставление" id="17">
+					<DataPath>ТаблицаОтметок.СотрудникПредставление</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<OpenButton>true</OpenButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокСотрудникПредставлениеКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ТаблицаОтметокСотрудникПредставлениеРасширеннаяПодсказка" id="19"/>
+					<Events>
+						<Event name="Clearing">ТаблицаОтметокСотрудникПредставлениеОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокКомиссияПредставление" id="14">
+					<DataPath>ТаблицаОтметок.КомиссияПредставление</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<ContextMenu name="ТаблицаОтметокКомиссияПредставлениеКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ТаблицаОтметокКомиссияПредставлениеРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<InputField name="ТаблицаОтметокДатаИнвентаризации" id="66">
+					<DataPath>ТаблицаОтметок.ДатаИнвентаризации</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>8</Width>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокДатаИнвентаризацииКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="ТаблицаОтметокДатаИнвентаризацииРасширеннаяПодсказка" id="68"/>
+					<Events>
+						<Event name="StartChoice">ТаблицаОтметокДатаИнвентаризацииНачалоВыбора</Event>
+						<Event name="Clearing">ТаблицаОтметокДатаИнвентаризацииОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокДатаНачала" id="57">
+					<DataPath>ТаблицаОтметок.ДатаНачала</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>8</Width>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокДатаНачалаКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="ТаблицаОтметокДатаНачалаРасширеннаяПодсказка" id="59"/>
+					<Events>
+						<Event name="StartChoice">ТаблицаОтметокДатаНачалаНачалоВыбора</Event>
+						<Event name="Clearing">ТаблицаОтметокДатаНачалаОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокДатаОкончания" id="60">
+					<DataPath>ТаблицаОтметок.ДатаОкончания</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>8</Width>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокДатаОкончанияКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ТаблицаОтметокДатаОкончанияРасширеннаяПодсказка" id="62"/>
+					<Events>
+						<Event name="StartChoice">ТаблицаОтметокДатаОкончанияНачалоВыбора</Event>
+						<Event name="Clearing">ТаблицаОтметокДатаОкончанияОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокМестоИнвентаризацииПредставление" id="63">
+					<DataPath>ТаблицаОтметок.МестоИнвентаризацииПредставление</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокМестоИнвентаризацииПредставлениеКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ТаблицаОтметокМестоИнвентаризацииПредставлениеРасширеннаяПодсказка" id="65"/>
+					<Events>
+						<Event name="Clearing">ТаблицаОтметокМестоИнвентаризацииОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТаблицаОтметокПримечаниеПредставление" id="85">
+					<DataPath>ТаблицаОтметок.ПримечаниеПредставление</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ТаблицаОтметокПримечаниеПредставлениеКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="ТаблицаОтметокПримечаниеПредставлениеРасширеннаяПодсказка" id="87"/>
+					<Events>
+						<Event name="Clearing">ТаблицаОтметокПримечаниеПредставлениеОчистка</Event>
+					</Events>
+				</InputField>
+				<LabelField name="ТаблицаОтметокПредставлениеДокументовОписей" id="50">
+					<DataPath>ТаблицаОтметок.ПредставлениеДокументовОписей</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CellHyperlink>true</CellHyperlink>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Hiperlink>true</Hiperlink>
+					<TextColor>style:ГиперссылкаЦвет</TextColor>
+					<ContextMenu name="ТаблицаОтметокПредставлениеДокументовОписейКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ТаблицаОтметокПредставлениеДокументовОписейРасширеннаяПодсказка" id="52"/>
+				</LabelField>
+				<CheckBoxField name="ТаблицаОтметокПризнакСплошнойИнвентаризации" id="76">
+					<DataPath>ТаблицаОтметок.ПризнакСплошнойИнвентаризации</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сплошная</v8:content>
+						</v8:item>
+					</Title>
+					<TitleBackColor>style:ЦветНедоступногоТекста</TitleBackColor>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаОтметокПризнакСплошнойИнвентаризацииКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="ТаблицаОтметокПризнакСплошнойИнвентаризацииРасширеннаяПодсказка" id="78"/>
+				</CheckBoxField>
+				<CheckBoxField name="ТаблицаОтметокПризнакВыборочнойИнвентаризации" id="79">
+					<DataPath>ТаблицаОтметок.ПризнакВыборочнойИнвентаризации</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выборочная</v8:content>
+						</v8:item>
+					</Title>
+					<TitleBackColor>style:ЦветНедоступногоТекста</TitleBackColor>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаОтметокПризнакВыборочнойИнвентаризацииКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="ТаблицаОтметокПризнакВыборочнойИнвентаризацииРасширеннаяПодсказка" id="81"/>
+				</CheckBoxField>
+				<CheckBoxField name="ТаблицаОтметокПризнакИнойИнвентаризации" id="82">
+					<DataPath>ТаблицаОтметок.ПризнакИнойИнвентаризации</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Иная</v8:content>
+						</v8:item>
+					</Title>
+					<TitleBackColor>style:ЦветНедоступногоТекста</TitleBackColor>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаОтметокПризнакИнойИнвентаризацииКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="ТаблицаОтметокПризнакИнойИнвентаризацииРасширеннаяПодсказка" id="84"/>
+				</CheckBoxField>
+				<PictureField name="ТаблицаОтметокПолеПустое" id="28">
+					<DataPath>ТаблицаОтметок.Отметка</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ShowInHeader>false</ShowInHeader>
+					<ShowInFooter>false</ShowInFooter>
+					<Width>2</Width>
+					<ContextMenu name="ТаблицаОтметокПолеПустоеКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ТаблицаОтметокПолеПустоеРасширеннаяПодсказка" id="30"/>
+				</PictureField>
+			</ChildItems>
+		</Table>
+		<Button name="КомандаВыбрать" id="37">
+			<Type>UsualButton</Type>
+			<DefaultButton>true</DefaultButton>
+			<CommandName>Form.Command.КомандаВыбрать</CommandName>
+			<ExtendedTooltip name="КомандаВыбратьРасширеннаяПодсказка" id="38"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТаблицаОтметок" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица отметок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КомиссияПредставление" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комиссия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СотрудникПредставление" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СчетПредставление" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет инвентаризации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Отметка" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отметка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомераСтрок" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>фикс. массив</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="КодСтрокиПредставление" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСтроки" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>4</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеДокументовОписей" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документы описей</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>200</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СписокДокументовОписей" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список документов описей</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueListType</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаИнвентаризации" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По состоянию на</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаНачала" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период с</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаОкончания" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>по</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="МестоИнвентаризацииПредставление" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Место инвентаризации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПризнакСплошнойИнвентаризации" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак сплошной инвентаризации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПризнакВыборочнойИнвентаризации" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак выборочной инвентаризации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПризнакИнойИнвентаризации" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак иной инвентаризации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПримечаниеПредставление" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Сотрудник" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Решение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Решение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.РешениеОПроведенииИнвентаризации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбщийСписокСотрудников" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>фикс. массив</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПоследнееИзменение" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последнее изменение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ИзменениеРешенияОПроведенииИнвентаризации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеРеквизитаМОЛ" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>фикс. структура</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ОбъединитьСтрокиПоСчетам" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объединить строки по счетам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписьСсылка" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Опись ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказатьВсеКолонки" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все колонки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>ПоказатьВсеКолонки</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ОбъединитьСтрокиПоМестамИнвентаризации" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объединить строки по местам инвентаризации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДопустимостьОбъединенияСчетов" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допустимость объединения счетов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДопустимостьОбъединенияМестИнвентаризации" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допустимость объединения мест инвентаризации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаВыбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать строки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаВыбрать</Action>
+		</Command>
+		<Command name="ПоказатьВсеКолонки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все колонки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все колонки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьВсеКолонки</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="АдресХранилища">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор маршрута подписания</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаВыбрать" id="53">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаВыбрать</CommandName>
+				<ExtendedTooltip name="ФормаКомандаВыбратьРасширеннаяПодсказка" id="54"/>
+			</Button>
+			<Button name="ФормаКомандаОтмена" id="55">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОтменаРасширеннаяПодсказка" id="56"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаМаршрут" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа маршрут</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаМаршрутРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<RadioButtonField name="СпособВыбораИзСправочника" id="6">
+					<DataPath>СпособВыбора</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выбрать маршрут</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ВыбратьМаршрут</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="СпособВыбораИзСправочникаКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СпособВыбораИзСправочникаРасширеннаяПодсказка" id="8"/>
+					<Events>
+						<Event name="OnChange">СпособВыбораПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<InputField name="Маршрут" id="3">
+					<DataPath>Маршрут</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="МаршрутКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="МаршрутРасширеннаяПодсказка" id="5"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<RadioButtonField name="СпособВыбораВручную" id="9">
+			<DataPath>СпособВыбора</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заполнить вручную</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ЗаполнитьВручную</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="СпособВыбораВручнуюКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="СпособВыбораВручнуюРасширеннаяПодсказка" id="11"/>
+			<Events>
+				<Event name="OnChange">СпособВыбораПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<Table name="ДеревоМаршрута" id="12">
+			<Representation>Tree</Representation>
+			<SelectionMode>SingleRow</SelectionMode>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ДеревоМаршрута</DataPath>
+			<RowPictureDataPath>ДеревоМаршрута.ИндексКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.ВидыЭлектронныхПодписей</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево маршрута</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>List</ExcludedCommand>
+			</CommandSet>
+			<ContextMenu name="ДеревоМаршрутаКонтекстноеМеню" id="13"/>
+			<AutoCommandBar name="ДеревоМаршрутаКоманднаяПанель" id="14">
+				<ChildItems>
+					<Popup name="ДеревоМаршрутаДобавитьГруппу" id="31">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Добавить группу</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ДеревоМаршрутаДобавитьГруппуРасширеннаяПодсказка" id="32"/>
+						<ChildItems>
+							<Button name="ДеревоМаршрутаДобавитьГруппуПоОчереди" id="33">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьГруппуПоОчереди</CommandName>
+								<ExtendedTooltip name="ДеревоМаршрутаДобавитьГруппуПоОчередиРасширеннаяПодсказка" id="34"/>
+							</Button>
+							<Button name="ДеревоМаршрутаДобавитьГруппуИ" id="35">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьГруппуИ</CommandName>
+								<ExtendedTooltip name="ДеревоМаршрутаДобавитьГруппуИРасширеннаяПодсказка" id="36"/>
+							</Button>
+							<Button name="ДеревоМаршрутаДобавитьГруппуИЛИ" id="37">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьГруппуИЛИ</CommandName>
+								<ExtendedTooltip name="ДеревоМаршрутаДобавитьГруппуИЛИРасширеннаяПодсказка" id="38"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ДеревоМаршрутаДобавитьПодписанта" id="39">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.ДобавитьПодписанта</CommandName>
+						<ExtendedTooltip name="ДеревоМаршрутаДобавитьПодписантаРасширеннаяПодсказка" id="40"/>
+					</Button>
+					<ButtonGroup name="ДеревоМаршрутаКомандыСортировки" id="41">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды сортировки</v8:content>
+							</v8:item>
+						</Title>
+						<Representation>Compact</Representation>
+						<ExtendedTooltip name="ДеревоМаршрутаКомандыСортировкиРасширеннаяПодсказка" id="42"/>
+						<ChildItems>
+							<Button name="ДеревоМаршрутаПереместитьВверх" id="43">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ДеревоМаршрута.StandardCommand.MoveUp</CommandName>
+								<ExtendedTooltip name="ДеревоМаршрутаПереместитьВверхРасширеннаяПодсказка" id="44"/>
+							</Button>
+							<Button name="ДеревоМаршрутаПереместитьВниз" id="45">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ДеревоМаршрута.StandardCommand.MoveDown</CommandName>
+								<ExtendedTooltip name="ДеревоМаршрутаПереместитьВнизРасширеннаяПодсказка" id="46"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ДеревоМаршрутаПодбор" id="57">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьПоМаршруту</CommandName>
+						<ExtendedTooltip name="ДеревоМаршрутаПодборРасширеннаяПодсказка" id="58"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДеревоМаршрутаРасширеннаяПодсказка" id="15"/>
+			<SearchStringAddition name="ДеревоМаршрутаСтрокаПоиска" id="16">
+				<AdditionSource>
+					<Item>ДеревоМаршрута</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоМаршрутаСтрокаПоискаКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="ДеревоМаршрутаСтрокаПоискаРасширеннаяПодсказка" id="18"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДеревоМаршрутаСостояниеПросмотра" id="19">
+				<AdditionSource>
+					<Item>ДеревоМаршрута</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="ДеревоМаршрутаСостояниеПросмотраКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="ДеревоМаршрутаСостояниеПросмотраРасширеннаяПодсказка" id="21"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДеревоМаршрутаУправлениеПоиском" id="22">
+				<AdditionSource>
+					<Item>ДеревоМаршрута</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоМаршрутаУправлениеПоискомКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="ДеревоМаршрутаУправлениеПоискомРасширеннаяПодсказка" id="24"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ДеревоМаршрутаПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">ДеревоМаршрутаПередУдалением</Event>
+				<Event name="ChoiceProcessing">ДеревоМаршрутаОбработкаВыбора</Event>
+				<Event name="OnStartEdit">ДеревоМаршрутаПриНачалеРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ДеревоМаршрутаОсновноеЗначение" id="47">
+					<DataPath>ДеревоМаршрута.ОсновноеЗначение</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа / подписант</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceButton>true</ChoiceButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ДеревоМаршрутаОсновноеЗначениеКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ДеревоМаршрутаОсновноеЗначениеРасширеннаяПодсказка" id="49"/>
+					<Events>
+						<Event name="OnChange">ДеревоМаршрутаОсновноеЗначениеПриИзменении</Event>
+						<Event name="StartChoice">ДеревоМаршрутаОсновноеЗначениеНачалоВыбора</Event>
+						<Event name="ChoiceProcessing">ДеревоМаршрутаОсновноеЗначениеОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДеревоМаршрутаВидПодписи" id="50">
+					<DataPath>ДеревоМаршрута.ВидПодписи</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеревоМаршрутаВидПодписиКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ДеревоМаршрутаВидПодписиРасширеннаяПодсказка" id="52"/>
+					<Events>
+						<Event name="OnChange">ДеревоМаршрутаВидПодписиПриИзменении</Event>
+						<Event name="Clearing">ДеревоМаршрутаВидПодписиОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДеревоМаршрутаСертификат" id="59">
+					<DataPath>ДеревоМаршрута.Сертификат</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеревоМаршрутаСертификатКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ДеревоМаршрутаСертификатРасширеннаяПодсказка" id="61"/>
+					<Events>
+						<Event name="OnChange">ДеревоМаршрутаСертификатПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Маршрут" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Маршрут</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.МаршрутыПодписанияБГУ</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="СпособВыбора" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ выбора</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДеревоМаршрута" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево маршрута</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Группа" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоСтрокаУсловия" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это строка условия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИндексКартинки" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс картинки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Подписант" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подписант</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Идентификатор" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОсновноеЗначение" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основное значение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВидПодписи" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид подписи</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВидыЭлектронныхПодписейБГУ</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Сертификат" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИзмененПользователем" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменен пользователем</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ВнутреннийЭДОВидПодписиПоУмолчаниюДляНовогоПодписантаВМаршруте" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внутренний ЭДО вид подписи по умолчанию для нового подписанта в маршруте</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыЭлектронныхПодписейБГУ</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДобавитьГруппуИЛИ" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Любой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить группу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьГруппу</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьГруппуПоОчереди" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все по очереди</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить группу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьГруппу</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьПодписанта" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить подписанта</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить подписанта</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СостояниеПользователя02</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьПодписанта</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьГруппуИ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все одновременно</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить группу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьГруппу</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаВыбрать" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаВыбрать</Action>
+		</Command>
+		<Command name="ЗаполнитьПоМаршруту" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по маршруту</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьПоМаршруту</Action>
+		</Command>
+	</Commands>
+</Form>

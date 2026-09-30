@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="110">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="111"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаБыстрыеОтборы" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Быстрые отборы</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalStretch>false</VerticalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаБыстрыеОтборыРасширеннаяПодсказка" id="29"/>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтборПоСчету" id="112">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа отбор по счету</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтборПоСчетуРасширеннаяПодсказка" id="113"/>
+					<ChildItems>
+						<CheckBoxField name="ОтборПоСчетуФлажок" id="114">
+							<DataPath>ОтборПоСчетуФлажок</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Счет</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтборПоСчетуФлажокКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="ОтборПоСчетуФлажокРасширеннаяПодсказка" id="116"/>
+							<Events>
+								<Event name="OnChange">ОтборПоСчетуФлажокПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ОтборПоСчету" id="117">
+							<DataPath>ОтборПоСчету</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ОтборПоСчетуКонтекстноеМеню" id="118"/>
+							<ExtendedTooltip name="ОтборПоСчетуРасширеннаяПодсказка" id="119"/>
+							<Events>
+								<Event name="OnChange">ОтборПоСчетуПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="КомандыФормы" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды формы</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="25"/>
+			<ChildItems>
+				<Popup name="КомандыЭДО" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЭДО</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="27"/>
+				</Popup>
+			</ChildItems>
+		</CommandBar>
+		<Table name="Список" id="3">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<UserSettingsGroup>ГруппаБыстрыеОтборы</UserSettingsGroup>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="5">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="6"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="7">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="8"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="9"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="10">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="11"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="12"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="13">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+				<Event name="OnGetDataAtServer">СписокПриПолученииДанныхНаСервере</Event>
+				<Event name="BeforeLoadUserSettingsAtServer">СписокПередЗагрузкойПользовательскихНастроекНаСервере</Event>
+			</Events>
+			<ChildItems>
+				<PictureField name="ЕстьФайлы" id="30">
+					<DataPath>Список.ЕстьФайлы</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ЕстьФайлыКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ЕстьФайлыРасширеннаяПодсказка" id="32"/>
+				</PictureField>
+				<LabelField name="Дата" id="16">
+					<DataPath>Список.Дата</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="18"/>
+				</LabelField>
+				<LabelField name="Номер" id="19">
+					<DataPath>Список.Номер</DataPath>
+					<ContextMenu name="НомерКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="21"/>
+				</LabelField>
+				<LabelField name="ДатаИнвентаризации" id="36">
+					<DataPath>Список.ДатаИнвентаризации</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На дату</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаИнвентаризацииКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ДатаИнвентаризацииРасширеннаяПодсказка" id="38"/>
+				</LabelField>
+				<LabelField name="ДатаНачала" id="39">
+					<DataPath>Список.ДатаНачала</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период проведения с</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="41"/>
+				</LabelField>
+				<LabelField name="ДатаОкончания" id="42">
+					<DataPath>Список.ДатаОкончания</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>по</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="44"/>
+				</LabelField>
+				<LabelField name="РешениеОПроведенииИнвентаризации" id="66">
+					<DataPath>Список.РешениеОПроведенииИнвентаризации</DataPath>
+					<ContextMenu name="РешениеОПроведенииИнвентаризацииКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="РешениеОПроведенииИнвентаризацииРасширеннаяПодсказка" id="68"/>
+				</LabelField>
+				<InputField name="ВидЦенныхБумаг" id="101">
+					<DataPath>Список.ВидЦенныхБумаг</DataPath>
+					<ContextMenu name="ВидЦенныхБумагКонтекстноеМеню" id="102"/>
+					<ExtendedTooltip name="ВидЦенныхБумагРасширеннаяПодсказка" id="103"/>
+				</InputField>
+				<InputField name="ФормаЦенныхБумаг" id="104">
+					<DataPath>Список.ФормаЦенныхБумаг</DataPath>
+					<ContextMenu name="ФормаЦенныхБумагКонтекстноеМеню" id="105"/>
+					<ExtendedTooltip name="ФормаЦенныхБумагРасширеннаяПодсказка" id="106"/>
+				</InputField>
+				<InputField name="Счет" id="98">
+					<DataPath>Список.Счет</DataPath>
+					<ContextMenu name="СчетКонтекстноеМеню" id="99"/>
+					<ExtendedTooltip name="СчетРасширеннаяПодсказка" id="100"/>
+				</InputField>
+				<InputField name="ОтветственноеЛицо" id="95">
+					<DataPath>Список.ОтветственноеЛицо</DataPath>
+					<ContextMenu name="ОтветственноеЛицоКонтекстноеМеню" id="96"/>
+					<ExtendedTooltip name="ОтветственноеЛицоРасширеннаяПодсказка" id="97"/>
+				</InputField>
+				<LabelField name="МестоИнвентаризации" id="45">
+					<DataPath>Список.МестоИнвентаризации</DataPath>
+					<ContextMenu name="МестоИнвентаризацииКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="МестоИнвентаризацииРасширеннаяПодсказка" id="47"/>
+				</LabelField>
+				<LabelField name="Организация" id="51">
+					<DataPath>Список.Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="53"/>
+				</LabelField>
+				<LabelField name="Подразделение" id="63">
+					<DataPath>Список.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="65"/>
+				</LabelField>
+				<LabelField name="Комиссия" id="80">
+					<DataPath>Список.Комиссия</DataPath>
+					<ContextMenu name="КомиссияКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="КомиссияРасширеннаяПодсказка" id="82"/>
+				</LabelField>
+				<LabelField name="Ответственный" id="54">
+					<DataPath>Список.Ответственный</DataPath>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="56"/>
+				</LabelField>
+				<LabelField name="ОтветственныйИсполнительБухгалтерскойСлужбы" id="60">
+					<DataPath>Список.ОтветственныйИсполнительБухгалтерскойСлужбы</DataPath>
+					<ContextMenu name="ОтветственныйИсполнительБухгалтерскойСлужбыКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ОтветственныйИсполнительБухгалтерскойСлужбыРасширеннаяПодсказка" id="62"/>
+				</LabelField>
+				<LabelField name="ОтветственныйИсполнитель" id="57">
+					<DataPath>Список.ОтветственныйИсполнитель</DataPath>
+					<ContextMenu name="ОтветственныйИсполнительКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="ОтветственныйИсполнительРасширеннаяПодсказка" id="59"/>
+				</LabelField>
+				<CheckBoxField name="ВыявленыНесоответствия" id="107">
+					<DataPath>Список.ВыявленыНесоответствия</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыявленыНесоответствияКонтекстноеМеню" id="108"/>
+					<ExtendedTooltip name="ВыявленыНесоответствияРасширеннаяПодсказка" id="109"/>
+				</CheckBoxField>
+				<CheckBoxField name="ВыявленыОтклонения" id="77">
+					<DataPath>Список.ВыявленыОтклонения</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыявленыОтклоненияКонтекстноеМеню" id="78"/>
+					<ExtendedTooltip name="ВыявленыОтклоненияРасширеннаяПодсказка" id="79"/>
+				</CheckBoxField>
+				<InputField name="Комментарий" id="92">
+					<DataPath>Список.Комментарий</DataPath>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="94"/>
+				</InputField>
+				<LabelField name="Ссылка" id="33">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="35"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ИнформационныеСсылки" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационные ссылки</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ИнформационныеСсылкиРасширеннаяПодсказка" id="23"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.ОбщееСостояние</Field>
+				<Field>Список.СостояниеОригиналаПервичногоДокумента</Field>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Ссылка,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ПометкаУдаления,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Номер,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Дата,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Проведен,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Организация,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Подразделение,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ИФО,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ВидЦенныхБумаг,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ФормаЦенныхБумаг,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ДатаНачала,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ДатаОкончания,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ДатаИнвентаризации,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Ответственный,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ОтветственныйИсполнитель,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ОтветственныйИсполнительБухгалтерскойСлужбы,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Комментарий,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.РешениеОПроведенииИнвентаризации,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ОтветственноеЛицо,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Счет,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.Комиссия,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.НомерКомиссии,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.НомерРабочейКомиссии,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.МестоИнвентаризации,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.МоментВремени,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ВыявленыНесоответствия,
+	ДокументИнвентаризационнаяОписьЦенныхБумаг.ВыявленыОтклонения,
+	ЕСТЬNULL(НаличиеФайлов.ЕстьФайлы, ЛОЖЬ) КАК ЕстьФайлы,
+	NULL КАК СостояниеОригиналаПервичногоДокумента,
+	ИСТИНА КАК ОбщееСостояние,
+	0 КАК СостояниеОригиналПолучен
+ИЗ
+	Документ.ИнвентаризационнаяОписьЦенныхБумаг КАК ДокументИнвентаризационнаяОписьЦенныхБумаг
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеФайлов
+		ПО ДокументИнвентаризационнаяОписьЦенныхБумаг.Ссылка = НаличиеФайлов.ОбъектСФайлами}</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерРабочейКомиссии</dcssch:dataPath>
+					<dcssch:field>НомерРабочейКомиссии</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИФО</dcssch:dataPath>
+					<dcssch:field>ИФО</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МестоИнвентаризации</dcssch:dataPath>
+					<dcssch:field>МестоИнвентаризации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКомиссии</dcssch:dataPath>
+					<dcssch:field>НомерКомиссии</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтветственныйИсполнительБухгалтерскойСлужбы</dcssch:dataPath>
+					<dcssch:field>ОтветственныйИсполнительБухгалтерскойСлужбы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комиссия</dcssch:dataPath>
+					<dcssch:field>Комиссия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаНачала</dcssch:dataPath>
+					<dcssch:field>ДатаНачала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьФайлы</dcssch:dataPath>
+					<dcssch:field>ЕстьФайлы</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть файлы</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОкончания</dcssch:dataPath>
+					<dcssch:field>ДатаОкончания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СостояниеОригиналПолучен</dcssch:dataPath>
+					<dcssch:field>СостояниеОригиналПолучен</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние оригинал получен</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаИнвентаризации</dcssch:dataPath>
+					<dcssch:field>ДатаИнвентаризации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтветственныйИсполнитель</dcssch:dataPath>
+					<dcssch:field>ОтветственныйИсполнитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РешениеОПроведенииИнвентаризации</dcssch:dataPath>
+					<dcssch:field>РешениеОПроведенииИнвентаризации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СостояниеОригиналаПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>СостояниеОригиналаПервичногоДокумента</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние оригинала первичного документа</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОбщееСостояние</dcssch:dataPath>
+					<dcssch:field>ОбщееСостояние</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общее состояние</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыявленыОтклонения</dcssch:dataPath>
+					<dcssch:field>ВыявленыОтклонения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидЦенныхБумаг</dcssch:dataPath>
+					<dcssch:field>ВидЦенныхБумаг</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФормаЦенныхБумаг</dcssch:dataPath>
+					<dcssch:field>ФормаЦенныхБумаг</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтветственноеЛицо</dcssch:dataPath>
+					<dcssch:field>ОтветственноеЛицо</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыявленыНесоответствия</dcssch:dataPath>
+					<dcssch:field>ВыявленыНесоответствия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Счет</dcssch:dataPath>
+					<dcssch:field>Счет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КФО</dcssch:dataPath>
+					<dcssch:field>КФО</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Раздел1</dcssch:dataPath>
+					<dcssch:field>Раздел1</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Раздел21</dcssch:dataPath>
+					<dcssch:field>Раздел21</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Раздел22</dcssch:dataPath>
+					<dcssch:field>Раздел22</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Раздел3</dcssch:dataPath>
+					<dcssch:field>Раздел3</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Приложения</dcssch:dataPath>
+					<dcssch:field>Приложения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Раздел4</dcssch:dataPath>
+					<dcssch:field>Раздел4</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СоставКомиссииРаздел2</dcssch:dataPath>
+					<dcssch:field>СоставКомиссииРаздел2</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СоставКомиссииРаздел4</dcssch:dataPath>
+					<dcssch:field>СоставКомиссииРаздел4</dcssch:field>
+				</Field>
+				<MainTable>Document.ИнвентаризационнаяОписьЦенныхБумаг</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОтборПоСчетуФлажок" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по счету флажок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборПоСчету" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по счету</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

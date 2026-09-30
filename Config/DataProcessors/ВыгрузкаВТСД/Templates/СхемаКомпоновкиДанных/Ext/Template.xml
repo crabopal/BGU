@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИнвентарныйНомер</dataPath>
+			<field>ИнвентарныйНомер</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ИнвентарныеНомераОС</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>Организация</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.ОС</dcscor:choiceParameter>
+							<dcscor:value>ОсновноеСредство</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Организации</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОсновноеСредство</dataPath>
+			<field>ОсновноеСредство</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ОсновныеСредства</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Организация</dcscor:choiceParameter>
+							<dcscor:value>Организация</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦМО</dataPath>
+			<field>ЦМО</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ЦМО</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>Организация</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетУчета</dataPath>
+			<field>СчетУчета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>ОграничениеПоСубконто</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконто.ОсновныеСредства</dcscor:value>
+						</dcscor:item>
+						<dcscor:item>
+							<dcscor:choiceParameter>ТипСчета</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыСчетов.Бухгалтерский</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Штрихкод</dataPath>
+			<field>Штрихкод</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КФО</dataPath>
+			<field>КФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИФО</dataPath>
+			<field>ИФО</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СтоимостьОбъектовОСОстатки.Организация КАК Организация,
+	СтоимостьОбъектовОСОстатки.ОсновноеСредство КАК ОсновноеСредство,
+	СтоимостьОбъектовОСОстатки.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	СтоимостьОбъектовОСОстатки.ЦМО КАК ЦМО,
+	ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка) КАК Контрагент
+ПОМЕСТИТЬ ВТ_Остатки
+ИЗ
+	РегистрНакопления.СтоимостьОбъектовОС.Остатки(, {(Организация).*, (ОсновноеСредство).*, (ЦМО).* КАК ЦМО}) КАК СтоимостьОбъектовОСОстатки
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СтоимостьОбъектовОСОстатки.Организация,
+	СтоимостьОбъектовОСОстатки.ОсновноеСредство,
+	СтоимостьОбъектовОСОстатки.ИнвентарныйНомер,
+	СтоимостьОбъектовОСОстатки.ЦМО,
+	СтоимостьОбъектовОСОстатки.Контрагент
+ИЗ
+	РегистрНакопления.СтоимостьОбъектовОСПоКонтрагентам.Остатки(, {(Организация).*, (ОсновноеСредство).*, (ЦМО).* КАК ЦМО}) КАК СтоимостьОбъектовОСОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Организация,
+	ОсновноеСредство
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ЖурналПроводокЕПСБУОстатки.Организация КАК Организация,
+	ЖурналПроводокЕПСБУОстатки.Субконто1 КАК ОсновноеСредство,
+	ЖурналПроводокЕПСБУОстатки.Счет КАК Счет,
+	ЖурналПроводокЕПСБУОстатки.ИФО КАК ИФО,
+	ЖурналПроводокЕПСБУОстатки.КФО КАК КФО
+ПОМЕСТИТЬ ВТ_БУ
+ИЗ
+	РегистрБухгалтерии.ЖурналПроводокЕПСБУ.Остатки(, Счет В (&amp;СчетаУчета) {(Счет).* КАК СчетУчета}, ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыСубконто.ОсновныеСредства), {(Организация).*, (Субконто1).* КАК ОсновноеСредство}) КАК ЖурналПроводокЕПСБУОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Организация,
+	ОсновноеСредство
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СпрОС.Организация КАК Организация,
+	СпрОС.Ссылка КАК ОсновноеСредство,
+	ВТ_Остатки.ИнвентарныйНомер КАК ИнвентарныйНомер,
+	ВТ_Остатки.ЦМО КАК ЦМО,
+	ЕСТЬNULL(Штрихкоды.Штрихкод, ШтрихкодыБезИнвНомера.Штрихкод) КАК Штрихкод
+{ВЫБРАТЬ
+	ОсновноеСредство.*,
+	ИнвентарныйНомер.*,
+	Штрихкод}
+ИЗ
+	Справочник.ОсновныеСредства КАК СпрОС
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_Остатки КАК ВТ_Остатки
+		ПО СпрОС.Организация = ВТ_Остатки.Организация
+			И СпрОС.Ссылка = ВТ_Остатки.ОсновноеСредство
+		{ЛЕВОЕ СОЕДИНЕНИЕ ВТ_БУ КАК ВТ_БУ
+		ПО СпрОС.Организация = ВТ_БУ.Организация
+			И СпрОС.Ссылка = ВТ_БУ.ОсновноеСредство}
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.Штрихкоды КАК Штрихкоды
+		ПО СпрОС.Ссылка = Штрихкоды.Объект
+			И (Штрихкоды.ИнвентарныйНомер = ВТ_Остатки.ИнвентарныйНомер)
+			И (Штрихкоды.ИнвентарныйНомер &lt;&gt; ЗНАЧЕНИЕ(Справочник.ИнвентарныеНомераОС.ПустаяСсылка))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.Штрихкоды КАК ШтрихкодыБезИнвНомера
+		ПО СпрОС.Ссылка = ШтрихкодыБезИнвНомера.Объект
+			И (ШтрихкодыБезИнвНомера.ИнвентарныйНомер = ЗНАЧЕНИЕ(Справочник.ИнвентарныеНомераОС.ПустаяСсылка))
+ГДЕ
+	НЕ СпрОС.ЭтоГруппа
+{ГДЕ
+	СпрОС.Организация.*,
+	ВТ_БУ.ИФО.* КАК ИФО,
+	ВТ_БУ.Счет.* КАК СчетУчета,
+	ВТ_БУ.КФО КАК КФО,
+	СпрОС.Ссылка.* КАК ОсновноеСредство,
+	ВТ_Остатки.ИнвентарныйНомер.* КАК ИнвентарныйНомер,
+	ВТ_Остатки.ЦМО.* КАК ЦМО,
+	ВТ_Остатки.Контрагент.* КАК Контрагент,
+	Штрихкоды.Штрихкод}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<parameter>
+		<name>СчетаУчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Счета учета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.ЕПСБУ</v8:Type>
+		</valueType>
+		<useRestriction>true</useRestriction>
+		<expression>БухгалтерскийУчет.СписокСчетов("101.00,102.00,103.00,106.00,107.00,108.00,01,02,05,13,21,22")</expression>
+		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОсновноеСредство</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИнвентарныйНомер</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Штрихкод</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>d295afb1-c40b-4424-871b-c185504bfeeb</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
